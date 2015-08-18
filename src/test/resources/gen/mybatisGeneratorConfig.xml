@@ -22,6 +22,7 @@
                             targetProject="src/main/gen">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="net.jeeshop.core.dao.page.PagerModel"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mapper"

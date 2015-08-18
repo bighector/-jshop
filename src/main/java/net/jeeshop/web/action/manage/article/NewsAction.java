@@ -2,15 +2,15 @@
  * 2012-7-8
  * jqsl2012@163.com
  */
-package net.jeeshop.web.action.manage.news;
+package net.jeeshop.web.action.manage.article;
 
 import net.jeeshop.core.dao.page.PagerModel;
 import net.jeeshop.core.front.SystemManager;
 import net.jeeshop.core.system.bean.User;
 import net.jeeshop.services.manage.catalog.CatalogService;
 import net.jeeshop.services.manage.indexImg.IndexImgService;
-import net.jeeshop.services.manage.news.NewsService;
-import net.jeeshop.services.manage.news.bean.News;
+import net.jeeshop.services.manage.article.NewsService;
+import net.jeeshop.services.manage.article.bean.News;
 import net.jeeshop.web.action.BaseController;
 import net.jeeshop.web.util.LoginUserHolder;
 import net.jeeshop.web.util.RequestHolder;
@@ -37,13 +37,13 @@ import java.util.List;
  * 
  */
 @Controller
-@RequestMapping("/manage/news/")
+@RequestMapping("/manage/article/")
 public class NewsAction extends BaseController<News> {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(NewsAction.class);
-    private static final String page_toList = "/manage/news/newsList";
-    private static final String page_toEdit = "/manage/news/newsEdit";
-    private static final String page_toAdd = "/manage/news/newsEdit";
+    private static final String page_toList = "/manage/article/newsList";
+    private static final String page_toEdit = "/manage/article/newsEdit";
+    private static final String page_toAdd = "/manage/article/newsEdit";
     private NewsAction() {
         super.page_toList = page_toList;
         super.page_toAdd = page_toAdd;

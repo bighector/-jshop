@@ -1,8 +1,6 @@
-package net.jeeshop.services.manage.news.bean;
+package net.jeeshop.services.manage.article.bean;
 
 import java.io.Serializable;
-
-import net.jeeshop.core.dao.page.PagerModel;
 
 
 public class News extends net.jeeshop.services.common.News implements Serializable {

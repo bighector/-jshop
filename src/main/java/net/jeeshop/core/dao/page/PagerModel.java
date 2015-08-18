@@ -19,6 +19,7 @@ public class PagerModel implements ClearBean {
 	private int pageSize = ManageContainer.PAGE_SIZE;// 每页显示记录数
 	private int offset; // 偏移量
 	private int pagerSize;// 总页数
+	@Deprecated
 	protected String pagerUrl;//分页标签需要访问的ACTION地址
 	private String id;
 	private int recordsTotal;

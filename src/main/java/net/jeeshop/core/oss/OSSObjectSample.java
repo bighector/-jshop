@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import com.aliyun.oss.ClientConfiguration;
@@ -16,7 +13,6 @@ import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.*;
 import net.jeeshop.core.front.SystemManager;
 import net.jeeshop.services.manage.oss.bean.AliyunOSS;
-import net.jeeshop.web.action.manage.news.NewsAction;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

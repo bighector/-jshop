@@ -2,15 +2,14 @@
  * 2012-7-8
  * jqsl2012@163.com
  */
-package net.jeeshop.services.manage.news.dao.impl;
+package net.jeeshop.services.manage.article.dao.impl;
 
 import java.util.List;
 
 import net.jeeshop.core.dao.BaseDao;
 import net.jeeshop.core.dao.page.PagerModel;
-import net.jeeshop.services.manage.navigation.bean.Navigation;
-import net.jeeshop.services.manage.news.bean.News;
-import net.jeeshop.services.manage.news.dao.NewsDao;
+import net.jeeshop.services.manage.article.bean.News;
+import net.jeeshop.services.manage.article.dao.NewsDao;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

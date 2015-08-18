@@ -1,8 +1,9 @@
 package net.jeeshop.model;
 
 import java.io.Serializable;
+import net.jeeshop.core.dao.page.PagerModel;
 
-public class ArticleCatalog implements Serializable {
+public class ArticleCatalog extends PagerModel implements Serializable {
     /** ID */
     private Integer id;
 

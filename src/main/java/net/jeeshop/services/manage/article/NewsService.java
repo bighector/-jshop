@@ -1,9 +1,9 @@
-package net.jeeshop.services.manage.news;
+package net.jeeshop.services.manage.article;
 
 import java.util.List;
 
 import net.jeeshop.core.Services;
-import net.jeeshop.services.manage.news.bean.News;
+import net.jeeshop.services.manage.article.bean.News;
 
 
 public interface NewsService extends Services<News> {

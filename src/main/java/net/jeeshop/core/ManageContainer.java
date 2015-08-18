@@ -1,7 +1,7 @@
 package net.jeeshop.core;
 
 import net.jeeshop.services.manage.indexImg.IndexImgService;
-import net.jeeshop.services.manage.news.NewsService;
+import net.jeeshop.services.manage.article.NewsService;
 
 /**
  * 全局变量
