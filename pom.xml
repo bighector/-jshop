@@ -563,6 +563,11 @@
             <!--<scope>system</scope>-->
         <!--</dependency>-->
         <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+        <dependency>
             <groupId>QRCode</groupId>
             <artifactId>QRCode</artifactId>
             <version>1.0</version>

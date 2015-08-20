@@ -1,12 +1,9 @@
 package net.jeeshop.model;
 
 import java.io.Serializable;
-import net.jeeshop.core.dao.page.PagerModel;
+import net.jeeshop.biz.base.model.BaseModel;
 
-public class ArticleCatalog extends PagerModel implements Serializable {
-    /** ID */
-    private Integer id;
-
+public class ArticleCatalog extends BaseModel implements Serializable {
     /** 分类名称 */
     private String name;
 
@@ -14,7 +11,7 @@ public class ArticleCatalog extends PagerModel implements Serializable {
     private Integer pid;
 
     /** 顺序 */
-    private Integer order;
+    private Integer ordinal;
 
     /** 类型 */
     private String type;
@@ -23,14 +20,6 @@ public class ArticleCatalog extends PagerModel implements Serializable {
     private String code;
 
     private static final long serialVersionUID = 1L;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -48,12 +37,12 @@ public class ArticleCatalog extends PagerModel implements Serializable {
         this.pid = pid;
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getOrdinal() {
+        return ordinal;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     public String getType() {

@@ -1,51 +1,70 @@
 package net.jeeshop.biz.base.service;
 
-import net.jeeshop.core.Services;
+import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.core.dao.page.PagerModel;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class BaseService<E extends PagerModel> implements Services<E>{
+public interface BaseService<E extends BaseModel>{
+    /**
+     * 添加
+     *
+     * @param e
+     * @return
+     */
+    public int insert(E e);
 
-    @Override
-    public int insert(E e) {
-        return 0;
-    }
+    /**
+     * 删除
+     *
+     * @param e
+     * @return
+     */
+    public int delete(E e);
 
-    @Override
-    public int delete(E e) {
-        return 0;
-    }
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return
+     */
+    public int deletes(Integer[] ids);
 
-    @Override
-    public int deletes(String[] ids) {
-        return 0;
-    }
+    /**
+     * 修改
+     *
+     * @param e
+     * @return
+     */
+    public int update(E e);
 
-    @Override
-    public int update(E e) {
-        return 0;
-    }
+    /**
+     * 查询一条记录
+     *
+     * @param e
+     * @return
+     */
+    public E selectOne(E e);
 
-    @Override
-    public E selectOne(E e) {
-        return null;
-    }
+    /**
+     * 根据ID查询一条记录
+     *
+     * @param e
+     * @return
+     */
+    public E selectById(Integer id);
 
-    @Override
-    public E selectById(String id) {
-        return null;
-    }
+    /**
+     * 分页查询
+     *
+     * @param e
+     * @return
+     */
+    public PagerModel selectPageList(E e);
 
-    @Override
-    public PagerModel selectPageList(E e) {
-        return null;
-    }
-
-    @Override
-    public List<E> selectList(E e) {
-        return null;
-    }
+    /**
+     * 根据条件查询所有
+     * @return
+     */
+    public List<E> selectList(E e);
 }
