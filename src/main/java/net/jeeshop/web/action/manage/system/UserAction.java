@@ -219,7 +219,7 @@ public class UserAction extends BaseController<User> {
 //		param.put("pid", pid);//菜单父ID
 		List<Menu> menus = menuService.selectList(param);
 		//创建菜单集合
-		LinkedHashMap<String, MenuItem> root = new LinkedHashMap<String, MenuItem>();
+		LinkedHashMap<Long, MenuItem> root = new LinkedHashMap<Long, MenuItem>();
 		//循环添加菜单到菜单集合
 		for (Menu menu : menus) {
 			MenuItem item = new MenuItem(menu.getName(), null);
@@ -319,7 +319,7 @@ public class UserAction extends BaseController<User> {
 	private String save0(User e, RedirectAttributes flushAttrs) throws Exception {
 		logger.error("save0..."+e.getPassword()+","+e.getNewpassword2());
 		
-		if(StringUtils.isBlank(e.getId())){//添加
+		if(e.getId() == null){//添加
 			if(StringUtils.isBlank(e.getPassword()) || StringUtils.isBlank(e.getNewpassword2())){
 				flushAttrs.addFlashAttribute("errorMsg", "输入的密码不符合要求！");
 				return "redirect:toEdit?id=" + e.getId();
@@ -415,7 +415,7 @@ public class UserAction extends BaseController<User> {
 				//数据库中部存在此编码
 				return "{\"ok\":\"昵称可以使用!\"}";
 			}else{
-				if(StringUtils.isNotBlank(e.getId()) && e.getId().equals(user.getId())){
+				if(e.getId()!=null && e.getId().equals(user.getId())){
 					//update操作，又是根据自己的编码来查询的，所以当然可以使用啦
 					return "{\"ok\":\"昵称可以使用!\"}";
 				}else {
@@ -578,7 +578,7 @@ public class UserAction extends BaseController<User> {
 		return page_initManageIndex;
 	}
     @Override
-    public String deletes(HttpServletRequest request, String[] ids, @ModelAttribute("e") User e, RedirectAttributes flushAttrs) throws Exception{
+    public String deletes(HttpServletRequest request, Long[] ids, @ModelAttribute("e") User e, RedirectAttributes flushAttrs) throws Exception{
         throw new RuntimeException("not support");
     }
 }

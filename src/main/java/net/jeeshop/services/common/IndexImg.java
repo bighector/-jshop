@@ -7,7 +7,7 @@ import net.jeeshop.core.dao.page.PagerModel;
 
 public class IndexImg extends PagerModel implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String id;
+	private Long id;
 	private String title;
 	private String picture;
 	private int order1;
@@ -32,11 +32,11 @@ public class IndexImg extends PagerModel implements Serializable {
 		this.desc1 = desc1;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

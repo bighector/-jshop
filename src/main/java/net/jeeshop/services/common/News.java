@@ -7,7 +7,7 @@ import net.jeeshop.core.dao.page.PagerModel;
 
 public class News extends PagerModel implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String id;
+	private Long id;
 	private String title;
 	private String title2;
 	private String code;
@@ -17,8 +17,8 @@ public class News extends PagerModel implements Serializable {
 	private String updatetime;
 	private int readerCount;
 	private String status;//文章是否显示到门户。y:显示；n：不显示；默认是n
-	private String catalogID;//目录ID
-	private String lableID;//标签ID
+	private Long catalogID;//目录ID
+	private Long lableID;//标签ID
 	private String createAccount;//创建人账号
 	private int order1;//顺序
 	private String type;//通知：notice；帮助：help
@@ -53,12 +53,12 @@ public class News extends PagerModel implements Serializable {
 		order1=0;
 	}
 
-	public String getCatalogID() {
+	public Long getCatalogID() {
 		return catalogID;
 	}
 
 
-	public void setCatalogID(String catalogID) {
+	public void setCatalogID(Long catalogID) {
 		this.catalogID = catalogID;
 	}
 
@@ -107,19 +107,19 @@ public class News extends PagerModel implements Serializable {
 		this.status = status;
 	}
 
-	public String getLableID() {
+	public Long getLableID() {
 		return lableID;
 	}
 
-	public void setLableID(String lableID) {
+	public void setLableID(Long lableID) {
 		this.lableID = lableID;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -93,7 +93,8 @@ public class MenuAction extends BaseController<Menu> {
 	public String addOrUpdate(HttpServletRequest request) throws Exception{
 		//选中菜单的信息
 		String updateP = request.getParameter("updateP");
-		String id = request.getParameter("id");
+		String paramId = request.getParameter("id");
+        Long id = Long.valueOf(paramId);
 		String name = request.getParameter("name");
 		String orderNum = request.getParameter("orderNum");
 		String type = request.getParameter("type");
@@ -111,10 +112,10 @@ public class MenuAction extends BaseController<Menu> {
 			itemMenu = new Menu();
 			//添加子菜单
 			if(parentOrChild.equals("0")){//顶级模块
-				itemMenu.setPid("0");
+				itemMenu.setPid(0L);
 				itemMenu.setType(MenuType.module.toString());
 			} else if(parentOrChild.equals("1")){//顶级页面
-				itemMenu.setPid("0");
+				itemMenu.setPid(0L);
 				itemMenu.setType(MenuType.page.toString());
 			} else if(parentOrChild.equals("2")){//子模块
 				itemMenu.setPid(id);
@@ -204,7 +205,7 @@ public class MenuAction extends BaseController<Menu> {
 		if(id!=null){
 			// 加载指定角色的权限
 			Privilege privilege = new Privilege();
-			privilege.setRid(id);
+			privilege.setRid(Long.valueOf(id));
 			List<Privilege> rolePs = privilegeService.selectList(privilege);
 			
 			// 拿角色拥有的菜单和全部的菜单做比对，进行勾选
@@ -307,7 +308,7 @@ public class MenuAction extends BaseController<Menu> {
 		
 		if(u!=null && u.getRid()!=null)
 			param.put("rid", u.getRid());
-		param.put("pid", menu.getPid());
+		param.put("pid", String.valueOf(menu.getPid()));
 		//加载菜单节点
 		List<Menu> data = menuService.selectList(param);
 		if(data==null || data.size()==0){

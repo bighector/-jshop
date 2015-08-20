@@ -54,9 +54,9 @@ public class NewsAction extends FrontBaseController<News> {
 	 * @return
 	 */
 	@RequestMapping("/news/{id}")
-	public String newsInfo(@PathVariable("id")String id, ModelMap model) throws Exception{
+	public String newsInfo(@PathVariable("id")Long id, ModelMap model) throws Exception{
 		logger.error("NewsAction.newsInfo=== id="+id);
-		if(StringUtils.isBlank(id)){
+		if(id == null){
 			throw new NullPointerException("id is null");
 		}
 		

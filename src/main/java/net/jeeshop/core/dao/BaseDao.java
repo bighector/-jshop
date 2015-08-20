@@ -46,9 +46,9 @@ public class BaseDao extends SqlSessionDaoSupport {
 	 * @param arg0
 	 * @return
 	 */
-	public Object selectOne(String arg0) {
+	public Object selectOne(String sqlId) {
 		SqlSession session = openSession();
-		return session.selectOne(arg0);
+		return session.selectOne(sqlId);
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class BaseDao extends SqlSessionDaoSupport {
 	 * @param arg0
 	 * @return
 	 */
-	public int insert(String arg0) {
+	public long insert(String arg0) {
 		if(selectPrivilege){
 			throw new PrivilegeException("只具备查询的权限！");
 		}
@@ -143,14 +143,14 @@ public class BaseDao extends SqlSessionDaoSupport {
 	 * @param arg1
 	 * @return
 	 */
-	public int insert(String arg0, Object arg1) {
+	public long insert(String arg0, Object arg1) {
 		if(selectPrivilege){
 			throw new PrivilegeException("只具备查询的权限！");
 		}
 		SqlSession session = openSession();
 		int row = session.insert(arg0, arg1);
 		if(row==1){
-			return Integer.valueOf(((PagerModel)arg1).getId());
+			return ((PagerModel)arg1).getId();
 		}
 		throw new IbatisException();
 	}
@@ -185,11 +185,11 @@ public class BaseDao extends SqlSessionDaoSupport {
 		if(row==1){
 			if(arg1 instanceof PagerModel){
 //				return Integer.valueOf(((PagerModel)arg1).getId());
-				String obj = ((PagerModel)arg1).getId();
+				Long obj = ((PagerModel)arg1).getId();
 				if(obj==null){
 					return 0;
 				}
-				return Integer.valueOf(obj);
+				return obj.intValue();
 			}
 		}
 		return 1;

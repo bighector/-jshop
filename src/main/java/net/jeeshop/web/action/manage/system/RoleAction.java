@@ -60,7 +60,7 @@ public class RoleAction extends BaseController<Role> {
     @ResponseBody
 	public String save(HttpServletRequest request, Role role) throws Exception {
 		role.setRole_name(request.getParameter("roleName"));
-        role.setId(request.getParameter("id"));
+        role.setId(Long.valueOf(request.getParameter("id")));
         role.setRole_desc(request.getParameter("roleDesc"));
         role.setRole_dbPrivilege(request.getParameter("role_dbPrivilege"));
         role.setPrivileges(request.getParameter("privileges"));
@@ -76,7 +76,7 @@ public class RoleAction extends BaseController<Role> {
 	
 	@Override
     @RequestMapping(value = "deletes", method = RequestMethod.POST)
-	public String deletes(HttpServletRequest request, String[] ids, @ModelAttribute("e") Role e, RedirectAttributes flushAttrs) throws Exception {
+	public String deletes(HttpServletRequest request, Long[] ids, @ModelAttribute("e") Role e, RedirectAttributes flushAttrs) throws Exception {
 		throw new NotThisMethod(ManageContainer.not_this_method);
 	}
 

@@ -44,7 +44,7 @@ public class RoleService implements Services<Role> {
 		return (Role) dao.selectOne("role.selectOne", role);
 	}
 
-	public int insert(Role role) {
+	public long insert(Role role) {
 		return dao.insert("role.insert", role);
 	}
 
@@ -72,16 +72,17 @@ public class RoleService implements Services<Role> {
 	 * @throws Exception
 	 */
 	public void editRole(Role role, String insertOrUpdate) throws Exception {
-		int insertRole = 0;
+		long insertRole = 0;
 		Privilege privilege = new Privilege();
 		if (insertOrUpdate.equals("1")) {
 			// 新增角色
 			insertRole = insert(role);
 		} else {
 			// 修改角色
-			insertRole = update(role);
+            insertRole = role.getId();
+			update(role);
 			// 删除角色的所有权限
-			privilege.setRid(String.valueOf(insertRole));
+			privilege.setRid(insertRole);
 			privilegeService.delete(privilege);
 		}
 
@@ -94,8 +95,8 @@ public class RoleService implements Services<Role> {
 		for (int i = 0; i < pArr.length; i++) {
 			privilege.clear();
 
-			privilege.setMid(pArr[i]);
-			privilege.setRid(String.valueOf(insertRole));
+			privilege.setMid(Long.valueOf(pArr[i]));
+			privilege.setRid(insertRole);
 			privilegeService.insert(privilege);
 		}
 	}
@@ -105,7 +106,7 @@ public class RoleService implements Services<Role> {
 	 * 
 	 * @param ids
 	 */
-	public int deletes(String[] ids) {
+	public int deletes(Long[] ids) {
 		Role role = new Role();
 		for (int i = 0; i < ids.length; i++) {
 			role.setId(ids[i]);
@@ -116,7 +117,7 @@ public class RoleService implements Services<Role> {
 	}
 
 	@Override
-	public Role selectById(String id) {
+	public Role selectById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

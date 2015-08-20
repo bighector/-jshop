@@ -55,7 +55,7 @@ public class IndexImgDaoImpl implements IndexImgDao {
 	 * 
 	 * @param ids
 	 */
-	public int deletes(String[] ids) {
+	public int deletes(Long[] ids) {
 		IndexImg e = new IndexImg();
 		for (int i = 0; i < ids.length; i++) {
 			e.setId(ids[i]);
@@ -64,7 +64,7 @@ public class IndexImgDaoImpl implements IndexImgDao {
 		return 0;
 	}
 
-	public int insert(IndexImg e) {
+	public long insert(IndexImg e) {
 		return  dao.insert("manage.indexImg.insert", e);
 	}
 
@@ -76,7 +76,7 @@ public class IndexImgDaoImpl implements IndexImgDao {
 	}
 	
 	@Override
-	public int deleteById(int id) {
+	public int deleteById(long id) {
 		return dao.delete("manage.indexImg.deleteById",id);
 	}
 
@@ -84,7 +84,7 @@ public class IndexImgDaoImpl implements IndexImgDao {
 	public List<IndexImg> getImgsShowToIndex(int i) {
 		return dao.selectList("manage.indexImg.getImgsShowToIndex",i);
 	}
-	public IndexImg selectById(String id) {
-		return (IndexImg) dao.selectOne(id);
+	public IndexImg selectById(long id) {
+		return null;
 	}
 }

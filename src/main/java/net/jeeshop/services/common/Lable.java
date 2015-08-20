@@ -7,7 +7,7 @@ import net.jeeshop.core.dao.page.PagerModel;
 
 public class Lable extends PagerModel implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String id;
+	private Long id;
 	private String name;
 	private String desc1;
 	private int type;
@@ -52,11 +52,11 @@ public class Lable extends PagerModel implements Serializable {
 		this.typeSum = typeSum;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

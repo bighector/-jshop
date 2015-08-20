@@ -14,16 +14,16 @@ import net.jeeshop.core.ManageContainer;
  * 
  */
 public class PagerModel implements ClearBean {
-	private int total; // 总数
+	private long total; // 总数
 	private List list = new ArrayList(); // 分页集合列表
 	private int pageSize = ManageContainer.PAGE_SIZE;// 每页显示记录数
 	private int offset; // 偏移量
 	private int pagerSize;// 总页数
 	@Deprecated
 	protected String pagerUrl;//分页标签需要访问的ACTION地址
-	private String id;
-	private int recordsTotal;
-	private int recordsFiltered;
+	private Long id;
+	private long recordsTotal;
+	private long recordsFiltered;
 	private int draw;
 
 	public String getPagerUrl() {
@@ -58,11 +58,11 @@ public class PagerModel implements ClearBean {
 		this.pageSize = pageSize;
 	}
 
-	public int getTotal() {
+	public long getTotal() {
 		return total;
 	}
 
-	public void setTotal(int total) {
+	public void setTotal(long total) {
 		this.total = total;
 	}
 
@@ -74,11 +74,11 @@ public class PagerModel implements ClearBean {
 		this.list = list;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -97,19 +97,19 @@ public class PagerModel implements ClearBean {
 		id = null;
 	}
 
-	public int getRecordsTotal() {
+	public long getRecordsTotal() {
 		return recordsTotal;
 	}
 
-	public void setRecordsTotal(int recordsTotal) {
+	public void setRecordsTotal(long recordsTotal) {
 		this.recordsTotal = recordsTotal;
 	}
 
-	public int getRecordsFiltered() {
+	public long getRecordsFiltered() {
 		return recordsFiltered;
 	}
 
-	public void setRecordsFiltered(int recordsFiltered) {
+	public void setRecordsFiltered(long recordsFiltered) {
 		this.recordsFiltered = recordsFiltered;
 	}
 
@@ -128,7 +128,7 @@ public class PagerModel implements ClearBean {
 		return str.trim();
 	}
 	
-	public void clearList(List<String> list){
+	public void clearList(List list){
 		if(list==null || list.size()==0){
 			return;
 		}
@@ -136,7 +136,7 @@ public class PagerModel implements ClearBean {
 		list = null;
 	}
 
-	public void clearSet(Set<String> set){
+	public void clearSet(Set set){
 		if(set==null || set.size()==0){
 			return;
 		}
@@ -157,7 +157,7 @@ public class PagerModel implements ClearBean {
 		list = null;
 	}
 	
-	public void clearArray(String[] arr){
+	public void clearArray(Object[] arr){
 		if(arr==null || arr.length==0){
 			return;
 		}

@@ -198,7 +198,7 @@ public class NewsAction extends BaseController<News> {
 	 * @throws Exception
 	 */
     @RequestMapping(value = "updateStatusY", method = RequestMethod.POST)
-	public String updateStatusY(String[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
+	public String updateStatusY(Long[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
 		newsService.updateStatus(ids,News.news_status_y);
 		addMessage(flushAttrs, "操作成功!");
 		return "redirect:selectList?type=" + type;
@@ -209,7 +209,7 @@ public class NewsAction extends BaseController<News> {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "updateStatusN", method = RequestMethod.POST)
-	public String updateStatusN(String[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
+	public String updateStatusN(Long[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
 		newsService.updateStatus(ids,News.news_status_n);
 		addMessage(flushAttrs, "操作成功!");
 		return "redirect:selectList?type=" + type;
@@ -236,7 +236,7 @@ public class NewsAction extends BaseController<News> {
 	}
 	
 	private String updateDownOrUp0(News e, String status, RedirectAttributes flushAttrs) throws Exception {
-		if(StringUtils.isBlank(e.getId())){
+		if(e.getId() == null){
 			throw new NullPointerException("参数不能为空！");
 		}
 		
@@ -318,7 +318,7 @@ public class NewsAction extends BaseController<News> {
 		
 		int c = newsService.selectCount(e);
 //		getResponse().setCharacterEncoding("utf-8");
-		if(StringUtils.isBlank(e.getId())){
+		if(e.getId() == null){
 			if(c==0){
 				return "{\"ok\":\"文章code可以使用!\"}";
 			}else{

@@ -266,9 +266,9 @@ public class FrontCache {
 		/**
 		 * 转换成map的形式存储
 		 */
-        Map<String, Attribute> attrsMap = Maps.newHashMap();
+        Map<Long, Attribute> attrsMap = Maps.newHashMap();
         if(attrs!=null && attrs.size()>0){
-			Map<String, Integer> map = new HashMap<String, Integer>();
+			Map<Long, Long> map = new HashMap<Long, Long>();
 
 			for(int i=0;i<attrs.size();i++){
 				Attribute mainAttr = attrs.get(i);
@@ -281,8 +281,8 @@ public class FrontCache {
 				}
 			}
 			if(map.size()>0){
-				for(Iterator<Entry<String, Attribute>> it = attrsMap.entrySet().iterator();it.hasNext();){
-					Entry<String, Attribute> entry = it.next();
+				for(Iterator<Entry<Long, Attribute>> it = attrsMap.entrySet().iterator();it.hasNext();){
+					Entry<Long, Attribute> entry = it.next();
 					String id = String.valueOf(entry.getValue().getPid());
 //					logger.error("id="+id);
 					if(map.get(id)!=null){
@@ -303,7 +303,7 @@ public class FrontCache {
 	public void loadNewCatalogs() {
 		Catalog c = new Catalog();
 		c.setType("a");
-		c.setPid("0");
+		c.setPid(0L);
 		List<Catalog> newCatalogs = catalogService.selectList(c);
 		if(newCatalogs!=null && newCatalogs.size()>0){
 			for(int i=0;i<newCatalogs.size();i++){
@@ -371,11 +371,11 @@ public class FrontCache {
 		return null;
 	}
 
-	public static String getPid(String catalogID){
+	public static Long getPid(String catalogID){
 		if(StringUtils.isBlank(catalogID)){
 			throw new NullPointerException();
 		}
-        Map<String, Catalog> catalogsMap = systemManager.getCatalogsMap();
+        Map<Long, Catalog> catalogsMap = systemManager.getCatalogsMap();
         Catalog catalog = catalogsMap.get(catalogID);
 		if(catalog==null){
 			throw new NullPointerException();
@@ -393,7 +393,7 @@ public class FrontCache {
 	 *
 	 * @param catalogID
 	 */
-	public static List<Attribute> loadAttrByCatalogID(int catalogID) {
+	public static List<Attribute> loadAttrByCatalogID(long catalogID) {
         List<Attribute> attrs = systemManager.getAttrs();
 		if (attrs == null || attrs.size() == 0) {
 			return null;
@@ -409,7 +409,7 @@ public class FrontCache {
 			if (attr.getCatalogID() == catalogID) {
                 targetAttrs.add(attr);// 添加主属性
 				attr.getAttrList().clear();
-				int id = Integer.valueOf(attr.getId());
+				long id = attr.getId();
 				// 添加子属性列表
 				for (int j = 0; j < attrs.size(); j++) {
 					Attribute attr2 = attrs.get(j);
@@ -453,7 +453,7 @@ public class FrontCache {
 //		SystemManager.catalogsMap.clear();
 //		SystemManager.catalogsCodeMap.clear();
 
-        Map<String, Catalog> catalogsMap = Maps.newHashMap();
+        Map<Long, Catalog> catalogsMap = Maps.newHashMap();
         Map<String, Catalog> catalogsCodeMap = Maps.newHashMap();
 		putToMap(systemManager.getCatalogs(), loadProduct, catalogsMap, catalogsCodeMap);
         systemManager.setCatalogsMap(catalogsMap);
@@ -465,7 +465,7 @@ public class FrontCache {
 	 * @param catalogs
 	 * @throws Exception
 	 */
-	public void putToMap(List<Catalog> catalogs,boolean loadProduct, Map<String, Catalog> catalogsMap, Map<String, Catalog> catalogsCodeMap) throws Exception{
+	public void putToMap(List<Catalog> catalogs,boolean loadProduct, Map<Long, Catalog> catalogsMap, Map<String, Catalog> catalogsCodeMap) throws Exception{
 		if(catalogs==null || catalogs.size()==0){
 			return;
 		}
@@ -509,7 +509,7 @@ public class FrontCache {
 		if(item.getChildren()==null || item.getChildren().size()==0){
 			return;
 		}
-		List<String> ids = new LinkedList<String>();
+		List<Long> ids = new LinkedList<Long>();
 		for(int j=0;j<item.getChildren().size();j++){
 			ids.add(item.getChildren().get(j).getId());
 		}
@@ -542,9 +542,9 @@ public class FrontCache {
 		p.setTop(FrontContainer.default_page_left_product_size);
 
 		if(item.getPid().equals("0")){
-			List<Integer> ids = new LinkedList<Integer>();
+			List<Long> ids = new LinkedList<Long>();
 			for(int j=0;j<item.getChildren().size();j++){
-				ids.add(Integer.valueOf(item.getChildren().get(j).getId()));
+				ids.add(item.getChildren().get(j).getId());
 			}
 			p.setQueryCatalogIDs(ids);
 		}else{
@@ -575,11 +575,11 @@ public class FrontCache {
 		List<Catalog> catalogsList = catalogService.selectList(cc);
 		if(catalogsList!=null){
 
-			Map<String, Catalog> map = new HashMap<String, Catalog>();
+			Map<Long, Catalog> map = Maps.newHashMap();
 			for(Iterator<Catalog> it = catalogsList.iterator();it.hasNext();){
 				Catalog item = it.next();
 
-				if(StringUtils.isNotBlank(item.getPid()) && item.getPid().equals("0")){
+				if(item.getPid() != null && item.getPid() == 0L){
 					//是否在导航栏显示中文化
 					if(item.getShowInNav().equals(Catalog.catalog_showInNav_y)){
 						item.setShowInNavStr("是");
@@ -592,7 +592,7 @@ public class FrontCache {
 
 			for(Iterator<Catalog> it = catalogsList.iterator();it.hasNext();){
 				Catalog item = it.next();
-				if(StringUtils.isNotBlank(item.getPid())){
+				if(item.getPid() != null){
 //							list.add(item);
 					Catalog rootItem = map.get(item.getPid());
 					if(rootItem!=null){
@@ -605,7 +605,7 @@ public class FrontCache {
 				}
 			}
 
-			for(Iterator<Entry<String, Catalog>> it = map.entrySet().iterator();it.hasNext();){
+			for(Iterator<Entry<Long, Catalog>> it = map.entrySet().iterator();it.hasNext();){
 				catalogs.add(it.next().getValue());
 			}
 
@@ -763,7 +763,7 @@ public class FrontCache {
 	 */
 	public void loadProductStock() {
 		List<ProductStockInfo> list = productService.selectStockList(new Product());
-        Map<String, ProductStockInfo> productStockMap = Maps.newHashMap();
+        Map<Long, ProductStockInfo> productStockMap = Maps.newHashMap();
         if(list!=null && list.size()>0){
             for(int i=0;i<list.size();i++){
                 ProductStockInfo p = list.get(i);
@@ -776,8 +776,8 @@ public class FrontCache {
 	/**
 	 * 加载指定商品的库存到内存
 	 */
-	public void loadProductStockByID(String productID) {
-		if(StringUtils.isNotBlank(productID)){
+	public void loadProductStockByID(Long productID) {
+		if(productID == null){
 			throw new NullPointerException("商品ID不能为空！");
 		}
 
@@ -785,7 +785,7 @@ public class FrontCache {
 		p.setId(productID);
 		List<ProductStockInfo> list = productService.selectStockList(p);
 		if(list!=null && list.size()>0){
-            Map<String, ProductStockInfo> stockInfoMap = systemManager.getProductStockMap();
+            Map<Long, ProductStockInfo> stockInfoMap = systemManager.getProductStockMap();
             stockInfoMap.put(productID,list.get(0));
             systemManager.setProductStockMap(stockInfoMap);
 		}
@@ -1066,14 +1066,14 @@ public class FrontCache {
 			return;
 		}
 
-		List<String> productIds = new LinkedList<String>();
+		List<Long> productIds = new LinkedList<Long>();
 		for(Iterator<Entry<String, Activity>> it = activityMap.entrySet().iterator();it.hasNext();){
 			Entry<String, Activity> entry = it.next();
 			if(entry.getValue().getActivityType().equals(Activity.activity_activityType_j) &&
 					StringUtils.isNotBlank(entry.getValue().getProductID())){
 				String[] arr = entry.getValue().getProductID().split("\\|");
 				for(int i=0;i<arr.length;i++){
-					productIds.add(arr[i]);
+					productIds.add(Long.valueOf(arr[i]));
 				}
 			}
 		}
@@ -1114,14 +1114,14 @@ public class FrontCache {
 			return;
 		}
 
-		List<String> productIds = new LinkedList<String>();
+		List<Long> productIds = new LinkedList<Long>();
 		for(Iterator<Entry<String, Activity>> it = activityMap.entrySet().iterator();it.hasNext();){
 			Entry<String, Activity> entry = it.next();
 			if(entry.getValue().getActivityType().equals(Activity.activity_activityType_t) &&
 					StringUtils.isNotBlank(entry.getValue().getProductID())){
 				String[] arr = entry.getValue().getProductID().split("\\|");
 				for(int i=0;i<arr.length;i++){
-					productIds.add(arr[i]);
+					productIds.add(Long.valueOf(arr[i]));
 				}
 			}
 		}
@@ -1160,7 +1160,7 @@ public class FrontCache {
 	 * 加载所有的活动列表
 	 */
 	public void loadActivityMap(){
-        Map<String, Activity> activityMap = Maps.newHashMap();
+        Map<Long, Activity> activityMap = Maps.newHashMap();
 		List<Activity> list = activityService.selectList(new Activity());
 		if(list!=null){
 			for(int i=0;i<list.size();i++){

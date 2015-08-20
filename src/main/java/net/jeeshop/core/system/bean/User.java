@@ -13,7 +13,7 @@ import net.jeeshop.core.dao.page.PagerModel;
  * 
  */
 public class User extends PagerModel implements Serializable {
-	private String id;
+	private Long id;
 	private String username;
 	private String password;
 	private String createtime;
@@ -64,11 +64,11 @@ public class User extends PagerModel implements Serializable {
 		this.nickname = nickname;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

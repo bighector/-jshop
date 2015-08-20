@@ -10,8 +10,8 @@ public class News extends net.jeeshop.services.common.News implements Serializab
 	private String createtimeEnd;// 页面查询条件
 	private int readerCount;
 	private String status;//文章是否显示到门户。y:显示；n：不显示；默认是n
-	private String catalogID;// 目录ID
-	private String lableID;// 标签ID
+	private Long catalogID;// 目录ID
+	private Long lableID;// 标签ID
 	
 	@Override
 	public void clear() {
@@ -25,11 +25,11 @@ public class News extends net.jeeshop.services.common.News implements Serializab
 	}
 
 
-	public String getCatalogID() {
+	public Long getCatalogID() {
 		return catalogID;
 	}
 
-	public void setCatalogID(String catalogID) {
+	public void setCatalogID(Long catalogID) {
 		this.catalogID = catalogID;
 	}
 
@@ -57,11 +57,11 @@ public class News extends net.jeeshop.services.common.News implements Serializab
 		this.status = status;
 	}
 
-	public String getLableID() {
+	public Long getLableID() {
 		return lableID;
 	}
 
-	public void setLableID(String lableID) {
+	public void setLableID(Long lableID) {
 		this.lableID = lableID;
 	}
 

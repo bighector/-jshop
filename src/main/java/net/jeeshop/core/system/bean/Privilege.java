@@ -8,31 +8,31 @@ import net.jeeshop.core.dao.page.PagerModel;
  *
  */
 public class Privilege extends PagerModel{
-	private String id;
-	private String rid;
-	private String mid;
+	private Long id;
+	private Long rid;
+	private Long mid;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getRid() {
+	public Long getRid() {
 		return rid;
 	}
 
-	public void setRid(String rid) {
+	public void setRid(Long rid) {
 		this.rid = rid;
 	}
 
-	public String getMid() {
+	public Long getMid() {
 		return mid;
 	}
 
-	public void setMid(String mid) {
+	public void setMid(Long mid) {
 		this.mid = mid;
 	}
 

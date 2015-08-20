@@ -27,7 +27,7 @@ public class CartInfo extends PagerModel implements Serializable {
 	private List<Address> addressList;//用户配送地址信息
 	@Deprecated
 	private Address address;//客户配送信息
-	private String defaultAddessID;//用户的默认地址ID
+	private Long defaultAddessID;//用户的默认地址ID
 
 	public List<Product> getProductList() {
 		if(productList==null){
@@ -102,11 +102,11 @@ public class CartInfo extends PagerModel implements Serializable {
 		}
 	}
 
-	public String getDefaultAddessID() {
+	public Long getDefaultAddessID() {
 		return defaultAddessID;
 	}
 
-	public void setDefaultAddessID(String defaultAddessID) {
+	public void setDefaultAddessID(Long defaultAddessID) {
 		this.defaultAddessID = defaultAddessID;
 	}
 

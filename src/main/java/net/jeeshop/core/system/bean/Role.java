@@ -11,7 +11,7 @@ import net.jeeshop.core.dao.page.PagerModel;
  *
  */
 public class Role extends PagerModel implements Serializable {
-	private String id;
+	private Long id;
 	private String role_name;
 	private String role_desc;
 	private String role_dbPrivilege;
@@ -42,11 +42,11 @@ public class Role extends PagerModel implements Serializable {
 		this.role_dbPrivilege = role_dbPrivilege;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

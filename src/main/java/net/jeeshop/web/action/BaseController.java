@@ -72,9 +72,11 @@ public abstract class BaseController<E extends PagerModel> {
         if (pager == null) {
             pager = new PagerModel();
         }
+        //TODO
+        long pages = pager.getTotal()
+                / (long)pager.getPageSize();
         // 计算总页数
-        pager.setPagerSize((pager.getTotal() + pager.getPageSize() - 1)
-                / pager.getPageSize());
+        pager.setPagerSize((int)pages);
 
         selectListAfter(pager);
         request.setAttribute("pager", pager);
@@ -124,7 +126,7 @@ public abstract class BaseController<E extends PagerModel> {
      * @throws Exception
      */
     @RequestMapping(value = "deletes", method = RequestMethod.POST)
-    public String deletes(HttpServletRequest request, String[] ids, @ModelAttribute("e") E e, RedirectAttributes flushAttrs) throws Exception {
+    public String deletes(HttpServletRequest request, Long[] ids, @ModelAttribute("e") E e, RedirectAttributes flushAttrs) throws Exception {
 //		User user = (User) getSession().getAttribute(Global.USER_INFO);
 //		if(user==null){
 //			throw new NullPointerException();

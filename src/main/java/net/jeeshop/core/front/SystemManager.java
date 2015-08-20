@@ -195,8 +195,8 @@ public class SystemManager {
 	 * @param catalogID
 	 * @return
 	 */
-	public List<String> getCatalogsById(String catalogID) {
-		if(org.apache.commons.lang.StringUtils.isBlank(catalogID)){
+	public List<Long> getCatalogsById(Long catalogID) {
+		if(catalogID == null){
 			return null;
 		}
 
@@ -205,9 +205,9 @@ public class SystemManager {
 			return null;
 		}
 		
-		List<String> list = new LinkedList<String>();
+		List<Long> list = new LinkedList<Long>();
 		Catalog cataInfo = getCatalogsMap().get(catalogID);
-		if(cataInfo.getPid().equals("0")){
+		if(cataInfo.getPid().compareTo(0L) == 0){
 			//主类
 			for(int i=0;i<cataInfo.getChildren().size();i++){
 				list.add(cataInfo.getChildren().get(i).getId());
@@ -317,11 +317,11 @@ public class SystemManager {
      * 属性集合map
      * @return
      */
-    public Map<String, Attribute> getAttrsMap() {
+    public Map<Long, Attribute> getAttrsMap() {
         return getCacheObject("attrsMap");
     }
 
-    public void setAttrsMap(Map<String, Attribute> attrsMap) {
+    public void setAttrsMap(Map<Long, Attribute> attrsMap) {
         putCacheObject("attrsMap", (Serializable)attrsMap);
     }
 
@@ -422,11 +422,11 @@ public class SystemManager {
      * 目录的MAP形式，具有层级关系。key：主类别ID，value：主类别对象，可以通过该对象的getChildren()方法获取该主类别的所有的子类别集合
      * @return
      */
-    public Map<String, Catalog> getCatalogsMap() {
+    public Map<Long, Catalog> getCatalogsMap() {
         return getCacheObject("catalogsMap");
     }
 
-    public void setCatalogsMap(Map<String, Catalog> catalogsMap) {
+    public void setCatalogsMap(Map<Long, Catalog> catalogsMap) {
         putCacheObject("catalogsMap", (Serializable)catalogsMap);
     }
 
@@ -446,11 +446,11 @@ public class SystemManager {
      * 商品库存信息,应该使用JAVA类库中的读写锁，key:商品ID，value：商品对象
      * @return
      */
-    public Map<String, ProductStockInfo> getProductStockMap() {
+    public Map<Long, ProductStockInfo> getProductStockMap() {
         return getCacheObject("productStockMap");
     }
 
-    public void setProductStockMap(Map<String, ProductStockInfo> productStockMap) {
+    public void setProductStockMap(Map<Long, ProductStockInfo> productStockMap) {
         putCacheObject("productStockMap", (Serializable)productStockMap);
     }
 
@@ -655,7 +655,7 @@ public class SystemManager {
         return getCacheObject("activityMap");
     }
 
-    public void setActivityMap(Map<String, Activity> activityMap) {
+    public void setActivityMap(Map<Long, Activity> activityMap) {
 //        this.activityMap = activityMap;
         putCacheObject("activityMap", (Serializable)(activityMap));
     }
@@ -666,7 +666,7 @@ public class SystemManager {
      * key:【r:减免；d:折扣；s:双倍积分】
      * value:【商品列表ArrayList】
      */
-    public Map<String, List<Product>> getActivityProductMap() {
+    public Map<Long, List<Product>> getActivityProductMap() {
 //        return activityProductMap;
         return getCacheObject("activityProductMap");
     }

@@ -8,7 +8,7 @@ import net.jeeshop.core.dao.page.PagerModel;
  *
  */
 public class Menu extends PagerModel {
-	private String pid;
+	private Long pid;
 	private String url;
 	private String name;
 	private int orderNum;
@@ -22,11 +22,11 @@ public class Menu extends PagerModel {
 		this.orderNum = orderNum;
 	}
 
-	public String getPid() {
+	public Long getPid() {
 		return pid;
 	}
 
-	public void setPid(String pid) {
+	public void setPid(Long pid) {
 		this.pid = pid;
 	}
 

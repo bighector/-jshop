@@ -62,7 +62,7 @@ public class FreemarkerAction {
 	 */
 	@RequestMapping("create")
 	@ResponseBody
-	public String create() throws Exception{
+	public String create(Long id) throws Exception{
 		String method = RequestHolder.getRequest().getParameter("method");
 		logger.error("create method = " + method);
 		if(StringUtils.isBlank(method)){
@@ -79,14 +79,12 @@ public class FreemarkerAction {
 				return ("部分商品静态化失败，商品ID："+error);
 			}
 		}else if(method.equals("staticProductByID")){
-			String id = RequestHolder.getRequest().getParameter("id");
-			
+
 			String response = freemarkerHelper.staticProductByID(id);//所有商品描述静态化
 			return (response);
 		}else if(method.equals("staticNewsByID")){
-			String id = RequestHolder.getRequest().getParameter("id");
-			
-			String response = freemarkerHelper.staticNewsByID(id);//所有商品描述静态化
+
+			String response = freemarkerHelper.staticNewsByID(Long.valueOf(id));//所有商品描述静态化
 			return (response);
 		}
 		

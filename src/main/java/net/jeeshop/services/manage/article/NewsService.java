@@ -13,7 +13,7 @@ public interface NewsService extends Services<News> {
 	 * @param ids
 	 * @param status 2:审核通过,4:审核未通过
 	 */
-	public void updateStatus(String[] ids, String status);
+	public void updateStatus(Long[] ids, String status);
 	
 	/**
 	 * 更新指定的文章 显示/不显示

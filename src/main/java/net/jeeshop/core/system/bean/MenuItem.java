@@ -17,8 +17,8 @@ import org.apache.commons.lang.StringUtils;
  * 页面上显示的菜单项，每一个MenuItem对应一个节点
  */
 public class MenuItem {
-	private String id;// 0：根节点，否则是子节点
-	private String pid;// 菜单项的父亲节点
+	private Long id;// 0：根节点，否则是子节点
+	private Long pid;// 菜单项的父亲节点
 	private String url;// 菜单的URL地址
 	private String target = "rightFrame";// 打开的目标
 	private String name;// 菜单名称
@@ -116,19 +116,19 @@ public class MenuItem {
 		this.name = name;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getPid() {
+	public Long getPid() {
 		return pid;
 	}
 
-	public void setPid(String pid) {
+	public void setPid(Long pid) {
 		this.pid = pid;
 	}
 

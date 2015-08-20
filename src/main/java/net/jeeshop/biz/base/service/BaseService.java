@@ -12,7 +12,7 @@ public interface BaseService<E extends BaseModel>{
      * @param e
      * @return
      */
-    public int insert(E e);
+    public long insert(E e);
 
     /**
      * 删除

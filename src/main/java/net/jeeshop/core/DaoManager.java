@@ -23,7 +23,7 @@ public interface DaoManager<E extends PagerModel> {
 	 * @param e
 	 * @return
 	 */
-	public int insert(E e);
+	public long insert(E e);
 
 	/**
 	 * 删除
@@ -67,12 +67,12 @@ public interface DaoManager<E extends PagerModel> {
 	 * 根据ID来删除一条记录
 	 * @param id
 	 */
-	public int deleteById(int id);
+	public int deleteById(long id);
 
 	/**
 	 * 根据ID查询一条记录
 	 * @param id
 	 * @return
 	 */
-	public E selectById(String id);
+	public E selectById(long id);
 }

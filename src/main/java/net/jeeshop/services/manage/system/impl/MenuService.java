@@ -64,7 +64,7 @@ public class MenuService implements Services<Menu> {
 		return dao.getCount("menu.getCount", menu);
 	}
 
-	public int insert(Menu menu) {
+	public long insert(Menu menu) {
 		return dao.insert("menu.insert", menu);
 	}
 
@@ -111,11 +111,11 @@ public class MenuService implements Services<Menu> {
 				 * B)没有全部勾选，则不能删除。
 				 */
 				menu.clear();
-				menu.setPid(idArr[i]);
+				menu.setPid(Long.valueOf(idArr[i]));
 				if (this.getCount(menu) == 0) {
 					// 指定节点下没有子菜单，删除指定的菜单(叶子)
 					menu.clear();
-					menu.setId(idArr[i]);
+					menu.setId(Long.valueOf(idArr[i]));
 					this.delete(menu);
 				}
 			}
@@ -126,15 +126,15 @@ public class MenuService implements Services<Menu> {
 				 * B)没有全部勾选，则不能删除。
 				 */
 				menu.clear();
-				menu.setPid(idArr[i]);
+				menu.setPid(Long.valueOf(idArr[i]));
 				if (this.getCount(menu) == 0) {
 					// 指定节点下没有子菜单，删除指定的菜单(叶子)
 					menu.clear();
-					menu.setId(idArr[i]);
+					menu.setId(Long.valueOf(idArr[i]));
 					this.delete(menu);
 				} else {
 					menu.clear();
-					menu.setPid(idArr[i]);
+					menu.setPid(Long.valueOf(idArr[i]));
 					// 查询指定菜单下的全部子菜单
 					List<Menu> menus = this.selectList(menu);
 //					System.out.println("find menus:" + menus);
@@ -248,7 +248,7 @@ public class MenuService implements Services<Menu> {
 
 		if (u != null && u.getRid() != null)
 			param.put("rid", u.getRid());
-		param.put("pid", menu.getPid());
+		param.put("pid", String.valueOf(menu.getPid()));
 		// 加载菜单节点
 		List<Menu> data = dao.selectList("menu.selectMenus", param);
 		if (data == null || data.size() == 0) {
@@ -284,12 +284,12 @@ public class MenuService implements Services<Menu> {
 		return null;
 	}
 
-	public int deletes(String[] ids) {
+	public int deletes(Long[] ids) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public Menu selectById(String id) {
-		return (Menu) dao.selectOne(id);
+	public Menu selectById(long id) {
+		return null;
 	}
 }

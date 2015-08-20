@@ -239,7 +239,7 @@ public class FreemarkerHelper {
 	 * @return
 	 * @throws Exception 
 	 */
-	public String staticProductByID(String id) throws Exception {
+	public String staticProductByID(long id) throws Exception {
 		Product p = productService.selectById(id);
 		if(p==null || StringUtils.isBlank(p.getProductHTML())){
 			logger.error("ERROR,not found product by id = " + id);
@@ -262,8 +262,8 @@ public class FreemarkerHelper {
 	 * @return
 	 * @throws Exception 
 	 */
-	public String staticNewsByID(String id) throws Exception {
-		if(StringUtils.isBlank(id)){
+	public String staticNewsByID(Long id) throws Exception {
+		if(id == null){
 			throw new NullPointerException("id参数不能为空！");
 		}
 		

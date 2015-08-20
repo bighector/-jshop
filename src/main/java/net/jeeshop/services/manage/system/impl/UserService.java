@@ -38,7 +38,7 @@ public class UserService implements UserInteface {
 		return dao.selectList("user.selectList", user);
 	}
 
-	public int insert(User user) {
+	public long insert(User user) {
 		return dao.insert("user.insert", user);
 	}
 
@@ -47,7 +47,7 @@ public class UserService implements UserInteface {
 	 * 
 	 * @param ids
 	 */
-	public int deletes(String[] ids) {
+	public int deletes(Long[] ids) {
 		User user = new User();
 		for (int i = 0; i < ids.length; i++) {
 			user.setId(ids[i]);
@@ -75,7 +75,7 @@ public class UserService implements UserInteface {
 	}
 
 	@Override
-	public User selectById(String id) {
+	public User selectById(long id) {
 		User user = new User();
 		user.setId(id);
 		return selectOne(user);

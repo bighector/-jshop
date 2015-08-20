@@ -23,7 +23,7 @@ public interface Services<E extends PagerModel> {
 	 * @param e
 	 * @return
 	 */
-	public int insert(E e);
+	public long insert(E e);
 
 	/**
 	 * 删除
@@ -39,7 +39,7 @@ public interface Services<E extends PagerModel> {
 	 * @param ids
 	 * @return
 	 */
-	public int deletes(String[] ids);
+	public int deletes(Long[] ids);
 
 	/**
 	 * 修改
@@ -60,10 +60,10 @@ public interface Services<E extends PagerModel> {
 	/**
 	 * 根据ID查询一条记录
 	 * 
-	 * @param e
+	 * @param id
 	 * @return
 	 */
-	public E selectById(String id);
+	public E selectById(long id);
 
 	/**
 	 * 分页查询

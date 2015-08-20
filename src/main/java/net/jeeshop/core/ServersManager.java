@@ -26,7 +26,7 @@ public abstract class ServersManager<E extends PagerModel, DAO extends  DaoManag
 	 * @param e
 	 * @return
 	 */
-	public int insert(E e) {
+	public long insert(E e) {
 		if(e==null){
 			throw new NullPointerException();
 		}
@@ -67,16 +67,16 @@ public abstract class ServersManager<E extends PagerModel, DAO extends  DaoManag
 	 * @param ids
 	 * @return
 	 */
-	public int deletes(String[] ids) {
+	public int deletes(Long[] ids) {
 		if (ids == null || ids.length == 0) {
 			throw new NullPointerException("id不能全为空！");
 		}
 		
 		for (int i = 0; i < ids.length; i++) {
-			if(StringUtils.isBlank(ids[i])){
+			if(ids[i] == null){
 				throw new NullPointerException("id不能为空！");
 			}
-			dao.deleteById(Integer.parseInt(ids[i]));
+			dao.deleteById(ids[i]);
 		}
 		return 0;
 	}
@@ -119,7 +119,7 @@ public abstract class ServersManager<E extends PagerModel, DAO extends  DaoManag
 	}
 
 	@Override
-	public E selectById(String id) {
+	public E selectById(long id) {
 		return dao.selectById(id);
 	}
 }

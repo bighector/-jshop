@@ -57,9 +57,9 @@ public abstract class FrontBaseController<E extends PagerModel> {
         if (pager == null) {
             pager = new PagerModel();
         }
-        // 计算总页数
-        pager.setPagerSize((pager.getTotal() + pager.getPageSize() - 1)
-                / pager.getPageSize());
+        //TODO 计算总页数
+//        pager.setPagerSize((pager.getTotal() + pager.getPageSize() - 1)
+//                / pager.getPageSize());
         return pager;
     }
 

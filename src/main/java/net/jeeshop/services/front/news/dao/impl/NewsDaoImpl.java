@@ -54,7 +54,7 @@ public class NewsDaoImpl implements NewsDao {
 	 * 
 	 * @param ids
 	 */
-	public int deletes(String[] ids) {
+	public int deletes(Long[] ids) {
 		News e = new News();
 		for (int i = 0; i < ids.length; i++) {
 			e.setId(ids[i]);
@@ -63,7 +63,7 @@ public class NewsDaoImpl implements NewsDao {
 		return 0;
 	}
 
-	public int insert(News e) {
+	public long insert(News e) {
 		return dao.insert("front.news.insert", e);
 	}
 
@@ -80,7 +80,7 @@ public class NewsDaoImpl implements NewsDao {
 	}
 
 	@Override
-	public int deleteById(int id) {
+	public int deleteById(long id) {
 		return dao.delete("front.news.deleteById",id);
 	}
 
@@ -101,7 +101,7 @@ public class NewsDaoImpl implements NewsDao {
 		dao.update("front.news.sync",news);
 	}
 	
-	public News selectById(String id) {
+	public News selectById(long id) {
 		return (News) dao.selectOne("front.news.selectById", id);
 	}
 

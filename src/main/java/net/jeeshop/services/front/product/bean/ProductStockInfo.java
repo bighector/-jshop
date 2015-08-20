@@ -12,7 +12,7 @@ import net.jeeshop.services.manage.spec.bean.Spec;
  * 
  */
 public class ProductStockInfo implements Serializable {
-	private String id;// 商品ID
+	private Long id;// 商品ID
 	private volatile int stock;// 商品库存
 	private boolean changeStock;// 库存是否有所改变，false:库存未改变。true：库存已经改变
 	private int score;//赠送积分
@@ -23,17 +23,17 @@ public class ProductStockInfo implements Serializable {
 		super();
 	}
 
-	public ProductStockInfo(String id, int stock) {
+	public ProductStockInfo(Long id, int stock) {
 		super();
 		this.id = id;
 		this.stock = stock;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

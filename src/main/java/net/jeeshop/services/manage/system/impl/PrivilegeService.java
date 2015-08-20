@@ -38,7 +38,7 @@ public class PrivilegeService implements Services<Privilege> {
 		return (Privilege) dao.selectOne("privilege.selectOne", privilege);
 	}
 
-	public int insert(Privilege privilege) {
+	public long insert(Privilege privilege) {
 		return dao.insert("privilege.insert", privilege);
 	}
 
@@ -66,13 +66,13 @@ public class PrivilegeService implements Services<Privilege> {
 		return null;
 	}
 
-	public int deletes(String[] ids) {
+	public int deletes(Long[] ids) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public Privilege selectById(String id) {
+	public Privilege selectById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

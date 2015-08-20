@@ -27,7 +27,7 @@ public class ArticleCatalogService implements BaseService<ArticleCatalog> {
 
 
     @Override
-    public int insert(ArticleCatalog articleCatalog) {
+    public long insert(ArticleCatalog articleCatalog) {
         return articleCatalogMapper.insert(articleCatalog);
     }
 

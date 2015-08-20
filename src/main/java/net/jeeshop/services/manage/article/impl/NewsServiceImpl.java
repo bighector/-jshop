@@ -34,7 +34,7 @@ public class NewsServiceImpl extends ServersManager<News, NewsDao> implements
 	}
 
 	@Override
-	public void updateStatus(String[] ids, String status) {
+	public void updateStatus(Long[] ids, String status) {
 		if(ids==null || ids.length==0){
 			return;
 		}
