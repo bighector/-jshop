@@ -58,11 +58,15 @@ public class PagerModel implements ClearBean {
 		this.pageSize = pageSize;
 	}
 
-	public long getTotal() {
-		return total;
+	public int getTotal() {
+		return new Long(total).intValue();
 	}
 
-	public void setTotal(long total) {
+    public void setTotal(long total) {
+        this.total = total;
+    }
+
+	public void setTotal(int total) {
 		this.total = total;
 	}
 

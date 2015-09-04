@@ -209,14 +209,14 @@ public class ManageCache {
 	 * @throws Exception 
 	 */
 	public void loadAllCache() throws Exception {
-		logger.error("ManageCache.loadAllCache...");
+		logger.info("ManageCache.loadAllCache...");
 		loadOrdersReport();
 //		readJsonArea();
 		loadTask();
 		loadOSS();
         loadSystemSetting();
-		logger.error("后台缓存加载完毕!");
-	}
+		logger.info("后台缓存加载完毕!");
+    }
 
     /**
      * 加载系统配置信息

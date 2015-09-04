@@ -103,7 +103,7 @@
 				<th nowrap="nowrap" align="right">操作</th>
 			</tr>
 			<#list list as item>
-            <tr class="treegrid-${item.id} ${(item.pid=="0")?string("","treegrid-parent-"+item.pid)}">
+            <tr class="treegrid-${item.id} ${(item.pid==0)?string("","treegrid-parent-"+item.pid)}">
                 <td>${item.id!""}</td>
                 <td>${item.name!""}</td>
                 <td>${item.order1!""}</td>

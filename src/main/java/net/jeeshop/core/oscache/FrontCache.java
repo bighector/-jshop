@@ -1008,7 +1008,7 @@ public class FrontCache {
 	 */
 	public void loadActivityProductList(){
         Map<String, List<Product>> activityProductMap = Maps.newHashMap();
-        Map<String, Activity> activityMap = systemManager.getActivityMap();
+        Map<Long, Activity> activityMap = systemManager.getActivityMap();
         if(activityMap.size()==0){
 			return;
 		}
@@ -1061,14 +1061,14 @@ public class FrontCache {
 	 */
 	public void loadActivityScoreProductList(){
 		logger.info("loadActivityScoreProductList...");
-        Map<String, Activity> activityMap = systemManager.getActivityMap();
+        Map<Long, Activity> activityMap = systemManager.getActivityMap();
         if(activityMap.size()==0){
 			return;
 		}
 
 		List<Long> productIds = new LinkedList<Long>();
-		for(Iterator<Entry<String, Activity>> it = activityMap.entrySet().iterator();it.hasNext();){
-			Entry<String, Activity> entry = it.next();
+		for(Iterator<Entry<Long, Activity>> it = activityMap.entrySet().iterator();it.hasNext();){
+			Entry<Long, Activity> entry = it.next();
 			if(entry.getValue().getActivityType().equals(Activity.activity_activityType_j) &&
 					StringUtils.isNotBlank(entry.getValue().getProductID())){
 				String[] arr = entry.getValue().getProductID().split("\\|");
@@ -1109,14 +1109,14 @@ public class FrontCache {
 	 */
 	public void loadActivityTuanProductList(){
 		logger.info("loadActivityTuanProductList...");
-        Map<String, Activity> activityMap = systemManager.getActivityMap();
+        Map<Long, Activity> activityMap = systemManager.getActivityMap();
         if(activityMap.size()==0){
 			return;
 		}
 
 		List<Long> productIds = new LinkedList<Long>();
-		for(Iterator<Entry<String, Activity>> it = activityMap.entrySet().iterator();it.hasNext();){
-			Entry<String, Activity> entry = it.next();
+		for(Iterator<Entry<Long, Activity>> it = activityMap.entrySet().iterator();it.hasNext();){
+			Entry<Long, Activity> entry = it.next();
 			if(entry.getValue().getActivityType().equals(Activity.activity_activityType_t) &&
 					StringUtils.isNotBlank(entry.getValue().getProductID())){
 				String[] arr = entry.getValue().getProductID().split("\\|");

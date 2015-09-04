@@ -650,7 +650,7 @@ public class SystemManager {
      * 所有活动列表
      * @return
      */
-    public Map<String, Activity> getActivityMap() {
+    public Map<Long, Activity> getActivityMap() {
 //        return activityMap;
         return getCacheObject("activityMap");
     }

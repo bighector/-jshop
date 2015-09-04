@@ -72,7 +72,7 @@ public class MenuItem {
 	}
 
 	public boolean isRootMenu() {
-		return "0".equals(pid);
+		return new Long(0).equals(pid);
 	}
 
 	public void addClild(MenuItem item) {

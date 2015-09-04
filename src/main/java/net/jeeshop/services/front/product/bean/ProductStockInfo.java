@@ -16,7 +16,7 @@ public class ProductStockInfo implements Serializable {
 	private volatile int stock;// 商品库存
 	private boolean changeStock;// 库存是否有所改变，false:库存未改变。true：库存已经改变
 	private int score;//赠送积分
-	private String activityID;//活动ID
+	private Long activityID;//活动ID
 	
 //	List<Spec>
 	public ProductStockInfo() {
@@ -61,11 +61,11 @@ public class ProductStockInfo implements Serializable {
 		this.score = score;
 	}
 
-	public String getActivityID() {
+	public Long getActivityID() {
 		return activityID;
 	}
 
-	public void setActivityID(String activityID) {
+	public void setActivityID(Long activityID) {
 		this.activityID = activityID;
 	}
 
