@@ -1,9 +1,11 @@
 package net.jeeshop.core.front;
 
 import com.google.common.collect.Lists;
+import net.jeeshop.biz.article.bean.ArticleCatalogBean;
 import net.jeeshop.core.cache.CacheProvider;
 import net.jeeshop.core.cache.SimpleCacheProvider;
 import net.jeeshop.core.listener.SystemListener;
+import net.jeeshop.model.ArticleCatalog;
 import net.jeeshop.services.front.advert.bean.Advert;
 import net.jeeshop.services.front.area.bean.Area;
 import net.jeeshop.services.front.attribute.bean.Attribute;
@@ -281,11 +283,11 @@ public class SystemManager {
      * 文章目录列表
      * @return
      */
-    public List<Catalog> getArticleCatalogs() {
+    public List<ArticleCatalogBean> getArticleCatalogs() {
         return getCacheObject("articleCatalogs");
     }
 
-    public void setArticleCatalogs(List<Catalog> catalogsArticle) {
+    public void setArticleCatalogs(List<ArticleCatalogBean> catalogsArticle) {
         putCacheObject("articleCatalogs", (Serializable)catalogsArticle);
     }
 
@@ -719,17 +721,4 @@ public class SystemManager {
         putCacheObject("productCatalogJsonStr", productCatalogJsonStr);
     }
 
-    /**
-     * 缓存类目JSON字符串缓存
-     * @return
-     */
-    public String getArticleCatalogJsonStr() {
-//        return articleCatalogJsonStr;
-        return getCacheObject("articleCatalogJsonStr");
-    }
-
-    public void setArticleCatalogJsonStr(String articleCatalogJsonStr) {
-//        this.articleCatalogJsonStr = articleCatalogJsonStr;
-        putCacheObject("articleCatalogJsonStr", articleCatalogJsonStr);
-    }
 }

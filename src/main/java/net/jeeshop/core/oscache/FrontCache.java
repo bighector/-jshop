@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import net.jeeshop.biz.article.bean.ArticleCatalogBean;
+import net.jeeshop.biz.article.service.ArticleCatalogService;
 import net.jeeshop.core.FrontContainer;
 import net.jeeshop.core.KeyValueHelper;
 import net.jeeshop.core.ManageContainer;
@@ -115,6 +117,9 @@ public class FrontCache {
 	private ActivityService activityService;
     @Autowired
 	private HotqueryService hotqueryService;
+
+    @Autowired
+    private ArticleCatalogService articleCatalogService;
 
 	/**
 	 * front前台
@@ -427,19 +432,9 @@ public class FrontCache {
     public void loadArticleCatalogs() throws Exception {
         logger.info("load article catalogs cache ...");
 
-        List<Catalog> catalogsArticle = loadCatalogs2("a");
+        List<ArticleCatalogBean> catalogsArticle = articleCatalogService.loadRoot();
         systemManager.setArticleCatalogs(catalogsArticle);
 
-//		logger.info("SystemManager.catalogs=" + SystemManager.catalogs.size());
-//		logger.info("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());
-
-//		SystemManager.catalogsMap.clear();
-//		SystemManager.catalogsCodeMap.clear();
-
-        Map<Long, Catalog> catalogsMap = Maps.newHashMap();
-        Map<String, Catalog> catalogsCodeMap = Maps.newHashMap();
-        putToMap(systemManager.getArticleCatalogs(), false, catalogsMap, catalogsCodeMap);
-        systemManager.setCatalogsCodeMap(catalogsCodeMap);
     }
 
 	/**
@@ -462,14 +457,6 @@ public class FrontCache {
 
 		List<Catalog> catalogs = loadCatalogs2("p");
         systemManager.setCatalogs(catalogs);
-		List<Catalog> catalogsArticle = loadCatalogs2("a");
-        systemManager.setArticleCatalogs(catalogsArticle);
-
-//		logger.info("SystemManager.catalogs=" + SystemManager.catalogs.size());
-//		logger.info("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());
-
-//		SystemManager.catalogsMap.clear();
-//		SystemManager.catalogsCodeMap.clear();
 
         Map<Long, Catalog> catalogsMap = Maps.newHashMap();
         Map<String, Catalog> catalogsCodeMap = Maps.newHashMap();
@@ -1217,6 +1204,7 @@ public class FrontCache {
 	public void loadAllCache() throws Exception {
 		logger.info("loadAllCache...");
 		loadHotquery();
+        loadArticleCatalogs();
 		loadCatalogs(true);
 		loadIndexLeftProduct();
 		loadAttributeList();

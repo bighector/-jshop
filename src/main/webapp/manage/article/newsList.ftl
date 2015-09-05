@@ -29,7 +29,7 @@
 	margin-right: 10px;
 }
 </style>
-	<form action="${basepath}/manage/news" method="post" theme="simple" id="form" name="form">
+	<form action="${basepath}/manage/article" method="post" theme="simple" id="form" name="form">
 		<input type="hidden" value="${e.type!""}" name="type"/>
 		<input type="hidden" value="${e.catalogID!""}" id="catalogID"/>
 		<table class="table table-bordered">
@@ -116,12 +116,12 @@
 				<th width="120px">ID</th>
 				<th>标题</th>
 				<#if e.type=="help">
-					<th>code</th>
+					<th width="">code</th>
 					<th width="130px">显示顺序</th>
 				</#if>
-				<th width="80px">最后操作时间</th>
+				<th width="120px">最后操作时间</th>
 				<th width="60px;">显示状态</th>
-				<th width="60px;">操作</th>
+				<th width="120px;">操作</th>
 			</tr>
 
             <#list pager.list as item>

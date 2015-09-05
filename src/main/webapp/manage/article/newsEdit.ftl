@@ -22,7 +22,7 @@ $(function(){
 	</#if>
 });
 </script>
-	<form action="${basepath}/manage/news" namespace="/manage" theme="simple" name="form" id="form" method="post">
+	<form action="${basepath}/manage/article" namespace="/manage" theme="simple" name="form" id="form" method="post">
 		<input type="hidden" value="${e.type!""}" name="type"/>
 		<input type="hidden" value="${e.catalogID!""}" id="catalogID"/>
 		<table class="table table-bordered">
