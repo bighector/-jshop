@@ -38,6 +38,7 @@
 
     <link rel="stylesheet" href="${staticpath}/zTree3.5/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <link rel="stylesheet" href="${staticpath}/bootstrap3.3.4/css/bootstrap.min.css"  type="text/css">
+    <link rel="stylesheet" href="${staticpath}/bootstrap3.3.4/css/font-awesome.css"  type="text/css">
     <#--<link rel="stylesheet" href="${staticpath}/bootstrap3.3.4/css/bootstrap-theme.min.css"  type="text/css">-->
     <link rel="stylesheet" href="${staticpath}/jquery-ui-1.11.2/jquery-ui.css">
     <#--<link rel="stylesheet" href="${staticpath}/jquery-ui-1.11.2/jquery-ui.theme.css">-->
