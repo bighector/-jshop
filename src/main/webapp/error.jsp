@@ -34,7 +34,7 @@
                 	
                    	<div id="da-error-pin"></div>
                     <div id="da-error-code">
-                    	ERROR! <br></br><div style="font-size: 20px;">抱歉，刚才发生了一个错误！</div>                    
+                    	ERROR! </br><div style="font-size: 20px;">抱歉，刚才发生了一个错误！</div>
                     </div>
                 
                 	<h1 class="da-error-heading" >
