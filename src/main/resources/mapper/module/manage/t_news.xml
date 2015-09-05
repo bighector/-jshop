@@ -9,9 +9,9 @@
 		FROM t_news t
 		where 1=1 
 		<if test="title!=null and title!=''">
-			and t.title like CONCAT('%','${title}','%' )
+			and t.title like CONCAT('%',#{title},'%' )
 		</if>
-		<if test="catalogID!=null and catalogID!=''">
+		<if test="catalogID!=null">
 			and t.catalogID=#{catalogID}
 		</if>
 		<if test="lableID!=null and lableID!=-1">
@@ -36,7 +36,7 @@
 		<if test="title!=null and title!=''">
 			and t.title like CONCAT('%','${title}','%' )
 		</if>
-		<if test="catalogID!=null and catalogID!=''">
+		<if test="catalogID!=null">
 			and t.catalogID=#{catalogID}
 		</if>
 		<if test="lableID!=null and lableID!=-1">
@@ -115,7 +115,7 @@
 	
 	<select id="manage.news.selectCount" parameterType="net.jeeshop.services.manage.article.bean.News" resultType="int">
 		SELECT count(*) FROM t_news t where code=#{code} 
-<!-- 		<if test="id!=null and id!=''"> and id=#{id} </if> -->
+<!-- 		<if test="id!=null"> and id=#{id} </if> -->
 	</select>
 	
 	<select id="manage.news.selectById" parameterType="string" resultType="net.jeeshop.services.manage.article.bean.News">

@@ -61,7 +61,7 @@
 		SELECT t.*    
 		FROM t_news t
 		where 1=1 and t.status='y' 
-		<if test="catalogID!=null and catalogID!=''">
+		<if test="catalogID!=null">
 			and t.catalogID=#{catalogID}
 		</if>
 		<if test="type!=null and type!=''">
@@ -110,7 +110,7 @@
 	
 	<select id="front.news.selectSimpleOne" parameterType="net.jeeshop.services.front.news.bean.News" resultType="net.jeeshop.services.front.news.bean.News">
 		select id,title,DATE_FORMAT(createtime,'%Y-%m-%d')  createtime from t_news where 1=1 
-		<if test="id!=null and id!=''"> and id=#{id} </if>
+		<if test="id!=null"> and id=#{id} </if>
 		<if test="code!=null and code!=''"> and code=#{code} </if>
 	</select>
 

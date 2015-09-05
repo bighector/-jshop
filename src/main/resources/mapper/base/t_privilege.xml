@@ -6,13 +6,13 @@
 	<select id="privilege.selectList" parameterType="net.jeeshop.core.system.bean.Privilege" resultType="net.jeeshop.core.system.bean.Privilege">
 		select t.* from t_privilege t 
 		where 1=1 
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and id=#{id}
 		</if>
-		<if test="rid!=null and rid!=''">
+		<if test="rid!=null">
 			and rid=#{rid}
 		</if>
-		<if test="mid!=null and mid!=''">
+		<if test="mid!=null">
 			and mid=#{mid}
 		</if>
 	</select>
@@ -21,22 +21,22 @@
 	</insert>
 	<update id="privilege.update" parameterType="net.jeeshop.core.system.bean.Privilege">
 		update t_privilege set id=#{id}
-		<if test="rid!=null and rid!=''">
+		<if test="rid!=null">
 			,rid=#{rid}
 		</if>
-		<if test="mid!=null and mid!=''">
+		<if test="mid!=null">
 			,mid=#{mid}
 		</if>
 	</update>
 	<delete id="privilege.delete" parameterType="net.jeeshop.core.system.bean.Privilege">
 		delete from t_privilege where 1=1 
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and id=#{id}
 		</if>
-		<if test="rid!=null and rid!=''">
+		<if test="rid!=null">
 			and rid=#{rid}
 		</if>
-		<if test="mid!=null and mid!=''">
+		<if test="mid!=null">
 			and mid=#{mid}
 		</if>
 	</delete>

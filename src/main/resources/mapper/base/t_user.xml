@@ -8,7 +8,7 @@
 		SELECT t.id,t.username,t.nickname,t.password,DATE_FORMAT(t.createtime,'%Y-%m-%d') createtime,t.email,
 		t.status,t.rid,(select r.role_name from t_role r where r.id=t.rid) role_name
 		 FROM t_user t  where 1=1  
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and t.id=#{id}
 		</if>
 		<if test="username!=null and username!=''">
@@ -20,7 +20,7 @@
 		<if test="status!=null and status!=''">
 			and t.status= #{status}
 		</if>
-		<if test="rid!=null and rid!=''">
+		<if test="rid!=null">
 			and t.rid=#{rid}
 		</if> 
 		order by id desc 
@@ -32,7 +32,7 @@
 				SELECT t.id,t.username,t.password,DATE_FORMAT(t.createtime,'%Y-%m-%d') createtime,t.email,
 				t.status,t.rid,(select r.role_name from t_role r where r.id=t.rid) role_name
 				 FROM t_user t  where 1=1  
-				<if test="id!=null and id!=''">
+				<if test="id!=null">
 					and t.id=#{id}
 				</if>
 				<if test="username!=null and username!=''">
@@ -44,7 +44,7 @@
 				<if test="status!=null and status!=''">
 					and t.status= #{status}
 				</if>
-				<if test="rid!=null and rid!=''">
+				<if test="rid!=null">
 					and t.rid=#{rid}
 				</if>    
 		<!-- 		<include refid="sqlWhere2"/> -->
@@ -55,7 +55,7 @@
 		SELECT t.id,t.username,t.nickname,t.password,DATE_FORMAT(t.createtime,'%Y-%m-%d'),t.email,
 		(select role_dbPrivilege from t_role r where r.id=t.rid) role_dbPrivilege,
 		t.status,t.rid FROM t_user t  where 1=1  
-						<if test="id!=null and id!=''">
+						<if test="id!=null">
 					and t.id=#{id}
 				</if>
 				<if test="username!=null and username!=''">
@@ -67,7 +67,7 @@
 				<if test="status!=null and status!=''">
 					and t.status= #{status}
 				</if>
-				<if test="rid!=null and rid!=''">
+				<if test="rid!=null">
 					and t.rid=#{rid}
 				</if>    
 <!-- 		<include refid="sqlWhere"/> -->

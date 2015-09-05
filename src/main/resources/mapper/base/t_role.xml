@@ -15,7 +15,7 @@
 	<select id="role.selectOne" parameterType="net.jeeshop.core.system.bean.Role" resultType="net.jeeshop.core.system.bean.Role">
 		select t.* from t_role t 
 		where 1=1 
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and id=#{id}
 		</if>
 		<if test="role_name!=null and role_name!=''">

@@ -5,13 +5,13 @@
 <mapper namespace="menu">
 	<select id="menu.selectList" parameterType="hashMap" resultType="net.jeeshop.core.system.bean.Menu">
 		SELECT m.* FROM t_menu m,t_privilege p where m.id=p.mid 
-		<if test="rid!=null and rid!=''">
+		<if test="rid!=null">
 			and p.rid=#{rid}
 		</if>
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and m.id=#{id}
 		</if>
-		<if test="pid!=null and pid!=''">
+		<if test="pid!=null">
 			and m.pid=#{pid}
 		</if> 
 		group by m.id,m.pid,m.url,m.name,m.orderNum,m.type 
@@ -20,30 +20,30 @@
 	
 	<select id="menu.selectMenus" parameterType="net.jeeshop.core.system.bean.Menu" resultType="net.jeeshop.core.system.bean.Menu">
 		SELECT m.* FROM t_menu m where 1=1 
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and m.id=#{id}
 		</if>
-		<if test="pid!=null and pid!=''">
+		<if test="pid!=null">
 			and m.pid=#{pid}
 		</if> order by m.orderNum
 	</select>
 	
 	<select id="menu.getCount" parameterType="net.jeeshop.core.system.bean.Menu" resultType="java.lang.Integer">
 		SELECT count(*) FROM t_menu m where 1=1 
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and m.id=#{id}
 		</if>
-		<if test="pid!=null and pid!=''">
+		<if test="pid!=null">
 			and m.pid=#{pid}
 		</if>
 	</select>
 	
 	<select id="menu.selectOne" parameterType="net.jeeshop.core.system.bean.Menu" resultType="net.jeeshop.core.system.bean.Menu">
 		SELECT m.* FROM t_menu m where 1=1 
-		<if test="id!=null and id!=''">
+		<if test="id!=null">
 			and m.id=#{id}
 		</if>
-		<if test="pid!=null and pid!=''">
+		<if test="pid!=null">
 			and m.pid=#{pid}
 		</if>
 	</select>
@@ -52,7 +52,7 @@
 	</insert>
 	<update id="menu.update" parameterType="net.jeeshop.core.system.bean.Menu">
 		update t_menu set id=#{id}
-		<if test="pid!=null and pid!=''">
+		<if test="pid!=null">
 			,pid=#{pid}
 		</if>
 		<if test="url!=null and url!=''">
