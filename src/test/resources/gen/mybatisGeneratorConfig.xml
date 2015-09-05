@@ -31,7 +31,10 @@
                              targetProject="src/main/gen">
         </javaClientGenerator>
 
-        <table tableName="t_article_catalog" domainObjectName="ArticleCatalog"/>
+        <table tableName="t_article_catalog" domainObjectName="ArticleCatalog">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="pid" javaType="java.lang.Long"/>
+        </table>
     </context>
 
 </generatorConfiguration>

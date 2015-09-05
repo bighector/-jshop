@@ -424,6 +424,24 @@ public class FrontCache {
 		return targetAttrs;
 	}
 
+    public void loadArticleCatalogs() throws Exception {
+        logger.info("load article catalogs cache ...");
+
+        List<Catalog> catalogsArticle = loadCatalogs2("a");
+        systemManager.setArticleCatalogs(catalogsArticle);
+
+//		logger.info("SystemManager.catalogs=" + SystemManager.catalogs.size());
+//		logger.info("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());
+
+//		SystemManager.catalogsMap.clear();
+//		SystemManager.catalogsCodeMap.clear();
+
+        Map<Long, Catalog> catalogsMap = Maps.newHashMap();
+        Map<String, Catalog> catalogsCodeMap = Maps.newHashMap();
+        putToMap(systemManager.getArticleCatalogs(), false, catalogsMap, catalogsCodeMap);
+        systemManager.setCatalogsCodeMap(catalogsCodeMap);
+    }
+
 	/**
 	 * 加载目录列表,树形结构
 	 * @param loadProduct 是否加载商品数据。true：加载，false:不加载
@@ -445,7 +463,7 @@ public class FrontCache {
 		List<Catalog> catalogs = loadCatalogs2("p");
         systemManager.setCatalogs(catalogs);
 		List<Catalog> catalogsArticle = loadCatalogs2("a");
-        systemManager.setCatalogsArticle(catalogsArticle);
+        systemManager.setArticleCatalogs(catalogsArticle);
 
 //		logger.info("SystemManager.catalogs=" + SystemManager.catalogs.size());
 //		logger.info("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());

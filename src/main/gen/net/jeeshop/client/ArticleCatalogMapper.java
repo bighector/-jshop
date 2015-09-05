@@ -7,7 +7,7 @@ import net.jeeshop.model.ArticleCatalogExample;
 public interface ArticleCatalogMapper {
     int countByExample(ArticleCatalogExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(ArticleCatalog record);
 
@@ -15,7 +15,7 @@ public interface ArticleCatalogMapper {
 
     List<ArticleCatalog> selectByExample(ArticleCatalogExample example);
 
-    ArticleCatalog selectByPrimaryKey(Integer id);
+    ArticleCatalog selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(ArticleCatalog record);
 

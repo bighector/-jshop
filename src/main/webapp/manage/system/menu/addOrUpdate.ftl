@@ -95,7 +95,7 @@
 		<tr style="display: none;">
 			<td>id</td>
 			<td>
-				<inputid="input_menu_id" readonly="readonly" value='${e.id!""}'/>
+				<input type="hidden" id="input_menu_id" readonly="readonly" value='${e.id!""}'/>
 			</td>
 		</tr>
 		<tr style="display: none;">

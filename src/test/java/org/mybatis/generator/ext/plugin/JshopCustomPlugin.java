@@ -294,7 +294,7 @@ public class JshopCustomPlugin extends PluginAdapter {
 
     public boolean sqlMapUpdateByPrimaryKeySelectiveElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
-        return false;
+        return true;
     }
 
     public boolean sqlMapUpdateByPrimaryKeyWithBLOBsElementGenerated(

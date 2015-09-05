@@ -1,5 +1,5 @@
 <#import "/manage/tpl/pageBase.ftl" as page/>
-<@page.pageBase currentMenu=(e.type=="p")?string("商品目录","文章分类")>
+<@page.pageBase currentMenu="文章分类">
 <script type="text/javascript">
 	$(function() {
 		$("#treegrid").treegrid({"treeColumn":1});
@@ -69,19 +69,9 @@
 					</a>
 						
 
-					<a href="toAdd?type=${e.type!"a"}" class="btn btn-success">
+					<a href="toAdd" class="btn btn-success">
 						<i class="icon-plus-sign icon-white"></i> 添加
 					</a>
-						
-<!-- 					<input type="button" onclick="editSelect();" value="编辑" class="btn btn-warning" /> -->
-
-
-					
-<!-- 					<input type="button" onclick="deleteSelect();" value="删除" class="btn btn-danger" /> -->
-
-<!-- 						<i class="icon-remove-sign icon-white"></i> 删除 -->
-
-					
 				</td>
 			</tr>
 		</table>
@@ -95,24 +85,14 @@
 				<th data-options="field:'name'" nowrap="nowrap">类别名称</th>
 				<th data-options="field:'order1'" nowrap="nowrap">顺序</th>
 				<th data-options="field:'code'" nowrap="nowrap">编码</th>
-				<th data-options="field:'showInNavStr'" nowrap="nowrap">是否在导航条显示</th>
-				<#if e.type??&& e.type=="a">
-				<#else>
-					<th data-options="field:'productNum'" nowrap="nowrap" align="right">商品数量</th>
-				</#if>
 				<th nowrap="nowrap" align="right">操作</th>
 			</tr>
 			<#list list as item>
-            <tr class="treegrid-${item.id} ${(item.pid=="0")?string("","treegrid-parent-"+item.pid)}">
+            <tr class="treegrid-${item.id} ${(item.pid==0)?string("","treegrid-parent-"+item.pid)}">
                 <td>${item.id!""}</td>
                 <td>${item.name!""}</td>
-                <td>${item.order1!""}</td>
+                <td>${item.ordinal!""}</td>
                 <td>${item.code!""}</td>
-                <td>${(item.showInNav=="y")?string("是","否")}</td>
-				<#if e.type??&& e.type=="a">
-				<#else>
-                <td>${item.productNum!""}</td>
-				</#if>
 				<td>
 					<button class="btn btn-warning" onclick="return editSelect('${item.id}');">
                     <i class="icon-edit icon-white"></i> 编辑

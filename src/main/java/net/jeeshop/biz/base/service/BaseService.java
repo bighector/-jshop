@@ -17,10 +17,10 @@ public interface BaseService<E extends BaseModel>{
     /**
      * 删除
      *
-     * @param e
+     * @param id
      * @return
      */
-    public int delete(E e);
+    public int deleteById(long id);
 
     /**
      * 批量删除
@@ -28,7 +28,7 @@ public interface BaseService<E extends BaseModel>{
      * @param ids
      * @return
      */
-    public int deletes(Integer[] ids);
+    public int deletes(Long[] ids);
 
     /**
      * 修改
@@ -39,20 +39,12 @@ public interface BaseService<E extends BaseModel>{
     public int update(E e);
 
     /**
-     * 查询一条记录
-     *
-     * @param e
-     * @return
-     */
-    public E selectOne(E e);
-
-    /**
      * 根据ID查询一条记录
      *
-     * @param e
+     * @param id
      * @return
      */
-    public E selectById(Integer id);
+    public E selectById(long id);
 
     /**
      * 分页查询

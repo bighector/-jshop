@@ -3,7 +3,6 @@
 <script type="text/javascript">
 	$(function() {
 		$("#title").focus();
-		//$('#cc').combotree('setValue', "随遇而安随遇而安随遇而安随遇而安随遇而安");
 	});
 
 	function onSubmit() {
@@ -47,7 +46,7 @@
 						<option></option>
                         <#list catalogs as item>
 							<option pid="0" value="${item.id!""}"><font color='red'>${item.name!""}</font></option>
-                            <#if item.children??>
+                            <#if item.children?? && item.children?size gt 0>
                                 <#list item.children as item>
                                     <option value="${item.id!""}">&nbsp;&nbsp;&nbsp;&nbsp;${item.name!""}</option>
                                 </#list>
@@ -70,23 +69,10 @@
 			</tr>
 			<tr>
 				<td style="text-align: right;">顺序</td>
-				<td style="text-align: left;"><input type="text"  value="${e.order1!""}" name="order1"  data-rule="顺序;required;integer;order1;" size="20" maxlength="20"
-						id="order1" /></td>
+				<td style="text-align: left;"><input type="text"  value="${e.ordinal!""}" name="ordinal"  data-rule="顺序;required;integer;ordinal;" size="20" maxlength="20"
+						id="ordinal" /></td>
 			</tr>
 			
-			<#if e.type??&&e.type=="p">
-				<tr>
-					<td style="text-align: right;">是否在导航条显示</td>
-					<td style="text-align: left;">
-                        <#assign map = {'n':'否','y':'是'}>
-                        <select id="showInNav" name="showInNav" class="input-medium">
-                            <#list map?keys as key>
-                                <option value="${key}" <#if e.showInNav?? && e.showInNav==key>selected="selected" </#if>>${map[key]}</option>
-                            </#list>
-                        </select>
-					</td>
-				</tr>
-			</#if>
 			<tr>
 				<td colspan="2" style="text-align: center;">
                     <#if e.id??>

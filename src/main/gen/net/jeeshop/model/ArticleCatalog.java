@@ -8,7 +8,7 @@ public class ArticleCatalog extends BaseModel implements Serializable {
     private String name;
 
     /** 父级ID */
-    private Integer pid;
+    private Long pid;
 
     /** 顺序 */
     private Integer ordinal;
@@ -29,11 +29,11 @@ public class ArticleCatalog extends BaseModel implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getPid() {
+    public Long getPid() {
         return pid;
     }
 
-    public void setPid(Integer pid) {
+    public void setPid(Long pid) {
         this.pid = pid;
     }
 

@@ -281,12 +281,12 @@ public class SystemManager {
      * 文章目录列表
      * @return
      */
-    public List<Catalog> getCatalogsArticle() {
-        return getCacheObject("catalogsArticle");
+    public List<Catalog> getArticleCatalogs() {
+        return getCacheObject("articleCatalogs");
     }
 
-    public void setCatalogsArticle(List<Catalog> catalogsArticle) {
-        putCacheObject("catalogsArticle", (Serializable)catalogsArticle);
+    public void setArticleCatalogs(List<Catalog> catalogsArticle) {
+        putCacheObject("articleCatalogs", (Serializable)catalogsArticle);
     }
 
     /**
