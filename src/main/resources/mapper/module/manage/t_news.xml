@@ -118,11 +118,11 @@
 <!-- 		<if test="id!=null"> and id=#{id} </if> -->
 	</select>
 	
-	<select id="manage.news.selectById" parameterType="string" resultType="net.jeeshop.services.manage.article.bean.News">
+	<select id="manage.news.selectById" parameterType="long" resultType="net.jeeshop.services.manage.article.bean.News">
 		SELECT id,code,title FROM t_news t where id=#{id} 
 	</select>
 	
-	<delete id="manage.news.deleteById" parameterType="int">
+	<delete id="manage.news.deleteById" parameterType="long">
 		delete from t_news
 		where id=#{id}
 	</delete>
