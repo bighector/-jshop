@@ -85,6 +85,8 @@
         <jackson.version>1.9.13</jackson.version>
         <freemarker.version>2.3.16</freemarker.version>
         <!--<ognl.version>3.0.6</ognl.version>-->
+        <!-- 安全组件 -->
+        <shiro.version>1.2.4</shiro.version>
         <mybatis.version>3.2.6</mybatis.version>
         <mybatis-spring.version>1.2.0</mybatis-spring.version>
         <spring-data-redis.version>1.4.2.RELEASE</spring-data-redis.version>
@@ -284,6 +286,28 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring.version}</version>
+        </dependency>
+
+        <!-- 安全组件包 -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
