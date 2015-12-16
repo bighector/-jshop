@@ -1,62 +1,55 @@
 package net.jeeshop.biz.base.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.core.dao.page.PagerModel;
+import net.jeeshop.model.ArticleCatalog;
+import net.jeeshop.model.ArticleCatalogExample;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
-public interface BaseService<E extends BaseModel>{
-    /**
-     * 添加
-     *
-     * @param e
-     * @return
-     */
-    public long insert(E e);
+public abstract class BaseService<E extends BaseModel, Example> {
+    abstract protected BaseMapper<E, Example> getMapper();
 
-    /**
-     * 删除
-     *
-     * @param id
-     * @return
-     */
-    public int deleteById(long id);
+    public long insert(E articleCatalog) {
+        return getMapper().insert(articleCatalog);
+    }
 
-    /**
-     * 批量删除
-     *
-     * @param ids
-     * @return
-     */
-    public int deletes(Long[] ids);
+    public int deleteById(long id) {
+        return getMapper().deleteByPrimaryKey(id);
+    }
 
-    /**
-     * 修改
-     *
-     * @param e
-     * @return
-     */
-    public int update(E e);
+    public int deletes(Long[] ids) {
+        int cnt = 0;
+        for (Long id : ids) {
+            int i = deleteById(id);
+            cnt += i;
+        }
+        return cnt;
+    }
 
-    /**
-     * 根据ID查询一条记录
-     *
-     * @param id
-     * @return
-     */
-    public E selectById(long id);
+    public int update(E articleCatalog) {
+        return getMapper().updateByPrimaryKeySelective(articleCatalog);
+    }
 
-    /**
-     * 分页查询
-     *
-     * @param e
-     * @return
-     */
-    public PagerModel selectPageList(E e);
+    public E selectById(long id) {
+        return getMapper().selectByPrimaryKey(id);
+    }
 
-    /**
-     * 根据条件查询所有
-     * @return
-     */
-    public List<E> selectList(E e);
+    public PagerModel<E> selectPageList(Example example) {
+        PageHelper.startPage(1, 10);
+        List<E> catalogs = getMapper().selectByExample(example);
+        PagerModel pagerModel = new PagerModel();
+        pagerModel.setList(catalogs);
+        pagerModel.setTotal(((Page) catalogs).getTotal());
+        return pagerModel;
+    }
+
+    public List<E> selectByExample(Example example) {
+        return getMapper().selectByExample(example);
+    }
+
 }

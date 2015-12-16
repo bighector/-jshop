@@ -1,9 +1,8 @@
 package net.jeeshop.biz.article.service;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import net.jeeshop.biz.article.bean.ArticleCatalogBean;
+import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.client.ArticleCatalogMapper;
 import net.jeeshop.core.dao.page.PagerModel;
@@ -21,62 +20,37 @@ import java.util.List;
  * Email: dinguangx@163.com
  */
 @Service
-public class ArticleCatalogService implements BaseService<ArticleCatalog> {
+public class ArticleCatalogService extends BaseService<ArticleCatalog, ArticleCatalogExample> {
 
     @Resource
     ArticleCatalogMapper articleCatalogMapper;
 
-
     @Override
-    public long insert(ArticleCatalog articleCatalog) {
-        return articleCatalogMapper.insert(articleCatalog);
+    protected BaseMapper getMapper() {
+        return articleCatalogMapper;
     }
 
-    @Override
-    public int deleteById(long id) {
-        return articleCatalogMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int deletes(Long[] ids) {
-        int cnt = 0;
-        for(Long id : ids) {
-            int i = deleteById(id);
-            cnt += i;
-        }
-        return cnt;
-    }
-
-    @Override
-    public int update(ArticleCatalog articleCatalog) {
-        return articleCatalogMapper.updateByPrimaryKeySelective(articleCatalog);
-    }
-
-    @Override
-    public ArticleCatalog selectById(long id) {
-        return articleCatalogMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public PagerModel selectPageList(ArticleCatalog articleCatalog) {
+    /**
+     * 分页查询数据
+     *
+     * @param articleCatalog
+     * @return
+     */
+    public PagerModel<ArticleCatalog> selectPageList(ArticleCatalog articleCatalog) {
         ArticleCatalogExample example = getExampleWithOrder();
         ArticleCatalogExample.Criteria criteria = example.createCriteria();
-        if(StringUtils.isNotBlank(articleCatalog.getName())) {
+        if (StringUtils.isNotBlank(articleCatalog.getName())) {
             criteria.andNameEqualTo(StringUtils.trimToEmpty(articleCatalog.getName()));
         }
-        PageHelper.startPage(1, 10);
-        List<ArticleCatalog> catalogs = articleCatalogMapper.selectByExample(example);
-        PagerModel pagerModel = new PagerModel();
-        pagerModel.setList(catalogs);
-        pagerModel.setTotal(((Page)catalogs).getTotal());
+        PagerModel pagerModel = super.selectPageList(example);
         return pagerModel;
     }
 
-    @Override
-    public List<ArticleCatalog> selectList(ArticleCatalog articleCatalog) {
-        return null;
-    }
-
+    /**
+     * 获取一级目录分类
+     *
+     * @return
+     */
     public List<ArticleCatalogBean> loadRoot() {
         ArticleCatalogExample example = getExampleWithOrder();
         ArticleCatalogExample.Criteria criteria = example.createCriteria();
@@ -98,11 +72,12 @@ public class ArticleCatalogService implements BaseService<ArticleCatalog> {
 
     private List<ArticleCatalogBean> convertList(List<ArticleCatalog> articleCatalogs) {
         List<ArticleCatalogBean> result = Lists.newArrayList();
-        for(ArticleCatalog catalog : articleCatalogs) {
+        for (ArticleCatalog catalog : articleCatalogs) {
             result.add(new ArticleCatalogBean(catalog));
         }
         return result;
     }
+
     /**
      * 加载指定节点下的全部子节点
      *
@@ -122,6 +97,7 @@ public class ArticleCatalogService implements BaseService<ArticleCatalog> {
 
     /**
      * 根据code检索
+     *
      * @param code
      * @return
      */

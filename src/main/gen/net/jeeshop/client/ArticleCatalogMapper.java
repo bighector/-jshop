@@ -1,10 +1,11 @@
 package net.jeeshop.client;
 
 import java.util.List;
+import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.model.ArticleCatalog;
 import net.jeeshop.model.ArticleCatalogExample;
 
-public interface ArticleCatalogMapper {
+public interface ArticleCatalogMapper extends BaseMapper<ArticleCatalog, ArticleCatalogExample> {
     int countByExample(ArticleCatalogExample example);
 
     int deleteByPrimaryKey(Long id);
