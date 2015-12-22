@@ -6,11 +6,11 @@ package net.jeeshop.web.action.manage.article;
 
 import net.jeeshop.core.dao.page.PagerModel;
 import net.jeeshop.core.front.SystemManager;
-import net.jeeshop.core.system.bean.User;
-import net.jeeshop.services.manage.catalog.CatalogService;
-import net.jeeshop.services.manage.indexImg.IndexImgService;
+import net.jeeshop.model.system.SysUser;
 import net.jeeshop.services.manage.article.NewsService;
 import net.jeeshop.services.manage.article.bean.News;
+import net.jeeshop.services.manage.catalog.CatalogService;
+import net.jeeshop.services.manage.indexImg.IndexImgService;
 import net.jeeshop.web.action.BaseController;
 import net.jeeshop.web.util.LoginUserHolder;
 import net.jeeshop.web.util.RequestHolder;
@@ -32,34 +32,36 @@ import java.util.List;
 
 /**
  * 文章管理
+ *
  * @author huangf
  * @author dylan
- * 
  */
 @Controller
 @RequestMapping("/manage/article/")
 public class NewsAction extends BaseController<News> {
-	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(NewsAction.class);
+    private static final long serialVersionUID = 1L;
+    private static final Logger logger = LoggerFactory.getLogger(NewsAction.class);
     private static final String page_toList = "/manage/article/newsList";
     private static final String page_toEdit = "/manage/article/newsEdit";
     private static final String page_toAdd = "/manage/article/newsEdit";
+
     private NewsAction() {
         super.page_toList = page_toList;
         super.page_toAdd = page_toAdd;
         super.page_toEdit = page_toEdit;
     }
+
     @Autowired
-	private NewsService newsService;
+    private NewsService newsService;
     @Autowired
-	private IndexImgService indexImgService;
+    private IndexImgService indexImgService;
     @Autowired
-	private CatalogService catalogService;
+    private CatalogService catalogService;
 
 //	private String type;//文章类型。通知：notice；帮助：help
-	
-	private List<News> news;// 门户新闻列表
-	
+
+    private List<News> news;// 门户新闻列表
+
 //	public String getType() {
 //		return type;
 //	}
@@ -68,106 +70,107 @@ public class NewsAction extends BaseController<News> {
 //		this.type = type;
 //	}
 
-	public CatalogService getCatalogService() {
-		return catalogService;
-	}
+    public CatalogService getCatalogService() {
+        return catalogService;
+    }
 
-	public void setCatalogService(CatalogService catalogService) {
-		this.catalogService = catalogService;
-	}
+    public void setCatalogService(CatalogService catalogService) {
+        this.catalogService = catalogService;
+    }
 
     @Autowired
-	public NewsService getService() {
-		return newsService;
-	}
+    public NewsService getService() {
+        return newsService;
+    }
 
-	public void setNewsService(NewsService newsService) {
-		this.newsService = newsService;
-	}
+    public void setNewsService(NewsService newsService) {
+        this.newsService = newsService;
+    }
 
-	public IndexImgService getIndexImgService() {
-		return indexImgService;
-	}
+    public IndexImgService getIndexImgService() {
+        return indexImgService;
+    }
 
-	public void setIndexImgService(IndexImgService indexImgService) {
-		this.indexImgService = indexImgService;
-	}
+    public void setIndexImgService(IndexImgService indexImgService) {
+        this.indexImgService = indexImgService;
+    }
 
-	public List<News> getNews() {
-		return news;
-	}
+    public List<News> getNews() {
+        return news;
+    }
 
-	public void setNews(List<News> news) {
-		this.news = news;
-	}
+    public void setNews(List<News> news) {
+        this.news = news;
+    }
 
-	@Override
-	public void insertAfter(News e) {
-		e.clear();
-		
+    @Override
+    public void insertAfter(News e) {
+        e.clear();
+
 //		String type = e.getType();
 //		e.clear();
 //		e.setType(type);
-	}
-	
-	/**
-	 * 新增或者修改后文章的状态要重新设置为未审核状态
-	 */
-	@Override
+    }
+
+    /**
+     * 新增或者修改后文章的状态要重新设置为未审核状态
+     */
+    @Override
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-	public String insert(HttpServletRequest request, News e, RedirectAttributes flushAttrs) throws Exception {
-		logger.error("NewsAction code = " + e.getCode());
-		User user = LoginUserHolder.getLoginUser();
-		e.setCreateAccount(user.getUsername());
-		e.setStatus(News.news_status_n);//未审核
-		
-		getService().insert(e);
-		
+    public String insert(HttpServletRequest request, News e, RedirectAttributes flushAttrs) throws Exception {
+        logger.error("NewsAction code = " + e.getCode());
+        SysUser user = LoginUserHolder.getLoginUser();
+        e.setCreateAccount(user.getUsername());
+        e.setStatus(News.news_status_n);//未审核
+
+        getService().insert(e);
+
 //		getSession().setAttribute("insertOrUpdateMsg", "添加成功！");
 //		getResponse().sendRedirect(getEditUrl(e.getId()));
-		return "redirect:toEdit2?id="+e.getId();
-	}
-	
-	/**
-	 * 修改文章
-	 */
-	@Override
+        return "redirect:toEdit2?id=" + e.getId();
+    }
+
+    /**
+     * 修改文章
+     */
+    @Override
     @RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(HttpServletRequest request, News e, RedirectAttributes flushAttrs) throws Exception {
-		logger.error("NewsAction code = ");
-		logger.error("NewsAction code = " + e.getCode()+",id="+e.getId());
+    public String update(HttpServletRequest request, News e, RedirectAttributes flushAttrs) throws Exception {
+        logger.error("NewsAction code = ");
+        logger.error("NewsAction code = " + e.getCode() + ",id=" + e.getId());
 //		getE().setStatus(News.news_status_n);//未审核
-		
-		getService().update(e);
-		
+
+        getService().update(e);
+
 //		getSession().setAttribute("insertOrUpdateMsg", "更新成功！");
 //		getResponse().sendRedirect(getEditUrl(e.getId()));
-		return "redirect:toEdit2?id="+e.getId();
-	}
-	
-	//列表页面点击 编辑商品
+        return "redirect:toEdit2?id=" + e.getId();
+    }
+
+    //列表页面点击 编辑商品
     @RequestMapping(value = "toEdit")
-	public String toEdit(News e, ModelMap model) throws Exception {
+    public String toEdit(News e, ModelMap model) throws Exception {
 //		getSession().setAttribute("insertOrUpdateMsg", "");
-		return toEdit0(e, model);
-	}
-	
-	/**
-	 * 添加或编辑商品后程序回转编辑
-	 * @return
-	 * @throws Exception
-	 */
+        return toEdit0(e, model);
+    }
+
+    /**
+     * 添加或编辑商品后程序回转编辑
+     *
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "toEdit2")
-	public String toEdit2(News e, ModelMap model) throws Exception {
-		return toEdit0(e, model);
-	}
+    public String toEdit2(News e, ModelMap model) throws Exception {
+        return toEdit0(e, model);
+    }
 
     @RequestMapping(value = "toEdit0")
-	private String toEdit0(News e, ModelMap model) throws Exception {
+    private String toEdit0(News e, ModelMap model) throws Exception {
         model.addAttribute("catalogsArticle", SystemManager.getInstance().getArticleCatalogs());
-		return super.toEdit(e, model);
-	}
-	
+        return super.toEdit(e, model);
+    }
+
 //	/**
 //	 * 审核文章，审核通过后文章会显示在门户上
 //	 */
@@ -178,10 +181,10 @@ public class NewsAction extends BaseController<News> {
 //		e.setStatus(News.news_status_y);//已审核
 //		return super.update();
 //	}
-	
-	/**
-	 * 设置为自己
-	 */
+
+    /**
+     * 设置为自己
+     */
 //	@Deprecated
 //	private void settyMy() {
 //		User user = (User) getSession().getAttribute(ManageContainer.manage_session_user_info);
@@ -191,62 +194,67 @@ public class NewsAction extends BaseController<News> {
 //		}
 //	}
 
-	/**
-	 * 同步缓存内的新闻
-	 * 审核通过，记录将会出现在门户上
-	 * @return
-	 * @throws Exception
-	 */
+    /**
+     * 同步缓存内的新闻
+     * 审核通过，记录将会出现在门户上
+     *
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "updateStatusY", method = RequestMethod.POST)
-	public String updateStatusY(Long[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
-		newsService.updateStatus(ids,News.news_status_y);
-		addMessage(flushAttrs, "操作成功!");
-		return "redirect:selectList?type=" + type;
-	}
-	/**
-	 * 审核未通过,记录将不会出现在门户上
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "updateStatusN", method = RequestMethod.POST)
-	public String updateStatusN(Long[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
-		newsService.updateStatus(ids,News.news_status_n);
-		addMessage(flushAttrs, "操作成功!");
-		return "redirect:selectList?type=" + type;
-	}
+    public String updateStatusY(Long[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
+        newsService.updateStatus(ids, News.news_status_y);
+        addMessage(flushAttrs, "操作成功!");
+        return "redirect:selectList?type=" + type;
+    }
 
-	/**
-	 * 显示指定的文章
-	 * @return
-	 * @throws Exception
-	 */
+    /**
+     * 审核未通过,记录将不会出现在门户上
+     *
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "updateStatusN", method = RequestMethod.POST)
+    public String updateStatusN(Long[] ids, String type, RedirectAttributes flushAttrs) throws Exception {
+        newsService.updateStatus(ids, News.news_status_n);
+        addMessage(flushAttrs, "操作成功!");
+        return "redirect:selectList?type=" + type;
+    }
+
+    /**
+     * 显示指定的文章
+     *
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "up")
-	public String up(News e, RedirectAttributes flushAttrs) throws Exception {
-		return updateDownOrUp0(e, News.news_status_y, flushAttrs);
-	}
+    public String up(News e, RedirectAttributes flushAttrs) throws Exception {
+        return updateDownOrUp0(e, News.news_status_y, flushAttrs);
+    }
 
-	/**
-	 * 不显示指定的文章
-	 * @return
-	 * @throws Exception
-	 */
+    /**
+     * 不显示指定的文章
+     *
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "down")
-	public String down(News e, RedirectAttributes flushAttrs) throws Exception {
-		return updateDownOrUp0(e, News.news_status_n, flushAttrs);
-	}
-	
-	private String updateDownOrUp0(News e, String status, RedirectAttributes flushAttrs) throws Exception {
-		if(e.getId() == null){
-			throw new NullPointerException("参数不能为空！");
-		}
-		
-		News news = new News();
-		news.setId(e.getId());
-		news.setStatus(status);
-		newsService.updateDownOrUp(news);
-		addMessage(flushAttrs, "更新成功!");
-		return "redirect:toEdit2?id="+e.getId();
-	}
+    public String down(News e, RedirectAttributes flushAttrs) throws Exception {
+        return updateDownOrUp0(e, News.news_status_n, flushAttrs);
+    }
+
+    private String updateDownOrUp0(News e, String status, RedirectAttributes flushAttrs) throws Exception {
+        if (e.getId() == null) {
+            throw new NullPointerException("参数不能为空！");
+        }
+
+        News news = new News();
+        news.setId(e.getId());
+        news.setStatus(status);
+        newsService.updateDownOrUp(news);
+        addMessage(flushAttrs, "更新成功!");
+        return "redirect:toEdit2?id=" + e.getId();
+    }
 
 //	@Override
 //	public String selectList() throws Exception {
@@ -254,7 +262,7 @@ public class NewsAction extends BaseController<News> {
 //		super.selectList();
 //		return toList;
 //	}
-	
+
 //	@Override
 //	protected void setParamWhenInitQuery(News e) {
 //		super.setParamWhenInitQuery(e);
@@ -263,13 +271,13 @@ public class NewsAction extends BaseController<News> {
 //			e.setType(type);
 //		}
 //	}
-	
-	/**
-	 * 公共的分页方法
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 公共的分页方法
+     *
+     * @return
+     * @throws Exception
+     */
 //	public String selectList0() throws Exception {
 //		/**
 //		 * 由于prepare方法不具备一致性，加此代码解决init=y查询的时候条件不被清除干净的BUG
@@ -295,46 +303,47 @@ public class NewsAction extends BaseController<News> {
 //		
 //		return toList;
 //	}
-	
-	/**
-	 * 检查文章code的唯一性
-	 * @return
-	 * @throws IOException
-	 */
+
+    /**
+     * 检查文章code的唯一性
+     *
+     * @return
+     * @throws IOException
+     */
     @RequestMapping(value = "unique")
     @ResponseBody
-	public String unique(News e) throws IOException{
-		
-		logger.error("检查文章code的唯一性");
-		if(StringUtils.isBlank(e.getCode())){
-			throw new NullPointerException("参数不能为空！");
-		}
+    public String unique(News e) throws IOException {
+
+        logger.error("检查文章code的唯一性");
+        if (StringUtils.isBlank(e.getCode())) {
+            throw new NullPointerException("参数不能为空！");
+        }
 //		logger.error("wait...10s");
 //		try {
 //			Thread.sleep(10*1000L);
 //		} catch (InterruptedException e1) {
 //			e1.printStackTrace();
 //		}
-		
-		int c = newsService.selectCount(e);
+
+        int c = newsService.selectCount(e);
 //		getResponse().setCharacterEncoding("utf-8");
-		if(e.getId() == null){
-			if(c==0){
-				return "{\"ok\":\"文章code可以使用!\"}";
-			}else{
-				return "{\"error\":\"文章code已经被占用!\"}";
-			}
-		}else{
-			News news = newsService.selectById(e.getId());
-			if(news.getCode().equals(e.getCode()) || c==0){
-				return "{\"ok\":\"文章code可以使用!\"}";
-			}else{
-				return "{\"error\":\"文章code已经被占用!\"}";
-			}
-		}
-		
+        if (e.getId() == null) {
+            if (c == 0) {
+                return "{\"ok\":\"文章code可以使用!\"}";
+            } else {
+                return "{\"error\":\"文章code已经被占用!\"}";
+            }
+        } else {
+            News news = newsService.selectById(e.getId());
+            if (news.getCode().equals(e.getCode()) || c == 0) {
+                return "{\"ok\":\"文章code可以使用!\"}";
+            } else {
+                return "{\"error\":\"文章code已经被占用!\"}";
+            }
+        }
+
 //		return null;
-	}
+    }
 
 //	@Override
 //	public String deletes() throws Exception {
@@ -344,22 +353,22 @@ public class NewsAction extends BaseController<News> {
 //		logger.error("2..type="+e.getType());
 //		return selectList();
 //	}
-	
-	@Override
+
+    @Override
     @RequestMapping(value = "toAdd")
-	public String toAdd(News e, ModelMap model) throws Exception {
-		String type = e.getType();
-		e.clear();
-		e.setType(type);
+    public String toAdd(News e, ModelMap model) throws Exception {
+        String type = e.getType();
+        e.clear();
+        e.setType(type);
         model.addAttribute("e", e);
         model.addAttribute("catalogsArticle", SystemManager.getInstance().getArticleCatalogs());
-		return page_toAdd;
-	}
-	
-	@Override
-	protected void selectListAfter(PagerModel pager) {
-		pager.setPagerUrl("selectList");
+        return page_toAdd;
+    }
+
+    @Override
+    protected void selectListAfter(PagerModel pager) {
+        pager.setPagerUrl("selectList");
         RequestHolder.getRequest().setAttribute("catalogsArticle", SystemManager.getInstance().getArticleCatalogs());
-	}
-	
+    }
+
 }

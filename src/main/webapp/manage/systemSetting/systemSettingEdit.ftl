@@ -228,7 +228,7 @@ function changeStyle(){
 					<th width="20"><input type="checkbox" id="firstCheckbox" /></th>
 					<th>图片地址</th>
 				</tr>
-				<#list e.imagesList as img>
+				<#list imageList as img>
 					<tr>
 						<td><input type="checkbox" name="imagePaths"
 								value="${img}" /></td>

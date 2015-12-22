@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.client.ArticleCatalogMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.model.ArticleCatalog" >
+<mapper namespace="net.jeeshop.client.cms.ArticleCatalogMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.model.cms.ArticleCatalog" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
@@ -9,9 +9,9 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_account" property="createAccount" jdbcType="VARCHAR" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_account" property="updateAccount" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,9 +72,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, pid, ordinal, type, code, create_time, create_user, update_time, update_user
+    id, name, pid, ordinal, type, code, create_time, create_account, update_time, update_account
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.model.ArticleCatalogExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.model.cms.ArticleCatalogExample" >
     select
     <if test="distinct" >
       distinct
@@ -98,17 +98,17 @@
     delete from t_article_catalog
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.model.ArticleCatalog" >
+  <insert id="insert" parameterType="net.jeeshop.model.cms.ArticleCatalog" >
     insert into t_article_catalog (id, name, pid, 
       ordinal, type, code, 
-      create_time, create_user, update_time, 
-      update_user)
+      create_time, create_account, update_time, 
+      update_account)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
       #{ordinal,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{updateUser,jdbcType=VARCHAR})
+      #{createTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateAccount,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.model.ArticleCatalog" >
+  <insert id="insertSelective" parameterType="net.jeeshop.model.cms.ArticleCatalog" >
     insert into t_article_catalog
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -132,14 +132,14 @@
       <if test="createTime != null" >
         create_time,
       </if>
-      <if test="createUser != null" >
-        create_user,
+      <if test="createAccount != null" >
+        create_account,
       </if>
       <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="updateUser != null" >
-        update_user,
+      <if test="updateAccount != null" >
+        update_account,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -164,24 +164,24 @@
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createUser != null" >
-        #{createUser,jdbcType=VARCHAR},
+      <if test="createAccount != null" >
+        #{createAccount,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUser != null" >
-        #{updateUser,jdbcType=VARCHAR},
+      <if test="updateAccount != null" >
+        #{updateAccount,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.model.ArticleCatalogExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="net.jeeshop.model.cms.ArticleCatalogExample" resultType="java.lang.Integer" >
     select count(*) from t_article_catalog
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.model.ArticleCatalog" >
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.model.cms.ArticleCatalog" >
     update t_article_catalog
     <set >
       <if test="name != null" >
@@ -202,19 +202,19 @@
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createUser != null" >
-        create_user = #{createUser,jdbcType=VARCHAR},
+      <if test="createAccount != null" >
+        create_account = #{createAccount,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUser != null" >
-        update_user = #{updateUser,jdbcType=VARCHAR},
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.model.ArticleCatalog" >
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.model.cms.ArticleCatalog" >
     update t_article_catalog
     set name = #{name,jdbcType=VARCHAR},
       pid = #{pid,jdbcType=INTEGER},
@@ -222,9 +222,9 @@
       type = #{type,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      create_user = #{createUser,jdbcType=VARCHAR},
+      create_account = #{createAccount,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      update_user = #{updateUser,jdbcType=VARCHAR}
+      update_account = #{updateAccount,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

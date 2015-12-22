@@ -6,6 +6,7 @@ import net.jeeshop.core.dao.page.PagerModel;
 import net.jeeshop.core.exception.NotThisMethod;
 import net.jeeshop.core.system.bean.Role;
 import net.jeeshop.core.system.bean.User;
+import net.jeeshop.model.system.SysUser;
 import net.jeeshop.services.manage.system.impl.MenuService;
 import net.jeeshop.services.manage.system.impl.RoleService;
 import net.jeeshop.web.action.BaseController;
@@ -121,7 +122,7 @@ public class RoleAction extends BaseController<Role> {
 	@Override
     @RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(HttpServletRequest request, @ModelAttribute("e") Role role, RedirectAttributes flushAttrs) throws Exception {
-        User user = LoginUserHolder.getLoginUser();
+        SysUser user = LoginUserHolder.getLoginUser();
 		if(!user.getUsername().equals("admin")){
 			throw new NullPointerException(ManageContainer.RoleAction_update_error);
 		}

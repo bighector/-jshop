@@ -11,9 +11,9 @@ import java.util.Date;
 public class BaseModel implements Serializable {
     private Long id;
     private Date createTime;
-    private String createUser;
+    private String createAccount;
     private Date updateTime;
-    private String updateUser;
+    private String updateAccount;
 
     public Long getId() {
         return id;
@@ -31,12 +31,12 @@ public class BaseModel implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getCreateUser() {
-        return createUser;
+    public String getCreateAccount() {
+        return createAccount;
     }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
+    public void setCreateAccount(String createAccount) {
+        this.createAccount = createAccount;
     }
 
     public Date getUpdateTime() {
@@ -47,11 +47,11 @@ public class BaseModel implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public String getUpdateUser() {
-        return updateUser;
+    public String getUpdateAccount() {
+        return updateAccount;
     }
 
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+    public void setUpdateAccount(String updateAccount) {
+        this.updateAccount = updateAccount;
     }
 }

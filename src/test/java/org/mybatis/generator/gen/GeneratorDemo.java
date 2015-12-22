@@ -16,11 +16,20 @@ import java.util.List;
 public class GeneratorDemo {
 
     @Test
-    public void genTest() throws Exception {
+    public void genSystem() throws Exception {
+        generateFiles("gen/generateConfig-system.xml");
+    }
+    @Test
+    public void genCms() throws Exception {
+        generateFiles("gen/generateConfig-cms.xml");
+    }
+
+    private void generateFiles(String configResource) throws Exception{
+
         List<String> warnings = new ArrayList<String>();
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(GeneratorDemo.class.getClassLoader()
-                .getResourceAsStream("gen/mybatisGeneratorConfig.xml"));
+                .getResourceAsStream(configResource));
         DefaultShellCallback shellCallback = new DefaultShellCallback(true);
 
         try {
@@ -33,6 +42,5 @@ public class GeneratorDemo {
         for (String warning : warnings) {
             System.out.println(warning);
         }
-
     }
 }

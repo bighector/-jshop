@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.system.client.SysMenuMapperExt" >
+  <select id="selectByRoleId" resultMap="net.jeeshop.client.SysMenuMapper.BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="net.jeeshop.client.SysMenuMapper.Base_Column_List" />
+    from t_menu m, t_privilege p
+    where m.id = p.mid and p.rid = #{rid}
+  </select>
+</mapper>

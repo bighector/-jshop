@@ -2,12 +2,13 @@ package net.jeeshop.biz.article.service;
 
 import com.google.common.collect.Lists;
 import net.jeeshop.biz.article.bean.ArticleCatalogBean;
+import net.jeeshop.biz.base.bean.PageBean;
+import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.client.ArticleCatalogMapper;
-import net.jeeshop.core.dao.page.PagerModel;
-import net.jeeshop.model.ArticleCatalog;
-import net.jeeshop.model.ArticleCatalogExample;
+import net.jeeshop.client.cms.ArticleCatalogMapper;
+import net.jeeshop.model.cms.ArticleCatalog;
+import net.jeeshop.model.cms.ArticleCatalogExample;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -36,13 +37,13 @@ public class ArticleCatalogService extends BaseService<ArticleCatalog, ArticleCa
      * @param articleCatalog
      * @return
      */
-    public PagerModel<ArticleCatalog> selectPageList(ArticleCatalog articleCatalog) {
+    public PageBean<ArticleCatalog> selectPageList(ArticleCatalog articleCatalog, PageQueryBean pageQueryBean) {
         ArticleCatalogExample example = getExampleWithOrder();
         ArticleCatalogExample.Criteria criteria = example.createCriteria();
         if (StringUtils.isNotBlank(articleCatalog.getName())) {
             criteria.andNameEqualTo(StringUtils.trimToEmpty(articleCatalog.getName()));
         }
-        PagerModel pagerModel = super.selectPageList(example);
+        PageBean<ArticleCatalog> pagerModel = super.selectPageList(example, pageQueryBean);
         return pagerModel;
     }
 

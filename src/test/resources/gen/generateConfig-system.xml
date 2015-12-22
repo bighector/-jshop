@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- This should cause an error because sqlMapGenerator is required
+         if there is no javaClientGenerator -->
+    <context id="system" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.ext.plugin.MapperFileOverwritePlugin">
+            <!-- 是否覆盖已经有的mapper文件，默认值为true -->
+            <!--<property name="mapperOverwrite" value="true"/>-->
+        </plugin>
+        <plugin type="org.mybatis.generator.ext.plugin.JshopCustomPlugin"/>
+        <commentGenerator type="org.mybatis.generator.ext.comment.CommentGeneratorExt"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/jshop"
+                        userId="root" password="root"/>
+
+        <javaModelGenerator targetPackage="net.jeeshop.model.system"
+                            targetProject="src/main/gen">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="net.jeeshop.biz.base.model.BaseModel"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/gen"></sqlMapGenerator>
+        <javaClientGenerator type="org.mybatis.generator.custom.javamapper.GenericJavaMapperGenerator" targetPackage="net.jeeshop.client.system"
+                             targetProject="src/main/gen">
+            <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
+        </javaClientGenerator>
+
+        <table tableName="t_user" domainObjectName="SysUser">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="rid" javaType="java.lang.Long"/>
+        </table>
+        <table tableName="t_role" domainObjectName="SysRole">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+        <table tableName="t_menu" domainObjectName="SysMenu">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="pid" javaType="java.lang.Long"/>
+        </table>
+        <table tableName="t_privilege" domainObjectName="SysPrivilege">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="rid" javaType="java.lang.Long"/>
+            <columnOverride column="mid" javaType="java.lang.Long"/>
+        </table>
+
+        <table tableName="t_system_setting" domainObjectName="SystemSetting">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+        <table tableName="t_system_log" domainObjectName="SystemLog">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+    </context>
+
+</generatorConfiguration>

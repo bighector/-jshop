@@ -1,9 +1,9 @@
-package net.jeeshop.client;
+package net.jeeshop.client.cms;
 
 import java.util.List;
 import net.jeeshop.biz.base.client.BaseMapper;
-import net.jeeshop.model.ArticleCatalog;
-import net.jeeshop.model.ArticleCatalogExample;
+import net.jeeshop.model.cms.ArticleCatalog;
+import net.jeeshop.model.cms.ArticleCatalogExample;
 
 public interface ArticleCatalogMapper extends BaseMapper<ArticleCatalog, ArticleCatalogExample> {
     int countByExample(ArticleCatalogExample example);

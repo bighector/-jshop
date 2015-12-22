@@ -1,9 +1,9 @@
-package net.jeeshop.client;
+package net.jeeshop.client.system;
 
 import java.util.List;
 import net.jeeshop.biz.base.client.BaseMapper;
-import net.jeeshop.model.SysUser;
-import net.jeeshop.model.SysUserExample;
+import net.jeeshop.model.system.SysUser;
+import net.jeeshop.model.system.SysUserExample;
 
 public interface SysUserMapper extends BaseMapper<SysUser, SysUserExample> {
     int countByExample(SysUserExample example);

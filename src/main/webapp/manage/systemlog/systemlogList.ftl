@@ -39,8 +39,8 @@ $(function(){
         columns:[
             {name:"title", title:"标题", data:"title"},
             {name:"account", title:"账号", data:"account"},
-            {name:"logintime", title:"登陆时间", data:"logintime"},
-            {name:"loginIP", title:"登陆IP", data:"loginIP"},
+            {name:"logintime", title:"登陆时间", data:"loginTime"},
+            {name:"loginIP", title:"登陆IP", data:"loginIp"},
                 {name:"loginArea", title:"登陆位置", data:"loginArea"},
             {name:"diffAreaLogin", title:"是否异地登录", data:"diffAreaLogin",render:function(data,type,row,meta){
 				return data=="y"?"是":"否";

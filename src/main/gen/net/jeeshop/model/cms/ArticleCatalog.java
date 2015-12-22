@@ -1,4 +1,4 @@
-package net.jeeshop.model;
+package net.jeeshop.model.cms;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;

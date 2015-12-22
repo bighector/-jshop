@@ -11,17 +11,17 @@
 			$("#password").focus();
 			return false;
 		}
-		if ($.trim($("#newpassword").val()) == "") {
+		if ($.trim($("#newPassword").val()) == "") {
 			alert("密码不能为空!");
 			$("#newpassword").focus();
 			return false;
 		}
-		if ($.trim($("#newpassword2").val()) == "") {
+		if ($.trim($("#newPassword2").val()) == "") {
 			alert("密码不能为空!");
 			$("#newpassword2").focus();
 			return false;
 		}
-		if ($.trim($("#newpassword2").val()) != $.trim($("#newpassword").val())) {
+		if ($.trim($("#newPassword2").val()) != $.trim($("#newPassword").val())) {
 			alert("两次输入的密码不一致!");
 			return false;
 		}
@@ -45,13 +45,13 @@
 			</tr>
 			<tr>
 				<th style="text-align: right;">新密码</th>
-				<td style="text-align: left;"><input type="password" name="newpassword" data-rule="新密码:required;newpassword;length[6~20];"
-						id="newpassword" /></td>
+				<td style="text-align: left;"><input type="password" name="newPassword" data-rule="新密码:required;newpassword;length[6~20];"
+						id="newPassword" /></td>
 			</tr>
 			<tr>
 				<th style="text-align: right;">确认新密码</th>
-				<td style="text-align: left;"><input type="password" name="newpassword2" data-rule="确认密码:required;match(newpassword)"
-						id="newpassword2" /></td>
+				<td style="text-align: left;"><input type="password" name="newPassword2" data-rule="确认密码:required;match(newpassword)"
+						id="newPassword2" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;">

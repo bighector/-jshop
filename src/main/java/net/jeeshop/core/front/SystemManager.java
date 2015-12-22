@@ -5,7 +5,7 @@ import net.jeeshop.biz.article.bean.ArticleCatalogBean;
 import net.jeeshop.core.cache.CacheProvider;
 import net.jeeshop.core.cache.SimpleCacheProvider;
 import net.jeeshop.core.listener.SystemListener;
-import net.jeeshop.model.ArticleCatalog;
+import net.jeeshop.model.cms.ArticleCatalog;
 import net.jeeshop.services.front.advert.bean.Advert;
 import net.jeeshop.services.front.area.bean.Area;
 import net.jeeshop.services.front.attribute.bean.Attribute;
