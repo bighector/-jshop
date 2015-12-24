@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@page import="net.jeeshop.core.front.SystemManager"%>
+<%@page import="net.jeeshop.core.SystemManager"%>
 <%@page import="net.jeeshop.core.FrontContainer"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 

@@ -22,9 +22,9 @@ import com.aliyun.oss.model.CannedAccessControlList;
 import com.aliyun.oss.model.ListObjectsRequest;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.biz.system.bean.SystemSettingBean;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.services.manage.oss.bean.AliyunOSS;
-import net.jeeshop.services.manage.systemSetting.bean.SystemSetting;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ public class OSSFileManagerJson {
 	
 	public String write(HttpServletRequest request,HttpServletResponse response){
 		logger.error("write...");
-		SystemSetting systemSetting = SystemManager.getInstance().getSystemSetting();
+		SystemSettingBean systemSetting = SystemManager.getInstance().getSystemSetting();
 		//根目录路径，可以指定绝对路径，比如 /var/www/attached/
 		String rootPath = null;//pageContext.getServletContext().getRealPath("/") + "attached/";
 		//String rootPath = "D:\\workspace\\myshop\\web\\attached\\";//pageContext.getServletContext().getRealPath("/") + "attached/";

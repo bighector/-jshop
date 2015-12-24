@@ -2,7 +2,7 @@ package net.jeeshop.web.action;
 
 import net.jeeshop.core.Services;
 import net.jeeshop.core.dao.page.PagerModel;
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.web.util.RequestHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

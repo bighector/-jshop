@@ -1,4 +1,4 @@
-<%@page import="net.jeeshop.core.front.SystemManager"%>
+<%@page import="net.jeeshop.core.SystemManager"%>
 <%@page import="net.jeeshop.services.front.product.bean.Product"%>
 <%@page import="net.jeeshop.services.front.product.ProductService"%>
 <%@page

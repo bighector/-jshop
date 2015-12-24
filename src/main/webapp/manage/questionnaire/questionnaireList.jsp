@@ -1,4 +1,5 @@
 <%@page import="net.jeeshop.core.ManageContainer"%>
+<%@ page import="net.jeeshop.core.SystemManager" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page session="false"%>

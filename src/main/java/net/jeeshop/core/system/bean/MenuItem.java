@@ -7,9 +7,9 @@ package net.jeeshop.core.system.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.biz.system.bean.SystemSettingBean;
+import net.jeeshop.core.SystemManager;
 
-import net.jeeshop.services.manage.systemSetting.bean.SystemSetting;
 import org.apache.commons.lang.StringUtils;
 
 
@@ -46,7 +46,7 @@ public class MenuItem {
 //				manageHttp = SystemManager.systemSetting.getManageHttp();
 //			}
 			//为z-tree自定义图标
-            SystemSetting systemSetting = SystemManager.getInstance().getSystemSetting();
+            SystemSettingBean systemSetting = SystemManager.getInstance().getSystemSetting();
             if(this.getType().equals(MenuType.page)){
 				this.setIcon(systemSetting.getManageLeftTreeLeafIcon());
 //				this.setIcon("/myshop/resource/images/letter.gif");

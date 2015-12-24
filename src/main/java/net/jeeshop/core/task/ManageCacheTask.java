@@ -2,7 +2,7 @@ package net.jeeshop.core.task;
 
 import java.util.concurrent.TimeUnit;
 
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.core.oscache.ManageCache;
 
 import org.slf4j.LoggerFactory;

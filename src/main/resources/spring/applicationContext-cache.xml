@@ -7,8 +7,8 @@
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder location="classpath:conf.properties"/>
 
-    <bean id="systemManager" class="net.jeeshop.core.front.SystemManager">
-        <property name="cacheProvider" ref="ehcacheCacheProvider"/>
+    <bean id="systemManager" class="net.jeeshop.core.SystemManager">
+        <property name="cacheProvider" ref="simpleCacheProvider"/>
     </bean>
 
     <!-- cache provider -->

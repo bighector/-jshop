@@ -1,4 +1,4 @@
-<%@page import="net.jeeshop.core.front.SystemManager"%>
+<%@page import="net.jeeshop.core.SystemManager"%>
 <%@page import="com.alibaba.fastjson.JSONObject"%>
 <%@page import="org.slf4j.Logger"%>
 <%@page import="org.slf4j.LoggerFactory"%>

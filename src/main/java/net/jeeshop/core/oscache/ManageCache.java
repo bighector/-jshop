@@ -1,9 +1,8 @@
 package net.jeeshop.core.oscache;
 
 import com.alibaba.fastjson.JSON;
-import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.TaskManager;
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.services.manage.area.AreaService;
 import net.jeeshop.services.manage.comment.CommentService;
 import net.jeeshop.services.manage.order.OrderService;
@@ -13,7 +12,6 @@ import net.jeeshop.services.manage.oss.bean.AliyunOSS;
 import net.jeeshop.services.manage.oss.bean.Oss;
 import net.jeeshop.services.manage.product.ProductService;
 import net.jeeshop.services.manage.systemSetting.SystemSettingService;
-import net.jeeshop.services.manage.systemSetting.bean.SystemSetting;
 import net.jeeshop.services.manage.task.TaskService;
 import net.jeeshop.services.manage.task.bean.Task;
 import org.apache.commons.lang.StringUtils;
@@ -22,7 +20,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -214,33 +211,7 @@ public class ManageCache {
 //		readJsonArea();
 		loadTask();
 		loadOSS();
-        loadSystemSetting();
 		logger.info("后台缓存加载完毕!");
-    }
-
-    /**
-     * 加载系统配置信息
-     */
-    public void loadSystemSetting() {
-        SystemSetting systemSetting = systemSettingService.selectOne(new SystemSetting());
-        if (systemSetting == null) {
-            throw new NullPointerException("未设置本地环境变量，请管理员在后台进行设置");
-        }
-
-        //从环境变量中分解出图集来。
-        if (StringUtils.isNotBlank(systemSetting.getImages())) {
-            String[] images = systemSetting.getImages().split(ManageContainer.product_images_spider);
-            if (systemSetting.getImagesList() == null) {
-                systemSetting.setImagesList(new LinkedList<String>());
-            } else {
-                systemSetting.getImagesList().clear();
-            }
-
-            for (int i = 0; i < images.length; i++) {
-                systemSetting.getImagesList().add(images[i]);
-            }
-        }
-        systemManager.setSystemSetting(systemSetting);
     }
 
 	public static void main(String[] args) {

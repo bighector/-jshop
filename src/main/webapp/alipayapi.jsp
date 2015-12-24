@@ -1,7 +1,7 @@
 <%@page import="net.jeeshop.core.pay.alipay.alipayescow.config.AlipayConfig"%>
 <%@page import="org.slf4j.LoggerFactory"%>
 <%@page import="org.slf4j.Logger"%>
-<%@page import="net.jeeshop.core.front.SystemManager"%>
+<%@page import="net.jeeshop.core.SystemManager"%>
 <%@page import="net.jeeshop.web.action.front.orders.PayInfo"%>
 <%@page import="net.jeeshop.core.pay.alipay.alipayescow.util.*"%>
 <%

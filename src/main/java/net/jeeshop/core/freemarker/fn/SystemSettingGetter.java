@@ -2,7 +2,7 @@ package net.jeeshop.core.freemarker.fn;
 
 import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 
 import java.util.List;
 

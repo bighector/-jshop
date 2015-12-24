@@ -20,8 +20,10 @@
                 }},
 				{name:"username", title:"帐号", data:"username"},
 				{name:"nickname", title:"昵称", data:"nickname"},
-                {name:"createtime", title:"创建时间", data:"createtime"},
-                {name:"role_name", title:"角色", data:"role_name"},
+                {name:"createtime", title:"创建时间", data:"createTime",render:function(data,type,row,meta){
+                    return data;
+                }},
+                {name:"role_name", title:"角色", data:"roleName"},
                 {name:"status", title:"状态", data:"status",render:function(data,type,row,meta){
                     if(data == "y"){
                         return '<img src="${basepath}/resource/images/action_check.gif">';

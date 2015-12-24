@@ -1,7 +1,11 @@
 package net.jeeshop.biz.system.service;
 
+import net.jeeshop.biz.base.bean.PageBean;
+import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.system.bean.SysUserBean;
+import net.jeeshop.biz.system.client.SysUserMapperExt;
 import net.jeeshop.client.system.SysUserMapper;
 import net.jeeshop.core.system.bean.User;
 import net.jeeshop.core.util.MD5;
@@ -13,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author dinguangx@163.com
  * @date 2015-12-19 00:14
@@ -21,10 +27,24 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService extends BaseService<SysUser, SysUserExample> {
     @Autowired
     SysUserMapper sysUserMapper;
+    @Autowired
+    SysUserMapperExt sysUserMapperExt;
 
     @Override
     protected BaseMapper<SysUser, SysUserExample> getMapper() {
         return sysUserMapper;
+    }
+
+    public SysUserBean selectUserBeanById(long uid) {
+        return sysUserMapperExt.selectUserBeanById(uid);
+    }
+    public PageBean<SysUserBean> selectPageBean(final SysUserBean params, PageQueryBean pageQueryBean) {
+        return executePageQuery(new PageQueryExecutor<SysUserBean>() {
+            @Override
+            public List<SysUserBean> executeQuery() {
+                return sysUserMapperExt.selectByParams(params);
+            }
+        }, pageQueryBean);
     }
 
     /**
@@ -90,6 +110,7 @@ public class UserService extends BaseService<SysUser, SysUserExample> {
 
     /**
      * 根据昵称查找用户
+     *
      * @param nickName
      * @return
      */
@@ -99,8 +120,10 @@ public class UserService extends BaseService<SysUser, SysUserExample> {
         criteria.andNicknameEqualTo(nickName);
         return selectUniqueByExample(example);
     }
+
     /**
      * 根据username查找用户
+     *
      * @param username
      * @return
      */

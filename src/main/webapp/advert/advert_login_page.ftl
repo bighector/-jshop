@@ -1,6 +1,6 @@
 <#--<%@page import="java.io.PrintWriter"%>-->
 <#--<%@page import="net.jeeshop.services.front.advert.bean.Advert"%>-->
-<#--<%@page import="net.jeeshop.core.front.SystemManager"%>-->
+<#--<%@page import="net.jeeshop.core.SystemManager"%>-->
 <#--<%@ page contentType="text/html; charset=UTF-8"%>-->
 <#--<%@ taglib prefix="s" uri="/struts-tags"%>-->
 <#--<!-- 登陆页面广告 &ndash;&gt;-->

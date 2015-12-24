@@ -9,7 +9,6 @@ import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -19,8 +18,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import net.jeeshop.core.front.SystemManager;
-import net.jeeshop.services.front.account.impl.AccountServiceImpl;
+import net.jeeshop.core.SystemManager;
 
 import org.apache.commons.lang.StringUtils;
 

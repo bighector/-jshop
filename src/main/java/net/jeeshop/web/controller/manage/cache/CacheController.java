@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by dylan on 15-9-5.
  */
-@Controller
+//@Controller
 @RequestMapping("/manage/cache")
 public class CacheController extends BaseController {
 

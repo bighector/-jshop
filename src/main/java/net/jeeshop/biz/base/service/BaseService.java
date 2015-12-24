@@ -55,14 +55,42 @@ public abstract class BaseService<E extends BaseModel, Example> {
      * @param pageQueryBean
      * @return
      */
-    public PageBean<E> selectPageList(Example example, PageQueryBean pageQueryBean) {
+    public PageBean<E> selectPageList(final Example example, PageQueryBean pageQueryBean) {
+        return executePageQuery(new PageQueryExecutor<E>() {
+            @Override
+            public List<E> executeQuery() {
+                return getMapper().selectByExample(example);
+            }
+        }, pageQueryBean);
+    }
+
+    /**
+     * 执行分页查询
+     * @param executor
+     * @param pageQueryBean
+     * @param <T>
+     * @return
+     */
+    protected <T> PageBean<T> executePageQuery(PageQueryExecutor<T> executor, PageQueryBean pageQueryBean) {
         initPageHelper(pageQueryBean);
-        List<E> datas = getMapper().selectByExample(example);
-        PageBean<E> pagerModel = new PageBean<E>();
+        List<T> datas = executor.executeQuery();
+        PageBean<T> pagerModel = new PageBean<T>();
         pagerModel.setList(datas);
         pagerModel.setRecordsTotal(((Page) datas).getTotal());
         pagerModel.setRecordsFiltered(pagerModel.getRecordsTotal());
         return pagerModel;
+    }
+
+    /**
+     * 分页查询实际执行者
+     * @param <T>
+     */
+    protected static interface PageQueryExecutor<T> {
+        /**
+         * 执行查询动作
+         * @return
+         */
+        public List<T> executeQuery() ;
     }
 
     protected void initPageHelper(PageQueryBean pageQueryBean) {

@@ -1,4 +1,4 @@
-<%@page import="net.jeeshop.core.front.SystemManager"%>
+<%@page import="net.jeeshop.core.SystemManager"%>
 <%@page import="net.jeeshop.services.manage.order.bean.Order"%>
 <%@page import="net.jeeshop.services.manage.order.OrderService"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>

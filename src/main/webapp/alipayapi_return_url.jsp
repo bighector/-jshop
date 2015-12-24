@@ -29,6 +29,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.Map"%>
+<%@ page import="net.jeeshop.core.SystemManager" %>
 <!DOCTYPE html>
 <html class="no-js">
 <head>

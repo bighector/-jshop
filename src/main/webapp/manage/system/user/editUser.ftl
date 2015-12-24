@@ -12,7 +12,7 @@
 
 <body>
 <#if e.id??>
-    <#assign formAction="111">
+    <#assign formAction="update">
 <#assign insertAction=false />
 <#else >
 <#assign formAction="insert">
@@ -71,7 +71,7 @@
                     <select name="rid">
                         <#list roleList as item>
                             <#--${item.id}-->
-                            <option value="${item.id}" <#if e.rid?? && item.id?string == e.rid?string>selected="selected"</#if>> ${item.role_name}</option>
+                            <option value="${item.id}" <#if e.rid?? && item.id?string == e.rid?string>selected="selected"</#if>> ${item.roleName}</option>
                         </#list>
                     </select>
 				</td>

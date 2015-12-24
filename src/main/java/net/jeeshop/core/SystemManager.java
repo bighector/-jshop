@@ -1,11 +1,11 @@
-package net.jeeshop.core.front;
+package net.jeeshop.core;
 
 import com.google.common.collect.Lists;
 import net.jeeshop.biz.article.bean.ArticleCatalogBean;
+import net.jeeshop.biz.system.bean.SystemSettingBean;
 import net.jeeshop.core.cache.CacheProvider;
 import net.jeeshop.core.cache.SimpleCacheProvider;
 import net.jeeshop.core.listener.SystemListener;
-import net.jeeshop.model.cms.ArticleCatalog;
 import net.jeeshop.services.front.advert.bean.Advert;
 import net.jeeshop.services.front.area.bean.Area;
 import net.jeeshop.services.front.attribute.bean.Attribute;
@@ -22,7 +22,6 @@ import net.jeeshop.services.manage.activity.bean.Activity;
 import net.jeeshop.services.manage.hotquery.bean.Hotquery;
 import net.jeeshop.services.manage.order.bean.OrdersReport;
 import net.jeeshop.services.manage.oss.bean.AliyunOSS;
-import net.jeeshop.services.manage.systemSetting.bean.SystemSetting;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +54,6 @@ public class SystemManager {
 //    private List<Catalog> catalogsArticle = new LinkedList<Catalog>();//文章目录列表
 //    private List<Attribute> attrs;//属性集合
 //    private Map<String,Attribute> attrsMap = new HashMap<String, Attribute>();//属性集合map
-    private SystemSetting systemSetting;//系统设置
 //    private OrdersReport ordersReport = new OrdersReport();//后台首页,统计数据
 //    private Map<String,AccountRank> accountRankMap = new TreeMap<String, AccountRank>();//会员等级表
 //    private Map<String,NotifyTemplate> notifyTemplateMap;//邮件模板
@@ -167,7 +165,7 @@ public class SystemManager {
 	 * @return
 	 */
 	public String getImageRandom(){
-        SystemSetting systemSetting = getSystemSetting();
+        SystemSettingBean systemSetting = getSystemSetting();
 		if(systemSetting==null || systemSetting.getImagesList()==null || systemSetting.getImagesList().size()==0){
 			logger.error("系统未设置图集，但广告位却设置了图集优先显示。请管理员立刻设置图集。");
 			return null;
@@ -328,11 +326,11 @@ public class SystemManager {
     }
 
     //系统设置
-    public SystemSetting getSystemSetting() {
+    public SystemSettingBean getSystemSetting() {
         return getCacheObject("systemSetting");
     }
 
-    public void setSystemSetting(SystemSetting systemSetting) {
+    public void setSystemSetting(SystemSettingBean systemSetting) {
         putCacheObject("systemSetting", systemSetting);
     }
 

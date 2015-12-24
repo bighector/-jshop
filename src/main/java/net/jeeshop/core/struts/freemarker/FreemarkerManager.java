@@ -2,7 +2,7 @@
 //
 //import freemarker.template.TemplateException;
 //import net.jeeshop.core.freemarker.fn.*;
-//import net.jeeshop.core.front.SystemManager;
+//import net.jeeshop.core.SystemManager;
 //
 //import javax.servlet.ServletContext;
 //

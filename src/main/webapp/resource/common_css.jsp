@@ -5,7 +5,7 @@
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/base.css"  type="text/css"> --%>
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/tag.css"  type="text/css"> --%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
-<%@page import="net.jeeshop.core.front.SystemManager"%>
+<%@page import="net.jeeshop.core.SystemManager"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/sticky-footer.css"  type="text/css">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/bootswatch.min.css"  type="text/css"> --%>
 

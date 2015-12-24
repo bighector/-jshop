@@ -1,6 +1,6 @@
 package net.jeeshop.core.task;
 
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.services.manage.emailNotifyProduct.EmailNotifyProductService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

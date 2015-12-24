@@ -11,7 +11,7 @@ import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.*;
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.services.manage.oss.bean.AliyunOSS;
 
 import org.slf4j.Logger;

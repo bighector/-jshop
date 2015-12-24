@@ -4,13 +4,13 @@ import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.bean.LogType;
+import net.jeeshop.biz.system.bean.SysUserBean;
 import net.jeeshop.biz.system.service.MenuService;
 import net.jeeshop.biz.system.service.RoleService;
 import net.jeeshop.biz.system.service.SystemLogService;
 import net.jeeshop.biz.system.service.UserService;
 import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.exception.JShopException;
-import net.jeeshop.core.oscache.ManageCache;
 import net.jeeshop.core.system.bean.User;
 import net.jeeshop.core.util.MD5;
 import net.jeeshop.model.system.SysRoleExample;
@@ -20,14 +20,12 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
 import net.jeeshop.web.util.RequestHolder;
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -41,9 +39,6 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/manage/user")
 public class UserController extends ManageBaseController<SysUser, SysUserExample> {
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
-
-    private static final long serialVersionUID = 1L;
 
     private static final String page_input = "/manage/system/login";
     private static final String page_home = "/manage/system/home";
@@ -69,8 +64,8 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
     private MenuService menuService;
     @Autowired
     private SystemLogService systemLogService;
-    @Resource
-    private ManageCache manageCache;
+//    @Resource
+//    private ManageCache manageCache;
 
     @Override
     public BaseService<SysUser, SysUserExample> getService() {
@@ -79,9 +74,8 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
 
     @RequestMapping("loadData")
     @ResponseBody
-    public PageBean<SysUser> loadData(SysUser queryParams, PageQueryBean pageQueryBean) {
-        SysUserExample sysUserExample = new SysUserExample();
-        PageBean pager = userService.selectPageList(sysUserExample, pageQueryBean);
+    public PageBean<SysUserBean> loadData(SysUserBean queryParams, PageQueryBean pageQueryBean) {
+        PageBean pager = userService.selectPageBean(queryParams, pageQueryBean);
         return pager;
     }
 
@@ -210,7 +204,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
             }
             LoginUserHolder.invalidateManageSession();
         }
-        return page_input;
+        return "redirect:login";
     }
 
     /**
@@ -309,14 +303,15 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
         return "redirect:changePwd";
     }
 
-
     @Override
-    protected void beforeToAdd(SysUser e, ModelMap modelMap) {
+    public String toEdit(@ModelAttribute("id") Long id, ModelMap modelMap) {
+        modelMap.addAttribute("e", userService.selectUserBeanById(id));
         modelMap.addAttribute("roleList", roleService.selectByExample(new SysRoleExample()));
+        return page_toEdit;
     }
 
     @Override
-    protected void beforeToEdit(SysUser e, ModelMap modelMap) {
+    protected void beforeToAdd(SysUser e, ModelMap modelMap) {
         modelMap.addAttribute("roleList", roleService.selectByExample(new SysRoleExample()));
     }
 
@@ -369,7 +364,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
     @RequestMapping("initManageIndex")
     public String initManageIndex() {
         //店主每次登陆后台都需要加载综合统计数据？！还是说每次都触发加载，但是到底加载不加载具体看系统的加载策略？！
-        manageCache.loadOrdersReport();
+//        manageCache.loadOrdersReport();
         return page_initManageIndex;
     }
 

@@ -1,8 +1,6 @@
 package net.jeeshop.core;
 
 import net.jeeshop.core.dao.page.PagerModel;
-import net.jeeshop.core.front.SystemManager;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

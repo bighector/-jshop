@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
-    <context:component-scan base-package="net.jeeshop.web.action" />
+    <!--<context:component-scan base-package="net.jeeshop.web.action" />-->
     <context:component-scan base-package="net.jeeshop.web.controller" />
     <!--<import resource="classpath*:strutsSpring/front/spring_struts.xml"/>-->
     <!-- 配置自定义转换服务器 -->
@@ -51,9 +51,9 @@
         <!-- 全局变量部分 -->
         <property name="freemarkerVariables">
             <map>
-                <entry key="systemManager">
-                    <bean class="net.jeeshop.core.freemarker.fn.SystemManagerGetter" />
-                </entry>
+                <!--<entry key="systemManager">-->
+                    <!--<bean class="net.jeeshop.core.freemarker.fn.SystemManagerGetter" />-->
+                <!--</entry>-->
                 <entry key="systemSetting">
                     <bean class="net.jeeshop.core.freemarker.fn.SystemSettingGetter" />
                 </entry>
@@ -66,15 +66,15 @@
                 <entry key="checkPrivilege">
                     <bean class="net.jeeshop.core.freemarker.fn.PrivilegeChecker" />
                 </entry>
-                <entry key="i18nParser">
-                    <bean class="net.jeeshop.core.freemarker.fn.I18N" />
-                </entry>
-                <entry key="keyValueParser">
-                    <bean class="net.jeeshop.core.freemarker.fn.KeyValueGetter" />
-                </entry>
-                <entry key="shoppingCart">
-                    <bean class="net.jeeshop.core.freemarker.fn.ShoppingCartGetter" />
-                </entry>
+                <!--<entry key="i18nParser">-->
+                    <!--<bean class="net.jeeshop.core.freemarker.fn.I18N" />-->
+                <!--</entry>-->
+                <!--<entry key="keyValueParser">-->
+                    <!--<bean class="net.jeeshop.core.freemarker.fn.KeyValueGetter" />-->
+                <!--</entry>-->
+                <!--<entry key="shoppingCart">-->
+                    <!--<bean class="net.jeeshop.core.freemarker.fn.ShoppingCartGetter" />-->
+                <!--</entry>-->
             </map>
         </property>
     </bean>

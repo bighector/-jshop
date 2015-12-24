@@ -1,7 +1,7 @@
 package net.jeeshop.web.action.front.news;
 
 import net.jeeshop.core.dao.page.PagerModel;
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.services.front.catalog.bean.Catalog;
 import net.jeeshop.services.front.news.NewsService;
 import net.jeeshop.services.front.news.bean.News;

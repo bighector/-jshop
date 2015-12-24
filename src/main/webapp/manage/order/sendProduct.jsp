@@ -1,5 +1,6 @@
 <%@page import="net.jeeshop.services.manage.order.bean.Order"%>
 <%@page import="net.jeeshop.core.KeyValueHelper"%>
+<%@ page import="net.jeeshop.core.SystemManager" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page session="false"%>

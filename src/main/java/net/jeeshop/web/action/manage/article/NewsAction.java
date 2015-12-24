@@ -5,7 +5,7 @@
 package net.jeeshop.web.action.manage.article;
 
 import net.jeeshop.core.dao.page.PagerModel;
-import net.jeeshop.core.front.SystemManager;
+import net.jeeshop.core.SystemManager;
 import net.jeeshop.model.system.SysUser;
 import net.jeeshop.services.manage.article.NewsService;
 import net.jeeshop.services.manage.article.bean.News;
