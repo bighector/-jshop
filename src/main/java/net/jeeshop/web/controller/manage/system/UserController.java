@@ -82,12 +82,11 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
     /**
      * 登录页面
      *
-     * @param e
      * @param session
      * @return
      */
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String login(@ModelAttribute("e") SysUser e, HttpSession session) {
+    public String login(HttpSession session) {
         if (session.getAttribute(ManageContainer.manage_session_user_info) != null) {
             return "redirect:/manage/user/home";
         }
@@ -101,9 +100,9 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
      * @throws Exception
      */
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(
-            @RequestParam("username") String username,
+    public String login(@RequestParam("username") String username,
             @RequestParam("password") String password, ModelMap model) throws Exception {
+        model.addAttribute("last_login_username", username);
         String errorMsg;
         if (RequestHolder.getSession().getAttribute(ManageContainer.manage_session_user_info) != null) {
             return "redirect:/manage/user/home";

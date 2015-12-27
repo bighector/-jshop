@@ -25,7 +25,7 @@
                                     <span class="input-group-addon">
                                         <span class="fa fa-user fa-fw"></span>
                                     </span>
-                                    <input type="text" value="${e.username!""}" placeholder="账号" name="username"
+                                    <input type="text" value="${last_login_username!""}" placeholder="账号" name="username"
                                            class="len form-control" id="username" autofocus/>
                                 </div>
                             </div>

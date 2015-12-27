@@ -80,9 +80,9 @@ function changeStyle(){
 								id="manageHttp" data-rule="required;manageHttp;length[1~100];"/></td>
 					</tr>
 					<tr>
-						<td style="text-align: right;">log</td>
-						<td style="text-align: left;"><input type="text"  name="log"  value="${e.log!""}"
-								id="log" data-rule="required;log;length[0~100];"/></td>
+						<td style="text-align: right;">logo</td>
+						<td style="text-align: left;"><input type="text"  name="logo"  value="${e.logo!""}"
+								id="logo" data-rule="required;logo;length[0~100];"/></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">网站标题</td>
@@ -326,8 +326,6 @@ KindEditor.ready(function(K) {
 function clearRootImagePath(picInput){
 	var _pifeSpan = $("#pifeSpan").text();
 	var _imgVal = picInput.val();
-	console.log("1===>_imgVal = "+_imgVal);
-	console.log("2===>"+_imgVal.indexOf("/attached/"));
 	picInput.val(_imgVal.substring(_imgVal.indexOf("/attached/")));
 }
 

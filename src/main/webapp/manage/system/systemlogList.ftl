@@ -1,34 +1,5 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
 <@page.pageBase currentMenu="日志管理">
-<#--<style type="text/css">-->
-<#--.titleCss {-->
-	<#--background-color: #e6e6e6;-->
-	<#--border: solid 1px #e6e6e6;-->
-	<#--position: relative;-->
-	<#--margin: -1px 0 0 0;-->
-	<#--line-height: 32px;-->
-	<#--text-align: left;-->
-<#--}-->
-
-<#--.aCss {-->
-	<#--overflow: hidden;-->
-	<#--word-break: keep-all;-->
-	<#--white-space: nowrap;-->
-	<#--text-overflow: ellipsis;-->
-	<#--text-align: left;-->
-	<#--font-size: 12px;-->
-<#--}-->
-
-<#--.liCss {-->
-	<#--white-space: nowrap;-->
-	<#--text-overflow: ellipsis;-->
-	<#--overflow: hidden;-->
-	<#--height: 30px;-->
-	<#--text-align: left;-->
-	<#--margin-left: 10px;-->
-	<#--margin-right: 10px;-->
-<#--}-->
-<#--</style>-->
 <script>
 $(function(){
     var table = $('#dataTable').DataTable({
@@ -57,12 +28,12 @@ $(function(){
 							<#assign y_n = {'':"全部",'y':'是','n':'否'}>
                             <select id="diffAreaLogin" name="diffAreaLogin">
 							<#list y_n?keys as key>
-                                <option value="${key}" <#if e.diffAreaLogin?? && e.diffAreaLogin==key>selected="selected" </#if>>${y_n[key]}</option>
+                                <option value="${key}">${y_n[key]}</option>
 							</#list>
                             </select>
 						</td>
 						<td>登陆账号</td>
-						<td><input type="text" value="${e.account!""}" class="input-medium search-query" name="account"/></td>
+						<td><input type="text" class="input-medium search-query" name="account"/></td>
 					</tr>
 				</table>
 
