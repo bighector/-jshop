@@ -1,8 +1,8 @@
 package net.jeeshop.biz.system.bean;
 
 import com.google.common.collect.Lists;
+import net.jeeshop.biz.system.model.SystemSetting;
 import net.jeeshop.core.ManageContainer;
-import net.jeeshop.model.system.SystemSetting;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.List;

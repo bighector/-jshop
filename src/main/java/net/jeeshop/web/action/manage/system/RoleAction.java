@@ -1,12 +1,11 @@
 package net.jeeshop.web.action.manage.system;
 
+import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.Services;
 import net.jeeshop.core.dao.page.PagerModel;
 import net.jeeshop.core.exception.NotThisMethod;
 import net.jeeshop.core.system.bean.Role;
-import net.jeeshop.core.system.bean.User;
-import net.jeeshop.model.system.SysUser;
 import net.jeeshop.services.manage.system.impl.MenuService;
 import net.jeeshop.services.manage.system.impl.RoleService;
 import net.jeeshop.web.action.BaseController;
@@ -25,67 +24,70 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 角色action
+ *
  * @author huangf
  * @author dylan
- *
  */
 @Controller
 @RequestMapping("/manage/role")
 public class RoleAction extends BaseController<Role> {
-	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(RoleAction.class);
+    private static final long serialVersionUID = 1L;
+    private static final Logger logger = LoggerFactory.getLogger(RoleAction.class);
     @Autowired
-	private RoleService roleService;
+    private RoleService roleService;
     @Autowired
-	private MenuService menuService;
+    private MenuService menuService;
 
-	public void setRoleService(RoleService roleService) {
-		this.roleService = roleService;
-	}
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
+    }
 
-	public void setMenuService(MenuService menuService) {
-		this.menuService = menuService;
-	}
+    public void setMenuService(MenuService menuService) {
+        this.menuService = menuService;
+    }
 
     public RoleAction() {
         super.page_toList = "/manage/system/role/roleList";
         super.page_toEdit = "/manage/system/role/editRole";
         super.page_toAdd = "/manage/system/role/editRole";
     }
-	/**
-	 * 添加角色
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 添加角色
+     *
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "save", method = RequestMethod.POST)
     @ResponseBody
-	public String save(HttpServletRequest request, Role role) throws Exception {
-		role.setRole_name(request.getParameter("roleName"));
+    public String save(HttpServletRequest request, Role role) throws Exception {
+        role.setRole_name(request.getParameter("roleName"));
         role.setId(Long.valueOf(request.getParameter("id")));
         role.setRole_desc(request.getParameter("roleDesc"));
         role.setRole_dbPrivilege(request.getParameter("role_dbPrivilege"));
         role.setPrivileges(request.getParameter("privileges"));
         role.setStatus(request.getParameter("status"));
-		if(role.getRole_name()==null || role.getRole_name().trim().equals("")){
-			return "0";
-		}else{
-			roleService.editRole(role, request.getParameter("insertOrUpdate"));
-		}
-		
-		return "1";
-	}
-	
-	@Override
-    @RequestMapping(value = "deletes", method = RequestMethod.POST)
-	public String deletes(HttpServletRequest request, Long[] ids, @ModelAttribute("e") Role e, RedirectAttributes flushAttrs) throws Exception {
-		throw new NotThisMethod(ManageContainer.not_this_method);
-	}
+        if (role.getRole_name() == null || role.getRole_name().trim().equals("")) {
+            return "0";
+        } else {
+            roleService.editRole(role, request.getParameter("insertOrUpdate"));
+        }
 
-	/**
-	 * 批量删除角色和角色下的所有权限
-	 * @return
-	 * @throws Exception
-	 */
+        return "1";
+    }
+
+    @Override
+    @RequestMapping(value = "deletes", method = RequestMethod.POST)
+    public String deletes(HttpServletRequest request, Long[] ids, @ModelAttribute("e") Role e, RedirectAttributes flushAttrs) throws Exception {
+        throw new NotThisMethod(ManageContainer.not_this_method);
+    }
+
+    /**
+     * 批量删除角色和角色下的所有权限
+     *
+     * @return
+     * @throws Exception
+     */
 //	public String delet() throws Exception {
 //		logger.error("role.delete...");
 //		throw new NotThisMethod(ManageContainer.not_this_method);
@@ -99,33 +101,31 @@ public class RoleAction extends BaseController<Role> {
 ////		}
 ////		return selectList();
 //	}
+    @Override
+    public Services<Role> getService() {
+        return this.roleService;
+    }
 
+    @Override
+    public void insertAfter(Role e) {
+        e.clear();
+    }
 
+    @Override
+    protected void selectListAfter(PagerModel pager) {
+        pager.setPagerUrl("selectList");
+    }
 
-	@Override
-	public Services<Role> getService() {
-		return this.roleService;
-	}
-
-	@Override
-	public void insertAfter(Role e) {
-		e.clear();
-	}
-	@Override
-	protected void selectListAfter(PagerModel pager) {
-		pager.setPagerUrl("selectList");
-	}
-	
-	/**
-	 * 只能是admin才具有编辑其他用户权限的功能
-	 */
-	@Override
+    /**
+     * 只能是admin才具有编辑其他用户权限的功能
+     */
+    @Override
     @RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(HttpServletRequest request, @ModelAttribute("e") Role role, RedirectAttributes flushAttrs) throws Exception {
+    public String update(HttpServletRequest request, @ModelAttribute("e") Role role, RedirectAttributes flushAttrs) throws Exception {
         SysUser user = LoginUserHolder.getLoginUser();
-		if(!user.getUsername().equals("admin")){
-			throw new NullPointerException(ManageContainer.RoleAction_update_error);
-		}
-		return super.update(request, role, flushAttrs);
-	}
+        if (!user.getUsername().equals("admin")) {
+            throw new NullPointerException(ManageContainer.RoleAction_update_error);
+        }
+        return super.update(request, role, flushAttrs);
+    }
 }

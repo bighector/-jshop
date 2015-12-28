@@ -18,17 +18,17 @@
                         connectionURL="jdbc:mysql://localhost:3306/jshop"
                         userId="root" password="root"/>
 
-        <javaModelGenerator targetPackage="net.jeeshop.model.cms"
-                            targetProject="src/main/gen">
+        <javaModelGenerator targetPackage="net.jeeshop.biz.cms.model"
+                            targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <property name="rootClass" value="net.jeeshop.biz.base.model.BaseModel"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mapper"
-                         targetProject="src/main/gen"></sqlMapGenerator>
-        <javaClientGenerator type="org.mybatis.generator.custom.javamapper.GenericJavaMapperGenerator" targetPackage="net.jeeshop.client.cms"
-                             targetProject="src/main/gen">
+        <sqlMapGenerator targetPackage="mapper.cms"
+                         targetProject="src/main/resources"></sqlMapGenerator>
+        <javaClientGenerator type="org.mybatis.generator.custom.javamapper.GenericJavaMapperGenerator" targetPackage="net.jeeshop.biz.cms.client"
+                             targetProject="src/main/java">
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 

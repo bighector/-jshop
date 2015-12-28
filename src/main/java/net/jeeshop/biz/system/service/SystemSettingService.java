@@ -2,9 +2,9 @@ package net.jeeshop.biz.system.service;
 
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.client.system.SystemSettingMapper;
-import net.jeeshop.model.system.SystemSetting;
-import net.jeeshop.model.system.SystemSettingExample;
+import net.jeeshop.biz.system.client.SystemSettingMapper;
+import net.jeeshop.biz.system.model.SystemSetting;
+import net.jeeshop.biz.system.model.SystemSettingExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

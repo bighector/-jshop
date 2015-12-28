@@ -1,11 +1,10 @@
 package net.jeeshop.web.util;
 
 import net.jeeshop.biz.system.bean.MenuItem;
+import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.core.FrontContainer;
 import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.exception.JShopException;
-import net.jeeshop.core.system.bean.User;
-import net.jeeshop.model.system.SysUser;
 import net.jeeshop.services.front.account.bean.Account;
 
 import javax.servlet.http.HttpSession;

@@ -7,8 +7,8 @@ import java.util.Map.Entry;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import net.jeeshop.biz.article.bean.ArticleCatalogBean;
-import net.jeeshop.biz.article.service.ArticleCatalogService;
+import net.jeeshop.biz.cms.bean.ArticleCatalogBean;
+import net.jeeshop.biz.cms.service.ArticleCatalogService;
 import net.jeeshop.core.FrontContainer;
 import net.jeeshop.core.KeyValueHelper;
 import net.jeeshop.core.SystemManager;

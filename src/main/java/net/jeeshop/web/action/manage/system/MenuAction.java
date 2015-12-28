@@ -4,7 +4,7 @@
 //import net.jeeshop.core.Services;
 //import net.jeeshop.core.dao.page.PagerModel;
 //import net.jeeshop.core.system.bean.*;
-//import net.jeeshop.model.system.SysUser;
+//import net.jeeshop.biz.system.model.SysUser;
 //import net.jeeshop.services.manage.system.impl.MenuService;
 //import net.jeeshop.services.manage.system.impl.PrivilegeService;
 //import net.jeeshop.web.action.BaseController;

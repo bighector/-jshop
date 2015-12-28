@@ -1,10 +1,10 @@
 package net.jeeshop.core.cache;
 
 import net.jeeshop.biz.system.bean.SystemSettingBean;
+import net.jeeshop.biz.system.model.SystemSetting;
+import net.jeeshop.biz.system.model.SystemSettingExample;
 import net.jeeshop.biz.system.service.SystemSettingService;
 import net.jeeshop.core.SystemManager;
-import net.jeeshop.model.system.SystemSetting;
-import net.jeeshop.model.system.SystemSettingExample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

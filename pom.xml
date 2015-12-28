@@ -27,19 +27,19 @@
                         <configuration>
                             <sources>
                                 <source>src/main/java</source>
-                                <source>src/main/gen</source>
                             </sources>
                         </configuration>
                     </execution>
                     <execution>
                         <id>add-test-source</id>
-                        <phase>initialize</phase>
+                        <phase>generate-test-sources</phase>
                         <goals>
                             <goal>add-test-source</goal>
                         </goals>
                         <configuration>
                             <sources>
-                                <source>src/mybatis/mybatis-generator</source>
+                                <source>src/mybatis-generator/src</source>
+                                <source>src/mybatis-generator/resources</source>
                             </sources>
                         </configuration>
                     </execution>

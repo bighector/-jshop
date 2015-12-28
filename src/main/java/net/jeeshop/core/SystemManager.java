@@ -1,7 +1,7 @@
 package net.jeeshop.core;
 
 import com.google.common.collect.Lists;
-import net.jeeshop.biz.article.bean.ArticleCatalogBean;
+import net.jeeshop.biz.cms.bean.ArticleCatalogBean;
 import net.jeeshop.biz.system.bean.SystemSettingBean;
 import net.jeeshop.core.cache.CacheProvider;
 import net.jeeshop.core.cache.SimpleCacheProvider;
