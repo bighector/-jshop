@@ -13,6 +13,7 @@ import net.sf.json.JSONArray;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +41,14 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
         return menuService;
     }
 
+    private static final String PAGE_TOLIST = "/manage/system/menu/menuList";
+    private static final String PAGE_TOEDIT = "/manage/system/menu/editMenu";
+    private static final String PAGE_ADDORUPDATE = "/manage/system/menu/addOrUpdate";
+
     SystemMenuController() {
-        super.page_toList = "manage/system/menu/menuList";
-        super.page_toEdit = "manage/system/menu/editMenu";
-        super.page_toAdd = "manage/system/menu/editRole";
+        super.page_toList = PAGE_TOLIST ;
+        super.page_toEdit = PAGE_TOEDIT ;
+        super.page_toAdd = PAGE_TOEDIT ;
     }
 
     @RequestMapping(value = "getMenusByPid" , method = RequestMethod.GET )
@@ -96,6 +101,18 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
             e.printStackTrace();
         }
         return jsonStr;
+    }
+
+    /**
+     * 点击菜单树右侧显示菜单信息
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "showcase" , method = RequestMethod.GET)
+    public String showcase(@RequestParam String id , ModelMap model) {
+        SysMenu sysMenu = menuService.selectById(Long.parseLong(id));
+        model.addAttribute("e", sysMenu);
+        return PAGE_ADDORUPDATE;
     }
 
 }

@@ -55,7 +55,7 @@ var setting = {
                 zTree.expandNode(treeNode);
             },
 			onMouseDown: function (event, treeId, treeNode) {
-                var url = "toAddOrUpdate?id="+treeNode.id;
+                var url = "showcase?id="+treeNode.id;
                 if(true){
                     $("#iframeMenuEdit").attr("src",url);
                     return;
