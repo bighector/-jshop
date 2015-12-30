@@ -7,4 +7,25 @@
     from t_menu m, t_privilege p
     where m.id = p.mid and p.rid = #{rid}
   </select>
+
+  <select id="selectByCondition" resultMap="net.jeeshop.biz.system.client.SysMenuMapper.BaseResultMap" parameterType="java.util.Map">
+      select
+          m.id,
+          m.pid,
+          m.url,
+          m.name,
+          m.order_Num,
+          m.type,
+          m.create_time,
+          m.update_time,
+          m.create_account,
+          m.update_account
+      from t_menu m, t_privilege p
+      where m.id = p.mid 
+      and m.pid=#{pid}
+      <if test="rid != null">
+          and p.rid = #{rid}
+      </if>
+
+  </select>
 </mapper>

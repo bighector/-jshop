@@ -79,7 +79,7 @@ loadMenusTree();
 function loadMenusTree(){
 	$.ajax({
 		url:"${basepath}/manage/menu/getMenusByPid?pid=0",
-					type:"post",
+					type:"get",
 					dataType:"text",
 					success:function(data, textStatus){
 						var zNodes = eval('('+data+')');
