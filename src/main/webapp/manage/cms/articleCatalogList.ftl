@@ -76,7 +76,7 @@
 		</table>
 	</form>
 
-	<div class="alert alert-info" style="margin-bottom: 2px;">友情提示：商品目录一般分为两层，大类别、小类别。商品目录编码必须唯一。</div>
+	<div class="alert alert-info" style="margin-bottom: 2px;">友情提示：文章分类编码必须唯一。</div>
 	<table id="treegrid" title="商品类别目录" class="table tree table-bordered" style="min-width:800px;min-height:250px">
 		<thead>
 			<tr>
