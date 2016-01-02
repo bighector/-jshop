@@ -110,4 +110,11 @@ public class ArticleCatalogService extends BaseService<ArticleCatalog, ArticleCa
         List<ArticleCatalog> catalogs = articleCatalogMapper.selectByExample(example);
         return catalogs.size() > 1 ? catalogs.get(0) : null;
     }
+
+    /**
+     * 刷新文章分类的缓存
+     */
+    public void refreshCache() {
+        //TODO
+    }
 }

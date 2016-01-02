@@ -32,7 +32,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @throws Exception
      */
     @RequestMapping("selectList")
-    public String selectList(ModelMap modelMap) throws Exception {
+    public String selectList(ModelMap modelMap) {
         beforeToList(modelMap);
         return page_toList;
     }
@@ -117,7 +117,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @throws Exception
      */
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String insert(@ModelAttribute("e") Model e, RedirectAttributes flushAttrs) throws Exception {
+    public String insert(@ModelAttribute("e") Model e, RedirectAttributes flushAttrs) {
 
         getService().insert(e);
         addMessage(flushAttrs, "操作成功！");
@@ -131,7 +131,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @throws Exception
      */
     @RequestMapping("back")
-    public String back(ModelMap model) throws Exception {
+    public String back(ModelMap model) {
         return selectList(model);
     }
 

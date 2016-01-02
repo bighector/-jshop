@@ -59,14 +59,13 @@
 	}
 </script>
 	<form action="${basepath}/manage/catalog" name="form" id="form" method="post" theme="simple">
-		<input type="hidden" value="${e.type!""}" name="type" id="_type" />
 		<table class="table table-bordered table-condensed table-hover">
 			<tr>
 				<td colspan="16">
 
-					<a href="selectList" class="btn btn-primary">
-						<i class="icon-search icon-white"></i> 查询
-					</a>
+					<#--<a href="selectList" class="btn btn-primary">-->
+						<#--<i class="icon-search icon-white"></i> 查询-->
+					<#--</a>-->
 						
 
 					<a href="toAdd" class="btn btn-success">

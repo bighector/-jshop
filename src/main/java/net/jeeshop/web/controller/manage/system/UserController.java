@@ -151,7 +151,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
      */
     @Override
     @RequestMapping("insert")
-    public String insert(@ModelAttribute("e") SysUser user, RedirectAttributes flushAttrs) throws Exception {
+    public String insert(@ModelAttribute("e") SysUser user, RedirectAttributes flushAttrs) {
         return save0(user, flushAttrs);
     }
 
