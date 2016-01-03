@@ -14,7 +14,7 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 			<table class="table table-bordered" style="width: 95%;margin: auto;">
 				<tr>
 					<td colspan="2" style="text-align: center;">
-						<#if e.id??>
+						<#if id??>
                             <button method="update" class="btn btn-success">
                                 <i class="icon-ok icon-white"></i> 保存
                             </button>
