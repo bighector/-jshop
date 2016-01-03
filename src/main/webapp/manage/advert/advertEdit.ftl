@@ -12,18 +12,7 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 </style>
 <form action="${basepath}/manage/advert" theme="simple" name="form1">
 			<table class="table table-bordered" style="width: 95%;margin: auto;">
-				<tr>
-					<td colspan="2" style="text-align: center;">
-						<#if id??>
-                            <button method="update" class="btn btn-success">
-                                <i class="icon-ok icon-white"></i> 保存
-                            </button>
-						<#else>
-                            <button method="insert" class="btn btn-success">
-                                <i class="icon-ok icon-white"></i> 新增
-                            </button>
-						</#if>
-				</tr>
+				
 				<tr style="background-color: #dff0d8">
 					<td colspan="2" style="background-color: #dff0d8;text-align: center;">
 						<strong>广告内容编辑 </strong>
@@ -95,6 +84,18 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 					<td style="text-align: left;">
 						<textarea name="html" style="width:100%;height:300px;visibility:hidden;" data-rule="内容:required;content;">${e.html!""}</textarea>
 					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						<#if id??>
+                            <button method="update" class="btn btn-success">
+                                <i class="icon-ok icon-white"></i> 保存
+                            </button>
+						<#else>
+                            <button method="insert" class="btn btn-success">
+                                <i class="icon-ok icon-white"></i> 新增
+                            </button>
+						</#if>
 				</tr>
 			</table>
 </form>
