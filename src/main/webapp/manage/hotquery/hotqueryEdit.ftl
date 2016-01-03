@@ -5,12 +5,10 @@
 		提示：对【热门查询】的添加/修改不会立即生效，需要到系统管理--缓存管理页面点击【热门查询关键字】按钮，才能生效。
 	</div>
 	
-	<form action="${basepath}/manage/hotquery" namespace="/manage" theme="simple" name="form" id="form" >
-		<input type="hidden" value="${e.type!""}" name="type"/>
-		<input type="hidden" value="${e.catalogID!""}" id="catalogID"/>
+	<form action="${basepath}/manage/hotquery" method="POST"  id="form">
 		<table class="table table-bordered">
 			<tr>
-				<td colspan="2" style="text-align: center;">
+				<td colspan="2" style="text-align: left;">
 					<#if e.id??>
                         <button method="update" class="btn btn-success">
                             <i class="icon-ok icon-white"></i> 保存
@@ -32,14 +30,16 @@
 				<td><input type="hidden" value="${e.id!""}" name="id" label="id" /></td>
 			</tr>
 			<tr>
-				<td style="text-align: right;width: 100px;">热门查询关键字</td>
-				<td style="text-align: left;"><input type="text"  value="${e.key1!""}" name="key1"  id="key1" style="width: 80%;"
-				data-rule="热门查询关键字:required;key1;length[1~100];"/></td>
+				<td style="text-align: center;width:200px;">热门查询关键字</td>
+				<td style="text-align: left;">
+					<input type="text"  value="${e.key1!""}" name="key1"  id="key1" width=" 350px" data-rule="热门查询关键字:required;key1;length[1~100];"/>
+				</td>
 			</tr>
 			<tr>
-				<td style="text-align: right;width: 100px;">链接</td>
-				<td style="text-align: left;"><input type="text"  value="${e.url!""}" name="url"  id="url" style="width: 80%;"
-				data-rule="链接:required;url;length[1~100];"/></td>
+				<td style="text-align: center;width:200px;">链接</td>
+				<td style="text-align: left;">
+					<input type="text"  value="${e.url!""}" name="url"  id="url" data-rule="链接:required;url;length[1~100];"/>
+				</td>
 			</tr>
 			
 			<#if e.createAccount??>
