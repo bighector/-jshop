@@ -146,3 +146,18 @@ CREATE TABLE `t_article_catalog` (
  PRIMARY KEY (`id`),
  UNIQUE KEY `code_UNIQUE` (`code`)
 ) comment='文章分类';
+
+drop table if exists t_system_express;
+CREATE TABLE `t_system_express` (
+ `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
+ `code` varchar(45) NOT NULL comment '配送方式编码',
+ `name` varchar(100) comment '配送方式名称',
+ `fee` decimal(9,2) comment '配送费用',
+ `order1` int(11) comment '显示顺序',
+ `create_time` datetime comment '创建时间',
+ `create_account` varchar(45) comment '创建人',
+ `update_time` datetime comment '更新时间',
+ `update_account` varchar(45) comment '更新人',
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `code_UNIQUE` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 comment='配送方式';
