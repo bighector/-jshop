@@ -62,7 +62,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="net.jeeshop.biz.cms.client,net.jeeshop.biz.system.client"/>
+        <property name="basePackage" value="net.jeeshop.biz.*.client"/>
     </bean>
 
     <!-- 定义事务管理器（声明式的事务） -->
