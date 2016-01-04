@@ -55,7 +55,7 @@
         <table tableName="t_system_log" domainObjectName="SystemLog">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table> 
-        <table tableName="t_system_express" domainObjectName="SystemExpress">
+        <table tableName="t_express" domainObjectName="SystemExpress">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
     </context>

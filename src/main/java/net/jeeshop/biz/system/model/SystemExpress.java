@@ -15,7 +15,7 @@ public class SystemExpress extends BaseModel implements Serializable {
     private BigDecimal fee;
 
     /** 显示顺序 */
-    private Integer order1;
+    private Integer ordinal;
 
     private static final long serialVersionUID = 1L;
 
@@ -43,11 +43,11 @@ public class SystemExpress extends BaseModel implements Serializable {
         this.fee = fee;
     }
 
-    public Integer getOrder1() {
-        return order1;
+    public Integer getOrdinal() {
+        return ordinal;
     }
 
-    public void setOrder1(Integer order1) {
-        this.order1 = order1;
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 }

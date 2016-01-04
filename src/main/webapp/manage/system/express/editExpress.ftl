@@ -64,9 +64,9 @@
                 <th class="td_right">顺序</th>
                 <td style="text-align: left;">
                 	<#if insertAction>
-                		<input type="text" name="order1" id="order1" data-rule="顺序:required;"/>
+                		<input type="text" name="ordinal" id="ordinal" data-rule="顺序:required;"/>
                 	<#else>
-                		<input type="text" name="order1" id="order1" value="${e.order1!""}" data-rule="顺序:required;"/>
+                		<input type="text" name="ordinal" id="ordinal" value="${e.ordinal!""}" data-rule="顺序:required;"/>
                 	</#if>
                 </td>
             </tr>

@@ -14,7 +14,7 @@
                 {name:"code", title:"快递编码", data:"code"},
                 {name:"name", title:"名称", data:"name"},
                 {name:"fee", title:"费用", data:"fee"},
-                {name:"order1", title:"顺序", data:"order1",render:function(data,type,row,meta){
+                {name:"ordinal", title:"顺序", data:"ordinal",render:function(data,type,row,meta){
                     return data;
                 }},
                 {name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
@@ -49,8 +49,20 @@
 	<form action="${basepath}/manage/express" method="post">
 		<table class="table table-bordered">
 			<tr>
+				<td style="text-align: right;">快递编码</td>
+				<td style="text-align: left;">
+					<input type="text" class="input-medium search-query" name="code"/>
+				</td>
+				<td style="text-align: right;">名称</td>
+				<td>
+					<input type="text" class="input-medium search-query" name="name"/>
+				</td>
+			</tr>
+		</table>
+		<table class="table table-bordered">
+			<tr>
 				<td colspan="8">
-					<button method="selectList" class="btn btn-primary" onclick="selectList(this)">
+					<button method="selectList" class="btn btn-primary" table-id="expressListDataTable" onclick="return selectList(this)">
 						<i class="icon-search icon-white"></i> 查询
 					</button>
 					<a href="${basepath}/manage/express/toAdd" class="btn btn-success">
