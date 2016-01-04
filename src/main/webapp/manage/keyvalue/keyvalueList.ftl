@@ -1,5 +1,39 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
 <@page.pageBase currentMenu="键值对管理">
+<script>
+	$(function(){
+        var table = $('#dataTables-example').DataTable({
+            "ajax": {
+				url:"loadData",
+				dataSrc:"list"
+            },
+//            serverParams:function(data){
+//				$.each($("form").serializeArray(),function(ix,v){
+//					data[v.name]= v.value;
+//				})
+////			$.extend(data, $("form").serialize());
+//			},
+			columns:[
+                {name:"ID", "orderable": false, title:'<input type="checkbox" id="firstCheckbox"/>', data:"id",render:function ( data, type, row, meta ) {
+                    // 'sort', 'type' and undefined all just use the integer
+                    return '<input type="checkbox" name="ids" value="'+data+'"/>';
+                }},
+				{name:"keytemp", title:"key", data:"keytemp"},
+				{name:"valuetemp", title:"value", data:"valuetemp"},
+                {name:"createtime", title:"创建时间", data:"createTime",render:function(data,type,row,meta){
+                    return data;
+                }},
+                {name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
+					<#if checkPrivilege("/manage//keyvalue/edit")>
+                        return '<a href="${basepath}/manage//keyvalue/toEdit?id=' + data + '">编辑</a>';
+					<#else>
+                        return "";
+					</#if>
+                }}
+			]
+        });
+	});
+</script>
 <style type="text/css">
 .titleCss {
 	background-color: #e6e6e6;
@@ -29,60 +63,39 @@
 	margin-right: 10px;
 }
 </style>
-	<form action="${basepath}/manage/keyvalue" method="post">
-				<table class="table table-bordered">
-					<tr>
-						<td style="text-align: right;">键</td>
-						<td style="text-align: left;">
-							<input type="text" name="key1" id="e.key1" value="${e.key1!""}">
-						</td>
-						<td style="text-align: right;">值</td>
-						<td style="text-align: left;">
-                            <input type="text" name="value" id="e.value" value="${e.value!""}">
-						</td>
-					</tr>
-					<tr>
-						<td colspan="6">
-							<button method="selectList" class="btn btn-primary" onclick="selectList(this)">
-								<i class="icon-search icon-white"></i> 查询
-							</button>
-							<a href="${basepath}/manage/keyvalue/toAdd" class="btn btn-success">
-								<i class="icon-plus-sign icon-white"></i> 添加
-                            </a>
-							<button method="deletes" class="btn btn-danger" onclick="return submitIDs(this,'确定删除选择的记录?');">
-								<i class="icon-remove-sign icon-white"></i> 删除
-							</button>
-							
-							<div style="float: right;vertical-align: middle;bottom: 0px;top: 10px;">
-								<#include "/manage/system/pager.ftl"/>
-							</div>
-						</td>
-					</tr>
-				</table>
-				
-				<table class="table table-bordered table-hover">
-					<tr style="background-color: #dff0d8">
-						<th width="20"><input type="checkbox" id="firstCheckbox" /></th>
-						<th style="display: none;">编号</th>
-						<th >键</th>
-						<th >值</th>
-						<th >操作</th>
-					</tr>
-					<#list pager.list as item>
-						<tr>
-							<td><input type="checkbox" name="ids"
-								value="${item.id}" /></td>
-							<td style="display: none;">&nbsp;${item.id}</td>
-							<td>&nbsp;${item.key1!""}</td>
-							<td>&nbsp;${item.value!""}</td>
-							<td><a href="toEdit?id=${item.id}">编辑</a></td>
-						</tr>
-					</#list>
-					<tr>
-						<td colspan="17" style="text-align: center;">
-							<#include "/manage/system/pager.ftl"/></td>
-					</tr>
-				</table>
+<form action="${basepath}/keyvalue/loadData" method="post">
+	<table class="table table-bordered table-condensed">
+		<tr>
+			<td style="text-align: right;">key</td>
+			<td style="text-align: left;" >
+			<input type="text" class="input-small" id="keytemp" name="keytemp">
+			</td>
+			<td style="text-align: right;">value</td>
+			<td style="text-align: left;" >
+			<input type="text" class="input-small" id="valuetemp" name="valuetemp">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+            <#if checkPrivilege("/manage/keyvalue/search") >
+					<button method="selectList" id="btnSearch" class="btn btn-primary" table-id="dataTables-example" onclick="return selectList(this)">
+						<i class="icon-search icon-white"></i> 查询
+					</button>
+             </#if>
+				<#if checkPrivilege("/manage/keyvalue/insert") >
+                <a href="${basepath}/manage//keyvalue/toAdd" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> 添加</a>
+				</#if>
 
-	</form>
+				<div style="float: right;vertical-align: middle;bottom: 0px;top: 10px;">
+                    <#--<#include "/manage/system/pager.ftl"/>-->
+				</div>
+
+			</td>
+		</tr>
+	</table>
+
+    <table class="display stripe row-border cell-border" id="dataTables-example">
+    </table>
+    
+</form>
 </@page.pageBase>
