@@ -94,7 +94,7 @@ public class Advert extends BaseModel implements Serializable{
 	}
 
 	public void setUseImagesRandom(String useImagesRandom) {
-		this.useImagesRandom = useImagesRandom==  null ? null : useImagesRandom.trim();;
+		this.useImagesRandom = useImagesRandom==  null ? null : useImagesRandom.trim();
 	}
 
 }
