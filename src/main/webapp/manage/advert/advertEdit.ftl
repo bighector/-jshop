@@ -70,12 +70,12 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 				<tr>
 					<td style="text-align: right;">日期时间范围</td>
 					<td style="text-align: left;">
-							<input id="d4311" class="Wdate search-query" type="text" name="startdate"
-							value="${e.startdate!""}"
+							<input id="d4311" class="Wdate search-query" type="text" name="startDate"
+							value="${e.startDate!""}"
 							onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})"/>
 							~ 
-							<input id="d4312" class="Wdate search-query" type="text" name="enddate"
-							value="${e.enddate!""}"
+							<input id="d4312" class="Wdate search-query" type="text" name="endDate"
+							value="${e.endDate!""}"
 							onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2020-10-01'})"/>
 					</td>
 				</tr>

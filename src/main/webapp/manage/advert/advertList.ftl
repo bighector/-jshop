@@ -13,8 +13,8 @@
                 }},
 				{name:"title", title:"广告标题", data:"title"},
 				{name:"code", title:"code", data:"code"},
-				{name:"startdate", title:"开始日期", data:"startdate"},
-				{name:"enddate", title:"结束日期", data:"enddate"},
+				{name:"startDate", title:"开始日期", data:"startDate"},
+				{name:"endDate", title:"结束日期", data:"endDate"},
                 {name:"status", title:"状态", data:"status",render:function(data,type,row,meta){
                     if(data == "y"){
                         return '<img src="${basepath}/resource/images/action_check.gif">';

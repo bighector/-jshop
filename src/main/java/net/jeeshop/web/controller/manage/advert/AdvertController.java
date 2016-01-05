@@ -1,23 +1,20 @@
 package net.jeeshop.web.controller.manage.advert;
 
+import net.jeeshop.biz.base.bean.PageBean;
+import net.jeeshop.biz.base.bean.PageQueryBean;
+import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.cms.model.Advert;
+import net.jeeshop.biz.cms.model.AdvertExample;
+import net.jeeshop.biz.cms.service.AdvertService;
+import net.jeeshop.biz.keyvalue.model.KeyValueObject;
+import net.jeeshop.biz.keyvalue.model.KeyValueObjectExample;
+import net.jeeshop.web.controller.manage.ManageBaseController;
+
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import net.jeeshop.biz.advert.model.Advert;
-import net.jeeshop.biz.advert.model.AdvertExample;
-import net.jeeshop.biz.advert.service.AdvertService;
-import net.jeeshop.biz.base.bean.PageBean;
-import net.jeeshop.biz.base.bean.PageQueryBean;
-import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.system.bean.SysUserBean;
-import net.jeeshop.biz.system.model.SysRoleExample;
-import net.jeeshop.biz.system.model.SysUser;
-import net.jeeshop.biz.system.model.SysUserExample;
-import net.jeeshop.biz.system.service.UserService;
-import net.jeeshop.web.controller.manage.ManageBaseController;
-import net.jeeshop.web.util.LoginUserHolder;
 
 @Controller
 @RequestMapping("/manage/advert")
@@ -44,12 +41,30 @@ public class AdvertController extends ManageBaseController<Advert, AdvertExample
 		 super.page_toAdd = page_toAdd;
 	 }
 	 
-	  @RequestMapping("loadData")
+//	  @RequestMapping("loadData")
+//	    @ResponseBody
+//	    public PageBean<Advert> loadData(AdvertExample queryParams, PageQueryBean pageQueryBean) {
+//		  System.out.println("--------loadData-----");
+//	        PageBean pager =advertService.selectPageList(queryParams, pageQueryBean);
+//	        return pager;
+//	    }
+	 
+	  
+	  @SuppressWarnings("unchecked")
+		@RequestMapping("loadData")
 	    @ResponseBody
-	    public PageBean<Advert> loadData(AdvertExample queryParams, PageQueryBean pageQueryBean) {
-		  System.out.println("--------loadData-----");
-	        PageBean pager =advertService.selectPageList(queryParams, pageQueryBean);
+	    public PageBean<Advert> loadData(Advert advert, PageQueryBean pageQueryBean) {
+		  AdvertExample advertExample=new AdvertExample();
+		  AdvertExample.Criteria criteria = advertExample.createCriteria();
+	        if (StringUtils.isNotBlank(advert.getTitle())) {
+	            criteria.andTitleLike( advert.getTitle());
+	        }
+	        if (StringUtils.isNotBlank(advert.getCode())) {
+	            criteria.andCodeLike(advert.getCode());
+	        }
+	        advertExample.setOrderByClause("id");
+//			@SuppressWarnings("rawtypes")
+			PageBean pager = advertService.selectPageList(advertExample, pageQueryBean);
 	        return pager;
 	    }
-	 
 }
