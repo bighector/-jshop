@@ -13,15 +13,15 @@ import net.jeeshop.core.exception.NotThisMethod;
 import net.jeeshop.core.system.bean.Role;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Created by carlosxiao on 28/12/2015.
@@ -52,33 +52,34 @@ public class SystemRoleController extends ManageBaseController<SysRole, SysRoleE
         return pager;
     }
 
-
     /**
-     * 添加角色
+     * ajax验证输入的字符的唯一性
+     *
      * @return
-     * @throws Exception
      */
-    @RequestMapping(value = "save", method = RequestMethod.POST)
+    @RequestMapping("unique")
     @ResponseBody
-    public String save(HttpServletRequest request, Role role) throws Exception {
-        role.setRole_name(request.getParameter("roleName"));
-        role.setId(Long.parseLong(request.getParameter("id")));
-        role.setRole_desc(request.getParameter("roleDesc"));
-        role.setRole_dbPrivilege(request.getParameter("role_dbPrivilege"));
-        role.setPrivileges(request.getParameter("privileges"));
-        role.setStatus(request.getParameter("status"));
-        if(role.getRole_name()==null || role.getRole_name().trim().equals("")){
-            return "0";
-        }else{
-            //roleService.editRole(role, request.getParameter("insertOrUpdate"));
+    public String unique(@RequestParam String roleName) throws IOException {
+        //验证角色名称是否被占用
+        if (StringUtils.isNotBlank(roleName)) {
+            SysRoleExample roleExample = new SysRoleExample();
+            SysRoleExample.Criteria criteria = roleExample.createCriteria();
+            criteria.andRoleNameEqualTo(roleName);
+            SysRole role = roleService.selectUniqueByExample(roleExample);
+            if (role == null) {
+                //数据库中不存在此编码
+                return "{\"ok\":\"角色名称有效!\"}";
+            } else {
+                return "{\"error\":\"昵称已经存在!\"}";
+            }
         }
-        return "1";
+        return null;
     }
 
     @Override
-    @RequestMapping(value = "deletes", method = RequestMethod.POST)
-    public String deletes(Long [] ids , RedirectAttributes flushAttrs) {
-        throw new NotThisMethod(ManageContainer.not_this_method);
+    @RequestMapping(value = "insert" , method = RequestMethod.POST)
+    public String insert(@ModelAttribute("e") SysRole role, RedirectAttributes flushAttrs) {
+        return saveOrUpdateRole(role, flushAttrs);
     }
 
     /**
@@ -89,8 +90,29 @@ public class SystemRoleController extends ManageBaseController<SysRole, SysRoleE
     public String update(@ModelAttribute("e") SysRole role, RedirectAttributes flushAttrs) {
         SysUser user = LoginUserHolder.getLoginUser();
         if(!user.getUsername().equals("admin")){
-            throw new NullPointerException(ManageContainer.RoleAction_update_error);
+            flushAttrs.addFlashAttribute("errorMsg", "非法操作！");
+            return "redirect:toEdit?id=" + role.getId();
         }
-        return super.update(role, flushAttrs);
+        return saveOrUpdateRole(role, flushAttrs);
     }
+
+    private String saveOrUpdateRole(SysRole e , RedirectAttributes flushAttrs) {
+        if (e.getId() == null) {
+            //insert
+            roleService.addRole(e);
+        } else {
+            //update
+            roleService.updateRole(e);
+        }
+        flushAttrs.addFlashAttribute("message", "操作成功!");
+        return "redirect:back";
+    }
+
+    @Override
+    @RequestMapping(value = "deletes", method = RequestMethod.POST)
+    public String deletes(Long [] ids , RedirectAttributes flushAttrs) {
+        throw new NotThisMethod(ManageContainer.not_this_method);
+    }
+
+
 }

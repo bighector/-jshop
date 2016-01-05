@@ -17,6 +17,7 @@
 	 		//添加子菜单/修改父菜单
 	 		$("#add").click(function(){
 	 			var id = $("#input_menu_id").val();
+	 			var pid = $("#input_menu_pid").val();
 	 			var name = $("#input_menu_name").val();
 	 			var url = $("#input_menu_url").val();
 	 			var orderNum = $("#input_menu_orderNum").val();
@@ -32,9 +33,9 @@
 					url:"${basepath}/manage/menu/addOrUpdate",
 					type:"post",
 					data:{
-						updateP:2,//-1不修改父菜单，1修改
 						//父菜单信息
 						id:id,
+						pid : pid,
 						name:name,
 						url:url,
 						orderNum:orderNum,
@@ -49,16 +50,9 @@
 					},
 					dataType:"text",
 					success:function(data, textStatus){
-						//var zNodes = eval('('+data+')');
-						//$.fn.zTree.init($("#treeDemo2"), setting, zNodes);
-						
-						//document.form1.action = "menu!selectList.action";
-						//document.form1.submit();
-						//alert("修改资源菜单成功请刷新页面!");
-						
 						$("#showMsgDiv").html("修改资源菜单成功!");
-						
 						setTimeout(function(){$("#showMsgDiv").html("");},2000);
+						window.location.reload(true);
 					},
 					error:function(){
 						alert("修改资源菜单失败!");
@@ -76,6 +70,7 @@
 			<div id="context_div" style="margin-top: 20px;">
 				<div id="showMsgDiv" style="text-align: center;"></div>
 				<table id="result_table1" class="table table-bordered" style="width: 500px;margin: auto;margin-top: 20px;">
+                    <input type="hidden" id="input_menu_pid" readonly="readonly" value='${e.pid!""}'/>
 					<tr>
 						<td colspan="2" style="background-color: #dff0d8;text-align: center;">
 							<strong>当前选中的菜单</strong>

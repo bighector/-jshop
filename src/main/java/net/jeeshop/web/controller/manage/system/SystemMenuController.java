@@ -2,6 +2,7 @@ package net.jeeshop.web.controller.manage.system;
 
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.bean.MenuItem;
+import net.jeeshop.biz.system.bean.MenuType;
 import net.jeeshop.biz.system.model.SysMenu;
 import net.jeeshop.biz.system.model.SysMenuExample;
 import net.jeeshop.biz.system.model.SysPrivilege;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
@@ -113,6 +115,66 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
         SysMenu sysMenu = menuService.selectById(Long.parseLong(id));
         model.addAttribute("e", sysMenu);
         return PAGE_ADDORUPDATE;
+    }
+
+    @RequestMapping(value = "addOrUpdate", method = RequestMethod.POST)
+    @ResponseBody
+    public String addOrUpdate(HttpServletRequest request) throws Exception{
+        //选中菜单的信息
+        //String updateP = request.getParameter("updateP");
+        String id = request.getParameter("id");
+        String pid = request.getParameter("pid");
+        String name = request.getParameter("name");
+        String orderNum = request.getParameter("orderNum");
+        String type = request.getParameter("type");
+
+        //要添加的子菜单
+        String url = request.getParameter("url");
+        String n_name = request.getParameter("n_name");
+        String n_url = request.getParameter("n_url");
+        String parentOrChild = request.getParameter("parentOrChild");
+        String n_orderNum = request.getParameter("n_orderNum");
+        String n_type = request.getParameter("n_type");
+
+        SysMenu itemMenu = null;
+        if(n_name!=null && !n_name.trim().equals("")){
+            itemMenu = new SysMenu();
+            //添加子菜单
+            if(parentOrChild.equals("0")){//顶级模块
+                itemMenu.setPid(0l);
+                itemMenu.setType(MenuType.module.toString());
+            } else if(parentOrChild.equals("1")){//顶级页面
+                itemMenu.setPid(0l);
+                itemMenu.setType(MenuType.page.toString());
+            } else if(parentOrChild.equals("2")){//子模块
+                itemMenu.setPid(Long.parseLong(id));
+                itemMenu.setType(MenuType.module.toString());
+            } else if(parentOrChild.equals("3")){//子页面
+                itemMenu.setPid(Long.parseLong(id));
+                itemMenu.setType(MenuType.page.toString());
+            } else if(parentOrChild.equals("4")){   //功能
+                itemMenu.setPid(Long.parseLong(id));
+                itemMenu.setType(MenuType.button.toString());
+            } else {
+                throw new IllegalAccessException("添加菜单异常。");
+            }
+            itemMenu.setName(n_name);
+            itemMenu.setUrl(n_url);
+            itemMenu.setOrderNum(Integer.valueOf(n_orderNum));
+            itemMenu.setType(n_type);
+        }
+        //修改父菜单
+        SysMenu m = new SysMenu();
+        m.setId(Long.parseLong(id));
+        m.setName(name);
+        m.setUrl(url);
+        m.setPid(Long.parseLong(pid));
+        m.setOrderNum(Integer.valueOf(orderNum));
+        m.setType(type);
+
+        menuService.addOrUpdate(m, itemMenu);
+
+        return "ok";
     }
 
 }

@@ -95,6 +95,11 @@
     delete from t_privilege
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
+  <delete id="deleteByRid">
+    delete from t_privilege
+    where rid = #{value,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.SysPrivilege" >
     insert into t_privilege (id, rid, mid, 
       create_time, update_time, create_Account, 
@@ -102,6 +107,17 @@
     values (#{id,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, 
       #{updateAccount,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertPrivileges" parameterType="java.util.List">
+    insert into t_privilege (id, rid, mid,
+      create_time, update_time, create_Account,
+      update_Account)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.id,jdbcType=INTEGER},#{item.rid,jdbcType=INTEGER},#{item.mid,jdbcType=INTEGER},#{item.createTime,jdbcType=TIMESTAMP},
+      #{item.updateTime,jdbcType=TIMESTAMP},#{item.createAccount,jdbcType=VARCHAR},#{item.updateAccount,jdbcType=VARCHAR})
+    </foreach>
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysPrivilege" >
     insert into t_privilege

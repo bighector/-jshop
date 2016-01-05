@@ -1,14 +1,5 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
 <@page.pageBase currentMenu="角色管理">
-
-<SCRIPT type="text/javascript">
-	$(function(){
- 		$("#add").add("#update").click(function(){
- 			art.dialog.open('${basepath}/manage/menu/toEdit',
- 					{title: '个人信息',width:500, height:350,lock:true});	 			
- 		});
-	});
-</SCRIPT>
 <SCRIPT type="text/javascript">
 	$(function(){
 		var setting = {
@@ -50,72 +41,58 @@
 				}
 			});
 		}
-
-		//编辑角色
-		$("#saveRoleBtn").click(function(){
-			var roleName = $("#role_name").val();
-			if(roleName==''){
-				alert("角色名称不能为空！");
-				return;
-			}
-			//jQuery.blockUI({ message: "处理中，请稍候...", css: {color:'#fff',border:'3px solid #aaa',backgroundColor:'#CC3300'},overlayCSS: { opacity:'0.0' }});
-
-			$.blockUI({ message: "处理中，请稍候...",css: {
-				border: 'none',
-				padding: '15px',
-				backgroundColor: '#000',
-				'-webkit-border-radius': '10px',
-				'-moz-border-radius': '10px',
-				opacity: .5,
-				color: '#fff'
-			} });
-
-			var ids = "";
-			var treeObj = $.fn.zTree.getZTreeObj("treeDemo2");
-			var nodes = treeObj.getCheckedNodes(true);
-			for(var i=0;i<nodes.length;i++){
-				ids+=nodes[i].id+",";
-			}
-
-			$.ajax({
-				url:"${basepath}/manage/role/save",
-				type : "post",
-				data : {
-					privileges : ids,
-					insertOrUpdate : $("#insertOrUpdate").val(),
-					id : $("#id").val(),
-					roleName : roleName,
-					roleDesc : $("#role_desc").val(),
-					role_dbPrivilege : $("#role_dbPrivilege").val(),
-					status:$("#status").val()
-				},
-				dataType : "text",
-				success : function(data) {
-					// 						var zNodes = eval('('+data+')');
-					// 						$.fn.zTree.init($("#treeDemo2"), setting, zNodes);
-					if (data == 1) {
-						// 							loadMenusTree();
-						jQuery.unblockUI();
-						alert("修改角色成功！");
-						document.location = "${basepath}/manage/role/selectList";
-					} else {
-						jQuery.unblockUI();
-						alert("修改角色失败！");
-					}
-				},
-				error : function() {
-					jQuery.unblockUI();
-					alert("修改角色失败！");
-				}
-			});
-			return false;
-		});
-
 		//全部展开
-		//$("#expandAllBtn").bind("click", {type:"expandAll"}, expandNode);
-		//$("#collapseAllBtn").bind("click", {type:"collapseAll"}, expandNode);
 		$("#expandOrCollapseAllBtn").bind("click", {type:"expandOrCollapse"}, expandNode);
 		$("#checkAllTrueOrFalse").bind("click", {type:"checkAllTrueOrFalse"}, expandNode);
+
+        //编辑角色
+        $("#saveRoleBtn").click(function(){
+            var roleName = $("#roleName").val();
+            if(roleName==''){
+                alert("角色名称不能为空！");
+                return;
+            }
+            //jQuery.blockUI({ message: "处理中，请稍候...", css: {color:'#fff',border:'3px solid #aaa',backgroundColor:'#CC3300'},overlayCSS: { opacity:'0.0' }});
+
+            $.blockUI({ message: "处理中，请稍候...",css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            } });
+
+            var ids = "";
+            var treeObj = $.fn.zTree.getZTreeObj("treeDemo2");
+            var nodes = treeObj.getCheckedNodes(true);
+            for(var i=0;i<nodes.length;i++){
+                ids+=nodes[i].id+",";
+            }
+			var roleEditUrl = "${basepath}/manage/role/" + $("#insertOrUpdate").val()
+            $.ajax({
+                url: roleEditUrl ,
+                type : "post",
+                data : {
+                    privileges : ids,
+                    id : $("#id").val(),
+                    roleName : roleName,
+                    roleDesc : $("#roleDesc").val(),
+                    roleDbPrivilege : $("#roleDbPrivilege").val(),
+                    status:$("#status").val()
+                },
+                dataType : "text",
+                success : function(data) {
+                    window.location = "${basepath}/manage/role/back";
+                },
+                error : function() {
+                    jQuery.unblockUI();
+                    alert("修改角色失败！");
+                }
+            });
+            return false;
+        });
 	});
 		
 	var expandAllFlg = true;
@@ -157,11 +134,19 @@
 			}
 		}
 	}
-</SCRIPT>
 
-<form action="${basepath}/manage/role/save" method="post" name="form1" id="form1">
-	<input id="insertOrUpdate" type="hidden" value='${e.id???string("2", "1")}' />
+
+</SCRIPT>
+<#if e.id??>
+	<#assign formAction="update">
+	<#assign insertAction=false />
+<#else >
+	<#assign formAction="insert">
+	<#assign insertAction=true />
+</#if>
+<form action="${basepath}/manage/role" method="post" name="form1" id="form1">
 	<table class="table table-bordered" style="width: 500px;margin: auto;">
+		<input type="hidden" id="insertOrUpdate" value="${formAction}" />
 		<tr>
 			<td colspan="2" style="background-color: #dff0d8;text-align: center;">
 				<strong>角色编辑</strong>
@@ -174,26 +159,26 @@
 		<tr>
 			<th style="background-color: #dff0d8;text-align: center;">角色名称</th>
 			<td style="text-align: left;">
-				<#if !e.id??>
-					<input type="text" name="role_name" id="role_name" value="${e.role_name!""}" />
+				<#if insertAction>
+					<input type="text" name="roleName" id="roleName" value="${e.roleName!""}" data-rule="帐号:required;roleName;length[4~20];remote[unique]" />
 				<#else>
-					<input type="text" value="${e.role_name!""}" name="role_name" id="role_name" />
+					<input type="text" value="${e.roleName!""}" name="roleName" id="roleName" />
 				</#if>
 			</td>
 		</tr>
 		<tr>
 			<th style="background-color: #dff0d8;text-align: center;">角色描述</th>
 			<td style="text-align: left;">
-				<input type="text" value="${e.role_desc!""}" name="role_desc" id="role_desc" />
+				<input type="text" value="${e.roleDesc!""}" name="roleDesc" id="roleDesc" data-rule="描述:required;roleDesc;length[2~50]" />
 			</td>
 		</tr>
 		<tr>
 			<th style="background-color: #dff0d8;text-align: center;">数据库权限</th>
 			<td style="text-align: left;">
-				<select name="role_dbPrivilege" id="role_dbPrivilege">
+				<select name="roleDbPrivilege" id="roleDbPrivilege">
 					<#assign map_dbPrivilege ={'select':'select','select,insert':'select,insert','select,insert,update':'select,insert,update','select,insert,update,delete':'select,insert,update,delete'}/>
 					<#list map_dbPrivilege?keys as item>
-						<option value="${item}" <#if e.role_dbPrivilege?? && e.role_dbPrivilege==item>selected="selected" </#if>>${map_dbPrivilege[item]}</option>
+						<option value="${item}" <#if e.roleDbPrivilege?? && e.roleDbPrivilege==item>selected="selected" </#if>>${map_dbPrivilege[item]}</option>
 					</#list>
 				</select>
 			</td>
@@ -221,7 +206,15 @@
 		</tr>
 		<tr>
 			<td style="text-align: center;" colspan="2">
-				<input type="submit" class="btn btn-primary" value="保存" id="saveRoleBtn">
+				<#if insertAction>
+                    <button id="saveRoleBtn" class="btn btn-success">
+                        <i class="icon-ok icon-white"></i> 新增
+                    </button>
+				<#else >
+                    <button id="saveRoleBtn" class="btn btn-success">
+                        <i class="icon-ok icon-white"></i> 保存
+                    </button>
+				</#if>
 			</td>
 		</tr>
 	</table>

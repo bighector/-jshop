@@ -4,6 +4,7 @@ import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.bean.MenuItem;
 import net.jeeshop.biz.system.bean.MenuType;
+import net.jeeshop.biz.system.client.SysMenuMapper;
 import net.jeeshop.biz.system.client.SysMenuMapperExt;
 import net.jeeshop.biz.system.model.SysMenu;
 import net.jeeshop.biz.system.model.SysMenuExample;
@@ -12,6 +13,7 @@ import net.jeeshop.core.util.EnumUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -23,6 +25,9 @@ import java.util.*;
 public class MenuService extends BaseService<SysMenu, SysMenuExample> {
     @Autowired
     private SysMenuMapperExt sysMenuMapperExt;
+
+    @Autowired
+    private SysMenuMapper sysMenuMapper;
 
     @Override
     protected BaseMapper<SysMenu, SysMenuExample> getMapper() {
@@ -152,5 +157,16 @@ public class MenuService extends BaseService<SysMenu, SysMenuExample> {
             itemMenu.setPid(item.getChildren().get(i).getId());
             loadChildrenByPid(item.getChildren().get(i), itemMenu, url, user);
         }
+    }
+
+    @Transactional
+    public boolean addOrUpdate(SysMenu menu, SysMenu itemMenu) {
+        if (itemMenu != null) {
+            // 添加子菜单
+            sysMenuMapper.insert(itemMenu);
+        }
+        // 修改父菜单
+        sysMenuMapper.updateByPrimaryKey(menu);
+        return true;
     }
 }

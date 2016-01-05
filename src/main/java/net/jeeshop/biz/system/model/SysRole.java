@@ -16,6 +16,8 @@ public class SysRole extends BaseModel implements Serializable {
     /** 状态，y-有效,n-无效 */
     private String status;
 
+    private String privileges;
+
     private static final long serialVersionUID = 1L;
 
     public String getRoleName() {
@@ -48,5 +50,13 @@ public class SysRole extends BaseModel implements Serializable {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public String getPrivileges() {
+        return privileges;
+    }
+
+    public void setPrivileges(String privileges) {
+        this.privileges = privileges;
     }
 }

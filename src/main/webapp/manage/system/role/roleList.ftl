@@ -20,9 +20,6 @@
                 {name:"roleName", title:"角色名称", data:"roleName"},
                 {name:"roleDesc", title:"角色描述", data:"roleDesc"},
                 {name:"roleDbPrivilege", title:"数据库权限", data:"roleDbPrivilege"},
-                {name:"createtime", title:"创建时间", data:"createTime",render:function(data,type,row,meta){
-                    return data;
-                }},
                 {name:"status", title:"状态", data:"status",render:function(data,type,row,meta){
                     if(data == "y"){
                         return '<img src="${basepath}/resource/images/action_check.gif">';
@@ -34,6 +31,11 @@
 
 					<#if checkPrivilege("/manage/role/edit")>
                         return '<a href="${basepath}/manage/role/toEdit?id=' + data + '">编辑</a>';
+					<#else>
+                        return "";
+					</#if>
+					<#if checkPrivilege("/manage/role/delete")>
+                        return '<a href="javascript:;">删除</a>';
 					<#else>
                         return "";
 					</#if>
@@ -73,57 +75,11 @@
 						<i class="icon-plus-sign icon-white"></i> 添加
 					</a>
 				</#if>
-				<#--<%if(PrivilegeUtil.check(request.getSession(), "role!deletes.action")){%>-->
-				<#--<%-- <s:submit method="deletes" onclick="return deleteSelect();" value="删除" cssClass="btn btn-danger"/> --%>-->
-				<#--<%} %>-->
-				<div style="float: right;vertical-align: middle;bottom: 0px;top: 10px;">
-				</div>
 			</td>
 		</tr>
 	</table>
 
 	<table class="display stripe row-border cell-border" id="roleListDataTable">
 	</table>
-
-			<#--<table class="table table-bordered table-hover">
-				<tr style="background-color: #dff0d8">
-					<th width="20">
-						<input type="checkbox" id="checkAll"/>
-					</th>
-					<th  style="display: none;">rid</th>
-					<th>角色名称</th>
-					<th>角色描述</th>
-					<th>数据库权限</th>
-					<th>状态</th>
-					<th width="50px">操作</th>
-				</tr>
-                <#list pager.list as item>
-					<tr>
-						<td><#if item.id!=1><input type="checkbox" name="ids" value="${item.id}/>"/></#if></td>
-						<td  style="display: none;">&nbsp;${item.rid!""}</td>
-						<td>&nbsp;${item.role_name!""}</td>
-						<td>&nbsp;${item.role_desc!""}</td>
-						<td>&nbsp;${item.role_dbPrivilege!""}</td>
-						<td>&nbsp;
-							<#if item.status=="y">
-								<img alt="显示" src="${basepath}/resource/images/action_check.gif">
-							<#else>
-								<img alt="不显示" src="${basepath}/resource/images/action_delete.gif">
-							</#if>
-						</td>
-						<td>
-							<!-- 系统角色只能是超级管理员编辑 &ndash;&gt;
-                            <#if currentUser().username == "admin">
-								<a href="${basepath}/manage/role/toEdit?id=${item.id}">编辑</a>
-                            </#if>
-						</td>
-					</tr>
-                </#list>
-				<tr>
-								<td colspan="15" style="text-align:center;">
-                                    <#include "/manage/system/pager.ftl"/>
-								</td>
-							</tr>
-			</table>-->
-    </form>
+</form>
 </@page.pageBase>

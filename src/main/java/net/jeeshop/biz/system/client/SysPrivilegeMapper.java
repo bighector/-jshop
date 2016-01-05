@@ -14,6 +14,8 @@ public interface SysPrivilegeMapper extends BaseMapper<SysPrivilege, SysPrivileg
 
     int insertSelective(SysPrivilege record);
 
+    void insertPrivileges(List<SysPrivilege> privileges);
+
     List<SysPrivilege> selectByExample(SysPrivilegeExample example);
 
     SysPrivilege selectByPrimaryKey(Long id);
@@ -21,4 +23,10 @@ public interface SysPrivilegeMapper extends BaseMapper<SysPrivilege, SysPrivileg
     int updateByPrimaryKeySelective(SysPrivilege record);
 
     int updateByPrimaryKey(SysPrivilege record);
+
+    /***
+     * 删除指定角色的权限
+     * @param id
+     */
+    void deleteByRid(Long id);
 }
