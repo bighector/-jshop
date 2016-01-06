@@ -162,3 +162,18 @@ CREATE TABLE `t_express` (
  UNIQUE KEY `code_UNIQUE` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 comment='配送方式';
 
+drop table if exists t_brand;
+CREATE TABLE t_brand
+(
+id bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+brand_name varchar(128) NOT NULL COMMENT '品牌名称',
+logo varchar(128) COMMENT '品牌LOGO',
+office_site varchar(128) COMMENT '官方网站',
+description varchar(4000) COMMENT '描述信息',
+ordinal bigint COMMENT '排序',
+create_time datetime COMMENT '创建时间',
+create_account varchar(64) COMMENT '创建人',
+update_time datetime COMMENT '更新时间',
+update_account varchar(64) COMMENT '更新人',
+PRIMARY KEY (id)
+) comment='品牌管理';
