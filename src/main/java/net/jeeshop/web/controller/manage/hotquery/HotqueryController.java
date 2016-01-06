@@ -30,7 +30,7 @@ public class HotqueryController extends ManageBaseController<Hotquery, HotqueryE
 	
 	private static final String page_toList = "/manage/hotquery/hotqueryList";
 	private static final String page_toEdit = "/manage/hotquery/hotqueryEdit";
-	private static final String page_toAdd = "/manage/hotquery/hotqueryAdd";
+	private static final String page_toAdd = "/manage/hotquery/hotqueryEdit";
 	private HotqueryController() {
 		super.page_toList = page_toList;
 		super.page_toAdd = page_toAdd;
@@ -46,10 +46,8 @@ public class HotqueryController extends ManageBaseController<Hotquery, HotqueryE
 	
 	@RequestMapping("loadData")
 	@ResponseBody
-	public PageBean<Hotquery> loadData(PageQueryBean pageQueryBean){
-		HotqueryExample example = new HotqueryExample();
-		PageBean<Hotquery> hotqueryPaper = hotqueryService.selectPageList(example, pageQueryBean);
-		return hotqueryPaper;
+	public PageBean<Hotquery> loadData(HotqueryExample example,PageQueryBean pageQueryBean){
+		return hotqueryService.selectPageList(example, pageQueryBean);
     }
 	
 
