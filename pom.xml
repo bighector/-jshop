@@ -9,8 +9,26 @@
         <repository>
             <id>oschina</id>
             <url>http://maven.oschina.net/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>oschina</id>
+            <url>http://maven.oschina.net/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
@@ -57,18 +75,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
-                <!--<configuration>-->
-                <!--<webResources>-->
-                <!--<resource>-->
-                <!--<directory>${project.basedir}/libs</directory>-->
-                <!--<targetPath>WEB-INF/lib</targetPath>-->
-                <!--<filtering>true</filtering>-->
-                <!--<includes>-->
-                <!--<include>*.jar</include>-->
-                <!--</includes>-->
-                <!--</resource>-->
-                <!--</webResources>-->
-                <!--</configuration>-->
             </plugin>
         </plugins>
     </build>
@@ -555,13 +561,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>qq</groupId>-->
-            <!--<artifactId>qqLoginSdk4J</artifactId>-->
-            <!--<version>1.0</version>-->
-            <!--<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/qqLoginSdk4J.jar</systemPath>-->
-            <!--<scope>system</scope>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>QRCode</groupId>
             <artifactId>QRCode</artifactId>
@@ -569,13 +568,6 @@
             <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/QRCode.jar</systemPath>
             <scope>system</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>sinaWeibo</groupId>-->
-            <!--<artifactId>sinaWeibo</artifactId>-->
-            <!--<version>1.0</version>-->
-            <!--<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/sinaWeibo.jar</systemPath>-->
-            <!--<scope>system</scope>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
