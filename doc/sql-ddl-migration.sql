@@ -175,6 +175,19 @@ CREATE TABLE `t_key_value` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='键值对';
 
+--热门查询管理
+DROP TABLE IF EXISTS `t_hot_query`;
+CREATE TABLE `t_hot_query` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `keywork` varchar(45) NOT NULL comment '查询关键字',
+  `url` varchar(100) NOT NULL comment '链接地址',
+  `create_time` datetime COMMENT '创建时间',
+  `update_time` datetime COMMENT '更新时间',
+  `create_account` varchar(45) COMMENT '创建人',
+  `update_account` varchar(45) COMMENT '更新人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment='热门查询';
+
 /**
  * 商品管理模块
  */
