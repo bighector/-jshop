@@ -23,6 +23,10 @@ public class GeneratorDemo {
     public void genCms() throws Exception {
         generateFiles("gen/generateConfig-cms.xml");
     }
+    @Test
+    public void genFriendlink() throws Exception {
+        generateFiles("gen/generateConfig-friendlink.xml");
+    }
 
     private void generateFiles(String configResource) throws Exception{
 
