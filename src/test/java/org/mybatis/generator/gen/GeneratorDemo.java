@@ -23,6 +23,10 @@ public class GeneratorDemo {
     public void genCms() throws Exception {
         generateFiles("gen/generateConfig-cms.xml");
     }
+    /*@Test
+    public void genProduct() throws Exception {
+        generateFiles("gen/generateConfig-product.xml");
+    }*/
 
     private void generateFiles(String configResource) throws Exception{
 
