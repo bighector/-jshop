@@ -15,7 +15,7 @@
         <plugin type="org.mybatis.generator.ext.plugin.JshopCustomPlugin"/>
         <commentGenerator type="org.mybatis.generator.ext.comment.CommentGeneratorExt"/>
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/jshop"
+                        connectionURL="jdbc:mysql://localhost:3306/jshop?characterEncoding=utf8"
                         userId="root" password="root"/>
 
         <javaModelGenerator targetPackage="net.jeeshop.biz.cms.model"
@@ -32,9 +32,8 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="t_article_catalog" domainObjectName="ArticleCatalog">
+        <table tableName="t_hot_query" domainObjectName="Hotquery">
             <columnOverride column="id" javaType="java.lang.Long"/>
-            <columnOverride column="pid" javaType="java.lang.Long"/>
         </table>
     </context>
 

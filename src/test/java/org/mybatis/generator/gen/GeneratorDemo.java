@@ -15,17 +15,13 @@ import java.util.List;
  */
 public class GeneratorDemo {
 
-    @Test
+    //@Test
     public void genSystem() throws Exception {
         generateFiles("gen/generateConfig-system.xml");
     }
     @Test
     public void genCms() throws Exception {
         generateFiles("gen/generateConfig-cms.xml");
-    }
-    @Test
-    public void genFriendlink() throws Exception {
-        generateFiles("gen/generateConfig-friendlink.xml");
     }
 
     private void generateFiles(String configResource) throws Exception{

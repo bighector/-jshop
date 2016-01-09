@@ -83,9 +83,8 @@ public class ResultMapWithBLOBsElementGenerator extends
                             "column", MyBatis3FormattingUtilities.getRenamedColumnNameForResultMap(introspectedColumn))); //$NON-NLS-1$
             resultElement.addAttribute(new Attribute(
                     "property", introspectedColumn.getJavaProperty())); //$NON-NLS-1$
-            //dylan: remove jdbcType define
-//            resultElement.addAttribute(new Attribute(
-//                    "jdbcType", introspectedColumn.getJdbcTypeName())); //$NON-NLS-1$
+            resultElement.addAttribute(new Attribute(
+                    "jdbcType", introspectedColumn.getJdbcTypeName())); //$NON-NLS-1$
 
             if (stringHasValue(introspectedColumn
                     .getTypeHandler())) {

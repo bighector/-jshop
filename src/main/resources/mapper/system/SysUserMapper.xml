@@ -10,7 +10,7 @@
     <result column="create_Account" property="createAccount" jdbcType="VARCHAR" />
     <result column="update_Account" property="updateAccount" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="rid" property="rid" jdbcType="VARCHAR" />
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
@@ -107,7 +107,7 @@
       nickname, email)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, 
-      #{updateAccount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{rid,jdbcType=INTEGER}, 
+      #{updateAccount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{rid,jdbcType=VARCHAR}, 
       #{nickname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysUser" >
@@ -173,7 +173,7 @@
         #{status,jdbcType=VARCHAR},
       </if>
       <if test="rid != null" >
-        #{rid,jdbcType=INTEGER},
+        #{rid,jdbcType=VARCHAR},
       </if>
       <if test="nickname != null" >
         #{nickname,jdbcType=VARCHAR},
@@ -214,7 +214,7 @@
         status = #{status,jdbcType=VARCHAR},
       </if>
       <if test="rid != null" >
-        rid = #{rid,jdbcType=INTEGER},
+        rid = #{rid,jdbcType=VARCHAR},
       </if>
       <if test="nickname != null" >
         nickname = #{nickname,jdbcType=VARCHAR},
@@ -234,7 +234,7 @@
       create_Account = #{createAccount,jdbcType=VARCHAR},
       update_Account = #{updateAccount,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
-      rid = #{rid,jdbcType=INTEGER},
+      rid = #{rid,jdbcType=VARCHAR},
       nickname = #{nickname,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
