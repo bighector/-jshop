@@ -681,16 +681,6 @@ public class SysUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andRidLike(Long value) {
-            addCriterion("rid like", value, "rid");
-            return (Criteria) this;
-        }
-
-        public Criteria andRidNotLike(Long value) {
-            addCriterion("rid not like", value, "rid");
-            return (Criteria) this;
-        }
-
         public Criteria andRidIn(List<Long> values) {
             addCriterion("rid in", values, "rid");
             return (Criteria) this;
