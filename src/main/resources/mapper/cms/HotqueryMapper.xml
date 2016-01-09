@@ -3,8 +3,12 @@
 <mapper namespace="net.jeeshop.biz.cms.client.HotqueryMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.Hotquery" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="key1" property="key1" jdbcType="VARCHAR" />
+    <result column="keywork" property="keywork" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_account" property="createAccount" jdbcType="VARCHAR" />
+    <result column="update_account" property="updateAccount" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, key1, url
+    id, keywork, url, create_time, update_time, create_account, update_account
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.HotqueryExample" >
     select
@@ -73,7 +77,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_hotquery
+    from t_hot_query
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,66 +88,108 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_hotquery
+    from t_hot_query
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_hotquery
+    delete from t_hot_query
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Hotquery" >
-    insert into t_hotquery (id, key1, url
-      )
-    values (#{id,jdbcType=INTEGER}, #{key1,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
-      )
+    insert into t_hot_query (id, keywork, url, 
+      create_time, update_time, create_account, 
+      update_account)
+    values (#{id,jdbcType=INTEGER}, #{keywork,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, 
+      #{updateAccount,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Hotquery" >
-    insert into t_hotquery
+    insert into t_hot_query
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="key1 != null" >
-        key1,
+      <if test="keywork != null" >
+        keywork,
       </if>
       <if test="url != null" >
         url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="key1 != null" >
-        #{key1,jdbcType=VARCHAR},
+      <if test="keywork != null" >
+        #{keywork,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
       </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.HotqueryExample" resultType="java.lang.Integer" >
-    select count(*) from t_hotquery
+    select count(*) from t_hot_query
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.Hotquery" >
-    update t_hotquery
+    update t_hot_query
     <set >
-      <if test="key1 != null" >
-        key1 = #{key1,jdbcType=VARCHAR},
+      <if test="keywork != null" >
+        keywork = #{keywork,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAccount != null" >
+        create_account = #{createAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.Hotquery" >
-    update t_hotquery
-    set key1 = #{key1,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR}
+    update t_hot_query
+    set keywork = #{keywork,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_account = #{createAccount,jdbcType=VARCHAR},
+      update_account = #{updateAccount,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
