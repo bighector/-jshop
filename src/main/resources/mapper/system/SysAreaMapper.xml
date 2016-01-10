@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.system.client.SysRoleMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SysRole" >
+<mapper namespace="net.jeeshop.biz.system.client.SysAreaMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SysArea" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
-    <result column="role_desc" property="roleDesc" jdbcType="VARCHAR" />
-    <result column="role_db_Privilege" property="roleDbPrivilege" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_account" property="createAccount" jdbcType="VARCHAR" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="create_Account" property="createAccount" jdbcType="VARCHAR" />
-    <result column="update_Account" property="updateAccount" jdbcType="VARCHAR" />
+    <result column="update_account" property="updateAccount" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,16 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, role_name, role_desc, role_db_Privilege, status, create_time, update_time, create_Account, 
-    update_Account
+    id, pid, name, create_time, create_account, update_time, update_account
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SysRoleExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SysAreaExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_role
+    from t_area
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -91,130 +88,108 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_role
+    from t_area
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_role
+    delete from t_area
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.system.model.SysRole" >
-    insert into t_role (id, role_name, role_desc, 
-      role_db_Privilege, status, create_time, 
-      update_time, create_Account, update_Account
-      )
-    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleDesc,jdbcType=VARCHAR}, 
-      #{roleDbPrivilege,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, #{updateAccount,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="net.jeeshop.biz.system.model.SysArea" >
+    insert into t_area (id, pid, name, 
+      create_time, create_account, update_time, 
+      update_account)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateAccount,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysRole" >
-    insert into t_role
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysArea" >
+    insert into t_area
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="roleName != null" >
-        role_name,
+      <if test="pid != null" >
+        pid,
       </if>
-      <if test="roleDesc != null" >
-        role_desc,
-      </if>
-      <if test="roleDbPrivilege != null" >
-        role_db_Privilege,
-      </if>
-      <if test="status != null" >
-        status,
+      <if test="name != null" >
+        name,
       </if>
       <if test="createTime != null" >
         create_time,
       </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
       <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="createAccount != null" >
-        create_Account,
-      </if>
       <if test="updateAccount != null" >
-        update_Account,
+        update_account,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="roleName != null" >
-        #{roleName,jdbcType=VARCHAR},
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
       </if>
-      <if test="roleDesc != null" >
-        #{roleDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="roleDbPrivilege != null" >
-        #{roleDbPrivilege,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="createAccount != null" >
         #{createAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateAccount != null" >
         #{updateAccount,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.system.model.SysRoleExample" resultType="java.lang.Integer" >
-    select count(*) from t_role
+  <select id="countByExample" parameterType="net.jeeshop.biz.system.model.SysAreaExample" resultType="java.lang.Integer" >
+    select count(*) from t_area
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SysRole" >
-    update t_role
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SysArea" >
+    update t_area
     <set >
-      <if test="roleName != null" >
-        role_name = #{roleName,jdbcType=VARCHAR},
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
       </if>
-      <if test="roleDesc != null" >
-        role_desc = #{roleDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="roleDbPrivilege != null" >
-        role_db_Privilege = #{roleDbPrivilege,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="createAccount != null" >
+        create_account = #{createAccount,jdbcType=VARCHAR},
+      </if>
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createAccount != null" >
-        create_Account = #{createAccount,jdbcType=VARCHAR},
-      </if>
       <if test="updateAccount != null" >
-        update_Account = #{updateAccount,jdbcType=VARCHAR},
+        update_account = #{updateAccount,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SysRole" >
-    update t_role
-    set role_name = #{roleName,jdbcType=VARCHAR},
-      role_desc = #{roleDesc,jdbcType=VARCHAR},
-      role_db_Privilege = #{roleDbPrivilege,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SysArea" >
+    update t_area
+    set pid = #{pid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_account = #{createAccount,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_Account = #{createAccount,jdbcType=VARCHAR},
-      update_Account = #{updateAccount,jdbcType=VARCHAR}
+      update_account = #{updateAccount,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,7 +1,5 @@
 use jshop;
 DROP TABLE IF EXISTS `t_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
   `username` varchar(45) NOT NULL comment '用户名',
@@ -17,8 +15,7 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `nickname_UNIQUE` (`nickname`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 comment='用户表';
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 comment='用户表';
 
 DROP TABLE IF EXISTS `t_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -36,12 +33,9 @@ CREATE TABLE `t_role` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `role_name_UNIQUE` (`role_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 comment='角色表';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 
 DROP TABLE IF EXISTS `t_privilege`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_privilege` (
   `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
   `rid` int(11) NOT NULL comment '角色id',
@@ -51,13 +45,10 @@ CREATE TABLE `t_privilege` (
   `create_Account` varchar(45) DEFAULT NULL comment '创建人',
   `update_Account` varchar(45) DEFAULT NULL comment '更新人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2733 DEFAULT CHARSET=utf8 comment='权限表';
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 comment='权限表';
 
 
 DROP TABLE IF EXISTS `t_menu`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
   `pid` int(11) NOT NULL comment '父级ID',
@@ -70,12 +61,9 @@ CREATE TABLE `t_menu` (
   `create_Account` varchar(45) DEFAULT NULL comment '创建人',
   `update_Account` varchar(45) DEFAULT NULL comment '更新人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci comment='菜单表';
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci comment='菜单表';
 
 DROP TABLE IF EXISTS `t_system_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_system_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
   `title` varchar(45) NOT NULL comment '标题',
@@ -92,11 +80,21 @@ CREATE TABLE `t_system_log` (
   `update_Account` varchar(45) DEFAULT NULL comment '更新人',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment='系统日志';
+/**区域管理*/
 
+DROP TABLE IF EXISTS `t_area`;
+CREATE TABLE `t_area` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `pid` int(11) NOT NULL COMMENT '父级ID',
+  `name` varchar(45) NOT NULL DEFAULT '' COMMENT '区域名称',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_account` varchar(45) DEFAULT NULL COMMENT '创建人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_account` varchar(45) DEFAULT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16879 DEFAULT CHARSET=utf8 comment='区域管理';
 
 DROP TABLE IF EXISTS `t_system_setting`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_system_setting` (
   `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
   `system_Code` varchar(45) DEFAULT NULL comment '系统代号',
@@ -161,4 +159,48 @@ CREATE TABLE `t_express` (
  PRIMARY KEY (`id`),
  UNIQUE KEY `code_UNIQUE` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 comment='配送方式';
+/**键值对管理*/
+DROP TABLE IF EXISTS `t_key_value`;
 
+CREATE TABLE `t_key_value` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `k_value` varchar(45) NOT NULL comment '键值',
+  `v_value` varchar(145) NOT NULL COMMENT '值',
+  `create_time` datetime COMMENT '创建时间',
+  `update_time` datetime COMMENT '更新时间',
+  `create_account` varchar(45) COMMENT '创建人',
+  `update_account` varchar(45) COMMENT '更新人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='键值对';
+
+/**热门查询管理**/
+DROP TABLE IF EXISTS `t_hot_query`;
+CREATE TABLE `t_hot_query` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `keywork` varchar(45) NOT NULL comment '查询关键字',
+  `url` varchar(100) NOT NULL comment '链接地址',
+  `create_time` datetime COMMENT '创建时间',
+  `update_time` datetime COMMENT '更新时间',
+  `create_account` varchar(45) COMMENT '创建人',
+  `update_account` varchar(45) COMMENT '更新人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment='热门查询';
+
+/**
+ * 商品管理模块
+ */
+drop table if exists t_brand;
+CREATE TABLE t_brand
+(
+id bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+brand_name varchar(128) NOT NULL COMMENT '品牌名称',
+logo varchar(128) COMMENT '品牌LOGO',
+office_site varchar(128) COMMENT '官方网站',
+description varchar(4000) COMMENT '描述信息',
+ordinal bigint COMMENT '排序',
+create_time datetime COMMENT '创建时间',
+create_account varchar(64) COMMENT '创建人',
+update_time datetime COMMENT '更新时间',
+update_account varchar(64) COMMENT '更新人',
+PRIMARY KEY (id)
+) comment='品牌管理';

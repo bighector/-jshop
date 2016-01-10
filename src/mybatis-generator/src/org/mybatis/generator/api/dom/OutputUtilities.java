@@ -35,7 +35,8 @@ public class OutputUtilities {
         if (ls == null) {
             ls = "\n"; //$NON-NLS-1$
         }
-        lineSeparator = ls;
+        //dylan: fix os differences
+        lineSeparator = "\n";
     }
 
     /**

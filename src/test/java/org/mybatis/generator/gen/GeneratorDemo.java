@@ -27,6 +27,10 @@ public class GeneratorDemo {
     public void genProduct() throws Exception {
         generateFiles("gen/generateConfig-product.xml");
     }*/
+    @Test
+    public void genFriendlink() throws Exception {
+        generateFiles("gen/generateConfig-friendlink.xml");
+    }
 
     private void generateFiles(String configResource) throws Exception{
 
