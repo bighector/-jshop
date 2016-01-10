@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class GeneratorDemo {
 
-    @Test
+    //@Test
     public void genSystem() throws Exception {
         generateFiles("gen/generateConfig-system.xml");
     }

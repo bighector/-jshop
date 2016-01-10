@@ -4,20 +4,20 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Hotquery extends BaseModel implements Serializable {
-    /** t_hotquery.key1 */
-    private String key1;
+    /** 查询关键字 */
+    private String keywork;
 
-    /** t_hotquery.url */
+    /** 链接地址 */
     private String url;
 
     private static final long serialVersionUID = 1L;
 
-    public String getKey1() {
-        return key1;
+    public String getKeywork() {
+        return keywork;
     }
 
-    public void setKey1(String key1) {
-        this.key1 = key1 == null ? null : key1.trim();
+    public void setKeywork(String keywork) {
+        this.keywork = keywork == null ? null : keywork.trim();
     }
 
     public String getUrl() {
