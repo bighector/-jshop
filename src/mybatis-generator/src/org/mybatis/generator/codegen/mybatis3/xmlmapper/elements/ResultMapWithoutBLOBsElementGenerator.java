@@ -83,8 +83,9 @@ public class ResultMapWithoutBLOBsElementGenerator extends
                             "column", MyBatis3FormattingUtilities.getRenamedColumnNameForResultMap(introspectedColumn))); //$NON-NLS-1$
             resultElement.addAttribute(new Attribute(
                     "property", introspectedColumn.getJavaProperty())); //$NON-NLS-1$
-            resultElement.addAttribute(new Attribute("jdbcType", //$NON-NLS-1$
-                    introspectedColumn.getJdbcTypeName()));
+            //dylan: remove jdbcType define
+//            resultElement.addAttribute(new Attribute("jdbcType", //$NON-NLS-1$
+//                    introspectedColumn.getJdbcTypeName()));
 
             if (stringHasValue(introspectedColumn.getTypeHandler())) {
                 resultElement.addAttribute(new Attribute(
@@ -108,8 +109,9 @@ public class ResultMapWithoutBLOBsElementGenerator extends
                             "column", MyBatis3FormattingUtilities.getRenamedColumnNameForResultMap(introspectedColumn))); //$NON-NLS-1$
             resultElement.addAttribute(new Attribute(
                     "property", introspectedColumn.getJavaProperty())); //$NON-NLS-1$
-            resultElement.addAttribute(new Attribute("jdbcType", //$NON-NLS-1$
-                    introspectedColumn.getJdbcTypeName()));
+            //dylan: remove jdbcType define
+//            resultElement.addAttribute(new Attribute("jdbcType", //$NON-NLS-1$
+//                    introspectedColumn.getJdbcTypeName()));
 
             if (stringHasValue(introspectedColumn.getTypeHandler())) {
                 resultElement.addAttribute(new Attribute(

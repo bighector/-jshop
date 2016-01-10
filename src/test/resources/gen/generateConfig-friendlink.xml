@@ -6,7 +6,7 @@
 <generatorConfiguration>
     <!-- This should cause an error because sqlMapGenerator is required
          if there is no javaClientGenerator -->
-    <context id="cms" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="friendlink" targetRuntime="MyBatis3" defaultModelType="flat">
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.ext.plugin.MapperFileOverwritePlugin">
             <!-- 是否覆盖已经有的mapper文件，默认值为true -->
@@ -32,7 +32,7 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="t_article_catalog" domainObjectName="ArticleCatalog">
+        <table tableName="ecs_friend_link" domainObjectName="Friendlink">
             <columnOverride column="id" javaType="java.lang.Long"/>
             <columnOverride column="pid" javaType="java.lang.Long"/>
         </table>

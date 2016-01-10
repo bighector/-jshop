@@ -118,6 +118,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      */
     @RequestMapping(value = "insert", method = RequestMethod.POST)
     public String insert(@ModelAttribute("e") Model e, RedirectAttributes flushAttrs) {
+
         getService().insert(e);
         addMessage(flushAttrs, "操作成功！");
         return "redirect:selectList";

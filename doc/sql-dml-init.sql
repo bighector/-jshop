@@ -15,6 +15,7 @@ INSERT INTO `t_menu`(id,pid,url,name,order_num,type) VALUES
 (9,6,'/manage/indexImg/selectList','门户滚动图片',6,'page'),
 (11,0,'','商品管理',1,'module'),
 (14,11,'/manage/product/selectList','商品管理',4,'page'),
+(95,11,'/manage/brand/selectList','品牌管理',1,'page'),
 (18,0,'','订单管理',2,'module'),
 (19,18,'/manage/order/selectList','订单管理',1,'page'),
 (23,0,'','会员管理',3,'module'),
@@ -185,7 +186,8 @@ INSERT INTO `t_privilege`(id,rid,mid) VALUES
 (2729,7,36),
 (2730,7,49),
 (2731,7,51),
-(2732,7,69);
+(2732,7,69),
+(2733,1,95);
 
 INSERT INTO t_system_setting (id, system_Code, name, www, logo, title, description, keywords, shortcuticon, address, tel, email, icp, is_open, close_Msg, qq, image_Root_Path, manage_Http, default_Product_Img, style, version, qq_Help_Html, images, manage_Left_Tree_Leaf_Icon, statistics_Code, open_Responsive, create_account, update_account, create_time, update_time) VALUES (1, 'jshop', '网上商店系统', 'http://localhost:8080/jeeshop', 'http://localhost:8080/jeeshop/resource/images/log.png', '网上商店系统(jeeshop)', '网上商店系统(jeeshop) 个性化的网店系统 通用的个人网店系统', '网上商店系统(jeeshop) 个性化的网店系统 通用的个人网店系统', 'http://localhost:8080/jeeshop/resource/images/favicon.png', 'XXX省XXX市XXX区XXX号XX弄301', '400-666-8888', 'jqsl2012@163.com', '©2013 jeeshop.net 沪ICP备13028197号-3', 'true', '由于维护原因，网站暂时关闭，由此带来的不便请亲原谅，大概会在10分钟后开放网站，敬请期待！', null, 'http://myshopxx.oss.aliyuncs.com', 'http://localhost:8080/jeeshop', 'http://localhost:8080/jeeshop/resource/images/loading7.gif', 'united', '系统版本号:1.1.0.0000.bate.', '<div>
 	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=543089122&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:543089122:51" alt="QQ店小二,点击这里给我发消息" title="QQ店小二,点击这里给我发消息" /></a> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=543089122&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:543089122:51" alt="QQ店小三,点击这里给我发消息" title="QQ店小三,点击这里给我发消息" /></a> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=543089122&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:543089122:51" alt="QQ店小四,点击这里给我发消息" title="QQ店小四,点击这里给我发消息" /></a>
