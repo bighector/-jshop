@@ -18,11 +18,11 @@
                 </button>
 
                 <#if e.status??&&e.status!=2>
-                    <a method="updateUpProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm(\"确定上架商品吗?\");">
+                    <a method="updateUpProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm('确定上架商品吗?');">
                     <i class="icon-arrow-up icon-white"></i> 上架
                     </a>
                 <#else>
-                    <a method="updateDownProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm(\"确定下架商品吗?\");">
+                    <a method="updateDownProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm('确定下架商品吗?');">
                     <i class="icon-arrow-down icon-white"></i> 下架
                     </a>
                 </#if>
@@ -210,8 +210,8 @@
 						<tr>
 							<td colspan="11">
 								<input style="display: none;" onclick="addTrFunc();" value="添加" class="btn btn-warning" type="button"/>
-								<a href="deleteImageByImgPaths" onclick="return deleteImageByImgPaths();"
-											class="btn btn-primary">删除</a>
+								<button method="deleteImageByImgPaths" onclick="return deleteImageByImgPaths();"
+											class="btn btn-primary">删除</button>
 							</td>
 						</tr>
 						<tr style="background-color: #dff0d8">

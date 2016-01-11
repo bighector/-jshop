@@ -10,7 +10,8 @@
 <meta name="HandheldFriendly" content="true" />
 <meta name="MobileOptimized" content="320" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="shortcut icon" href="<%=SystemManager.systemSetting.getShortcuticon()%>">
+<%@page import="net.jeeshop.core.front.SystemManager"%>
+<link rel="shortcut icon" href="<%=SystemManager.getInstance().getSystemSetting().getShortcuticon()%>">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/404/1/css/dandelion.css"  media="screen" />
 
 <title>xw素材网-404错误页面</title>

@@ -9,7 +9,7 @@
 <meta name="HandheldFriendly" content="true" />
 <meta name="MobileOptimized" content="320" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="shortcut icon" href="<%=SystemManager.systemSetting.getShortcuticon()%>">
+<link rel="shortcut icon" href="<%=SystemManager.getInstance().getSystemSetting().getShortcuticon()%>">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/404/1/css/dandelion.css"  media="screen" />
 
 <title>404页面</title>
@@ -41,7 +41,7 @@
         <!-- Footer -->
         <div id="da-footer">
         	<div class="da-container clearfix">
-           	<p style="text-align: center;"><%=SystemManager.systemSetting.getIcp() %>
+           	<p style="text-align: center;"><%=SystemManager.getInstance().getSystemSetting().getIcp() %>
 						<a target="_blank" href="http://www.aliyun.com/"><img src="http://gtms01.alicdn.com/tps/i1/T1W6.aFbFbXXcZj_6s-96-18.png" alt="运行在阿里云" /></a>
 					</p>
 			</div>

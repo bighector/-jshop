@@ -97,7 +97,7 @@
 						<s:property value="showStartDate" />~<s:property value="showEndDate" />
 					</td>
 					<td><s:a href="questionnaire!toEdit.action?e.id=%{id}">编辑</s:a>|
-						<a href="<%=SystemManager.systemSetting.getWww() %>/question/show.html?id=<s:property value="id" />" target="_blank">查看</a>
+						<a href="<%=SystemManager.getInstance().getSystemSetting().getWww() %>/question/show.html?id=<s:property value="id" />" target="_blank">查看</a>
 					</td>
 				</tr>
 			</s:iterator>

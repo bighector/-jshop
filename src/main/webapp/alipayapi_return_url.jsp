@@ -126,7 +126,7 @@
 		}
 		//session.setAttribute("pay_result", result);
 		//转到首页
-		response.sendRedirect(SystemManager..getInstance().getSystemSetting().getWww()+"/order/paySuccess.html");
+		response.sendRedirect(SystemManager.getInstance().getSystemSetting().getWww()+"/order/paySuccess.html");
 		if(true){
 			return;
 		}

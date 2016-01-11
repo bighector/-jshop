@@ -48,7 +48,7 @@ public class HttpRequest {
     /**
      * 默认的请求编码方式
      */
-    private String             charset           = "GBK";
+    private String             charset           = "UTF-8";
 
     /**
      * 请求发起方的ip地址

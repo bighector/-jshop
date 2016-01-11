@@ -42,8 +42,8 @@ img{border: 0px;}
 	border-color: red;
 }
 img.err-product {
-<%if(StringUtils.isNotBlank(SystemManager.systemSetting.getDefaultProductImg())){%>
-background: url(<%=SystemManager.systemSetting.getDefaultProductImg()%>) no-repeat 50% 50%;
+<%if(StringUtils.isNotBlank(SystemManager.getInstance().getSystemSetting().getDefaultProductImg())){%>
+background: url(<%=SystemManager.getInstance().getSystemSetting().getDefaultProductImg()%>) no-repeat 50% 50%;
 <%}%>
 }
 .lazy {
@@ -53,7 +53,7 @@ background: url(<%=SystemManager.systemSetting.getDefaultProductImg()%>) no-repe
 <script>
 function defaultProductImg(){ 
 	var img=event.srcElement; 
-	img.src="<%=SystemManager.systemSetting.getDefaultProductImg()%>"; 
+	img.src="<%=SystemManager.getInstance().getSystemSetting().getDefaultProductImg()%>"; 
 	img.onerror=null; //控制不要一直跳动 
 }
 </script>

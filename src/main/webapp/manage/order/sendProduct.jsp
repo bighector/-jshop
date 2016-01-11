@@ -1,7 +1,9 @@
+<%@page import="java.util.Map"%>
+<%@page import="net.jeeshop.services.manage.orderpay.bean.Orderpay"%>
 <%@page import="net.jeeshop.services.manage.order.bean.Order"%>
 <%@page import="net.jeeshop.core.KeyValueHelper"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <%@ page session="false"%>
 <%@ taglib uri="http://jsptags.com/tags/navigation/pager" prefix="pg"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -19,15 +21,15 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/resource/js/jquery.blockUI.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resource/bootstrap/js/bootstrap.min.js"></script>
 
-<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/resource/js/manage.js"></script> --%>
 
 <%@ include file="/resource/common_html_validator.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/jquery-jquery-ui/themes/base/jquery.ui.all.css">
 </head>
 <body>
-	<s:form id="form" name="form" method="post" theme="simple" >
-		<input type="hidden" name="WIDtrade_no" value="<s:property value="e.tradeNo"/>"/>
-		<input type="hidden" id="orderid" name="orderid" value="<s:property value="e.id"/>"/>
+<%Orderpay orderpay = new Orderpay(); %>
+	<form id="form" name="form" method="post"  >
+		<input type="hidden" name="WIDtrade_no" value="${orderpay.tradeNo}"/>
+		<input type="hidden" id="orderid" name="orderid" value="${orderpay.id}"/>
 		<div class="alert alert-info" style="margin-bottom: 2px;text-align: left;">
 			<strong>确认发货：点击【确认发货】按钮后，信息将请求到支付宝发货接口，并且同一时间本系统会通过短消息告知到客户货物已发送。</strong>
 		</div>
@@ -38,33 +40,40 @@
 					<div class="alert alert-info" id="WIDtransport_type_msg">
 						发货10天后，若对方没有确认收货，交易结束，金额自动进入您的账户。
 					</div>
-					<s:select list="#{'EXPRESS':'快递','POST':'平邮','no':'不需要物流 '}" name="WIDtransport_type" id="WIDtransport_type" 
-					onchange="changeFunc(this)"/>
+					<select name="WIDtransport_type" id="WIDtransport_type" onchange="changeFunc(this)">
+						<option value="EXPRESS">快递</option>
+						<option value="POST">平邮</option>
+						<option value="no">不需要物流</option>
+					</select>
 				</td>
 			</tr>
 			<tr id="companyTR">
 				<th nowrap="nowrap">物流公司名称</th>
 				<th nowrap="nowrap">
 					<div style="display: none;" id="youzhengDIV">中国邮政</div>
-					<%
-					application.setAttribute("_expressMap", SystemManager.manageExpressMap);
-					%>
-					<s:select list="#application._expressMap" listKey="key" listValue="value"
-					name="expressCompanyName" id="expressCompanyName"/>
-					<!-- ,'华强物流':'华强物流','其它':'其它' -->
+				<%
+					application.setAttribute("_expressMap", SystemManager.getManageExpressMap());
+					%> 
+				
+					
+					<select name="expressCompanyName" id="expressCompanyName">
+					<% for (Map.Entry<String, String> map : SystemManager.getManageExpressMap().entrySet()) {%>
+						<option value="<%=map.getKey()%>"><%=map.getValue()%></option>
+  					<%} %>
+					</select>
 				</th>
 			</tr>
 			<tr>
 				<th nowrap="nowrap">运单号</th>
 				<th nowrap="nowrap">
-					<s:textfield name="WIDinvoice_no" id="WIDinvoice_no" data-rule="运单号:required;WIDinvoice_no;length[1~20];" maxlength="20" size="20"/>
+					<input class="form-control" name="WIDinvoice_no" id="WIDinvoice_no" data-rule="运单号:required;WIDinvoice_no;length[1~20];" maxlength="20" size="20"/>
 				</th>
 			</tr>
 			<tr>
 				<th nowrap="nowrap">确认发货备注</th>
 				<th nowrap="nowrap">
-					<s:textfield name="confirmSendProductRemark" id="confirmSendProductRemark" 
-					data-rule="确认发货备注:confirmSendProductRemark;length[1~50];" maxlength="50" size="50" cssStyle="width:60%;"/>
+					<input name="confirmSendProductRemark" id="confirmSendProductRemark" 
+					data-rule="确认发货备注:confirmSendProductRemark;length[1~50];" maxlength="50" size="50" />
 				</th>
 			</tr>
 			<tr>
@@ -81,7 +90,7 @@
 				</th>
 			</tr>
 		</table>
-	</s:form>
+	</form>
 	
 	<script type="text/javascript">
 	function changeFunc(obj){
@@ -139,7 +148,7 @@
 	            	if(d.code=="0"){
 	            		alert("发货成功！");
 	            		//页面专项明细页面
-	            		window.location.href = "<%=request.getContextPath()%>/manage/order!toEdit.action?e.id="+_orderid;
+	            		window.location.href = "<%=request.getContextPath()%>/manage/order/toEdit?e.id="+_orderid;
 	            	}else if(d.code=="1"){
 	            		var errorStr = d.error;
 	            		if(d.error=="TRADE_NOT_EXIST"){

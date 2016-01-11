@@ -38,7 +38,7 @@ public class SMSWebChinese {
 			System.out.println("h.toString()="+h.toString());
 		}
 		String returnCode = new String(post.getResponseBodyAsString().getBytes(
-				"gbk"));
+				"UTF-8"));
 		System.out.println("result="+returnCode);
 
 		post.releaseConnection();

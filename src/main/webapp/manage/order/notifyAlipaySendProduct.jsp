@@ -43,7 +43,7 @@
 			//物流公司名称
 			//String logistics_name = new String(request.getParameter("WIDlogistics_name").getBytes("ISO-8859-1"),"UTF-8");
 			String logistics_name = request.getParameter("expressCompanyName");//new String(request.getParameter("expressCompanyName").getBytes("ISO-8859-1"),"UTF-8");
-			logistics_name = SystemManager.manageExpressMap.get(logistics_name);
+			logistics_name = SystemManager.getInstance().getManageExpressMap().get(logistics_name);
 			//必填
 	
 			//物流发货单号

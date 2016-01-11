@@ -37,7 +37,7 @@
 <%
 String style = request.getParameter("style");
 if(StringUtils.isBlank(style)){
-	style = SystemManager.systemSetting.getStyle();
+	style = SystemManager.getInstance().getSystemSetting().getStyle();
 }
 //out.println("style="+style);
 %>
@@ -49,7 +49,7 @@ if(StringUtils.isBlank(style)){
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/bootstrap3.3.4/css/bootstrap-theme.min.css"> --%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/bootstrap3.3.4/css/docs.css"  type="text/css">
 <%
-System.out.println("SystemManager.systemSetting.getOpenResponsive()="+SystemManager.systemSetting.getOpenResponsive());
+System.out.println("SystemManager.getInstance().getSystemSetting().getOpenResponsive()="+SystemManager.getInstance().getSystemSetting().getOpenResponsive());
 
 Object responsive_session = request.getSession().getAttribute("responsive");
 boolean non_responsive = true;
@@ -58,7 +58,7 @@ if(responsive_session!=null){
 		non_responsive = false;
 	}
 }else{
-	if(SystemManager.systemSetting.getOpenResponsive().equals("n")){
+	if(SystemManager.getInstance().getSystemSetting().getOpenResponsive().equals("n")){
 		non_responsive = true;
 	}else{
 		non_responsive = false;

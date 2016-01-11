@@ -1,16 +1,18 @@
-1、\web\doc下有sql和开发文档，发布比较仓促，如有错误可以联系qq:543089122。
-2、只需修改applicationContext.xml下的数据库密码为你本地数据库的密码，然后部署到tomcat则可以直接运行。
-3、本地访问方式：
-
-http://127.0.0.1:8080/jeeshop/manage/admin.jsp
+项目配置：
+1、导入doc/jeeshop.sql文件到数据库
+2、修改conf.properties中有关数据库用户名密码的配置。
+3、项目启动方式为maven方式，即使用maven命令：mvn tomcat6:run
+4、本地访问方式：
+后台管理页面
+http://127.0.0.1:8080/jeeshop/manage/user/login
 后台账号
 	admin/123456	管理员账号，拥有全部权限
-	test1/123456	测试账号，只拥有查询权限
 门户测试账号：test1/123456
 
 
 -------------------------------------------------------------------
-有疑问或寻求帮助可以联系QQ：543089122|jeeshop交流讨论群：226949843
-本软件的最新动态请关注官网：http://www.jeeshop.net
+项目主页：http://git.oschina.net/dinguangx/jshop
+项目文档：http://git.oschina.net/dinguangx/jshop/wikis/home
+有疑问或寻求帮助可以联系jshop交流讨论群：417059832
 
 免责申明：用户可免费使用本软件，但与此造成的任何问题本与本作者无关。

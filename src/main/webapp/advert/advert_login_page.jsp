@@ -5,7 +5,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!-- 登陆页面广告 -->
 <%
-Advert advert_login_page = SystemManager.advertMap.get("advert_login_page");
+Advert advert_login_page = SystemManager.getInstance().getAdvertMap().get("advert_login_page");
 response.setContentType("text/html");
 if(advert_login_page==null){
 	out.println("出租广告");

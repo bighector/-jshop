@@ -36,7 +36,7 @@
 							<td>地址区域</td>
 							<td>
 						    	<%
-						    	application.setAttribute("_areaMap", SystemManager.areaMap);
+						    	application.setAttribute("_areaMap", SystemManager.getInstance().getAreaMap());
 						    	%>
 						    	<s:select list="#application._areaMap" listKey="key" listValue="value.name" onchange="changeProvince()"
 						    	headerKey="" headerValue="--选择省份--" name="e.ordership.provinceCode" id="province" cssClass="form-control" />

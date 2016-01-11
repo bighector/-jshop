@@ -42,7 +42,7 @@
 	<meta name="keywords"  content="<s:property value="e.keywords" escape="false"/>" />
 </s:else>
 
-<link rel="shortcut icon" href="<%=SystemManager.systemSetting.getShortcuticon()%>">
+<link rel="shortcut icon" href="<%=SystemManager.getInstance().getSystemSetting().getShortcuticon()%>">
 <%@ include file="/resource/common_css.jsp"%>
 <style type="text/css">
 .topCss {
@@ -60,7 +60,7 @@
 <script>
 function defaultProductImg(){ 
 	var img=event.srcElement; 
-	img.src="<%=SystemManager.systemSetting.getDefaultProductImg() %>"; 
+	img.src="<%=SystemManager.getInstance().getSystemSetting().getDefaultProductImg() %>"; 
 	img.onerror=null; //控制不要一直跳动 
 }
 </script>

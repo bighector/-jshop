@@ -196,7 +196,7 @@ public class SystemManager {
 	 * @return
 	 */
 	public List<String> getCatalogsById(String catalogID) {
-		if(org.apache.commons.lang.StringUtils.isBlank(catalogID)){
+		if(StringUtils.isBlank(catalogID)){
 			return null;
 		}
 

@@ -11,4 +11,3 @@
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/resource/js/manage.js"></script>
 
-

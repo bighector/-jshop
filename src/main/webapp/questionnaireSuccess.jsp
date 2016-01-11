@@ -4,13 +4,11 @@
 <%@page
 	import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.web.context.WebApplicationContext"%>
-<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="java.util.*"%>
 <%@page import="net.jeeshop.services.front.news.bean.News"%>
 <%@page import="net.jeeshop.core.FrontContainer"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib uri="http://jsptags.com/tags/navigation/pager" prefix="pg"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -60,7 +58,7 @@
 <script>
 function defaultProductImg(){ 
 	var img=event.srcElement; 
-	img.src="<%=SystemManager.systemSetting.getDefaultProductImg() %>"; 
+	img.src="<%=SystemManager.getInstance().getSystemSetting().getDefaultProductImg() %>"; 
 	img.onerror=null; //控制不要一直跳动 
 }
 </script>

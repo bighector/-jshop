@@ -62,19 +62,16 @@ public abstract class BaseController<E extends PagerModel> {
 
         int offset = 0;//分页偏移量
         if (request.getParameter("pager.offset") != null) {
-            offset = Integer
-                    .parseInt(request.getParameter("pager.offset"));
+            offset = Integer.parseInt(request.getParameter("pager.offset"));
         }
-        if (offset < 0)
-            offset = 0;
+        if (offset < 0) offset = 0;
         e.setOffset(offset);
         PagerModel pager = getService().selectPageList(e);
         if (pager == null) {
             pager = new PagerModel();
         }
         // 计算总页数
-        pager.setPagerSize((pager.getTotal() + pager.getPageSize() - 1)
-                / pager.getPageSize());
+        pager.setPagerSize((pager.getTotal() + pager.getPageSize() - 1)  / pager.getPageSize());
 
         selectListAfter(pager);
         request.setAttribute("pager", pager);

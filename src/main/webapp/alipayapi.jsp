@@ -53,7 +53,6 @@
 		//商户订单号
 		String out_trade_no = payInfo.getWIDout_trade_no();//new String(payInfo.getWIDout_trade_no().getBytes("ISO-8859-1"),"UTF-8");
 		//商户网站订单系统中唯一订单号，必填
-
 		//payInfo.setWIDsubject("订单11");
 		//订单名称
 		String subject = payInfo.getWIDsubject();//new String(payInfo.getWIDsubject().getBytes("ISO-8859-1"),"UTF-8");
@@ -138,7 +137,7 @@
 			String sHtmlText = AlipaySubmit.buildRequest(sParaTemp,"get","确认");
 			out.println("正在请求支付宝...");
 			out.println(sHtmlText);
-			logger.error("sHtmlText="+sHtmlText);
+			logger.debug("sHtmlText="+sHtmlText);
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("异常！");

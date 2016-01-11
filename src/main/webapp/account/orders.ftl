@@ -53,7 +53,7 @@ font-weight: 700;font-size: 16px;color: #f50;
 									<th style="text-align: center;width: 100px;">操作</th>
 								</tr>
 								<#list pager.list as item>
-									<tr class="warning">
+									<tr class="warning" id="del${item.id!""}">
 										<td colspan="11">
 											<div class="row">
 												<div class="col-xs-3">
@@ -75,7 +75,7 @@ font-weight: 700;font-size: 16px;color: #f50;
 										</td>
 									</tr>
 									<#list item.orders as item>
-										<tr>
+										<tr id="delete${item.id!""}">
 											<td>&nbsp;
 												<div style="width:50px;height: 50px;border: 0px solid;float: left;margin-left: 20px;">
 													<a href="${basepath}/product/${item.productID!""}.html" target="_blank" title="${item.productName!""}">
@@ -134,7 +134,7 @@ font-weight: 700;font-size: 16px;color: #f50;
 												<#elseif item.status?? && item.status =="cancel">
                                                     <!-- 已取消 -->
 												<#else>
-                                                    等待付款
+                                                   	<a target="_blank" href="${basepath}/order/toPay?id=${item.id!""}" class="btn btn-danger btn-sm">付款</a>
 												</#if>
                                                 <br>
                                                 <#if item.status?? && (item.status =="cancel" || item.status=="file")>
@@ -146,9 +146,11 @@ font-weight: 700;font-size: 16px;color: #f50;
                                                 </#if>
                                                 <a target="_blank" href="${basepath}/order/${item.id!""}">订单详情</a>
                                                 <br>
-
+                                                <a  href="javascript:void(0)" onclick="return deleteOrder(${item.id!""})">删除订单</a>
+                                             <#--   href="${basepath}/order/deletes?ids=${item.id!""}"-->
+												<br>
                                                 <#if item.status?? && (item.status =="send" || item.status=="sign")>
-                                                <a target="_blank" href="http://www.kuaidi100.com/chaxun?com=${item.expressCompanyName!""}&nu=${item.expressNo!""}">快递物流</a>
+                                                <a target="_blank" href="http://www.kuaidi100.com/chaxun?com=${item.expressCompanyName!""}&nu=${item.expressNo!""}">物流详情</a>
                                                 </#if>
 												</td>
 											</#if>
@@ -201,5 +203,16 @@ font-weight: 700;font-size: 16px;color: #f50;
 			</div>
 		</div>
 	</div>
-	
+	<script>
+	function deleteOrder(orderid){
+	if(confirm("确认删除该订单？")){
+		<#if RequestParameters["pager.offset"]?exists>
+		window.location.href="${basepath}/order/deletes?ids="+orderid+"&pager.offset=${RequestParameters["pager.offset"]}";
+		<#else>
+		window.location.href="${basepath}/order/deletes?ids="+orderid;
+		</#if>
+	}
+	return false;
+	}
+	</script>
 </@html.htmlBase>

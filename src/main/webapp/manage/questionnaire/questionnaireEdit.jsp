@@ -18,7 +18,7 @@
 		<s:submit method="insert" onclick="return onSubmit();" value="新增问卷" cssClass="btn btn-primary"/>
 	</s:if> 
 	<s:else>
-		<a class="btn btn-warning" href="<%=SystemManager.systemSetting.getWww() %>/question/show.html?id=<s:property value="e.id" />" target="_blank">查看</a>
+		<a class="btn btn-warning" href="<%=SystemManager.getInstance().getSystemSetting().getWww() %>/question/show.html?id=<s:property value="e.id" />" target="_blank">查看</a>
 		<s:submit method="update" onclick="return onSubmit();" value="保存问卷" cssClass="btn btn-primary"/>
 		
 		<s:a href="questionnaire!toEdit.action?e.id=%{e.id}&e.addQuestionnaireItem=true&e.editQuestionnaireItem=false" cssClass="btn btn-success">增加题目</s:a>

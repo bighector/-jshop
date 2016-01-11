@@ -18,7 +18,6 @@
     </#if>
 
     <!-- <link rel="stylesheet" href="http://v3.bootcss.com/dist/css/bootstrap.css"  type="text/css"> -->
-
     <script>
         var basepath = "${basepath}";
         var staticpath = "${staticpath}";

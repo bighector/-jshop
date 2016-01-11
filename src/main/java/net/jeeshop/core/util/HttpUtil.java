@@ -66,6 +66,6 @@ public class HttpUtil {
 	}
 
 	public static void main(String[] args) throws IOException {
-		System.out.println(HttpUtil.get("http://www.baidu.com",null,"gbk"));
+		System.out.println(HttpUtil.get("http://www.baidu.com",null,"UTF-8"));
 	}
 }
