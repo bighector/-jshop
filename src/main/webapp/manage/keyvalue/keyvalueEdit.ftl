@@ -13,11 +13,11 @@
 				</tr>
 				<tr>
 					<td style="text-align: right;">键</td>
-					<td style="text-align: left;"><input type="text" name="keytemp" value="${e.keytemp!""}" id="key1" data-rule="键:required;keytemp;length[1~45];"/></td>
+					<td style="text-align: left;"><input type="text" name="kValue" value="${e.kValue!""}" id="key1" data-rule="键:required;kValue;length[1~45];"/></td>
 				</tr>
 				<tr>
 					<td style="text-align: right;">值</td>
-					<td style="text-align: left;"><input type="text" name="valuetemp" value="${e.valuetemp!""}" id="value" data-rule="值:required;valuetemp;length[1~45];"/></td>
+					<td style="text-align: left;"><input type="text" name="vValue" value="${e.vValue!""}" id="value" data-rule="值:required;vValue;length[1~45];"/></td>
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align: center;">

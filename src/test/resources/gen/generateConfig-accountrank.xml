@@ -18,22 +18,22 @@
                         connectionURL="jdbc:mysql://localhost:3306/jshop"
                         userId="root" password=""/>
 
-        <javaModelGenerator targetPackage="net.jeeshop.biz.system.model"
+        <javaModelGenerator targetPackage="net.jeeshop.biz.accountrank.model"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <property name="rootClass" value="net.jeeshop.biz.base.model.BaseModel"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mapper.keyvalue"
+        <sqlMapGenerator targetPackage="mapper.accountrank"
                          targetProject="src/main/resources"></sqlMapGenerator>
         <javaClientGenerator type="org.mybatis.generator.custom.javamapper.GenericJavaMapperGenerator" 
-        					targetPackage="net.jeeshop.biz.system.client"
+        					targetPackage="net.jeeshop.biz.accountrank.client"
                             targetProject="src/main/java">
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="t_key_value" domainObjectName="KeyValue">
+        <table tableName="t_accountrank" domainObjectName="AccountRank">
         	<columnOverride column="id" javaType="java.lang.Long"/>
          <!--    <columnOverride column="key" javaType="java.util.String"/>
             <columnOverride column="value" javaType="java.util.String"/> -->

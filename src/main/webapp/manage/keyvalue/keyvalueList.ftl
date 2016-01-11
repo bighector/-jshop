@@ -18,14 +18,14 @@
                     // 'sort', 'type' and undefined all just use the integer
                     return '<input type="checkbox" name="ids" value="'+data+'"/>';
                 }},
-				{name:"keytemp", title:"key", data:"keytemp"},
-				{name:"valuetemp", title:"value", data:"valuetemp"},
+				{name:"kValue", title:"key", data:"kValue"},
+				{name:"vValue", title:"value", data:"vValue"},
                 {name:"createtime", title:"创建时间", data:"createTime",render:function(data,type,row,meta){
                     return data;
                 }},
                 {name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
 					<#if checkPrivilege("/manage//keyvalue/edit")>
-                        return '<a href="${basepath}/manage//keyvalue/toEdit?id=' + data + '">编辑</a>';
+                        return '<a href="${basepath}/manage//keyvalue/toEdit?id=' + data + '">编辑</a>&nbsp;<a href="${basepath}/manage//keyvalue/deleteByID?id=' + data + '">删除</a>';
 					<#else>
                         return "";
 					</#if>
@@ -68,11 +68,11 @@
 		<tr>
 			<td style="text-align: right;">key</td>
 			<td style="text-align: left;" >
-			<input type="text" class="input-small" id="keytemp" name="keytemp">
+			<input type="text" class="input-small" id="kValue" name="kValue">
 			</td>
 			<td style="text-align: right;">value</td>
 			<td style="text-align: left;" >
-			<input type="text" class="input-small" id="valuetemp" name="valuetemp">
+			<input type="text" class="input-small" id="vValue" name="vValue">
 			</td>
 		</tr>
 		<tr>

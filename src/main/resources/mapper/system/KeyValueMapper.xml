@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.keyvalue.client.KeyValueObjectMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.keyvalue.model.KeyValueObject" >
+<mapper namespace="net.jeeshop.biz.system.client.KeyValueMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.KeyValue" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="keyTemp" property="keytemp" jdbcType="VARCHAR" />
-    <result column="valueTemp" property="valuetemp" jdbcType="VARCHAR" />
+    <result column="k_value" property="kValue" jdbcType="VARCHAR" />
+    <result column="v_value" property="vValue" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_Account" property="createAccount" jdbcType="VARCHAR" />
@@ -69,9 +69,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, keyTemp, valueTemp, create_time, update_time, create_Account, update_Account
+    id, k_value, v_value, create_time, update_time, create_Account, update_Account
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.keyvalue.model.KeyValueObjectExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.KeyValueExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,25 +95,25 @@
     delete from t_key_value
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.keyvalue.model.KeyValueObject" >
-    insert into t_key_value (id, keyTemp, valueTemp, 
+  <insert id="insert" parameterType="net.jeeshop.biz.system.model.KeyValue" >
+    insert into t_key_value (id, k_value, v_value, 
       create_time, update_time, create_Account, 
       update_Account)
-    values (#{id,jdbcType=INTEGER}, #{keytemp,jdbcType=VARCHAR}, #{valuetemp,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{kValue,jdbcType=VARCHAR}, #{vValue,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, 
       #{updateAccount,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.keyvalue.model.KeyValueObject" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.KeyValue" >
     insert into t_key_value
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="keytemp != null" >
-        keyTemp,
+      <if test="kValue != null" >
+        k_value,
       </if>
-      <if test="valuetemp != null" >
-        valueTemp,
+      <if test="vValue != null" >
+        v_value,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -132,11 +132,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="keytemp != null" >
-        #{keytemp,jdbcType=VARCHAR},
+      <if test="kValue != null" >
+        #{kValue,jdbcType=VARCHAR},
       </if>
-      <if test="valuetemp != null" >
-        #{valuetemp,jdbcType=VARCHAR},
+      <if test="vValue != null" >
+        #{vValue,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -152,20 +152,20 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.keyvalue.model.KeyValueObjectExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="net.jeeshop.biz.system.model.KeyValueExample" resultType="java.lang.Integer" >
     select count(*) from t_key_value
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.keyvalue.model.KeyValueObject" >
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.KeyValue" >
     update t_key_value
     <set >
-      <if test="keytemp != null" >
-        keyTemp = #{keytemp,jdbcType=VARCHAR},
+      <if test="kValue != null" >
+        k_value = #{kValue,jdbcType=VARCHAR},
       </if>
-      <if test="valuetemp != null" >
-        valueTemp = #{valuetemp,jdbcType=VARCHAR},
+      <if test="vValue != null" >
+        v_value = #{vValue,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -182,10 +182,10 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.keyvalue.model.KeyValueObject" >
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.KeyValue" >
     update t_key_value
-    set keyTemp = #{keytemp,jdbcType=VARCHAR},
-      valueTemp = #{valuetemp,jdbcType=VARCHAR},
+    set k_value = #{kValue,jdbcType=VARCHAR},
+      v_value = #{vValue,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_Account = #{createAccount,jdbcType=VARCHAR},
