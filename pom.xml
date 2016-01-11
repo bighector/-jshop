@@ -48,7 +48,7 @@
                             </sources>
                         </configuration>
                     </execution>
-                    <execution>
+                    <!-- <execution>
                         <id>add-test-resource</id>
                         <phase>generate-test-resources</phase>
                         <goals>
@@ -59,7 +59,7 @@
                                 <resource>src/mybatis-generator/resources</resource>
                             </resources>
                         </configuration>
-                    </execution>
+                    </execution>-->
                 </executions>
             </plugin>
             <plugin>
@@ -68,6 +68,7 @@
                 <version>2.1</version>
                 <configuration>
                     <port>8080</port>
+                    <uriEncoding>utf-8</uriEncoding>
                 </configuration>
             </plugin>
             <plugin>

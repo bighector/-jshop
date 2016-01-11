@@ -1,8 +1,10 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
-<@page.pageBase currentMenu="广告管理">
+<@page.pageBase currentMenu="公告管理">
 
 <script>
 $(function(){
+    initTextEdit();
+   	$("#title").focus();   	
 	<#if e.id??>
 	var id = "${e.id}";
 	$("#btnStatic").click(function(){
@@ -11,17 +13,50 @@ $(function(){
 		});
 	});
 	</#if>
-	
 });
+function initTextEdit(){
+   var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true
+		});
+		K('input[name=getHtml]').click(function(e) {
+			alert(editor.html());
+		});
+		K('input[name=isEmpty]').click(function(e) {
+			alert(editor.isEmpty());
+		});
+		K('input[name=getText]').click(function(e) {
+			alert(editor.text());
+		});
+		K('input[name=selectedHtml]').click(function(e) {
+			alert(editor.selectedHtml());
+		});
+		K('input[name=setHtml]').click(function(e) {
+			editor.html('<h3>Hello KindEditor</h3>');
+		});
+		K('input[name=setText]').click(function(e) {
+			editor.text('<h3>Hello KindEditor</h3>');
+		});
+		K('input[name=insertHtml]').click(function(e) {
+			editor.insertHtml('<strong>插入HTML</strong>');
+		});
+		K('input[name=appendHtml]').click(function(e) {
+			editor.appendHtml('<strong>添加HTML</strong>');
+		});
+		K('input[name=clear]').click(function(e) {
+			editor.html('');
+		});
+	});
+}
 </script>
-	<form action="${basepath}/manage/article" namespace="/manage" theme="simple" name="form" id="form" method="post">
-		<input type="hidden" value="${e.type!""}" name="type"/>
-		<input type="hidden" value="${e.catalogID!""}" id="catalogID"/>
+	<form action="${basepath}/manage/notice"  theme="simple" name="form" id="form" method="post">
+		
 		<table class="table table-bordered">
 			<tr>
 				<td colspan="2" style="text-align: center;">
 					<#if e.id??>
-                        文章ID：<span class="badge badge-success">${e.id!""}</span>
+                        公告ID：<span class="badge badge-success">${e.id!""}</span>
                         <button method="update" class="btn btn-success">
                             <i class="icon-ok icon-white"></i> 保存
                         </button>
@@ -35,13 +70,10 @@ $(function(){
                             <i class="icon-arrow-up icon-white"></i> 显示</a>
                         </#if>
 
-                        <#if e.type??&&e.type=="notice">
+                       
                         <a class="btn btn-info" target="_blank" href="${systemSetting().www}/news/${e.id!""}.html">
                         <i class="icon-eye-open icon-white"></i> 查看</a>
-                        <#elseif e.type??&&e.type=="help">
-                        <a class="btn btn-info" target="_blank" href="${systemSetting().www}/help/${e.code!""}.html">
-                        <i class="icon-eye-open icon-white"></i> 查看</a>
-                        </#if>
+                        
                         <a id="btnStatic" href="#" class="btn btn-warning">
                         <i class="icon-refresh icon-white"></i> 静态化</a>
 					<#else>
@@ -60,31 +92,7 @@ $(function(){
 				<td>id</td>
 				<td><input type="hidden" value="${e.id!""}" name="id" label="id" /></td>
 			</tr>
-			<#if e.type??&&e.type=="help">
-				<tr>
-					<td style="text-align: right;">类别</td>
-					<td>
-						<select onchange="catalogChange(this)" name="catalogID" id="catalogSelect" data-rule="类别:required;catalogSelect;">
-							<option></option>
-                            <#list catalogsArticle as item>
-								<option pid="0" <#if e.catalogID?? && item.id==e.catalogID>selected="selected" </#if> value="${item.id!""}"><font color='red'>${item.name!""}</font></option>
-							</#list>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align: right;">文章code</td>
-					<td style="text-align: left;"><input type="text"  value="${e.code!""}" name="code"  data-rule="文章编码:required;code;length[1~25];remote[unique]"
-							id="code" /><br>
-						(例如：[新手帮助]的编码为xsbz，或者输入别的字符，但是必须唯一，最好不要使用中文。)		
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align: right;">顺序</td>
-					<td style="text-align: left;"><input type="text"  value="${e.order1!""}" name="order1"  data-rule="顺序:integer;order1;length[1~5];"
-							id="order1" /></td>
-				</tr>
-			</#if>
+			
 			<tr>
 				<td style="text-align: right;width: 80px;">标题</td>
 				<td style="text-align: left;"><input type="text" value="${e.title!""}" name="title" style="width: 80%;" id="title"
@@ -100,10 +108,7 @@ $(function(){
 		</table>
 	</form>
 <script type="text/javascript">
-	$(function() {
-		//$("#title").focus();
-		selectDefaultCatalog();
-	});
+	
 	function doSubmitFunc(obj){
 			var m = $(obj).attr("name");
 			console.log(m);
@@ -141,48 +146,6 @@ $(function(){
 		//_form.submit();
 		return false;
 	}
-
-	function selectDefaultCatalog(){
-		var _catalogID = $("#catalogID").val()+"";//alert(_catalogID);
-		if(_catalogID!='' && _catalogID>0){//alert("_catalogID="+_catalogID);
-			$("#catalogSelect").val(_catalogID);
-		}
-	}
 </script>
 
-<script>
-	var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
-			allowFileManager : true
-		});
-		K('input[name=getHtml]').click(function(e) {
-			alert(editor.html());
-		});
-		K('input[name=isEmpty]').click(function(e) {
-			alert(editor.isEmpty());
-		});
-		K('input[name=getText]').click(function(e) {
-			alert(editor.text());
-		});
-		K('input[name=selectedHtml]').click(function(e) {
-			alert(editor.selectedHtml());
-		});
-		K('input[name=setHtml]').click(function(e) {
-			editor.html('<h3>Hello KindEditor</h3>');
-		});
-		K('input[name=setText]').click(function(e) {
-			editor.text('<h3>Hello KindEditor</h3>');
-		});
-		K('input[name=insertHtml]').click(function(e) {
-			editor.insertHtml('<strong>插入HTML</strong>');
-		});
-		K('input[name=appendHtml]').click(function(e) {
-			editor.appendHtml('<strong>添加HTML</strong>');
-		});
-		K('input[name=clear]').click(function(e) {
-			editor.html('');
-		});
-	});
-</script>
 </@page.pageBase>
