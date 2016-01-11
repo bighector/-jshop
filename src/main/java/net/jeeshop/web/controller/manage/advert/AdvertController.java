@@ -6,8 +6,6 @@ import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.cms.model.Advert;
 import net.jeeshop.biz.cms.model.AdvertExample;
 import net.jeeshop.biz.cms.service.AdvertService;
-import net.jeeshop.biz.keyvalue.model.KeyValueObject;
-import net.jeeshop.biz.keyvalue.model.KeyValueObjectExample;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 
 import org.apache.commons.lang.StringUtils;
