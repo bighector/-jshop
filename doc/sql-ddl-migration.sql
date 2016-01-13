@@ -145,6 +145,21 @@ CREATE TABLE `t_article_catalog` (
  UNIQUE KEY `code_UNIQUE` (`code`)
 ) comment='文章分类';
 
+DROP TABLE IF EXISTS `t_notice`;
+CREATE TABLE `t_notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(45) comment '标题',
+  `content` longtext comment '内容',
+  `reader_count` int(11) DEFAULT '0' comment '阅读数',
+  `status` varchar(1) DEFAULT 'n' comment '状态',
+  `ordinal` int(11) DEFAULT '0' comment '顺序',
+  `create_time` datetime COMMENT '创建时间',
+  `update_time` datetime COMMENT '更新时间',
+  `create_account` varchar(45) COMMENT '创建人',
+  `update_account` varchar(45) COMMENT '更新人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 drop table if exists t_express;
 CREATE TABLE `t_express` (
  `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
