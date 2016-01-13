@@ -70,7 +70,7 @@
 				{name:"id", title:"ID", data:"id"},
 				{name:"title", title:"标题", data:"title"},
                 {name:"updateTime", title:"最后操作时间", data:"updateTime",render:function(data,type,row,meta){
-                    return data;
+                   return new Date(data).format("yyyy-MM-dd HH:mm:ss");
                 }},
                 {name:"status", title:"显示状态", data:"status",render:function(data,type,row,meta){
                     if(data == "y"){

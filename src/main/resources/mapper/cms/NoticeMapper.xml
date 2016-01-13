@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.Notice" >
     <id column="id" property="id" />
     <result column="title" property="title" />
-    <result column="readerCount" property="readercount" />
+    <result column="reader_count" property="readerCount" />
     <result column="status" property="status" />
-    <result column="order1" property="order1" />
+    <result column="ordinal" property="ordinal" />
     <result column="create_time" property="createTime" />
     <result column="update_time" property="updateTime" />
     <result column="create_Account" property="createAccount" />
@@ -74,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, readerCount, status, order1, create_time, update_time, create_Account, 
+    id, title, reader_count, status, ordinal, create_time, update_time, create_Account, 
     update_Account
   </sql>
   <sql id="Blob_Column_List" >
@@ -123,9 +123,9 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Notice" >
-    insert into t_notice (id, title, readerCount, status, order1, create_time, update_time, 
+    insert into t_notice (id, title, reader_count, status, ordinal, create_time, update_time, 
       create_Account, update_Account, content)
-    values (#{id}, #{title}, #{readercount}, #{status}, #{order1}, #{createTime}, #{updateTime}, 
+    values (#{id}, #{title}, #{readerCount}, #{status}, #{ordinal}, #{createTime}, #{updateTime}, 
       #{createAccount}, #{updateAccount}, #{content})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Notice" >
@@ -137,14 +137,14 @@
       <if test="title != null" >
         title,
       </if>
-      <if test="readercount != null" >
-        readerCount,
+      <if test="readerCount != null" >
+        reader_count,
       </if>
       <if test="status != null" >
         status,
       </if>
-      <if test="order1 != null" >
-        order1,
+      <if test="ordinal != null" >
+        ordinal,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -169,14 +169,14 @@
       <if test="title != null" >
         #{title},
       </if>
-      <if test="readercount != null" >
-        #{readercount},
+      <if test="readerCount != null" >
+        #{readerCount},
       </if>
       <if test="status != null" >
         #{status},
       </if>
-      <if test="order1 != null" >
-        #{order1},
+      <if test="ordinal != null" >
+        #{ordinal},
       </if>
       <if test="createTime != null" >
         #{createTime},
@@ -207,14 +207,14 @@
       <if test="title != null" >
         title = #{title},
       </if>
-      <if test="readercount != null" >
-        readerCount = #{readercount},
+      <if test="readerCount != null" >
+        reader_count = #{readerCount},
       </if>
       <if test="status != null" >
         status = #{status},
       </if>
-      <if test="order1 != null" >
-        order1 = #{order1},
+      <if test="ordinal != null" >
+        ordinal = #{ordinal},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime},
@@ -237,9 +237,9 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.jeeshop.biz.cms.model.Notice" >
     update t_notice
     set title = #{title},
-      readerCount = #{readercount},
+      reader_count = #{readerCount},
       status = #{status},
-      order1 = #{order1},
+      ordinal = #{ordinal},
       create_time = #{createTime},
       update_time = #{updateTime},
       create_Account = #{createAccount},
@@ -250,9 +250,9 @@
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.Notice" >
     update t_notice
     set title = #{title},
-      readerCount = #{readercount},
+      reader_count = #{readerCount},
       status = #{status},
-      order1 = #{order1},
+      ordinal = #{ordinal},
       create_time = #{createTime},
       update_time = #{updateTime},
       create_Account = #{createAccount},

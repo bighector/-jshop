@@ -1,55 +1,7 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
 <@page.pageBase currentMenu="公告管理">
 
-<script>
-$(function(){
-    initTextEdit();
-   	$("#title").focus();   	
-	<#if e.id??>
-	var id = "${e.id}";
-	$("#btnStatic").click(function(){
-		$.post("${basepath}/freemarker/create?method=staticNewsByID&id="+id, null ,function(response){
-			alert(response == "success" ? "操作成功！" : "操作失败!");
-		});
-	});
-	</#if>
-});
-function initTextEdit(){
-   var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
-			allowFileManager : true
-		});
-		K('input[name=getHtml]').click(function(e) {
-			alert(editor.html());
-		});
-		K('input[name=isEmpty]').click(function(e) {
-			alert(editor.isEmpty());
-		});
-		K('input[name=getText]').click(function(e) {
-			alert(editor.text());
-		});
-		K('input[name=selectedHtml]').click(function(e) {
-			alert(editor.selectedHtml());
-		});
-		K('input[name=setHtml]').click(function(e) {
-			editor.html('<h3>Hello KindEditor</h3>');
-		});
-		K('input[name=setText]').click(function(e) {
-			editor.text('<h3>Hello KindEditor</h3>');
-		});
-		K('input[name=insertHtml]').click(function(e) {
-			editor.insertHtml('<strong>插入HTML</strong>');
-		});
-		K('input[name=appendHtml]').click(function(e) {
-			editor.appendHtml('<strong>添加HTML</strong>');
-		});
-		K('input[name=clear]').click(function(e) {
-			editor.html('');
-		});
-	});
-}
-</script>
+
 	<form action="${basepath}/manage/notice"  theme="simple" name="form" id="form" method="post">
 		
 		<table class="table table-bordered">
@@ -108,44 +60,52 @@ function initTextEdit(){
 		</table>
 	</form>
 <script type="text/javascript">
-	
-	function doSubmitFunc(obj){
-			var m = $(obj).attr("name");
-			console.log(m);
-			console.log(m.split(":")[1]+".action");
-			
-			$("#form").on("valid.form", function(e, form){
-				var _formAction = $("#form").attr("action");
-				var aa = _formAction.substring(0,_formAction.lastIndexOf("/")+1);
-				console.log(aa);
-				
-				var lastFormAction = aa + m.split(":")[1]+".action";
-				$("#form").attr("action",lastFormAction);
-				
-				console.log($("#form").attr("action"));
-				console.log(this.isValid);
-				//form.submit();
-			});
-	}
-	
-	
-	
-	function doSubmitFuncByLink(obj){
-		var _href = $(obj).attr("href");
-		var _form = $("#form");
-		_form.attr("action",_href);
-		
-		console.log("_href="+_href);
-		
-		$("#form").on("valid.form", function(e, form){
-			console.log("this.isValid="+this.isValid);
-			
-			
-			//_form.submit();
+ var editor;
+$(function(){
+    initTextEdit();
+   	$("#title").focus();   	
+	<#if e.id??>
+	var id = "${e.id}";
+	$("#btnStatic").click(function(){
+		$.post("${basepath}/freemarker/create?method=staticNewsByID&id="+id, null ,function(response){
+			alert(response == "success" ? "操作成功！" : "操作失败!");
 		});
-		//_form.submit();
-		return false;
-	}
+	});
+	</#if>
+});
+function initTextEdit(){
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true
+		});
+		K('input[name=getHtml]').click(function(e) {
+			alert(editor.html());
+		});
+		K('input[name=isEmpty]').click(function(e) {
+			alert(editor.isEmpty());
+		});
+		K('input[name=getText]').click(function(e) {
+			alert(editor.text());
+		});
+		K('input[name=selectedHtml]').click(function(e) {
+			alert(editor.selectedHtml());
+		});
+		K('input[name=setHtml]').click(function(e) {
+			editor.html('<h3>Hello KindEditor</h3>');
+		});
+		K('input[name=setText]').click(function(e) {
+			editor.text('<h3>Hello KindEditor</h3>');
+		});
+		K('input[name=insertHtml]').click(function(e) {
+			editor.insertHtml('<strong>插入HTML</strong>');
+		});
+		K('input[name=appendHtml]').click(function(e) {
+			editor.appendHtml('<strong>添加HTML</strong>');
+		});
+		K('input[name=clear]').click(function(e) {
+			editor.html('');
+		});
+	});
+}
 </script>
-
 </@page.pageBase>

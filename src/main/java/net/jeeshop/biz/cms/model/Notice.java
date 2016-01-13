@@ -7,23 +7,29 @@ public class Notice extends BaseModel implements Serializable {
     /** t_notice.title */
     private String title;
 
-    /** t_notice.readerCount */
-    private Integer readercount;
+    /** t_notice.reader_count */
+    private Integer readerCount;
 
     /** t_notice.status */
     private String status;
 
-    /** t_notice.order1 */
-    private Integer order1;
+    /** t_notice.ordinal */
+    private Integer ordinal;
 
     /** t_notice.content */
     private String content;
+    
+    
+    public static final String   status_y = "y";//显示
+	public static final String   status_n = "n";//不显示
+    
+  
+    
 
     private static final long serialVersionUID = 1L;
     
     
-	public static final String   status_y = "y";//显示
-	public static final String   status_n = "n";//不显示
+
 
     public String getTitle() {
         return title;
@@ -33,12 +39,12 @@ public class Notice extends BaseModel implements Serializable {
         this.title = title == null ? null : title.trim();
     }
 
-    public Integer getReadercount() {
-        return readercount;
+    public Integer getReaderCount() {
+        return readerCount;
     }
 
-    public void setReadercount(Integer readercount) {
-        this.readercount = readercount;
+    public void setReaderCount(Integer readerCount) {
+        this.readerCount = readerCount;
     }
 
     public String getStatus() {
@@ -49,12 +55,12 @@ public class Notice extends BaseModel implements Serializable {
         this.status = status == null ? null : status.trim();
     }
 
-    public Integer getOrder1() {
-        return order1;
+    public Integer getOrdinal() {
+        return ordinal;
     }
 
-    public void setOrder1(Integer order1) {
-        this.order1 = order1;
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     public String getContent() {

@@ -241,63 +241,63 @@ public class NoticeExample {
             return (Criteria) this;
         }
 
-        public Criteria andReadercountIsNull() {
-            addCriterion("readerCount is null");
+        public Criteria andReaderCountIsNull() {
+            addCriterion("reader_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountIsNotNull() {
-            addCriterion("readerCount is not null");
+        public Criteria andReaderCountIsNotNull() {
+            addCriterion("reader_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountEqualTo(Integer value) {
-            addCriterion("readerCount =", value, "readercount");
+        public Criteria andReaderCountEqualTo(Integer value) {
+            addCriterion("reader_count =", value, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountNotEqualTo(Integer value) {
-            addCriterion("readerCount <>", value, "readercount");
+        public Criteria andReaderCountNotEqualTo(Integer value) {
+            addCriterion("reader_count <>", value, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountGreaterThan(Integer value) {
-            addCriterion("readerCount >", value, "readercount");
+        public Criteria andReaderCountGreaterThan(Integer value) {
+            addCriterion("reader_count >", value, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("readerCount >=", value, "readercount");
+        public Criteria andReaderCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("reader_count >=", value, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountLessThan(Integer value) {
-            addCriterion("readerCount <", value, "readercount");
+        public Criteria andReaderCountLessThan(Integer value) {
+            addCriterion("reader_count <", value, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountLessThanOrEqualTo(Integer value) {
-            addCriterion("readerCount <=", value, "readercount");
+        public Criteria andReaderCountLessThanOrEqualTo(Integer value) {
+            addCriterion("reader_count <=", value, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountIn(List<Integer> values) {
-            addCriterion("readerCount in", values, "readercount");
+        public Criteria andReaderCountIn(List<Integer> values) {
+            addCriterion("reader_count in", values, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountNotIn(List<Integer> values) {
-            addCriterion("readerCount not in", values, "readercount");
+        public Criteria andReaderCountNotIn(List<Integer> values) {
+            addCriterion("reader_count not in", values, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountBetween(Integer value1, Integer value2) {
-            addCriterion("readerCount between", value1, value2, "readercount");
+        public Criteria andReaderCountBetween(Integer value1, Integer value2) {
+            addCriterion("reader_count between", value1, value2, "readerCount");
             return (Criteria) this;
         }
 
-        public Criteria andReadercountNotBetween(Integer value1, Integer value2) {
-            addCriterion("readerCount not between", value1, value2, "readercount");
+        public Criteria andReaderCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("reader_count not between", value1, value2, "readerCount");
             return (Criteria) this;
         }
 
@@ -371,63 +371,63 @@ public class NoticeExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrder1IsNull() {
-            addCriterion("order1 is null");
+        public Criteria andOrdinalIsNull() {
+            addCriterion("ordinal is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1IsNotNull() {
-            addCriterion("order1 is not null");
+        public Criteria andOrdinalIsNotNull() {
+            addCriterion("ordinal is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1EqualTo(Integer value) {
-            addCriterion("order1 =", value, "order1");
+        public Criteria andOrdinalEqualTo(Integer value) {
+            addCriterion("ordinal =", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1NotEqualTo(Integer value) {
-            addCriterion("order1 <>", value, "order1");
+        public Criteria andOrdinalNotEqualTo(Integer value) {
+            addCriterion("ordinal <>", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1GreaterThan(Integer value) {
-            addCriterion("order1 >", value, "order1");
+        public Criteria andOrdinalGreaterThan(Integer value) {
+            addCriterion("ordinal >", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1GreaterThanOrEqualTo(Integer value) {
-            addCriterion("order1 >=", value, "order1");
+        public Criteria andOrdinalGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ordinal >=", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1LessThan(Integer value) {
-            addCriterion("order1 <", value, "order1");
+        public Criteria andOrdinalLessThan(Integer value) {
+            addCriterion("ordinal <", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1LessThanOrEqualTo(Integer value) {
-            addCriterion("order1 <=", value, "order1");
+        public Criteria andOrdinalLessThanOrEqualTo(Integer value) {
+            addCriterion("ordinal <=", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1In(List<Integer> values) {
-            addCriterion("order1 in", values, "order1");
+        public Criteria andOrdinalIn(List<Integer> values) {
+            addCriterion("ordinal in", values, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1NotIn(List<Integer> values) {
-            addCriterion("order1 not in", values, "order1");
+        public Criteria andOrdinalNotIn(List<Integer> values) {
+            addCriterion("ordinal not in", values, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1Between(Integer value1, Integer value2) {
-            addCriterion("order1 between", value1, value2, "order1");
+        public Criteria andOrdinalBetween(Integer value1, Integer value2) {
+            addCriterion("ordinal between", value1, value2, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrder1NotBetween(Integer value1, Integer value2) {
-            addCriterion("order1 not between", value1, value2, "order1");
+        public Criteria andOrdinalNotBetween(Integer value1, Integer value2) {
+            addCriterion("ordinal not between", value1, value2, "ordinal");
             return (Criteria) this;
         }
 
