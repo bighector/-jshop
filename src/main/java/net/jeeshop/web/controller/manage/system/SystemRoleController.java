@@ -3,6 +3,7 @@ package net.jeeshop.web.controller.manage.system;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.system.bean.SysRoleBean;
 import net.jeeshop.biz.system.bean.SysUserBean;
 import net.jeeshop.biz.system.model.SysRole;
 import net.jeeshop.biz.system.model.SysRoleExample;
@@ -11,8 +12,10 @@ import net.jeeshop.biz.system.service.RoleService;
 import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.exception.NotThisMethod;
 import net.jeeshop.core.system.bean.Role;
+import net.jeeshop.core.util.BeanUtilsExt;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
+import net.jeeshop.web.util.RequestHolder;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,7 +82,12 @@ public class SystemRoleController extends ManageBaseController<SysRole, SysRoleE
     @Override
     @RequestMapping(value = "insert" , method = RequestMethod.POST)
     public String insert(@ModelAttribute("e") SysRole role, RedirectAttributes flushAttrs) {
-        return saveOrUpdateRole(role, flushAttrs);
+        HttpServletRequest request = RequestHolder.getRequest();
+        SysRoleBean roleBean = new SysRoleBean();
+        BeanUtilsExt.copyProperties(roleBean, role);
+        //TODO 可能有更好的方式来做
+        roleBean.setPrivileges(request.getParameter("privileges"));
+        return saveOrUpdateRole(roleBean, flushAttrs);
     }
 
     /**
@@ -93,10 +101,15 @@ public class SystemRoleController extends ManageBaseController<SysRole, SysRoleE
             flushAttrs.addFlashAttribute("errorMsg", "非法操作！");
             return "redirect:toEdit?id=" + role.getId();
         }
-        return saveOrUpdateRole(role, flushAttrs);
+        HttpServletRequest request = RequestHolder.getRequest();
+        SysRoleBean roleBean = new SysRoleBean();
+        BeanUtilsExt.copyProperties(roleBean, role);
+        //TODO 可能有更好的方式来做
+        roleBean.setPrivileges(request.getParameter("privileges"));
+        return saveOrUpdateRole(roleBean, flushAttrs);
     }
 
-    private String saveOrUpdateRole(SysRole e , RedirectAttributes flushAttrs) {
+    private String saveOrUpdateRole(SysRoleBean e , RedirectAttributes flushAttrs) {
         if (e.getId() == null) {
             //insert
             roleService.addRole(e);

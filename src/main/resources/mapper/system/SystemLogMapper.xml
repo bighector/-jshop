@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="net.jeeshop.biz.system.client.SystemLogMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SystemLog" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="account" property="account" jdbcType="VARCHAR" />
-    <result column="login_IP" property="loginIp" jdbcType="VARCHAR" />
-    <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
-    <result column="login_Area" property="loginArea" jdbcType="VARCHAR" />
-    <result column="diff_Area_Login" property="diffAreaLogin" jdbcType="CHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="create_Account" property="createAccount" jdbcType="VARCHAR" />
-    <result column="update_Account" property="updateAccount" jdbcType="VARCHAR" />
+    <id column="id" property="id" />
+    <result column="title" property="title" />
+    <result column="content" property="content" />
+    <result column="type" property="type" />
+    <result column="account" property="account" />
+    <result column="login_IP" property="loginIp" />
+    <result column="login_time" property="loginTime" />
+    <result column="login_Area" property="loginArea" />
+    <result column="diff_Area_Login" property="diffAreaLogin" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_Account" property="createAccount" />
+    <result column="update_Account" property="updateAccount" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -84,7 +84,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_system_log
+    from sys_system_log
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,27 +95,23 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_system_log
-    where id = #{id,jdbcType=INTEGER}
+    from sys_system_log
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_system_log
-    where id = #{id,jdbcType=INTEGER}
+    delete from sys_system_log
+    where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.SystemLog" >
-    insert into t_system_log (id, title, content, 
-      type, account, login_IP, 
-      login_time, login_Area, diff_Area_Login, 
-      create_time, update_time, create_Account, 
+    insert into sys_system_log (id, title, content, type, account, login_IP, login_time, 
+      login_Area, diff_Area_Login, create_time, update_time, create_Account, 
       update_Account)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{type,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{loginIp,jdbcType=VARCHAR}, 
-      #{loginTime,jdbcType=TIMESTAMP}, #{loginArea,jdbcType=VARCHAR}, #{diffAreaLogin,jdbcType=CHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, 
-      #{updateAccount,jdbcType=VARCHAR})
+    values (#{id}, #{title}, #{content}, #{type}, #{account}, #{loginIp}, #{loginTime}, 
+      #{loginArea}, #{diffAreaLogin}, #{createTime}, #{updateTime}, #{createAccount}, 
+      #{updateAccount})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SystemLog" >
-    insert into t_system_log
+    insert into sys_system_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -159,108 +155,108 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id},
       </if>
       <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+        #{content},
       </if>
       <if test="type != null" >
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
       <if test="account != null" >
-        #{account,jdbcType=VARCHAR},
+        #{account},
       </if>
       <if test="loginIp != null" >
-        #{loginIp,jdbcType=VARCHAR},
+        #{loginIp},
       </if>
       <if test="loginTime != null" >
-        #{loginTime,jdbcType=TIMESTAMP},
+        #{loginTime},
       </if>
       <if test="loginArea != null" >
-        #{loginArea,jdbcType=VARCHAR},
+        #{loginArea},
       </if>
       <if test="diffAreaLogin != null" >
-        #{diffAreaLogin,jdbcType=CHAR},
+        #{diffAreaLogin},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime},
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        #{updateTime},
       </if>
       <if test="createAccount != null" >
-        #{createAccount,jdbcType=VARCHAR},
+        #{createAccount},
       </if>
       <if test="updateAccount != null" >
-        #{updateAccount,jdbcType=VARCHAR},
+        #{updateAccount},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.system.model.SystemLogExample" resultType="java.lang.Integer" >
-    select count(*) from t_system_log
+    select count(*) from sys_system_log
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SystemLog" >
-    update t_system_log
+    update sys_system_log
     <set >
       <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+        content = #{content},
       </if>
       <if test="type != null" >
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
       <if test="account != null" >
-        account = #{account,jdbcType=VARCHAR},
+        account = #{account},
       </if>
       <if test="loginIp != null" >
-        login_IP = #{loginIp,jdbcType=VARCHAR},
+        login_IP = #{loginIp},
       </if>
       <if test="loginTime != null" >
-        login_time = #{loginTime,jdbcType=TIMESTAMP},
+        login_time = #{loginTime},
       </if>
       <if test="loginArea != null" >
-        login_Area = #{loginArea,jdbcType=VARCHAR},
+        login_Area = #{loginArea},
       </if>
       <if test="diffAreaLogin != null" >
-        diff_Area_Login = #{diffAreaLogin,jdbcType=CHAR},
+        diff_Area_Login = #{diffAreaLogin},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime},
       </if>
       <if test="createAccount != null" >
-        create_Account = #{createAccount,jdbcType=VARCHAR},
+        create_Account = #{createAccount},
       </if>
       <if test="updateAccount != null" >
-        update_Account = #{updateAccount,jdbcType=VARCHAR},
+        update_Account = #{updateAccount},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SystemLog" >
-    update t_system_log
-    set title = #{title,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER},
-      account = #{account,jdbcType=VARCHAR},
-      login_IP = #{loginIp,jdbcType=VARCHAR},
-      login_time = #{loginTime,jdbcType=TIMESTAMP},
-      login_Area = #{loginArea,jdbcType=VARCHAR},
-      diff_Area_Login = #{diffAreaLogin,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_Account = #{createAccount,jdbcType=VARCHAR},
-      update_Account = #{updateAccount,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update sys_system_log
+    set title = #{title},
+      content = #{content},
+      type = #{type},
+      account = #{account},
+      login_IP = #{loginIp},
+      login_time = #{loginTime},
+      login_Area = #{loginArea},
+      diff_Area_Login = #{diffAreaLogin},
+      create_time = #{createTime},
+      update_time = #{updateTime},
+      create_Account = #{createAccount},
+      update_Account = #{updateAccount}
+    where id = #{id}
   </update>
 </mapper>

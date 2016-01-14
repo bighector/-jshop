@@ -2,38 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="net.jeeshop.biz.system.client.SystemSettingMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SystemSetting" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="system_Code" property="systemCode" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="www" property="www" jdbcType="VARCHAR" />
-    <result column="logo" property="logo" jdbcType="VARCHAR" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="description" property="description" jdbcType="VARCHAR" />
-    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
-    <result column="shortcuticon" property="shortcuticon" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="tel" property="tel" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="icp" property="icp" jdbcType="VARCHAR" />
-    <result column="is_open" property="isOpen" jdbcType="VARCHAR" />
-    <result column="close_Msg" property="closeMsg" jdbcType="VARCHAR" />
-    <result column="qq" property="qq" jdbcType="VARCHAR" />
-    <result column="image_Root_Path" property="imageRootPath" jdbcType="VARCHAR" />
-    <result column="manage_Http" property="manageHttp" jdbcType="VARCHAR" />
-    <result column="default_Product_Img" property="defaultProductImg" jdbcType="VARCHAR" />
-    <result column="style" property="style" jdbcType="VARCHAR" />
-    <result column="version" property="version" jdbcType="VARCHAR" />
-    <result column="manage_Left_Tree_Leaf_Icon" property="manageLeftTreeLeafIcon" jdbcType="VARCHAR" />
-    <result column="statistics_Code" property="statisticsCode" jdbcType="VARCHAR" />
-    <result column="open_Responsive" property="openResponsive" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="create_Account" property="createAccount" jdbcType="VARCHAR" />
-    <result column="update_Account" property="updateAccount" jdbcType="VARCHAR" />
+    <id column="id" property="id" />
+    <result column="system_Code" property="systemCode" />
+    <result column="name" property="name" />
+    <result column="www" property="www" />
+    <result column="logo" property="logo" />
+    <result column="title" property="title" />
+    <result column="description" property="description" />
+    <result column="keywords" property="keywords" />
+    <result column="shortcuticon" property="shortcuticon" />
+    <result column="address" property="address" />
+    <result column="tel" property="tel" />
+    <result column="email" property="email" />
+    <result column="icp" property="icp" />
+    <result column="is_open" property="isOpen" />
+    <result column="close_Msg" property="closeMsg" />
+    <result column="qq" property="qq" />
+    <result column="image_Root_Path" property="imageRootPath" />
+    <result column="manage_Http" property="manageHttp" />
+    <result column="default_Product_Img" property="defaultProductImg" />
+    <result column="style" property="style" />
+    <result column="version" property="version" />
+    <result column="manage_Left_Tree_Leaf_Icon" property="manageLeftTreeLeafIcon" />
+    <result column="statistics_Code" property="statisticsCode" />
+    <result column="open_Responsive" property="openResponsive" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_Account" property="createAccount" />
+    <result column="update_Account" property="updateAccount" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="net.jeeshop.biz.system.model.SystemSetting" extends="BaseResultMap" >
-    <result column="qq_Help_Html" property="qqHelpHtml" jdbcType="LONGVARCHAR" />
-    <result column="images" property="images" jdbcType="LONGVARCHAR" />
+    <result column="qq_Help_Html" property="qqHelpHtml" />
+    <result column="images" property="images" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -110,7 +110,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from t_system_setting
+    from sys_system_setting
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -124,7 +124,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_system_setting
+    from sys_system_setting
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -137,37 +137,27 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from t_system_setting
-    where id = #{id,jdbcType=INTEGER}
+    from sys_system_setting
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_system_setting
-    where id = #{id,jdbcType=INTEGER}
+    delete from sys_system_setting
+    where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.SystemSetting" >
-    insert into t_system_setting (id, system_Code, name, 
-      www, logo, title, description, 
-      keywords, shortcuticon, address, 
-      tel, email, icp, is_open, 
-      close_Msg, qq, image_Root_Path, 
-      manage_Http, default_Product_Img, style, 
-      version, manage_Left_Tree_Leaf_Icon, statistics_Code, 
-      open_Responsive, create_time, update_time, 
-      create_Account, update_Account, qq_Help_Html, 
-      images)
-    values (#{id,jdbcType=INTEGER}, #{systemCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{www,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{keywords,jdbcType=VARCHAR}, #{shortcuticon,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{icp,jdbcType=VARCHAR}, #{isOpen,jdbcType=VARCHAR}, 
-      #{closeMsg,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{imageRootPath,jdbcType=VARCHAR}, 
-      #{manageHttp,jdbcType=VARCHAR}, #{defaultProductImg,jdbcType=VARCHAR}, #{style,jdbcType=VARCHAR}, 
-      #{version,jdbcType=VARCHAR}, #{manageLeftTreeLeafIcon,jdbcType=VARCHAR}, #{statisticsCode,jdbcType=VARCHAR}, 
-      #{openResponsive,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{createAccount,jdbcType=VARCHAR}, #{updateAccount,jdbcType=VARCHAR}, #{qqHelpHtml,jdbcType=LONGVARCHAR}, 
-      #{images,jdbcType=LONGVARCHAR})
+    insert into sys_system_setting (id, system_Code, name, www, logo, title, description, 
+      keywords, shortcuticon, address, tel, email, icp, is_open, 
+      close_Msg, qq, image_Root_Path, manage_Http, default_Product_Img, style, 
+      version, manage_Left_Tree_Leaf_Icon, statistics_Code, open_Responsive, create_time, 
+      update_time, create_Account, update_Account, qq_Help_Html, images)
+    values (#{id}, #{systemCode}, #{name}, #{www}, #{logo}, #{title}, #{description}, 
+      #{keywords}, #{shortcuticon}, #{address}, #{tel}, #{email}, #{icp}, #{isOpen}, 
+      #{closeMsg}, #{qq}, #{imageRootPath}, #{manageHttp}, #{defaultProductImg}, #{style}, 
+      #{version}, #{manageLeftTreeLeafIcon}, #{statisticsCode}, #{openResponsive}, #{createTime}, 
+      #{updateTime}, #{createAccount}, #{updateAccount}, #{qqHelpHtml}, #{images})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SystemSetting" >
-    insert into t_system_setting
+    insert into sys_system_setting
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -262,258 +252,258 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id},
       </if>
       <if test="systemCode != null" >
-        #{systemCode,jdbcType=VARCHAR},
+        #{systemCode},
       </if>
       <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="www != null" >
-        #{www,jdbcType=VARCHAR},
+        #{www},
       </if>
       <if test="logo != null" >
-        #{logo,jdbcType=VARCHAR},
+        #{logo},
       </if>
       <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="description != null" >
-        #{description,jdbcType=VARCHAR},
+        #{description},
       </if>
       <if test="keywords != null" >
-        #{keywords,jdbcType=VARCHAR},
+        #{keywords},
       </if>
       <if test="shortcuticon != null" >
-        #{shortcuticon,jdbcType=VARCHAR},
+        #{shortcuticon},
       </if>
       <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+        #{address},
       </if>
       <if test="tel != null" >
-        #{tel,jdbcType=VARCHAR},
+        #{tel},
       </if>
       <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
+        #{email},
       </if>
       <if test="icp != null" >
-        #{icp,jdbcType=VARCHAR},
+        #{icp},
       </if>
       <if test="isOpen != null" >
-        #{isOpen,jdbcType=VARCHAR},
+        #{isOpen},
       </if>
       <if test="closeMsg != null" >
-        #{closeMsg,jdbcType=VARCHAR},
+        #{closeMsg},
       </if>
       <if test="qq != null" >
-        #{qq,jdbcType=VARCHAR},
+        #{qq},
       </if>
       <if test="imageRootPath != null" >
-        #{imageRootPath,jdbcType=VARCHAR},
+        #{imageRootPath},
       </if>
       <if test="manageHttp != null" >
-        #{manageHttp,jdbcType=VARCHAR},
+        #{manageHttp},
       </if>
       <if test="defaultProductImg != null" >
-        #{defaultProductImg,jdbcType=VARCHAR},
+        #{defaultProductImg},
       </if>
       <if test="style != null" >
-        #{style,jdbcType=VARCHAR},
+        #{style},
       </if>
       <if test="version != null" >
-        #{version,jdbcType=VARCHAR},
+        #{version},
       </if>
       <if test="manageLeftTreeLeafIcon != null" >
-        #{manageLeftTreeLeafIcon,jdbcType=VARCHAR},
+        #{manageLeftTreeLeafIcon},
       </if>
       <if test="statisticsCode != null" >
-        #{statisticsCode,jdbcType=VARCHAR},
+        #{statisticsCode},
       </if>
       <if test="openResponsive != null" >
-        #{openResponsive,jdbcType=VARCHAR},
+        #{openResponsive},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime},
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        #{updateTime},
       </if>
       <if test="createAccount != null" >
-        #{createAccount,jdbcType=VARCHAR},
+        #{createAccount},
       </if>
       <if test="updateAccount != null" >
-        #{updateAccount,jdbcType=VARCHAR},
+        #{updateAccount},
       </if>
       <if test="qqHelpHtml != null" >
-        #{qqHelpHtml,jdbcType=LONGVARCHAR},
+        #{qqHelpHtml},
       </if>
       <if test="images != null" >
-        #{images,jdbcType=LONGVARCHAR},
+        #{images},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.system.model.SystemSettingExample" resultType="java.lang.Integer" >
-    select count(*) from t_system_setting
+    select count(*) from sys_system_setting
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SystemSetting" >
-    update t_system_setting
+    update sys_system_setting
     <set >
       <if test="systemCode != null" >
-        system_Code = #{systemCode,jdbcType=VARCHAR},
+        system_Code = #{systemCode},
       </if>
       <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name},
       </if>
       <if test="www != null" >
-        www = #{www,jdbcType=VARCHAR},
+        www = #{www},
       </if>
       <if test="logo != null" >
-        logo = #{logo,jdbcType=VARCHAR},
+        logo = #{logo},
       </if>
       <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="description != null" >
-        description = #{description,jdbcType=VARCHAR},
+        description = #{description},
       </if>
       <if test="keywords != null" >
-        keywords = #{keywords,jdbcType=VARCHAR},
+        keywords = #{keywords},
       </if>
       <if test="shortcuticon != null" >
-        shortcuticon = #{shortcuticon,jdbcType=VARCHAR},
+        shortcuticon = #{shortcuticon},
       </if>
       <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
+        address = #{address},
       </if>
       <if test="tel != null" >
-        tel = #{tel,jdbcType=VARCHAR},
+        tel = #{tel},
       </if>
       <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
+        email = #{email},
       </if>
       <if test="icp != null" >
-        icp = #{icp,jdbcType=VARCHAR},
+        icp = #{icp},
       </if>
       <if test="isOpen != null" >
-        is_open = #{isOpen,jdbcType=VARCHAR},
+        is_open = #{isOpen},
       </if>
       <if test="closeMsg != null" >
-        close_Msg = #{closeMsg,jdbcType=VARCHAR},
+        close_Msg = #{closeMsg},
       </if>
       <if test="qq != null" >
-        qq = #{qq,jdbcType=VARCHAR},
+        qq = #{qq},
       </if>
       <if test="imageRootPath != null" >
-        image_Root_Path = #{imageRootPath,jdbcType=VARCHAR},
+        image_Root_Path = #{imageRootPath},
       </if>
       <if test="manageHttp != null" >
-        manage_Http = #{manageHttp,jdbcType=VARCHAR},
+        manage_Http = #{manageHttp},
       </if>
       <if test="defaultProductImg != null" >
-        default_Product_Img = #{defaultProductImg,jdbcType=VARCHAR},
+        default_Product_Img = #{defaultProductImg},
       </if>
       <if test="style != null" >
-        style = #{style,jdbcType=VARCHAR},
+        style = #{style},
       </if>
       <if test="version != null" >
-        version = #{version,jdbcType=VARCHAR},
+        version = #{version},
       </if>
       <if test="manageLeftTreeLeafIcon != null" >
-        manage_Left_Tree_Leaf_Icon = #{manageLeftTreeLeafIcon,jdbcType=VARCHAR},
+        manage_Left_Tree_Leaf_Icon = #{manageLeftTreeLeafIcon},
       </if>
       <if test="statisticsCode != null" >
-        statistics_Code = #{statisticsCode,jdbcType=VARCHAR},
+        statistics_Code = #{statisticsCode},
       </if>
       <if test="openResponsive != null" >
-        open_Responsive = #{openResponsive,jdbcType=VARCHAR},
+        open_Responsive = #{openResponsive},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime},
       </if>
       <if test="createAccount != null" >
-        create_Account = #{createAccount,jdbcType=VARCHAR},
+        create_Account = #{createAccount},
       </if>
       <if test="updateAccount != null" >
-        update_Account = #{updateAccount,jdbcType=VARCHAR},
+        update_Account = #{updateAccount},
       </if>
       <if test="qqHelpHtml != null" >
-        qq_Help_Html = #{qqHelpHtml,jdbcType=LONGVARCHAR},
+        qq_Help_Html = #{qqHelpHtml},
       </if>
       <if test="images != null" >
-        images = #{images,jdbcType=LONGVARCHAR},
+        images = #{images},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.jeeshop.biz.system.model.SystemSetting" >
-    update t_system_setting
-    set system_Code = #{systemCode,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      www = #{www,jdbcType=VARCHAR},
-      logo = #{logo,jdbcType=VARCHAR},
-      title = #{title,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      keywords = #{keywords,jdbcType=VARCHAR},
-      shortcuticon = #{shortcuticon,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      tel = #{tel,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      icp = #{icp,jdbcType=VARCHAR},
-      is_open = #{isOpen,jdbcType=VARCHAR},
-      close_Msg = #{closeMsg,jdbcType=VARCHAR},
-      qq = #{qq,jdbcType=VARCHAR},
-      image_Root_Path = #{imageRootPath,jdbcType=VARCHAR},
-      manage_Http = #{manageHttp,jdbcType=VARCHAR},
-      default_Product_Img = #{defaultProductImg,jdbcType=VARCHAR},
-      style = #{style,jdbcType=VARCHAR},
-      version = #{version,jdbcType=VARCHAR},
-      manage_Left_Tree_Leaf_Icon = #{manageLeftTreeLeafIcon,jdbcType=VARCHAR},
-      statistics_Code = #{statisticsCode,jdbcType=VARCHAR},
-      open_Responsive = #{openResponsive,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_Account = #{createAccount,jdbcType=VARCHAR},
-      update_Account = #{updateAccount,jdbcType=VARCHAR},
-      qq_Help_Html = #{qqHelpHtml,jdbcType=LONGVARCHAR},
-      images = #{images,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update sys_system_setting
+    set system_Code = #{systemCode},
+      name = #{name},
+      www = #{www},
+      logo = #{logo},
+      title = #{title},
+      description = #{description},
+      keywords = #{keywords},
+      shortcuticon = #{shortcuticon},
+      address = #{address},
+      tel = #{tel},
+      email = #{email},
+      icp = #{icp},
+      is_open = #{isOpen},
+      close_Msg = #{closeMsg},
+      qq = #{qq},
+      image_Root_Path = #{imageRootPath},
+      manage_Http = #{manageHttp},
+      default_Product_Img = #{defaultProductImg},
+      style = #{style},
+      version = #{version},
+      manage_Left_Tree_Leaf_Icon = #{manageLeftTreeLeafIcon},
+      statistics_Code = #{statisticsCode},
+      open_Responsive = #{openResponsive},
+      create_time = #{createTime},
+      update_time = #{updateTime},
+      create_Account = #{createAccount},
+      update_Account = #{updateAccount},
+      qq_Help_Html = #{qqHelpHtml},
+      images = #{images}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SystemSetting" >
-    update t_system_setting
-    set system_Code = #{systemCode,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      www = #{www,jdbcType=VARCHAR},
-      logo = #{logo,jdbcType=VARCHAR},
-      title = #{title,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      keywords = #{keywords,jdbcType=VARCHAR},
-      shortcuticon = #{shortcuticon,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      tel = #{tel,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      icp = #{icp,jdbcType=VARCHAR},
-      is_open = #{isOpen,jdbcType=VARCHAR},
-      close_Msg = #{closeMsg,jdbcType=VARCHAR},
-      qq = #{qq,jdbcType=VARCHAR},
-      image_Root_Path = #{imageRootPath,jdbcType=VARCHAR},
-      manage_Http = #{manageHttp,jdbcType=VARCHAR},
-      default_Product_Img = #{defaultProductImg,jdbcType=VARCHAR},
-      style = #{style,jdbcType=VARCHAR},
-      version = #{version,jdbcType=VARCHAR},
-      manage_Left_Tree_Leaf_Icon = #{manageLeftTreeLeafIcon,jdbcType=VARCHAR},
-      statistics_Code = #{statisticsCode,jdbcType=VARCHAR},
-      open_Responsive = #{openResponsive,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_Account = #{createAccount,jdbcType=VARCHAR},
-      update_Account = #{updateAccount,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update sys_system_setting
+    set system_Code = #{systemCode},
+      name = #{name},
+      www = #{www},
+      logo = #{logo},
+      title = #{title},
+      description = #{description},
+      keywords = #{keywords},
+      shortcuticon = #{shortcuticon},
+      address = #{address},
+      tel = #{tel},
+      email = #{email},
+      icp = #{icp},
+      is_open = #{isOpen},
+      close_Msg = #{closeMsg},
+      qq = #{qq},
+      image_Root_Path = #{imageRootPath},
+      manage_Http = #{manageHttp},
+      default_Product_Img = #{defaultProductImg},
+      style = #{style},
+      version = #{version},
+      manage_Left_Tree_Leaf_Icon = #{manageLeftTreeLeafIcon},
+      statistics_Code = #{statisticsCode},
+      open_Responsive = #{openResponsive},
+      create_time = #{createTime},
+      update_time = #{updateTime},
+      create_Account = #{createAccount},
+      update_Account = #{updateAccount}
+    where id = #{id}
   </update>
 </mapper>

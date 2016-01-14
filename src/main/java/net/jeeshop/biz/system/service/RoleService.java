@@ -2,6 +2,7 @@ package net.jeeshop.biz.system.service;
 
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.system.bean.SysRoleBean;
 import net.jeeshop.biz.system.client.SysPrivilegeMapper;
 import net.jeeshop.biz.system.client.SysPrivilegeMapperExt;
 import net.jeeshop.biz.system.client.SysRoleMapper;
@@ -35,7 +36,7 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
     }
 
     @Transactional
-    public void addRole(SysRole role) {
+    public void addRole(SysRoleBean role) {
         sysRoleMapper.insert(role);
         String rolePrivilege = role.getPrivileges();
         String[] rolePrivileges = rolePrivilege.split(",");
@@ -46,7 +47,7 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
     }
 
     @Transactional
-    public void updateRole(SysRole role) {
+    public void updateRole(SysRoleBean role) {
         sysRoleMapper.updateByPrimaryKey(role);
         //删除现有角色权限
         sysPrivilegeMapperExt.deleteByRid(role.getId());

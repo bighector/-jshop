@@ -32,8 +32,15 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="t_hot_query" domainObjectName="Hotquery">
+        <!-- 热门查询 -->
+        <table tableName="cms_hot_query" domainObjectName="HotQuery">
             <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+
+        <!-- 友情链接 -->
+        <table tableName="cms_friend_link" domainObjectName="FriendLink">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="pid" javaType="java.lang.Long"/>
         </table>
     </context>
 
