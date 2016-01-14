@@ -9,9 +9,7 @@ import net.jeeshop.biz.system.model.SysRole;
 import net.jeeshop.biz.system.model.SysRoleExample;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.biz.system.service.RoleService;
-import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.exception.NotThisMethod;
-import net.jeeshop.core.system.bean.Role;
 import net.jeeshop.core.util.BeanUtilsExt;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
@@ -124,7 +122,7 @@ public class SystemRoleController extends ManageBaseController<SysRole, SysRoleE
     @Override
     @RequestMapping(value = "deletes", method = RequestMethod.POST)
     public String deletes(Long [] ids , RedirectAttributes flushAttrs) {
-        throw new NotThisMethod(ManageContainer.not_this_method);
+        throw new NotThisMethod("");
     }
 
 

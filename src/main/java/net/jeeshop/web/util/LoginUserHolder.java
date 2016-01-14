@@ -1,11 +1,11 @@
 package net.jeeshop.web.util;
 
+import net.jeeshop.biz.member.model.MemberRank;
 import net.jeeshop.biz.system.bean.MenuItem;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.core.FrontContainer;
 import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.exception.JShopException;
-import net.jeeshop.services.front.account.bean.Account;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
@@ -49,8 +49,8 @@ public class LoginUserHolder {
         }
     }
 
-    public static Account getLoginAccount(){
-        HttpSession session = RequestHolder.getSession();
-        return session == null ? null : (Account)session.getAttribute(FrontContainer.USER_INFO);
-    }
+//    public static MemberRank getLoginAccount(){
+//        HttpSession session = RequestHolder.getSession();
+//        return session == null ? null : (MemberRank)session.getAttribute(FrontContainer.USER_INFO);
+//    }
 }

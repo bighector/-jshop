@@ -4,8 +4,6 @@
  */
 package net.jeeshop.biz.system.bean;
 
-import net.jeeshop.core.SystemManager;
-
 import java.util.ArrayList;
 import java.util.List;
 

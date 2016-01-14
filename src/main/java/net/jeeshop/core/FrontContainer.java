@@ -1,8 +1,5 @@
 package net.jeeshop.core;
 
-import net.jeeshop.services.front.indexImg.IndexImgService;
-import net.jeeshop.services.front.news.NewsService;
-
 /**
  * 常量类
  * @author jqsl2012@163.com
@@ -18,8 +15,6 @@ public class FrontContainer {
 	public static final String lable = "lable";//标签KEY
 	public static final String sessionID = "sessionID";//sessionIDKEY
 	public static final String imgList = "imgList";
-	public static NewsService newsService;//门户内容
-	public static IndexImgService indexImgService;//门户滚动图片
 //	@Deprecated
 //	public static final String SystemSetting = "SystemSetting";//系统配置
 	public static final String order_success_info = "order_success_info";//创建成功的订单的信息
