@@ -5,12 +5,12 @@
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
   </resultMap>
   <select id="selectByParams" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SysUserExample" >
-      select u.*,r.role_name from t_user u, t_role r
+      select u.*,r.role_name from sys_user u, sys_role r
       where u.rid = r.id
       order by u.username desc
     </select>
     <select id="selectUserBeanById" resultMap="BaseResultMap" parameterType="long" >
-        select u.*,r.role_name from t_user u, t_role r
+        select u.*,r.role_name from sys_user u, sys_role r
         where u.rid = r.id
         and u.id = #{id}
     </select>

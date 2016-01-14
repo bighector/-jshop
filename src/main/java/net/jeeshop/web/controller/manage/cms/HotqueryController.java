@@ -10,7 +10,7 @@ import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.cms.model.HotQuery;
 import net.jeeshop.biz.cms.model.HotQueryExample;
-import net.jeeshop.biz.cms.service.HotqueryService;
+import net.jeeshop.biz.cms.service.HotQueryService;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
@@ -30,7 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/manage/cms/hotQuery/")
 public class HotQueryController extends ManageBaseController<HotQuery, HotQueryExample>{
 	@Autowired
-	private HotqueryService hotqueryService;
+	private HotQueryService hotqueryService;
 	
 	private static final String page_toList = "/manage/cms/hotQueryList";
 	private static final String page_toEdit = "/manage/cms/hotQueryEdit";

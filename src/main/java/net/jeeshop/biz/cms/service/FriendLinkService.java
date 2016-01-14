@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class FriendLinkService extends BaseService<FriendLink, FriendLinkExample> {
     @Autowired
-    private FriendLinkMapper friendsLinkMapper;
+    private FriendLinkMapper friendLinkMapper;
     @Override
     protected BaseMapper getMapper() {
-        return friendsLinkMapper;
+        return friendLinkMapper;
     }
 }
