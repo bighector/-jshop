@@ -55,7 +55,7 @@ public class SystemManager {
 //    private List<Attribute> attrs;//属性集合
 //    private Map<String,Attribute> attrsMap = new HashMap<String, Attribute>();//属性集合map
 //    private OrdersReport ordersReport = new OrdersReport();//后台首页,统计数据
-//    private Map<String,AccountRank> accountRankMap = new TreeMap<String, AccountRank>();//会员等级表
+//    private Map<String,MemberRank> accountRankMap = new TreeMap<String, MemberRank>();//会员等级表
 //    private Map<String,NotifyTemplate> notifyTemplateMap;//邮件模板
 //    private List<Product> hotSearchProductList;//热门搜索的商品列表
 //    private String alipayConfig;//支付宝卖家账号

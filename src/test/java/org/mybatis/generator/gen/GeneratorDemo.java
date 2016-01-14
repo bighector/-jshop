@@ -27,7 +27,11 @@ public class GeneratorDemo {
         generateFiles("gen/generateConfig-product.xml");
     }
 
-    
+
+    @Test
+    public void genMember() throws Exception {
+        generateFiles("gen/generateConfig-member.xml");
+    }
     
     private void generateFiles(String configResource) throws Exception{
 
