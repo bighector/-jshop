@@ -4,19 +4,19 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class MemberRank extends BaseModel implements Serializable {
-    /** t_accountrank.code */
+    /** 代码 */
     private String code;
 
-    /** t_accountrank.name */
+    /** 等级名称 */
     private String name;
 
-    /** t_accountrank.minScore */
-    private Integer minscore;
+    /** 积分上限 */
+    private Integer minScore;
 
-    /** t_accountrank.maxScore */
-    private Integer maxscore;
+    /** 积分下限 */
+    private Integer maxScore;
 
-    /** t_accountrank.remark */
+    /** 备注 */
     private String remark;
 
     private static final long serialVersionUID = 1L;
@@ -37,20 +37,20 @@ public class MemberRank extends BaseModel implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getMinscore() {
-        return minscore;
+    public Integer getMinScore() {
+        return minScore;
     }
 
-    public void setMinscore(Integer minscore) {
-        this.minscore = minscore;
+    public void setMinScore(Integer minScore) {
+        this.minScore = minScore;
     }
 
-    public Integer getMaxscore() {
-        return maxscore;
+    public Integer getMaxScore() {
+        return maxScore;
     }
 
-    public void setMaxscore(Integer maxscore) {
-        this.maxscore = maxscore;
+    public void setMaxScore(Integer maxScore) {
+        this.maxScore = maxScore;
     }
 
     public String getRemark() {

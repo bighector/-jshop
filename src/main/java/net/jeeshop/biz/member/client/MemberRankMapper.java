@@ -1,9 +1,9 @@
 package net.jeeshop.biz.member.client;
 
 import java.util.List;
+import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.member.model.MemberRank;
 import net.jeeshop.biz.member.model.MemberRankExample;
-import net.jeeshop.biz.base.client.BaseMapper;
 
 public interface MemberRankMapper extends BaseMapper<MemberRank, MemberRankExample> {
     int countByExample(MemberRankExample example);

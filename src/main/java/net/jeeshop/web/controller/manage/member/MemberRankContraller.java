@@ -45,11 +45,12 @@ public class MemberRankContraller extends ManageBaseController<MemberRank, Membe
 	@SuppressWarnings("unchecked")
 	@RequestMapping("loadData")
 	@ResponseBody
-	public PageBean<MemberRank> loadData(MemberRankExample accountRankExample,
+	public PageBean<MemberRank> loadData(MemberRank memberRank,
 			PageQueryBean pageQueryBean) {
+		MemberRankExample accountRankExample = new MemberRankExample();
 		MemberRankExample.Criteria criteria = accountRankExample.createCriteria();
-		if(StringUtils.isNotEmpty(accountRankExample.getName())){
-			criteria.andNameLike(accountRankExample.getName());
+		if(StringUtils.isNotEmpty(memberRank.getName())){
+			criteria.andNameEqualTo(memberRank.getName());
 		}
 		@SuppressWarnings("rawtypes")
 		PageBean pager = accountRankService.selectPageBean(accountRankExample,

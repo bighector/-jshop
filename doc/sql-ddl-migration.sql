@@ -285,7 +285,7 @@ CREATE TABLE `member` (
   update_account varchar(64) COMMENT '更新人',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB comment='会员表';
 /**会员等级*/
 DROP TABLE IF EXISTS `member_rank`;
