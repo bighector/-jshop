@@ -3,6 +3,7 @@ package net.jeeshop.biz.system.service;
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.client.SysPrivilegeMapper;
+import net.jeeshop.biz.system.client.SysPrivilegeMapperExt;
 import net.jeeshop.biz.system.client.SysRoleMapper;
 import net.jeeshop.biz.system.model.SysPrivilege;
 import net.jeeshop.biz.system.model.SysRole;
@@ -26,7 +27,7 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
     SysRoleMapper sysRoleMapper;
 
     @Autowired
-    SysPrivilegeMapper sysPrivilegeMapper;
+    SysPrivilegeMapperExt sysPrivilegeMapperExt;
 
     @Override
     protected BaseMapper<SysRole, SysRoleExample> getMapper() {
@@ -40,7 +41,7 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
         String[] rolePrivileges = rolePrivilege.split(",");
         List<SysPrivilege> privilegeList = fillPrivilege(rolePrivileges , role.getId());
         if (privilegeList.size() > 0) {
-            sysPrivilegeMapper.insertPrivileges(privilegeList);
+            sysPrivilegeMapperExt.insertPrivileges(privilegeList);
         }
     }
 
@@ -48,13 +49,13 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
     public void updateRole(SysRole role) {
         sysRoleMapper.updateByPrimaryKey(role);
         //删除现有角色权限
-        sysPrivilegeMapper.deleteByRid(role.getId());
+        sysPrivilegeMapperExt.deleteByRid(role.getId());
         //添加新的权限
         String rolePrivilege = role.getPrivileges();
         String[] rolePrivileges = rolePrivilege.split(",");
         List<SysPrivilege> privilegeList = fillPrivilege(rolePrivileges , role.getId());
         if (privilegeList.size() > 0) {
-            sysPrivilegeMapper.insertPrivileges(privilegeList);
+            sysPrivilegeMapperExt.insertPrivileges(privilegeList);
         }
     }
 
