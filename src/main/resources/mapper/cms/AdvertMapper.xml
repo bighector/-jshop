@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="net.jeeshop.biz.cms.client.AdvertMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.Advert" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="code" property="code" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="html" property="html" jdbcType="VARCHAR" />
-    <result column="start_date" property="startDate" jdbcType="VARCHAR" />
-    <result column="end_date" property="endDate" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="use_Images_Random" property="useImagesRandom" jdbcType="VARCHAR" />
+    <id column="id" property="id" />
+    <result column="title" property="title" />
+    <result column="code" property="code" />
+    <result column="remark" property="remark" />
+    <result column="html" property="html" />
+    <result column="start_date" property="startDate" />
+    <result column="end_date" property="endDate" />
+    <result column="status" property="status" />
+    <result column="use_images_random" property="useImagesRandom" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, code, remark, html, start_date, end_date, status, use_Images_Random
+    id, title, code, remark, html, start_date, end_date, status, use_images_random
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.AdvertExample" >
     select
@@ -79,7 +79,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_advert
+    from cms_advert
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -90,25 +90,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_advert
-    where id = #{id,jdbcType=INTEGER}
+    from cms_advert
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_advert
-    where id = #{id,jdbcType=INTEGER}
+    delete from cms_advert
+    where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Advert" >
-    insert into t_advert (id, title, code, 
-      remark, html, start_date, 
-      end_date, status, use_Images_Random
-      )
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{html,jdbcType=VARCHAR}, #{startDate,jdbcType=VARCHAR}, 
-      #{endDate,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{useImagesRandom,jdbcType=VARCHAR}
-      )
+    insert into cms_advert (id, title, code, remark, html, start_date, end_date, status, 
+      use_images_random)
+    values (#{id}, #{title}, #{code}, #{remark}, #{html}, #{startDate}, #{endDate}, #{status}, 
+      #{useImagesRandom})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Advert" >
-    insert into t_advert
+    insert into cms_advert
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -135,85 +131,85 @@
         status,
       </if>
       <if test="useImagesRandom != null" >
-        use_Images_Random,
+        use_images_random,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id},
       </if>
       <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
+        #{code},
       </if>
       <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
+        #{remark},
       </if>
       <if test="html != null" >
-        #{html,jdbcType=VARCHAR},
+        #{html},
       </if>
       <if test="startDate != null" >
-        #{startDate,jdbcType=VARCHAR},
+        #{startDate},
       </if>
       <if test="endDate != null" >
-        #{endDate,jdbcType=VARCHAR},
+        #{endDate},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
+        #{status},
       </if>
       <if test="useImagesRandom != null" >
-        #{useImagesRandom,jdbcType=VARCHAR},
+        #{useImagesRandom},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.AdvertExample" resultType="java.lang.Integer" >
-    select count(*) from t_advert
+    select count(*) from cms_advert
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.Advert" >
-    update t_advert
+    update cms_advert
     <set >
       <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="code != null" >
-        code = #{code,jdbcType=VARCHAR},
+        code = #{code},
       </if>
       <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
+        remark = #{remark},
       </if>
       <if test="html != null" >
-        html = #{html,jdbcType=VARCHAR},
+        html = #{html},
       </if>
       <if test="startDate != null" >
-        start_date = #{startDate,jdbcType=VARCHAR},
+        start_date = #{startDate},
       </if>
       <if test="endDate != null" >
-        end_date = #{endDate,jdbcType=VARCHAR},
+        end_date = #{endDate},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
+        status = #{status},
       </if>
       <if test="useImagesRandom != null" >
-        use_Images_Random = #{useImagesRandom,jdbcType=VARCHAR},
+        use_images_random = #{useImagesRandom},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.Advert" >
-    update t_advert
-    set title = #{title,jdbcType=VARCHAR},
-      code = #{code,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR},
-      html = #{html,jdbcType=VARCHAR},
-      start_date = #{startDate,jdbcType=VARCHAR},
-      end_date = #{endDate,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
-      use_Images_Random = #{useImagesRandom,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update cms_advert
+    set title = #{title},
+      code = #{code},
+      remark = #{remark},
+      html = #{html},
+      start_date = #{startDate},
+      end_date = #{endDate},
+      status = #{status},
+      use_images_random = #{useImagesRandom}
+    where id = #{id}
   </update>
 </mapper>

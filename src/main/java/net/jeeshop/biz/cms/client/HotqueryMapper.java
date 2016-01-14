@@ -2,23 +2,23 @@ package net.jeeshop.biz.cms.client;
 
 import java.util.List;
 import net.jeeshop.biz.base.client.BaseMapper;
-import net.jeeshop.biz.cms.model.Hotquery;
-import net.jeeshop.biz.cms.model.HotqueryExample;
+import net.jeeshop.biz.cms.model.HotQuery;
+import net.jeeshop.biz.cms.model.HotQueryExample;
 
-public interface HotqueryMapper extends BaseMapper<Hotquery, HotqueryExample> {
-    int countByExample(HotqueryExample example);
+public interface HotQueryMapper extends BaseMapper<HotQuery, HotQueryExample> {
+    int countByExample(HotQueryExample example);
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(Hotquery record);
+    int insert(HotQuery record);
 
-    int insertSelective(Hotquery record);
+    int insertSelective(HotQuery record);
 
-    List<Hotquery> selectByExample(HotqueryExample example);
+    List<HotQuery> selectByExample(HotQueryExample example);
 
-    Hotquery selectByPrimaryKey(Long id);
+    HotQuery selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Hotquery record);
+    int updateByPrimaryKeySelective(HotQuery record);
 
-    int updateByPrimaryKey(Hotquery record);
+    int updateByPrimaryKey(HotQuery record);
 }

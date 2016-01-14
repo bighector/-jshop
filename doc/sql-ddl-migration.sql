@@ -204,6 +204,31 @@ CREATE TABLE `cms_hot_query` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment='热门查询';
 
+DROP TABLE IF EXISTS `cms_friend_link`;
+CREATE TABLE `cms_friend_link` (
+  `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
+  `link_name` varchar(45) NOT NULL comment '链接名称',
+  `link_url` varchar(255) NOT NULL comment '友情链接网站的链接地址',
+  `link_logo` varchar(45) NOT NULL comment '友情链接的logo',
+  `oridnal` int(11) comment '顺序',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB comment='友情链接';
+
+/** 广告管理 */
+DROP TABLE IF EXISTS `cms_advert`;
+CREATE TABLE `cms_advert` (
+  `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
+  `title` varchar(45) NOT NULL comment '标题',
+  `code` varchar(45) NOT NULL comment '代码',
+  `remark` varchar(45) comment '备注',
+  `html` varchar(1000) comment 'HTML页面信息',
+  `start_date` date comment '开始时间',
+  `end_date` date comment '结束时间',
+  `status` varchar(2) DEFAULT 'y' comment '广告状态',
+  `use_images_random` varchar(2) DEFAULT 'n' comment '是否使用随机图片',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB comment='广告管理';
+
 /**
  * 商品管理模块
  */
@@ -241,12 +266,12 @@ CREATE TABLE `member` (
   `card_no` varchar(45)   comment '证件号',
   `mobile` varchar(45)   comment '手机号',
   `email` varchar(45)   comment '电子邮箱',
-  `is_email_active` varchar(2)  DEFAULT '0' comment '邮箱是否已经激活,1-是，0-否',
-  `freeze` varchar(2)  NOT NULL DEFAULT '0' comment '是否冻结,1-是,0-否',
+  `is_email_active` varchar(2)  DEFAULT 'n' comment '邮箱是否已经激活,y-是，n-否',
+  `freeze` varchar(2)  NOT NULL DEFAULT 'n' comment '是否冻结,y-是,n-否',
   `last_login_time` datetime  comment '最后登录时间',
   `last_login_ip` varchar(45)   comment '最后登录IP',
   `last_login_area` varchar(25)   comment '最后登录区域',
-  `diff_area_login` char(1)  DEFAULT '0' comment '是否异地登录,1-是,0-否',
+  `diff_area_login` char(1)  DEFAULT 'n' comment '是否异地登录,y-是,n-否',
   `regist_time` datetime  comment '注册时间',
   `freeze_start_time` datetime  comment '冻结开始时间',
   `freeze_end_time` datetime  comment '冻结结束时间',

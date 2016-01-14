@@ -1,31 +1,32 @@
 package net.jeeshop.biz.cms.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Advert extends BaseModel implements Serializable {
-    /** t_advert.title */
+    /** 标题 */
     private String title;
 
-    /** t_advert.code */
+    /** 代码 */
     private String code;
 
-    /** t_advert.remark */
+    /** 备注 */
     private String remark;
 
-    /** t_advert.html */
+    /** HTML页面信息 */
     private String html;
 
-    /** t_advert.start_date */
-    private String startDate;
+    /** 开始时间 */
+    private Date startDate;
 
-    /** t_advert.end_date */
-    private String endDate;
+    /** 结束时间 */
+    private Date endDate;
 
-    /** t_advert.status */
+    /** 广告状态 */
     private String status;
 
-    /** t_advert.use_Images_Random */
+    /** 是否使用随机图片 */
     private String useImagesRandom;
 
     private static final long serialVersionUID = 1L;
@@ -62,20 +63,20 @@ public class Advert extends BaseModel implements Serializable {
         this.html = html == null ? null : html.trim();
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate == null ? null : startDate.trim();
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate == null ? null : endDate.trim();
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public String getStatus() {

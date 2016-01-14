@@ -3,11 +3,8 @@ package net.jeeshop.biz.cms.model;
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
-public class Friendlink extends BaseModel implements Serializable {
-    /** 友情链接编号（自增id） */
-    private Short linkId;
-
-    /** 友情链接的名称，img的alt的内容 */
+public class FriendLink extends BaseModel implements Serializable {
+    /** 链接名称 */
     private String linkName;
 
     /** 友情链接网站的链接地址 */
@@ -16,18 +13,10 @@ public class Friendlink extends BaseModel implements Serializable {
     /** 友情链接的logo */
     private String linkLogo;
 
-    /** 在页面的显示顺序 */
-    private Byte showOrder;
+    /** 顺序 */
+    private Integer oridnal;
 
     private static final long serialVersionUID = 1L;
-
-    public Short getLinkId() {
-        return linkId;
-    }
-
-    public void setLinkId(Short linkId) {
-        this.linkId = linkId;
-    }
 
     public String getLinkName() {
         return linkName;
@@ -53,11 +42,11 @@ public class Friendlink extends BaseModel implements Serializable {
         this.linkLogo = linkLogo == null ? null : linkLogo.trim();
     }
 
-    public Byte getShowOrder() {
-        return showOrder;
+    public Integer getOridnal() {
+        return oridnal;
     }
 
-    public void setShowOrder(Byte showOrder) {
-        this.showOrder = showOrder;
+    public void setOridnal(Integer oridnal) {
+        this.oridnal = oridnal;
     }
 }

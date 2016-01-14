@@ -3,7 +3,7 @@ package net.jeeshop.biz.cms.model;
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
-public class Hotquery extends BaseModel implements Serializable {
+public class HotQuery extends BaseModel implements Serializable {
     /** 查询关键字 */
     private String keywork;
 

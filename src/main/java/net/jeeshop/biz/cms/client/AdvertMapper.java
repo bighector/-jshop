@@ -6,27 +6,19 @@ import net.jeeshop.biz.cms.model.Advert;
 import net.jeeshop.biz.cms.model.AdvertExample;
 
 public interface AdvertMapper extends BaseMapper<Advert, AdvertExample> {
-    @Override
-	int countByExample(AdvertExample example);
+    int countByExample(AdvertExample example);
 
-    @Override
-	int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Long id);
 
-    @Override
-	int insert(Advert record);
+    int insert(Advert record);
 
-    @Override
-	int insertSelective(Advert record);
+    int insertSelective(Advert record);
 
-    @Override
-	List<Advert> selectByExample(AdvertExample example);
+    List<Advert> selectByExample(AdvertExample example);
 
-    @Override
-	Advert selectByPrimaryKey(Long id);
+    Advert selectByPrimaryKey(Long id);
 
-    @Override
-	int updateByPrimaryKeySelective(Advert record);
+    int updateByPrimaryKeySelective(Advert record);
 
-    @Override
-	int updateByPrimaryKey(Advert record);
+    int updateByPrimaryKey(Advert record);
 }

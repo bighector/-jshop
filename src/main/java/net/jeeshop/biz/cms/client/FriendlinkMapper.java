@@ -2,23 +2,23 @@ package net.jeeshop.biz.cms.client;
 
 import java.util.List;
 import net.jeeshop.biz.base.client.BaseMapper;
-import net.jeeshop.biz.cms.model.Friendlink;
-import net.jeeshop.biz.cms.model.FriendlinkExample;
+import net.jeeshop.biz.cms.model.FriendLink;
+import net.jeeshop.biz.cms.model.FriendLinkExample;
 
-public interface FriendlinkMapper extends BaseMapper<Friendlink, FriendlinkExample> {
-    int countByExample(FriendlinkExample example);
+public interface FriendLinkMapper extends BaseMapper<FriendLink, FriendLinkExample> {
+    int countByExample(FriendLinkExample example);
 
-    int deleteByPrimaryKey(Short linkId);
+    int deleteByPrimaryKey(Long id);
 
-    int insert(Friendlink record);
+    int insert(FriendLink record);
 
-    int insertSelective(Friendlink record);
+    int insertSelective(FriendLink record);
 
-    List<Friendlink> selectByExample(FriendlinkExample example);
+    List<FriendLink> selectByExample(FriendLinkExample example);
 
-    Friendlink selectByPrimaryKey(Short linkId);
+    FriendLink selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Friendlink record);
+    int updateByPrimaryKeySelective(FriendLink record);
 
-    int updateByPrimaryKey(Friendlink record);
+    int updateByPrimaryKey(FriendLink record);
 }

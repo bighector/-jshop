@@ -32,8 +32,21 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
+        <!-- 文章分类 -->
+        <table tableName="cms_article_catalog" domainObjectName="ArticleCatalog">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="pid" javaType="java.lang.Long"/>
+        </table>
+        <!-- 公告管理 -->
+        <table tableName="cms_notice" domainObjectName="Notice">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
         <!-- 热门查询 -->
         <table tableName="cms_hot_query" domainObjectName="HotQuery">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+        <!-- 广告 -->
+        <table tableName="cms_advert" domainObjectName="Advert">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
 

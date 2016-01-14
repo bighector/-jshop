@@ -60,7 +60,7 @@ public class SystemManager {
 //    private List<Product> hotSearchProductList;//热门搜索的商品列表
 //    private String alipayConfig;//支付宝卖家账号
 //    private String commentTypeCode;//启用的评论插件的代号
-//    private List<Hotquery> hotqueryList;//热门查询列表
+//    private List<HotQuery> hotqueryList;//热门查询列表
 //	public static Map<Integer, Integer> catalogMap = new HashMap<Integer, Integer>();//目录表，key:目录ID，value:目录顶级PID
 	
 //	/**
