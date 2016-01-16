@@ -66,7 +66,7 @@
 	if(AlipayNotify.verify(params)){//验证成功
 		//本系统的业务逻辑处理，把订单更新为已成功付款状态
 		WebApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
-		OrderService orderService = (OrderService) app.getBean("orderServiceFront");
+		OrderService orderService = (OrderService) app.getBean(OrderService.class);
 		//////////////////////////////////////////////////////////////////////////////////////////
 		//请在这里加上商户的业务逻辑程序代码
 

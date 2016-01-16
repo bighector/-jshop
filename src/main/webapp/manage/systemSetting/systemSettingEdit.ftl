@@ -29,7 +29,7 @@ function changeStyle(){
 </head>
 
 <body style="padding: 5px;">
-<form action="${basepath}/manage/systemSetting" id="form">
+<form action="${basepath}/manage/systemSetting/" id="form">
 
 <div style="text-align: center;border-bottom: 1px solid #ccc;padding: 5px;">
 	<button method="insertOrUpdate" class="btn btn-success">
@@ -220,12 +220,13 @@ function changeStyle(){
 				<tr>
 					<td colspan="11">
 						<input style="display: none;" onclick="addTrFunc();" value="添加" class="btn btn-warning" type="button"/>
-						<input type="submit" name="method:deleteImageByImgPaths" onclick="return deleteImageByImgPaths();"
-									value="删除" class="btn btn-primary"/>
+						<button method="deleteImageByImgPaths" onclick="return deleteImageByImgPaths(this);"
+								class="btn btn-primary">删除</button>
+							
 					</td>
 				</tr>
 				<tr style="background-color: #dff0d8">
-					<th width="20"><input type="checkbox" id="firstCheckbox" /></th>
+					<th width="50"><input type="checkbox" id="firstCheckbox" /></th>
 					<th>图片地址</th>
 				</tr>
 				<#list e.imagesList as img>
@@ -331,12 +332,16 @@ function clearRootImagePath(picInput){
 	picInput.val(_imgVal.substring(_imgVal.indexOf("/attached/")));
 }
 
-function deleteImageByImgPaths(){
+function deleteImageByImgPaths(obj){
 	if ($("input:checked").size() == 0) {
 		alert("请选择要删除的图片！");
 		return false;
 	}
-	return confirm("确定删除选择的图片吗?");
+	if(confirm("确定删除选择的图片吗?")){
+		return true;
+	}
+	return false;
+	
 }
 </script>
 

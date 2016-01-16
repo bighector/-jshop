@@ -1,11 +1,9 @@
 <%@page import="net.jeeshop.services.front.product.bean.ProductStockInfo"%>
 <%@page import="java.util.concurrent.ConcurrentMap"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="java.util.*"%>
 <%@page import="net.jeeshop.services.front.news.bean.News"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib uri="http://jsptags.com/tags/navigation/pager" prefix="pg"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -30,26 +28,23 @@
 			<td>库存是否有所改变</td>
 		</tr>
 		<%
-		Map<String, ProductStockInfo> productStockMap = SystemManager.getInstance().getProductStockMap();
-		request.setAttribute("productStockMap", productStockMap);
+			Map<String, ProductStockInfo> productStockMap = SystemManager.getInstance().getProductStockMap();
+			request.setAttribute("productStockMap", productStockMap);
 		%>
-		<tr>
-			<td colspan="3">
-				商品数：<s:property value="#request.productStockMap.size"/>
-			</td>
-		</tr>
-		
-		<s:if test="#request.productStockMap!=null">
-			<s:iterator value="#request.productStockMap" status="i" var="row">
+		<c:if test="${productStockMap!=null}">
+			<tr>
+				<td colspan="3">
+						商品数：<%=productStockMap.size() %>
+				</td>
+			</tr>
+			<c:forEach items="${productStockMap}" var="entry">  
 				<tr>
-					<td><s:property value="value.id"/></td>
-					<td><s:property value="value.stock"/></td>
-					<td><s:property value="value.changeStock"/></td>
-				</tr>
-			</s:iterator>
-		</s:if>
-		<s:else>
-		</s:else>
+			       	<td><c:out value="${entry.value.id}" />  </td>
+			    	<td><c:out value="${entry.value.stock}" /></td>
+			    	<td><c:out value="${entry.value.changeStock}" /></td>
+		    	</tr>
+			</c:forEach>  
+		</c:if>
 	</table>
 </body>
 </html>

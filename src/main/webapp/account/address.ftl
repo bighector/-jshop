@@ -28,7 +28,7 @@
                 <hr>
 				<div class="row">
 					<form role="form" id="form" class="form-horizontal" method="post" action="saveAddress" theme="simple">
-					  <input type="hidden"  name="address.id"/>
+					  <input type="hidden" id="id" name="id" value="${address.id!""}"/>
 					  <div class="form-group">
 					    <label for="name" class="col-lg-2 control-label">收货人姓名</label>
 					    <div class="col-lg-6">

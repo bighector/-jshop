@@ -172,7 +172,7 @@
 							<input name="otherRequirement" class="form-control" placeholder="此处您可以输入您的附加要求，以便我们提供更好的服务。" size="50" maxlength="50"/>
 						</div>
 						<div class="col-xs-6">
-							<button type="submit" class="btn btn-success" value="提交订单" id="confirmOrderBtn" disabled="disabled">
+							<button type="submit" class="btn btn-success" value="提交订单" id="confirmOrderBtn" disabled="disabled" data-placement="left" >
 								<span class="glyphicon glyphicon-ok"></span>提交订单
 							</button>
 						</div>
@@ -226,9 +226,18 @@ function submitOrder(){
 	}else{
 		$('#expressTips').tooltip('hide');
 	}
+	
+
 	console.log("提交订单...submitFlg= " + submitFlg);
 	if(!submitFlg){
 		return false; 
+	}
+	
+	var score = ${currentAccount().score!0};
+	var totalExchangeScore = ${myCart.totalExchangeScore!0};
+	if(score < totalExchangeScore ){
+	  $('#confirmOrderBtn').attr("data-content","可用积分不足").popover("toggle");
+		return false;
 	}
 	//ajax验证待提交支付的商品库存数量是否存在超卖或下架之类的情况
 	//tips

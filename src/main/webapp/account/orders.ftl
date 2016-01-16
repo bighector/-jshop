@@ -146,7 +146,9 @@ font-weight: 700;font-size: 16px;color: #f50;
                                                 </#if>
                                                 <a target="_blank" href="${basepath}/order/${item.id!""}">订单详情</a>
                                                 <br>
-                                                <a  href="javascript:void(0)" onclick="return deleteOrder(${item.id!""})">删除订单</a>
+                                                <#if item.status?? && (item.status !="send" &&item.status !="sign")>
+                                               	 <a  href="javascript:void(0)" onclick="return deleteOrder(${item.id!""})">删除订单</a>
+                                               </#if>
                                              <#--   href="${basepath}/order/deletes?ids=${item.id!""}"-->
 												<br>
                                                 <#if item.status?? && (item.status =="send" || item.status=="sign")>

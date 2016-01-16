@@ -18,13 +18,13 @@
                 </button>
 
                 <#if e.status??&&e.status!=2>
-                    <a method="updateUpProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm('确定上架商品吗?');">
+                    <button method="updateUpProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm('确定上架商品吗?');">
                     <i class="icon-arrow-up icon-white"></i> 上架
-                    </a>
+                    </button>
                 <#else>
-                    <a method="updateDownProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm('确定下架商品吗?');">
+                    <button method="updateDownProduct?id=${e.id!""}" class="btn btn-warning" onclick="return confirm('确定下架商品吗?');">
                     <i class="icon-arrow-down icon-white"></i> 下架
-                    </a>
+                    </button>
                 </#if>
 
                 <a class="btn btn-info" target="_blank" href="${systemSetting().www}/product/${e.id!""}.html">

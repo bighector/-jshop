@@ -9,6 +9,9 @@
 	<a href="${basepath}/account/orders" class="list-group-item ${(currentMenu=="orders")?string('active', '')}">
 		<span class="glyphicon glyphicon-th"></span>&nbsp;我的订单
 	</a>
+	<a href="${basepath}/account/score" class="list-group-item ${(currentMenu=="score")?string('active', '')}">
+		<span class="glyphicon glyphicon-asterisk"></span>&nbsp;我的积分
+	</a>
 	<a href="${basepath}/account/address" class="list-group-item ${(currentMenu=="address")?string('active', '')}">
 		<span class="glyphicon glyphicon-send"></span>&nbsp;配送地址
 	</a>

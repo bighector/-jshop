@@ -35,7 +35,7 @@ body{
 	<div class="container" style="min-height: 10px;margin-top:5px;margin-bottom:5px;border: 0px solid red;">
 		<div class="row">
 			<div class="col-xs-3">
-				<a href="${systemSetting().www}"><img style="max-height: 50px;" alt="myshop-logo" src="${systemSetting().log}"/></a>
+				<a href="${systemSetting().www}/index"><img style="max-height: 50px;" alt="myshop-logo" src="${systemSetting().log}"/></a>
 			</div>
 			<div class="col-xs-6" style="border: 0px solid blue;padding-left:5px;">
 				<!-- search查询输入框 -->
@@ -84,6 +84,7 @@ body{
                                   <li><a href="${basepath}/account/topwd"><span class="glyphicon glyphicon-screenshot"></span>&nbsp;修改密码</a></li>
                                   <li class="divider"></li>
                                   <li><a href="${basepath}/account/orders"><span class="glyphicon glyphicon-th"></span>&nbsp;我的订单</a></li>
+                                   <li><a href="${basepath}/account/score"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;我的积分</a></li>
                                   <li><a href="${basepath}/account/address"><span class="glyphicon glyphicon-send"></span>&nbsp;配送地址</a></li>
                                   <li><a href="${basepath}/account/favorite"><span class="glyphicon glyphicon-tags"></span>&nbsp;收藏夹</a></li>
                                   <li class="divider"></li>
@@ -115,7 +116,7 @@ body{
 <div class="navbar navbar-default" style="margin-bottom: 15px;z-index: 111">
       <div class="container">
         <div class="navbar-header col-xs-3" style="text-align: center;" id="navbar-header">
-			  <a class="navbar-brand" href="${systemSetting().www}" style="font-weight: bold;margin-left: 5px;">全部商品分类</a>
+			  <a class="navbar-brand" href="${systemSetting().www}/index" style="font-weight: bold;margin-left: 5px;">全部商品分类</a>
 	          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
@@ -140,9 +141,9 @@ body{
 	          		<#--%>-->
 	          		<!-- 首页 -->
 						<#if selectMenu=="0">
-                            <li class="active"><a href="${systemSetting().www}"><b>首页</b></a></li>
+                            <li class="active"><a href="${systemSetting().www}/index"><b>首页</b></a></li>
 						<#else>
-                            <li><a href="${systemSetting().www}"><b>首页</b></a></li>
+                            <li><a href="${systemSetting().www}/index"><b>首页</b></a></li>
 						</#if>
 					<!-- 类别作为菜单显示 -->
 						<#list systemManager().catalogs as item>

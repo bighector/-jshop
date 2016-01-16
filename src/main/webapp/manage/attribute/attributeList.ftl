@@ -16,7 +16,7 @@
 							<#--application.setAttribute("catalogs", SystemManager.catalogs);-->
 							<#--%>-->
 							<select onchange="catalogChange(this)" name="catalogID" id="catalogSelect">
-								<option></option>
+								<option value = "0"></option>
 								<#list catalogs as item>
 									<option pid="0" value="${item.id!""}"><font color='red'>${item.name!""}</font></option>
 									<#if item.children??>

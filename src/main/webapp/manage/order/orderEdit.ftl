@@ -141,9 +141,10 @@
 			</tr>
 			<tr>
 				<td>支付金额</td>
-				<td>
-					<input name="payamount" id="payamount">
+				<td >
+					<input name="orderpay.payamount" id="payamount">
 				</td>
+				
 			</tr>
 			<tr>
 				<td>备注</td>
@@ -182,7 +183,7 @@
 			<tr>
 				<td colspan="2">
 			
-					<button method="updatePayMonery" class="btn btn-primary" onclick="selectList(this);">
+					<button method="updatePayMonery" class="btn btn-primary" onclick="subFrom(this);">
 						 确认
 					</button>
 					<input id="cancelUpdatePayMoneryBtn" type="button" value="取消" class="btn"/>
@@ -463,8 +464,17 @@ function onSubmit(obj){
 		return false;
 	}
 	return confirm("确认本次操作?");
-		
-	
+}
+
+//查询
+function subFrom(obj){
+	var payamount = $("#payamount").val();
+	if(payamount=="" || payamount == null) {
+		$("#payamount").val(0);
+	}
+	var _form = $("form");
+	_form.attr("action",$(obj).attr("method"));
+	_form.submit();
 }
 </script>
 

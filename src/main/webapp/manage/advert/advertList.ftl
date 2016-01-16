@@ -74,7 +74,7 @@
 							<td><input type="checkbox" name="ids"
 								value="${item.id!""}" /></td>
 							<td class="aCss">
-							  <a href="advert/toEdit?id=${item.id}"
+							  <a href="toEdit?id=${item.id}"
 										>${item.title!""}</a>
 							</td>
 							<td>&nbsp;${item.code!""}</td>
