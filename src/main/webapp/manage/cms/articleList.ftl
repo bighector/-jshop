@@ -126,7 +126,7 @@
                 {name:"title", title:"标题", data:"title"},
                 {name:"secondTitle", title:"副标题", data:"secondTitle"},
                 {name:"code", title:"标题简称", data:"code"},
-                {name:"order1", title:"排序", data:"order1"},
+                {name:"ordinal", title:"排序", data:"ordinal"},
                 {name:"updateTime", title:"最后操作时间", data:"updateTime",render:function(data,type,row,meta){
                     return new Date(data).format("yyyy-MM-dd HH:mm:ss");
                 }},

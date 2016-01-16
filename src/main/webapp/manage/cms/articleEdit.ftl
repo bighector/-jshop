@@ -92,7 +92,7 @@
             </tr>
             <tr>
 				<td style="text-align: right;">顺序</td>
-				<td style="text-align: left;"><input type="text"  value="${e.order1!""}" name="order1"  data-rule="顺序;required;integer;order1;" size="20" maxlength="20"
+				<td style="text-align: left;"><input type="text"  value="${e.ordinal!""}" name="ordinal"  data-rule="顺序;required;integer;order1;" size="20" maxlength="20"
 						id="ordinal" /></td>
 			</tr>
 

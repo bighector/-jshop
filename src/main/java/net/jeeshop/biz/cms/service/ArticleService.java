@@ -1,6 +1,5 @@
 package net.jeeshop.biz.cms.service;
 
-import com.mchange.lang.LongUtils;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.client.BaseMapper;
@@ -50,7 +49,7 @@ public class ArticleService extends BaseService<Article, ArticleExample> {
     }
     private ArticleExample getExampleWithOrder() {
         ArticleExample example = new ArticleExample();
-        example.setOrderByClause("order1 asc");
+        example.setOrderByClause("ordinal asc");
         return example;
     }
 

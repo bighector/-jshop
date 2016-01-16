@@ -23,10 +23,7 @@ public class Article extends BaseModel implements Serializable {
     private Long catalogId;
 
     /** 排序 */
-    private Integer order1;
-
-    /** 通知：notice；帮助：help */
-    private String type;
+    private Integer ordinal;
 
     /** 内容 */
     private String content;
@@ -81,20 +78,12 @@ public class Article extends BaseModel implements Serializable {
         this.catalogId = catalogId;
     }
 
-    public Integer getOrder1() {
-        return order1;
+    public Integer getOrdinal() {
+        return ordinal;
     }
 
-    public void setOrder1(Integer order1) {
-        this.order1 = order1;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     public String getContent() {
