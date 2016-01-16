@@ -1,8 +1,21 @@
 package net.jeeshop.web.controller.manage;
 
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.web.controller.BaseController;
+import net.jeeshop.web.util.LoginUserHolder;
+import net.jeeshop.web.util.RequestHolder;
+import net.sf.json.JSONArray;
+
+import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +35,17 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
     protected String page_toList = null;
     protected String page_toEdit = null;
     protected String page_toAdd = null;
+    
+    protected HttpServletRequest request;
+    protected HttpServletResponse response;
+    protected HttpSession session;
+   
+    @ModelAttribute
+    public void loadServlet(HttpServletRequest request, HttpServletResponse response){
+    	this.request = request;
+    	this.response = response;
+    	this.session = request.getSession();
+    }
 
     public abstract BaseService<Model, Example> getService();
 
@@ -105,8 +129,11 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      */
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@ModelAttribute("e") Model e, RedirectAttributes flushAttrs) {
-        getService().update(e);
-        addMessage(flushAttrs, "操作成功！");
+    	SysUser user = LoginUserHolder.getLoginUser();
+    	e.setUpdateAccount(user.getUsername());
+        e.setUpdateTime(new Date());
+    	getService().update(e);
+        addMessage(flushAttrs, "更新操作成功！");
         return "redirect:selectList";
     }
 
@@ -118,8 +145,11 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      */
     @RequestMapping(value = "insert", method = RequestMethod.POST)
     public String insert(@ModelAttribute("e") Model e, RedirectAttributes flushAttrs) {
-        getService().insert(e);
-        addMessage(flushAttrs, "操作成功！");
+    	SysUser user = LoginUserHolder.getLoginUser();
+		e.setCreateAccount(user.getUsername());//创建用户
+		e.setCreateTime(new Date());
+    	getService().insert(e);
+        addMessage(flushAttrs, "插入操作成功！");
         return "redirect:selectList";
     }
 
@@ -132,6 +162,24 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
     @RequestMapping("back")
     public String back(ModelMap model) {
         return selectList(model);
+    }
+    
+    /**
+     * JSON数据输出
+     * @param obj
+     * @param req 
+     * @return
+     */
+    public void writeToJson(Object obj){
+    	try{
+    		JSONArray ja = JSONArray.fromObject(obj);
+    		PrintWriter write = response.getWriter();
+    		write.print( ja.toString());
+    		write.flush();
+    		write.close();
+    	}catch(Exception e){
+    		logger.error("输出JSON格式数据异常", e);
+    	}
     }
 
 }

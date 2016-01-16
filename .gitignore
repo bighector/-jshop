@@ -1,6 +1,8 @@
 *.iml
 *.ipr
 *.iws
+*.log
+*.md
 .classpath
 .settings/
 .project
@@ -11,3 +13,4 @@ classes/
 build/
 spy.log
 .git/
+doc/*.txt

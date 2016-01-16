@@ -2,11 +2,14 @@ package net.jeeshop.biz.base.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.core.exception.JShopException;
+import net.sf.json.JSONArray;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -117,5 +120,5 @@ public abstract class BaseService<E extends BaseModel, Example> {
         }
         return list.get(0);
     }
-
+    
 }
