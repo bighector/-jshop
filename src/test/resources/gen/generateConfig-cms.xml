@@ -35,6 +35,12 @@
         <table tableName="t_hot_query" domainObjectName="Hotquery">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
+        <table tableName="t_article" domainObjectName="Article">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="catalog_id" javaType="java.lang.Long"/>
+        </table>
+
+
     </context>
 
 </generatorConfiguration>
