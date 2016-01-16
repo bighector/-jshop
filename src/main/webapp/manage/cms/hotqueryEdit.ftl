@@ -30,13 +30,13 @@
 				<td><input type="hidden" value="${e.id!""}" name="id" label="id" /></td>
 			</tr>
 			<tr>
-				<td style="text-align: center;width:200px;">热门查询关键字</td>
+				<td style="text-align: center;width:200px;line-height:34px;">热门查询关键字</td>
 				<td style="text-align: left;">
 					<input type="text"  value="${e.keywork!""}" name="keywork"  id="keywork" width=" 350px" data-rule="热门查询关键字:required;keywork;length[1~100];"/>
 				</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;width:200px;">链接</td>
+				<td style="text-align: center;width:200px;line-height:34px;">链接</td>
 				<td style="text-align: left;">
 					<input type="text" value="${e.url!""}" name="url"  id="url" data-rule="链接:required;url;length[1~100];"/>
 				</td>
