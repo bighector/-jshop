@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.system.client.SystemExpressMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SystemExpress" >
+<mapper namespace="net.jeeshop.biz.system.client.ExpressMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.Express" >
     <id column="id" property="id" />
     <result column="code" property="code" />
     <result column="name" property="name" />
@@ -73,7 +73,7 @@
   <sql id="Base_Column_List" >
     id, code, name, fee, ordinal, create_time, create_account, update_time, update_account
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SystemExpressExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.ExpressExample" >
     select
     <if test="distinct" >
       distinct
@@ -97,13 +97,13 @@
     delete from sys_express
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.system.model.SystemExpress" >
+  <insert id="insert" parameterType="net.jeeshop.biz.system.model.Express" >
     insert into sys_express (id, code, name, fee, ordinal, create_time, create_account, 
       update_time, update_account)
     values (#{id}, #{code}, #{name}, #{fee}, #{ordinal}, #{createTime}, #{createAccount}, 
       #{updateTime}, #{updateAccount})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SystemExpress" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.Express" >
     insert into sys_express
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -164,13 +164,13 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.system.model.SystemExpressExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="net.jeeshop.biz.system.model.ExpressExample" resultType="java.lang.Integer" >
     select count(*) from sys_express
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SystemExpress" >
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.Express" >
     update sys_express
     <set >
       <if test="code != null" >
@@ -200,7 +200,7 @@
     </set>
     where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SystemExpress" >
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.Express" >
     update sys_express
     set code = #{code},
       name = #{name},

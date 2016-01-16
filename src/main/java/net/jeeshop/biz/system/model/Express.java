@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import net.jeeshop.biz.base.model.BaseModel;
 
-public class SystemExpress extends BaseModel implements Serializable {
+public class Express extends BaseModel implements Serializable {
     /** 配送方式编码 */
     private String code;
 

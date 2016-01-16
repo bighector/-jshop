@@ -11,9 +11,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.product.model.ProductBrand;
-import net.jeeshop.biz.product.model.ProductBrandExample;
-import net.jeeshop.biz.product.service.ProductBrandService;
+import net.jeeshop.biz.product.model.Brand;
+import net.jeeshop.biz.product.model.BrandExample;
+import net.jeeshop.biz.product.service.BrandService;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 
 /**
@@ -25,17 +25,17 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
  */
 @Controller
 @RequestMapping("/manage/brand")
-public class ProductBrandController extends  ManageBaseController<ProductBrand, ProductBrandExample>{
+public class BrandController extends  ManageBaseController<Brand, BrandExample>{
 	
 	@Autowired
-	ProductBrandService productBrandService;
+	BrandService brandService;
 	
 	@Override
-	public BaseService<ProductBrand, ProductBrandExample> getService() {
-		return productBrandService;
+	public BaseService<Brand, BrandExample> getService() {
+		return brandService;
 	}
 	
-	public ProductBrandController() {
+	public BrandController() {
         super.page_toList = "manage/product/brand/brandList";
         super.page_toEdit = "manage/product/brand/editBrand";
         super.page_toAdd = "manage/product/brand/editBrand";
@@ -43,10 +43,10 @@ public class ProductBrandController extends  ManageBaseController<ProductBrand, 
 	
 	@RequestMapping("loadData")
     @ResponseBody
-    public PageBean<ProductBrand> loadData(ProductBrand queryParams, PageQueryBean pageQueryBean) {
-		ProductBrandExample example = new ProductBrandExample();
-        example.setOrderByClause("ordinal desc");
-        PageBean<ProductBrand> pager = productBrandService.selectPageList(example, pageQueryBean);
+    public PageBean<Brand> loadData(Brand queryParams, PageQueryBean pageQueryBean) {
+		BrandExample example = new BrandExample();
+        example.setOrderByClause("ordinal asc");
+        PageBean<Brand> pager = brandService.selectPageList(example, pageQueryBean);
         return pager;
     }
 	
@@ -55,8 +55,8 @@ public class ProductBrandController extends  ManageBaseController<ProductBrand, 
 	 */
     @Override
     @RequestMapping("insert")
-    public String insert(@ModelAttribute("e") ProductBrand productBrand, RedirectAttributes flushAttrs){
-        return super.insert(productBrand, flushAttrs);
+    public String insert(@ModelAttribute("e") Brand brand, RedirectAttributes flushAttrs){
+        return super.insert(brand, flushAttrs);
     }
     
     
@@ -65,8 +65,8 @@ public class ProductBrandController extends  ManageBaseController<ProductBrand, 
      */
     @Override
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("e") ProductBrand productBrand, RedirectAttributes flushAttrs) {
-        return super.update(productBrand, flushAttrs);
+    public String update(@ModelAttribute("e") Brand brand, RedirectAttributes flushAttrs) {
+        return super.update(brand, flushAttrs);
     }
     
     /**

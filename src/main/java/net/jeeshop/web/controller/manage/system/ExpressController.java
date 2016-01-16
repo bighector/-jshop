@@ -16,33 +16,33 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.system.model.SystemExpress;
-import net.jeeshop.biz.system.model.SystemExpressExample;
-import net.jeeshop.biz.system.service.SystemExpressService;
+import net.jeeshop.biz.system.model.Express;
+import net.jeeshop.biz.system.model.ExpressExample;
+import net.jeeshop.biz.system.service.ExpressService;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 
 /**
- * @project: jshop 
- * @Description: 后台系统管理配送方式Controller
- * @author: Leolion
- * @date: 2015-12-30 23:05:12 
- * @version: 
+ *	配送方式管理Controller
+ *
+ * @author Leolione
+ * @email leolione@outlook.com
+ * @since V1.0
  */
 @Controller
 @RequestMapping("/manage/express")
-public class SystemExpressController extends  ManageBaseController<SystemExpress, SystemExpressExample>{
+public class ExpressController extends  ManageBaseController<Express, ExpressExample>{
 	
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 	@Autowired
-	SystemExpressService systemExpressService;
+	ExpressService expressService;
 	
     @Override
-    public BaseService<SystemExpress, SystemExpressExample> getService() {
-        return systemExpressService;
+    public BaseService<Express, ExpressExample> getService() {
+        return expressService;
     }
     
-    public SystemExpressController() {
+    public ExpressController() {
         super.page_toList = "manage/system/express/expressList";
         super.page_toEdit = "manage/system/express/editExpress";
         super.page_toAdd = "manage/system/express/editExpress";
@@ -50,14 +50,14 @@ public class SystemExpressController extends  ManageBaseController<SystemExpress
 
     @RequestMapping("loadData")
     @ResponseBody
-    public PageBean<SystemExpress> loadData(SystemExpress queryParams, PageQueryBean pageQueryBean) {
-        SystemExpressExample example = new SystemExpressExample();
-        SystemExpressExample.Criteria criteria = example.createCriteria();
+    public PageBean<Express> loadData(Express queryParams, PageQueryBean pageQueryBean) {
+        ExpressExample example = new ExpressExample();
+        ExpressExample.Criteria criteria = example.createCriteria();
         if (StringUtils.isNotBlank(queryParams.getCode())) {
             criteria.andCodeEqualTo(queryParams.getCode());
         }
         example.setOrderByClause("id desc");
-        PageBean<SystemExpress> pager = systemExpressService.selectPageList(example, pageQueryBean);
+        PageBean<Express> pager = expressService.selectPageList(example, pageQueryBean);
         return pager;
     }
     
@@ -66,8 +66,8 @@ public class SystemExpressController extends  ManageBaseController<SystemExpress
      */
     @Override
     @RequestMapping("insert")
-    public String insert(@ModelAttribute("e") SystemExpress systemExpress, RedirectAttributes flushAttrs){
-        return super.insert(systemExpress, flushAttrs);
+    public String insert(@ModelAttribute("e") Express express, RedirectAttributes flushAttrs){
+        return super.insert(express, flushAttrs);
     }
     
     /**
@@ -75,8 +75,8 @@ public class SystemExpressController extends  ManageBaseController<SystemExpress
      */
     @Override
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("e") SystemExpress systemExpress, RedirectAttributes flushAttrs) {
-        return super.update(systemExpress, flushAttrs);
+    public String update(@ModelAttribute("e") Express express, RedirectAttributes flushAttrs) {
+        return super.update(express, flushAttrs);
     }
     /**
      * ajax验证输入的字符的唯一性
@@ -86,18 +86,18 @@ public class SystemExpressController extends  ManageBaseController<SystemExpress
      */
     @RequestMapping("unique")
     @ResponseBody
-    public String unique(@ModelAttribute("e") SystemExpress e, HttpServletResponse response) throws IOException {
+    public String unique(@ModelAttribute("e") Express e, HttpServletResponse response) throws IOException {
         logger.debug("验证输入的字符的唯一性:" + e);
         response.setCharacterEncoding("utf-8");
         if (StringUtils.isNotBlank(e.getCode())) {//验证快递编码是否存在
             logger.debug("验证快递编码是否存在:" + e.getCode());
-            SystemExpress systemExpress = systemExpressService.selectByCode(e.getCode());
+            Express express = expressService.selectByCode(e.getCode());
 
-            if (systemExpress == null) {
+            if (express == null) {
                 //数据库中不存在此编码
                 return "{\"ok\":\"该快递编码可以使用!\"}";
             } else {
-                if (e.getId() != null && e.getId().equals(systemExpress.getId())) {
+                if (e.getId() != null && e.getId().equals(express.getId())) {
                     //update操作
                     return "{\"ok\":\"该快递编码可以使用!\"}";
                 } else {

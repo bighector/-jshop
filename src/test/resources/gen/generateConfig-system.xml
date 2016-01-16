@@ -67,7 +67,7 @@
             <columnOverride column="pid" javaType="java.lang.Long"/>
         </table>
         <!-- 配送方式 -->
-        <table tableName="sys_express" domainObjectName="SystemExpress">
+        <table tableName="sys_express" domainObjectName="Express">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
 
