@@ -50,32 +50,4 @@ public class BrandController extends  ManageBaseController<Brand, BrandExample>{
         return pager;
     }
 	
-	/**
-	 * 添加商品品牌
-	 */
-    @Override
-    @RequestMapping("insert")
-    public String insert(@ModelAttribute("e") Brand brand, RedirectAttributes flushAttrs){
-        return super.insert(brand, flushAttrs);
-    }
-    
-    
-    /**
-     * 修改商品品牌
-     */
-    @Override
-    @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("e") Brand brand, RedirectAttributes flushAttrs) {
-        return super.update(brand, flushAttrs);
-    }
-    
-    /**
-     * 删除商品品牌
-     */
-    @Override
-    @RequestMapping(value = "deletes", method = RequestMethod.POST)
-    public String deletes(Long[] ids, RedirectAttributes flushAttrs) {
-    	return super.deletes(ids, flushAttrs);
-    }
-
 }
