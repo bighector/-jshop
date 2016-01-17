@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="net.jeeshop.biz.system.client.SysAreaMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SysArea" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="pid" property="pid" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="create_account" property="createAccount" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="update_account" property="updateAccount" jdbcType="VARCHAR" />
+    <id column="id" property="id" />
+    <result column="pid" property="pid" />
+    <result column="name" property="name" />
+    <result column="create_time" property="createTime" />
+    <result column="create_account" property="createAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="update_account" property="updateAccount" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,7 +77,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_area
+    from sys_area
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,23 +88,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_area
-    where id = #{id,jdbcType=INTEGER}
+    from sys_area
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_area
-    where id = #{id,jdbcType=INTEGER}
+    delete from sys_area
+    where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.SysArea" >
-    insert into t_area (id, pid, name, 
-      create_time, create_account, update_time, 
-      update_account)
-    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{createAccount,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{updateAccount,jdbcType=VARCHAR})
+    insert into sys_area (id, pid, name, create_time, create_account, update_time, update_account
+      )
+    values (#{id}, #{pid}, #{name}, #{createTime}, #{createAccount}, #{updateTime}, #{updateAccount}
+      )
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysArea" >
-    insert into t_area
+    insert into sys_area
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -130,66 +128,66 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id},
       </if>
       <if test="pid != null" >
-        #{pid,jdbcType=INTEGER},
+        #{pid},
       </if>
       <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime},
       </if>
       <if test="createAccount != null" >
-        #{createAccount,jdbcType=VARCHAR},
+        #{createAccount},
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        #{updateTime},
       </if>
       <if test="updateAccount != null" >
-        #{updateAccount,jdbcType=VARCHAR},
+        #{updateAccount},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.system.model.SysAreaExample" resultType="java.lang.Integer" >
-    select count(*) from t_area
+    select count(*) from sys_area
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SysArea" >
-    update t_area
+    update sys_area
     <set >
       <if test="pid != null" >
-        pid = #{pid,jdbcType=INTEGER},
+        pid = #{pid},
       </if>
       <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime},
       </if>
       <if test="createAccount != null" >
-        create_account = #{createAccount,jdbcType=VARCHAR},
+        create_account = #{createAccount},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime},
       </if>
       <if test="updateAccount != null" >
-        update_account = #{updateAccount,jdbcType=VARCHAR},
+        update_account = #{updateAccount},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SysArea" >
-    update t_area
-    set pid = #{pid,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      create_account = #{createAccount,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      update_account = #{updateAccount,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update sys_area
+    set pid = #{pid},
+      name = #{name},
+      create_time = #{createTime},
+      create_account = #{createAccount},
+      update_time = #{updateTime},
+      update_account = #{updateAccount}
+    where id = #{id}
   </update>
 </mapper>

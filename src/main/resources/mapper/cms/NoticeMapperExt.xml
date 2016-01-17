@@ -8,7 +8,7 @@
  
 
 	<select id="selectNoticeByIds" resultMap="BaseResultMap">
-		select id,status from t_notice
+		select id,status from cms_notice
 		where
 		<choose>
 			<when test="ids!=null and ids.length==1">
@@ -26,7 +26,7 @@
 	<update id="updateNoticeByNoticeList" parameterType="java.util.List">
 	
 		<foreach collection="list" item="item" index="index" >
-				UPDATE t_notice
+				UPDATE cms_notice
 				SET  status = #{item.status},
 				update_time=#{item.updateTime},
 				update_Account=#{item.updateAccount}

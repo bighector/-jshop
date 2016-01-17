@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.cms.client.FriendlinkMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.Friendlink" >
-    <id column="link_id" property="linkId" jdbcType="SMALLINT" />
-    <result column="link_name" property="linkName" jdbcType="VARCHAR" />
-    <result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
-    <result column="link_logo" property="linkLogo" jdbcType="VARCHAR" />
-    <result column="show_order" property="showOrder" jdbcType="TINYINT" />
+<mapper namespace="net.jeeshop.biz.cms.client.FriendLinkMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.FriendLink" >
+    <id column="id" property="id" />
+    <result column="link_name" property="linkName" />
+    <result column="link_url" property="linkUrl" />
+    <result column="link_logo" property="linkLogo" />
+    <result column="oridnal" property="oridnal" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    link_id, link_name, link_url, link_logo, show_order
+    id, link_name, link_url, link_logo, oridnal
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.FriendlinkExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.FriendLinkExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ecs_friend_link
+    from cms_friend_link
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,27 +83,25 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from ecs_friend_link
-    where link_id = #{linkId,jdbcType=SMALLINT}
+    from cms_friend_link
+    where id = #{id}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
-    delete from ecs_friend_link
-    where link_id = #{linkId,jdbcType=SMALLINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from cms_friend_link
+    where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Friendlink" >
-    insert into ecs_friend_link (link_id, link_name, link_url, 
-      link_logo, show_order)
-    values (#{linkId,jdbcType=SMALLINT}, #{linkName,jdbcType=VARCHAR}, #{linkUrl,jdbcType=VARCHAR}, 
-      #{linkLogo,jdbcType=VARCHAR}, #{showOrder,jdbcType=TINYINT})
+  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    insert into cms_friend_link (id, link_name, link_url, link_logo, oridnal)
+    values (#{id}, #{linkName}, #{linkUrl}, #{linkLogo}, #{oridnal})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Friendlink" >
-    insert into ecs_friend_link
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    insert into cms_friend_link
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="linkId != null" >
-        link_id,
+      <if test="id != null" >
+        id,
       </if>
       <if test="linkName != null" >
         link_name,
@@ -114,58 +112,58 @@
       <if test="linkLogo != null" >
         link_logo,
       </if>
-      <if test="showOrder != null" >
-        show_order,
+      <if test="oridnal != null" >
+        oridnal,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="linkId != null" >
-        #{linkId,jdbcType=SMALLINT},
+      <if test="id != null" >
+        #{id},
       </if>
       <if test="linkName != null" >
-        #{linkName,jdbcType=VARCHAR},
+        #{linkName},
       </if>
       <if test="linkUrl != null" >
-        #{linkUrl,jdbcType=VARCHAR},
+        #{linkUrl},
       </if>
       <if test="linkLogo != null" >
-        #{linkLogo,jdbcType=VARCHAR},
+        #{linkLogo},
       </if>
-      <if test="showOrder != null" >
-        #{showOrder,jdbcType=TINYINT},
+      <if test="oridnal != null" >
+        #{oridnal},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.FriendlinkExample" resultType="java.lang.Integer" >
-    select count(*) from ecs_friend_link
+  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.FriendLinkExample" resultType="java.lang.Integer" >
+    select count(*) from cms_friend_link
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.Friendlink" >
-    update ecs_friend_link
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    update cms_friend_link
     <set >
       <if test="linkName != null" >
-        link_name = #{linkName,jdbcType=VARCHAR},
+        link_name = #{linkName},
       </if>
       <if test="linkUrl != null" >
-        link_url = #{linkUrl,jdbcType=VARCHAR},
+        link_url = #{linkUrl},
       </if>
       <if test="linkLogo != null" >
-        link_logo = #{linkLogo,jdbcType=VARCHAR},
+        link_logo = #{linkLogo},
       </if>
-      <if test="showOrder != null" >
-        show_order = #{showOrder,jdbcType=TINYINT},
+      <if test="oridnal != null" >
+        oridnal = #{oridnal},
       </if>
     </set>
-    where link_id = #{linkId,jdbcType=SMALLINT}
+    where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.Friendlink" >
-    update ecs_friend_link
-    set link_name = #{linkName,jdbcType=VARCHAR},
-      link_url = #{linkUrl,jdbcType=VARCHAR},
-      link_logo = #{linkLogo,jdbcType=VARCHAR},
-      show_order = #{showOrder,jdbcType=TINYINT}
-    where link_id = #{linkId,jdbcType=SMALLINT}
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    update cms_friend_link
+    set link_name = #{linkName},
+      link_url = #{linkUrl},
+      link_logo = #{linkLogo},
+      oridnal = #{oridnal}
+    where id = #{id}
   </update>
 </mapper>

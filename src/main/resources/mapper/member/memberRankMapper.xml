@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.member.client.MemberRankMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.member.model.MemberRank" >
+    <id column="id" property="id" />
+    <result column="code" property="code" />
+    <result column="name" property="name" />
+    <result column="min_score" property="minScore" />
+    <result column="max_score" property="maxScore" />
+    <result column="remark" property="remark" />
+    <result column="create_time" property="createTime" />
+    <result column="create_account" property="createAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="update_account" property="updateAccount" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, code, name, min_score, max_score, remark, create_time, create_account, update_time, 
+    update_account
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.member.model.MemberRankExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from member_rank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from member_rank
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from member_rank
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="net.jeeshop.biz.member.model.MemberRank" >
+    insert into member_rank (id, code, name, min_score, max_score, remark, create_time, 
+      create_account, update_time, update_account)
+    values (#{id}, #{code}, #{name}, #{minScore}, #{maxScore}, #{remark}, #{createTime}, 
+      #{createAccount}, #{updateTime}, #{updateAccount})
+  </insert>
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.member.model.MemberRank" >
+    insert into member_rank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="minScore != null" >
+        min_score,
+      </if>
+      <if test="maxScore != null" >
+        max_score,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="code != null" >
+        #{code},
+      </if>
+      <if test="name != null" >
+        #{name},
+      </if>
+      <if test="minScore != null" >
+        #{minScore},
+      </if>
+      <if test="maxScore != null" >
+        #{maxScore},
+      </if>
+      <if test="remark != null" >
+        #{remark},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.jeeshop.biz.member.model.MemberRankExample" resultType="java.lang.Integer" >
+    select count(*) from member_rank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.member.model.MemberRank" >
+    update member_rank
+    <set >
+      <if test="code != null" >
+        code = #{code},
+      </if>
+      <if test="name != null" >
+        name = #{name},
+      </if>
+      <if test="minScore != null" >
+        min_score = #{minScore},
+      </if>
+      <if test="maxScore != null" >
+        max_score = #{maxScore},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.member.model.MemberRank" >
+    update member_rank
+    set code = #{code},
+      name = #{name},
+      min_score = #{minScore},
+      max_score = #{maxScore},
+      remark = #{remark},
+      create_time = #{createTime},
+      create_account = #{createAccount},
+      update_time = #{updateTime},
+      update_account = #{updateAccount}
+    where id = #{id}
+  </update>
+</mapper>

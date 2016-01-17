@@ -32,7 +32,7 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="t_brand" domainObjectName="ProductBrand">
+        <table tableName="pro_brand" domainObjectName="Brand">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
     </context>

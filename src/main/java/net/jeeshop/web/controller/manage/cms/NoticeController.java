@@ -41,9 +41,9 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 	@Autowired
 	NoticeService noticeService;
 	
-	private static final String page_toList = "/manage/notice/noticeList";
-	private static final String page_toAdd = "/manage/notice/noticeEdit";
-	private static final String page_toEdit = "/manage/notice/noticeEdit";
+	private static final String page_toList = "/manage/cms/noticeList";
+	private static final String page_toAdd = "/manage/cms/noticeEdit";
+	private static final String page_toEdit = "/manage/cms/noticeEdit";
 	
 	  
 	public NoticeController() {

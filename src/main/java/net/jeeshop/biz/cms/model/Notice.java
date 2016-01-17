@@ -4,32 +4,22 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Notice extends BaseModel implements Serializable {
-    /** t_notice.title */
+    /** 标题 */
     private String title;
 
-    /** t_notice.reader_count */
+    /** 阅读数 */
     private Integer readerCount;
 
-    /** t_notice.status */
+    /** 状态 */
     private String status;
 
-    /** t_notice.ordinal */
+    /** 顺序 */
     private Integer ordinal;
 
-    /** t_notice.content */
+    /** 内容 */
     private String content;
-    
-    
-    public static final String   status_y = "y";//显示
-	public static final String   status_n = "n";//不显示
-    
-  
-    
 
     private static final long serialVersionUID = 1L;
-    
-    
-
 
     public String getTitle() {
         return title;

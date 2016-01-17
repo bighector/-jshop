@@ -4,8 +4,10 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class KeyValue extends BaseModel implements Serializable {
+    /** 键值 */
     private String kValue;
 
+    /** 值 */
     private String vValue;
 
     private static final long serialVersionUID = 1L;

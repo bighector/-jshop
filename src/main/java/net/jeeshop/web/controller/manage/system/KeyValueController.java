@@ -36,9 +36,9 @@ public class KeyValueController extends ManageBaseController<KeyValue, KeyValueE
 		return keyValueService;
 	}
     
-  	private static final String page_toList = "/manage/keyValue/keyValueList";
-      private static final String page_toAdd = "/manage/keyValue/keyValueEdit";
-      private static final String page_toEdit = "/manage/keyValue/keyValueEdit";
+  	private static final String page_toList = "/manage/system/keyvalue/keyValueList";
+      private static final String page_toAdd = "/manage/system/keyvalue/keyValueEdit";
+      private static final String page_toEdit = "/manage/system/keyvalue/keyValueEdit";
       
     public KeyValueController() {
         super.page_toEdit = page_toEdit;
@@ -50,13 +50,14 @@ public class KeyValueController extends ManageBaseController<KeyValue, KeyValueE
 	@SuppressWarnings("unchecked")
 	@RequestMapping("loadData")
     @ResponseBody
-    public PageBean<KeyValue> loadData(KeyValueExample keyValueExample, PageQueryBean pageQueryBean) {
+    public PageBean<KeyValue> loadData(KeyValue keyValue, PageQueryBean pageQueryBean) {
+        KeyValueExample keyValueExample = new KeyValueExample();
 		KeyValueExample.Criteria criteria = keyValueExample.createCriteria();
-        if (StringUtils.isNotBlank(keyValueExample.getkValue())) {
-            criteria.andKValueLike(keyValueExample.getkValue());
+        if (StringUtils.isNotBlank(keyValue.getkValue())) {
+            criteria.andKValueEqualTo(keyValue.getkValue());
         }
-        if (StringUtils.isNotBlank(keyValueExample.getvValue())) {
-            criteria.andVValueLike(keyValueExample.getvValue());
+        if (StringUtils.isNotBlank(keyValue.getvValue())) {
+            criteria.andVValueEqualTo(keyValue.getvValue());
         }
         keyValueExample.setOrderByClause("id");
 		@SuppressWarnings("rawtypes")

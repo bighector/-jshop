@@ -1,7 +1,6 @@
 package net.jeeshop.biz.system.client;
 
 import java.util.List;
-
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.system.model.KeyValue;
 import net.jeeshop.biz.system.model.KeyValueExample;

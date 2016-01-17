@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- This should cause an error because sqlMapGenerator is required
+         if there is no javaClientGenerator -->
+    <context id="keyvalue" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.ext.plugin.MapperFileOverwritePlugin">
+            <!-- 是否覆盖已经有的mapper文件，默认值为true -->
+            <!--<property name="mapperOverwrite" value="true"/>-->
+        </plugin>
+        <plugin type="org.mybatis.generator.ext.plugin.JshopCustomPlugin"/>
+        <commentGenerator type="org.mybatis.generator.ext.comment.CommentGeneratorExt"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/jshop"
+                        userId="root" password="root"/>
+
+        <javaModelGenerator targetPackage="net.jeeshop.biz.member.model"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="net.jeeshop.biz.base.model.BaseModel"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper.member"
+                         targetProject="src/main/resources"></sqlMapGenerator>
+        <javaClientGenerator type="org.mybatis.generator.custom.javamapper.GenericJavaMapperGenerator" 
+        					targetPackage="net.jeeshop.biz.member.client"
+                            targetProject="src/main/java">
+            <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
+        </javaClientGenerator>
+
+        <!-- 会员 -->
+        <table tableName="member" domainObjectName="Member">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="member_rank" javaType="java.lang.Long"/>
+        </table>
+        <!-- 会员等级 -->
+        <table tableName="member_rank" domainObjectName="MemberRank">
+        	<columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+    </context>
+
+</generatorConfiguration>

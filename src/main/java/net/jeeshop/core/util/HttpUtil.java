@@ -2,20 +2,14 @@ package net.jeeshop.core.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import sun.util.logging.resources.logging;
-
-import freemarker.template.utility.StringUtil;
 
 public class HttpUtil {
 	private static final String default_charset = "utf-8";
