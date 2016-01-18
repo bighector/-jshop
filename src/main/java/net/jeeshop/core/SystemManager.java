@@ -212,7 +212,8 @@ public class SystemManager {
      * @return
      */
     public List<ArticleCatalogBean> getArticleCatalogs() {
-        return getCacheObject("articleCatalogs");
+    //    return getCacheObject("articleCatalogs");
+    	return null;
     }
 
     public void setArticleCatalogs(List<ArticleCatalogBean> catalogsArticle) {
