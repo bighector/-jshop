@@ -248,6 +248,23 @@ update_account varchar(64) COMMENT '更新人',
 PRIMARY KEY (id)
 ) comment='品牌管理';
 
+/** 商品属性 **/
+drop table if exists product_attr;
+CREATE TABLE `product_attr` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+	`attr_name` VARCHAR(64) NOT NULL COMMENT '属性名称',
+	`ordinal` INT(11) NULL DEFAULT NULL COMMENT '排序',
+	`is_mandated` CHAR(1) NOT NULL DEFAULT '1' COMMENT '是否必须,1-是0-否',
+	`value_type` VARCHAR(32) NOT NULL DEFAULT 'input' COMMENT '值类型，input-手工输入, list-列表选择',
+	`options_list` VARCHAR(512) NULL DEFAULT NULL COMMENT '可选值列表，以逗号分隔; 当value_type为list时使用',
+	`create_time` DATETIME NULL DEFAULT NULL COMMENT '创建时间',
+	`create_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '创建人',
+	`update_time` DATETIME NULL DEFAULT NULL COMMENT '更新时间',
+	`update_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '更新人',
+	`category_id` BIGINT(20) NOT NULL COMMENT '商品分类ID',
+	PRIMARY KEY (`id`)
+) comment='商品属性';
+
 /**
  * 会员管理模块
  */

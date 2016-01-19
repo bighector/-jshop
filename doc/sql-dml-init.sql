@@ -42,7 +42,7 @@ INSERT INTO `sys_menu`(id,pid,url,name,order_num,type) VALUES
 (61,2,'/manage/menu/selectList','查询',1,'button'),
 (62,2,'/manage/menu/insert','添加',2,'button'),
 (63,2,'/manage/menu/deletes','删除',3,'button'),
-(64,11,'/manage/attribute/selectList&pid=0','商品属性',5,'page'),
+(64,11,'/product/attr/selectList','商品属性',5,'page'),
 (65,11,'/manage/catalog/selectList','商品目录',2,'page'),
 (66,11,'/manage/attribute/selectList','商品参数',6,'page'),
 (69,1,'/manage/cache/cache.jsp','缓存管理',12,'page'),
