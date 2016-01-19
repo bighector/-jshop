@@ -26,6 +26,7 @@ import java.util.List;
 public class UserService extends BaseService<SysUser, SysUserExample> {
     @Autowired
     SysUserMapper sysUserMapper;
+    
     @Autowired
     SysUserMapperExt sysUserMapperExt;
 

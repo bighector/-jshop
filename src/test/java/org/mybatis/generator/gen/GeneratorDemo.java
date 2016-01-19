@@ -44,7 +44,7 @@ public class GeneratorDemo {
         ConfigurationParser cp = new ConfigurationParser(warnings);
           Configuration config = cp.parseConfiguration(GeneratorDemo.class.getClassLoader()
                 .getResourceAsStream(configResource));
-          /*  DefaultShellCallback shellCallback = new DefaultShellCallback(true);
+            DefaultShellCallback shellCallback = new DefaultShellCallback(true);
 
         try {
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, shellCallback, warnings);
@@ -55,6 +55,6 @@ public class GeneratorDemo {
         }
         for (String warning : warnings) {
             System.out.println(warning);
-        }*/
+        }
     }
 }

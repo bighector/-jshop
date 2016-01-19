@@ -7,6 +7,7 @@
     <!-- This should cause an error because sqlMapGenerator is required
          if there is no javaClientGenerator -->
     <context id="system" targetRuntime="MyBatis3" defaultModelType="flat">
+    
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.ext.plugin.MapperFileOverwritePlugin">
             <!-- 是否覆盖已经有的mapper文件，默认值为true -->
@@ -18,8 +19,7 @@
                         connectionURL="jdbc:mysql://localhost:3306/jshop"
                         userId="root" password="root"/>
 
-        <javaModelGenerator targetPackage="net.jeeshop.biz.product.model"
-                            targetProject="src/main/java">
+        <javaModelGenerator targetPackage="net.jeeshop.biz.product.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <property name="rootClass" value="net.jeeshop.biz.base.model.BaseModel"/>
@@ -37,8 +37,9 @@
         </table>
         
         <table tableName="pro_product_spec_val" domainObjectName="ProductSpecVal">
-            <columnOverride column="sp_val_id" javaType="java.lang.Long"/>
+            <columnOverride column="sp_value_id" javaType="java.lang.Long"/>
         </table>
+        
     </context>
 
 </generatorConfiguration>

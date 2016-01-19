@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.product.client.ProductSpecMapperExt" >
+  <insert id="insertAndReturnId" parameterType="net.jeeshop.biz.product.model.ProductSpec" useGeneratedKeys="true" keyProperty="spId">
+    insert into pro_product_spec (sp_id, sp_name, sp_sort, class_id, class_name, is_del, create_time, 
+      create_account, update_time, update_account)
+    values (#{spId}, #{spName}, #{spSort}, #{classId}, #{className}, #{isDel}, #{createTime}, 
+      #{createAccount}, #{updateTime}, #{updateAccount})
+  </insert>
+</mapper>
