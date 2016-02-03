@@ -56,7 +56,8 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @throws Exception
      */
     @RequestMapping("selectList")
-    public String selectList(ModelMap modelMap) {
+    public String selectList(ModelMap modelMap)
+    {
         beforeToList(modelMap);
         return page_toList;
     }
@@ -74,7 +75,8 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @throws Exception
      */
     @RequestMapping("toEdit")
-    public String toEdit(@ModelAttribute("id") Long id, ModelMap modelMap) {
+    public String toEdit(@ModelAttribute("id") Long id, ModelMap modelMap) 
+    {
         Model e = getService().selectById(id);
 //		if(e==null || StringUtils.isBlank(e.getId())){
 //			throw new NullPointerException("");
@@ -115,7 +117,8 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @throws Exception
      */
     @RequestMapping(value = "deletes", method = RequestMethod.POST)
-    public String deletes(Long[] ids, RedirectAttributes flushAttrs) {
+    public String deletes(Long[] ids, RedirectAttributes flushAttrs)
+    {
         getService().deletes(ids);
         addMessage(flushAttrs, "操作成功！");
         return "redirect:selectList";
@@ -128,8 +131,9 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @throws Exception
      */
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("e") Model e, RedirectAttributes flushAttrs) {
-    	SysUser user = LoginUserHolder.getLoginUser();
+    public String update(@ModelAttribute("e") Model e, RedirectAttributes flushAttrs) 
+    {
+    	SysUser user = LoginUserHolder.getLoginUser(); 
     	e.setUpdateAccount(user.getUsername());
         e.setUpdateTime(new Date());
     	getService().update(e);
@@ -170,7 +174,8 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @param req 
      * @return
      */
-    public void writeToJson(Object obj){
+    public void writeToJson(Object obj)
+    {
     	try{
     		JSONArray ja = JSONArray.fromObject(obj);
     		PrintWriter write = response.getWriter();

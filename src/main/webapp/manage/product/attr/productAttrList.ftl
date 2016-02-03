@@ -3,7 +3,8 @@
 <script>
     $(function(){
         var table = $('#productAttrListDataTable').DataTable({
-            "ajax": {
+            "ajax": 
+            {
                 url:"loadData",
                 dataSrc:"list"
             },

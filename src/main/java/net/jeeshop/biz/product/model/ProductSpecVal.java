@@ -1,63 +1,53 @@
 package net.jeeshop.biz.product.model;
 
 import java.io.Serializable;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class ProductSpecVal extends BaseModel implements Serializable {
-    /** 规格值id */
-    private Long spValueId;
-
-    /** 规格值名称 */
-    private String spValueName;
+    /** 规格值 */
+    private String specVal;
 
     /** 所属规格id */
-    private Integer spId;
-
-    /** 分类id */
-    private Integer gcId;
+    private Long specId;
 
     /** 排序 */
-    private Boolean spValueSort;
+    private Integer ordinal;
 
     private static final long serialVersionUID = 1L;
 
-    public Long getSpValueId() {
-        return spValueId;
+    public String getSpecVal() {
+        return specVal;
     }
 
-    public void setSpValueId(Long spValueId) {
-        this.spValueId = spValueId;
+    public void setSpecVal(String specVal) {
+        this.specVal = specVal == null ? null : specVal.trim();
+    }
+    
+    @JsonIgnore
+    public Long getSpecId() {
+        return specId;
     }
 
-    public String getSpValueName() {
-        return spValueName;
+    public void setSpecId(Long specId) {
+        this.specId = specId;
+    }
+    
+    public Integer getOrdinal() {
+        return ordinal;
     }
 
-    public void setSpValueName(String spValueName) {
-        this.spValueName = spValueName == null ? null : spValueName.trim();
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
-    public Integer getSpId() {
-        return spId;
-    }
-
-    public void setSpId(Integer spId) {
-        this.spId = spId;
-    }
-
-    public Integer getGcId() {
-        return gcId;
-    }
-
-    public void setGcId(Integer gcId) {
-        this.gcId = gcId;
-    }
-
-    public Boolean getSpValueSort() {
-        return spValueSort;
-    }
-
-    public void setSpValueSort(Boolean spValueSort) {
-        this.spValueSort = spValueSort;
-    }
+	@Override
+	public String toString() {
+		return "ProductSpecVal [specVal=" + specVal + ", specId=" + specId
+				+ ", ordinal=" + ordinal + "]";
+	}
+    
+    
 }

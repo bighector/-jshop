@@ -43,7 +43,8 @@ public class ProductAttrController extends ManageBaseController<ProductAttr, Pro
 	
 	@RequestMapping("loadData")
     @ResponseBody
-    public PageBean<ProductAttr> loadData(ProductAttr queryParams, PageQueryBean pageQueryBean) {
+    public PageBean<ProductAttr> loadData(ProductAttr queryParams, PageQueryBean pageQueryBean) 
+    {
 		ProductAttrExample example = new ProductAttrExample();
         example.setOrderByClause("ordinal asc");
         PageBean<ProductAttr> pager = productAttrService.selectPageList(example, pageQueryBean);

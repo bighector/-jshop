@@ -320,32 +320,34 @@ CREATE TABLE `member_rank` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB comment='会员等级';
 
-DROP TABLE IF EXISTS `pro_product_spec`;
-CREATE TABLE `pro_product_spec` (
-  `sp_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '规格id',
-  `sp_name` VARCHAR(255) NULL DEFAULT NULL COMMENT '规格名称',
-  `sp_sort` INT(1) NOT NULL COMMENT '排序',
-  `class_id` int(10) default 0 comment '所属分类id',
-  `class_name` varchar(100) comment '所属分类名称',
+/*商品规格*/
+DROP TABLE IF EXISTS `product_spec`;
+CREATE TABLE `product_spec` 
+(
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '规格id',
+  `specification` VARCHAR(255) NULL DEFAULT NULL COMMENT '规格名称',
+  `ordinal` INT(4) NOT NULL COMMENT '排序',
+  `catagory_id` int(10) default 0 comment '所属分类id',
+  `catagory_name` varchar(100) comment '所属分类名称',
   `is_del` INT(4) comment '是否删除0:未删除;1:已删除',
   `create_time` DATETIME NULL DEFAULT NULL COMMENT '创建时间',
-  `create_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '创建人',
   `update_time` DATETIME NULL DEFAULT NULL COMMENT '更新时间',
+  `create_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '创建人',
   `update_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '更新人',
-  PRIMARY KEY (`sp_id`)
+  PRIMARY KEY (`id`)
 ) COMMENT='商品规格表';
 
-DROP TABLE IF EXISTS `pro_product_spec_val`;
-create table pro_product_spec_val 
+
+DROP TABLE IF EXISTS `product_spec_val`;
+create table product_spec_val 
 (
-  sp_value_id          int(10) unsigned not null auto_increment comment '规格值id',
-  sp_value_name        varchar(100) not null comment '规格值名称',
-  sp_id                int(10) unsigned not null comment '所属规格id',
-  gc_id                int(10) unsigned not null comment '分类id',
-  sp_value_sort        tinyint(1) unsigned not null comment '排序',
+   id          int(10) unsigned not null auto_increment comment '规格值id',
+   spec_val       varchar(100) not null comment '规格值',
+   spec_id       int(10) unsigned not null comment '所属规格id',
+   ordinal      int(4) unsigned not null comment '排序',
   `create_time` DATETIME NULL DEFAULT NULL COMMENT '创建时间',
-  `create_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '创建人',
   `update_time` DATETIME NULL DEFAULT NULL COMMENT '更新时间',
+  `create_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '创建人',
   `update_account` VARCHAR(64) NULL DEFAULT NULL COMMENT '更新人',
-   primary key (sp_value_id)
+   primary key (id)
 ) comment '商品规格值表';

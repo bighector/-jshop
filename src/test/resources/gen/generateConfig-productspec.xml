@@ -32,12 +32,13 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="pro_product_spec" domainObjectName="ProductSpec">
-            <columnOverride column="sp_id" javaType="java.lang.Long"/>
+        <table tableName="product_spec" domainObjectName="ProductSpec">
+            <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
         
-        <table tableName="pro_product_spec_val" domainObjectName="ProductSpecVal">
-            <columnOverride column="sp_value_id" javaType="java.lang.Long"/>
+        <table tableName="product_spec_val" domainObjectName="ProductSpecVal">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="spec_id" javaType="java.lang.Long"/>
         </table>
         
     </context>

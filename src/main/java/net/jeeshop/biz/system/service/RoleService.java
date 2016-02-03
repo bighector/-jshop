@@ -29,7 +29,6 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
 
     @Autowired
     SysPrivilegeMapperExt sysPrivilegeMapperExt;
-
     @Override
     protected BaseMapper<SysRole, SysRoleExample> getMapper() {
         return sysRoleMapper;
@@ -47,7 +46,8 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
     }
 
     @Transactional
-    public void updateRole(SysRoleBean role) {
+    public void updateRole(SysRoleBean role)
+    {
         sysRoleMapper.updateByPrimaryKey(role);
         //删除现有角色权限
         sysPrivilegeMapperExt.deleteByRid(role.getId());
@@ -60,9 +60,11 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
         }
     }
 
-    private List<SysPrivilege> fillPrivilege(String [] rolePrivileges , Long rid) {
+    private List<SysPrivilege> fillPrivilege(String [] rolePrivileges , Long rid)
+    {
         List<SysPrivilege> privilegeList = new ArrayList<SysPrivilege>();
-        for (String privilege : rolePrivileges) {
+        for (String privilege : rolePrivileges)
+        {
             SysPrivilege item = new SysPrivilege();
             item.setRid(rid);
             item.setMid(Long.parseLong(privilege));

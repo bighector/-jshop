@@ -35,10 +35,11 @@ public class BrandController extends  ManageBaseController<Brand, BrandExample>{
 		return brandService;
 	}
 	
-	public BrandController() {
+	public BrandController()
+	{
         super.page_toList = "manage/product/brand/brandList";
         super.page_toEdit = "manage/product/brand/editBrand";
-        super.page_toAdd = "manage/product/brand/editBrand";
+        super.page_toAdd  = "manage/product/brand/editBrand";
 	}
 	
 	@RequestMapping("loadData")

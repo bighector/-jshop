@@ -23,17 +23,20 @@ public abstract class BaseService<E extends BaseModel, Example> {
     abstract protected BaseMapper<E, Example> getMapper();
 
     @Transactional
-    public long insert(E articleCatalog) {
+    public long insert(E articleCatalog)
+    {
         return getMapper().insert(articleCatalog);
     }
 
     @Transactional
-    public int deleteById(long id) {
+    public int deleteById(long id)
+    {
         return getMapper().deleteByPrimaryKey(id);
     }
 
     @Transactional
-    public int deletes(Long[] ids) {
+    public int deletes(Long[] ids) 
+    {
         int cnt = 0;
         for (Long id : ids) {
             int i = deleteById(id);
@@ -58,7 +61,8 @@ public abstract class BaseService<E extends BaseModel, Example> {
      * @param pageQueryBean
      * @return
      */
-    public PageBean<E> selectPageList(final Example example, PageQueryBean pageQueryBean) {
+    public PageBean<E> selectPageList(final Example example, PageQueryBean pageQueryBean) 
+    {
         return executePageQuery(new PageQueryExecutor<E>() {
             @Override
             public List<E> executeQuery() {
@@ -74,7 +78,8 @@ public abstract class BaseService<E extends BaseModel, Example> {
      * @param <T>
      * @return
      */
-    protected <T> PageBean<T> executePageQuery(PageQueryExecutor<T> executor, PageQueryBean pageQueryBean) {
+    protected <T> PageBean<T> executePageQuery(PageQueryExecutor<T> executor, PageQueryBean pageQueryBean)
+    {
         initPageHelper(pageQueryBean);
         List<T> datas = executor.executeQuery();
         PageBean<T> pagerModel = new PageBean<T>();
@@ -88,7 +93,8 @@ public abstract class BaseService<E extends BaseModel, Example> {
      * 分页查询实际执行者
      * @param <T>
      */
-    protected static interface PageQueryExecutor<T> {
+    protected static interface PageQueryExecutor<T>
+    {
         /**
          * 执行查询动作
          * @return
@@ -96,26 +102,34 @@ public abstract class BaseService<E extends BaseModel, Example> {
         public List<T> executeQuery() ;
     }
 
-    protected void initPageHelper(PageQueryBean pageQueryBean) {
-        if (pageQueryBean.getLength() == PageQueryBean.UNLIMIT_LENGTH) {
+    protected void initPageHelper(PageQueryBean pageQueryBean)
+    {
+        if (pageQueryBean.getLength() == PageQueryBean.UNLIMIT_LENGTH) 
+        {
             return;
         }
-        if (pageQueryBean.getLength() <= 0) {
+        if (pageQueryBean.getLength() <= 0) 
+        {
             pageQueryBean.setLength(PageQueryBean.DEFAULT_LENGTH);
         }
+        
         PageHelper.startPage(pageQueryBean.getStart() / pageQueryBean.getLength() + 1, pageQueryBean.getLength());
     }
 
-    public List<E> selectByExample(Example example) {
+    public List<E> selectByExample(Example example) 
+    {
         return getMapper().selectByExample(example);
     }
 
-    public E selectUniqueByExample(Example example) {
+    public E selectUniqueByExample(Example example)
+    {
         List<E> list = getMapper().selectByExample(example);
-        if (list == null || list.size() == 0) {
+        if (list == null || list.size() == 0) 
+        {
             return null;
         }
-        if (list.size() > 1) {
+        if (list.size() > 1) 
+        {
             throw new JShopException("result size more than one.");
         }
         return list.get(0);

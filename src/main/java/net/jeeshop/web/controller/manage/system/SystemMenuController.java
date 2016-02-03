@@ -56,7 +56,8 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
     @RequestMapping(value = "getMenusByPid" , method = RequestMethod.GET )
     @ResponseBody
     public String getMenusByPid(@RequestParam(required = false , defaultValue = "0") String pid ,
-                                @RequestParam(required = false) String id) throws Exception {
+                                @RequestParam(required = false) String id) throws Exception 
+    {
         // 加载全部的菜单
         List<MenuItem> menus = menuService.loadMenus(null, Long.parseLong(pid), "#");
         if(StringUtils.isNotBlank(id)) {
@@ -119,7 +120,8 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
 
     @RequestMapping(value = "addOrUpdate", method = RequestMethod.POST)
     @ResponseBody
-    public String addOrUpdate(HttpServletRequest request) throws Exception{
+    public String addOrUpdate(HttpServletRequest request) throws Exception
+    {
         //选中菜单的信息
         //String updateP = request.getParameter("updateP");
         String id = request.getParameter("id");

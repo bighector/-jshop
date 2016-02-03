@@ -8,7 +8,7 @@ import net.jeeshop.biz.product.model.ProductSpecValExample;
 public interface ProductSpecValMapper extends BaseMapper<ProductSpecVal, ProductSpecValExample> {
     int countByExample(ProductSpecValExample example);
 
-    int deleteByPrimaryKey(Long spValueId);
+    int deleteByPrimaryKey(Long id);
 
     int insert(ProductSpecVal record);
 
@@ -16,7 +16,7 @@ public interface ProductSpecValMapper extends BaseMapper<ProductSpecVal, Product
 
     List<ProductSpecVal> selectByExample(ProductSpecValExample example);
 
-    ProductSpecVal selectByPrimaryKey(Long spValueId);
+    ProductSpecVal selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(ProductSpecVal record);
 

@@ -35,4 +35,10 @@ public class PageBean<T> {
     public void setList(List<T> list) {
         this.list = list;
     }
+
+	@Override
+	public String toString() {
+		return "PageBean [recordsTotal=" + recordsTotal + ", recordsFiltered="
+				+ recordsFiltered + ", list=" + list + "]";
+	}
 }

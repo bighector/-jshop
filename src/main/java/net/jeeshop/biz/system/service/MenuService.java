@@ -40,13 +40,15 @@ public class MenuService extends BaseService<SysMenu, SysMenuExample> {
      * @param u
      * @return
      */
-    public Collection<MenuItem> loadMenus(SysUser u) {
+    public Collection<MenuItem> loadMenus(SysUser u) 
+    {
 //		param.put("pid", pid);//菜单父ID
         List<SysMenu> menus = sysMenuMapperExt.selectByRoleId(u.getRid());
         //创建菜单集合
         LinkedHashMap<Long, MenuItem> root = new LinkedHashMap<Long, MenuItem>();
         //循环添加菜单到菜单集合
-        for (SysMenu menu : menus) {
+        for (SysMenu menu : menus)
+        {
             MenuItem item = new MenuItem(menu.getName(), null);
             item.setId(menu.getId());
             item.setPid(menu.getPid());

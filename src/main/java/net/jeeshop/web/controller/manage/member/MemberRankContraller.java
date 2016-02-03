@@ -46,7 +46,8 @@ public class MemberRankContraller extends ManageBaseController<MemberRank, Membe
 	@RequestMapping("loadData")
 	@ResponseBody
 	public PageBean<MemberRank> loadData(MemberRank memberRank,
-			PageQueryBean pageQueryBean) {
+			PageQueryBean pageQueryBean) 
+	{
 		MemberRankExample accountRankExample = new MemberRankExample();
 		MemberRankExample.Criteria criteria = accountRankExample.createCriteria();
 		if(StringUtils.isNotEmpty(memberRank.getName())){

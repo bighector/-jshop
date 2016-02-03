@@ -5,8 +5,12 @@ package net.jeeshop.biz.product.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
@@ -24,8 +28,10 @@ import net.jeeshop.biz.product.model.ProductSpecVal;
  * @date Jan 19, 2016
  * @since: V1.0
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:spring/applicationContext.xml")
 @Service
-public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExample>
+public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecExample>
 {
 	@Autowired
 	private ProductSpecMapper productspec;
@@ -146,6 +152,21 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
 		}
 		
 		return null;
+	}
+	
+	@org.junit.Test
+	public void Test()
+	{
+		ProductSpecExample sel = new ProductSpecExample();
+		
+		ProductSpecExample.Criteria test = sel.createCriteria();
+		
+		test.andSpecificationLike("%C%");
+		test.andCatagoryNameLike("%%");
+		
+		
+		
+		System.out.println(getMapper().selectByExample(sel));
 	}
 	
 	/**

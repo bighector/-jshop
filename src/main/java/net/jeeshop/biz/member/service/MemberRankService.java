@@ -24,8 +24,10 @@ public class MemberRankService extends BaseService<MemberRank, MemberRankExample
 		return accountRankMapper;
 	}
 
-	public PageBean<MemberRank> selectPageBean(final MemberRankExample params,PageQueryBean pageQueryBean) {
-		return executePageQuery(new PageQueryExecutor<MemberRank>() {
+	public PageBean<MemberRank> selectPageBean(final MemberRankExample params,PageQueryBean pageQueryBean)
+	{
+		return executePageQuery(new PageQueryExecutor<MemberRank>() 
+		{
 			@Override
 			public List<MemberRank> executeQuery() {
 				return accountRankMapper.selectByExample(params);
