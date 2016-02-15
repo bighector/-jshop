@@ -438,7 +438,9 @@ function catalogChange(obj){
 	var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="productHTML"]', {
-			allowFileManager : true
+			allowFileManager : true,
+            uploadJson : '${basepath}/editor/upload',
+            fileManagerJson : '${basepath}/editor/fileManager'
 		});
 		K('input[name=getHtml]').click(function(e) {
 			alert(editor.html());
@@ -485,7 +487,7 @@ function catalogChange(obj){
 <script>
 KindEditor.ready(function(K) {
 	var editor = K.editor({
-		fileManagerJson : '${basepath}/resource/kindeditor-4.1.7/jsp/file_manager_json.jsp'
+		fileManagerJson : '${basepath}/editor/fileManager'
 	});
 	K('input[name=filemanager]').click(function() {
 		var imagesInputObj = $(this).parent().children("input[ccc=imagesInput]");
