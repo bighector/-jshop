@@ -209,7 +209,6 @@
 					<table class="table table-bordered">
 						<tr>
 							<td colspan="11">
-								<input style="display: none;" onclick="addTrFunc();" value="添加" class="btn btn-warning" type="button"/>
 								<button method="deleteImageByImgPaths" onclick="return deleteImageByImgPaths();"
 											class="btn btn-primary">删除</button>
 							</td>
@@ -237,16 +236,17 @@
 				<br>
 				<table class="table table-bordered">
 					<tr style="background-color: #dff0d8">
-						<td>文件</td>
+						<td>新增图片 </td>
 					</tr>
-					<tr id="firstTr">
+					<tr>
 						<td>
-                            <#list [1..10] as item>
-							<div>
-								<input type="button" name="filemanager" value="浏览图片" class="btn btn-warning"/>
-								<input type="text" ccc="imagesInput" name="images" style="width: 80%;" />
-							</div>
-                            </#list>
+                            <input id="uploadify" name="uploadify" value="添加" class="btn btn-warning" type="button"/></td>
+					</tr>
+					<tr id="firstTr" style="display:none">
+						<td>
+								<#--<input type="button" name="filemanager" value="浏览图片" class="btn btn-warning"/>-->
+									<img name="img"  style="width:50px;height:50px;max-width: 50px;max-height: 50px;">
+								<input type="text" ccc="imagesInput" name="images" style="width: 260px;" readonly="readonly"/>
 						</td>
 					</tr>
 				</table>
@@ -516,7 +516,7 @@ KindEditor.ready(function(K) {
 	$(document).ready(function() {
 	
 		ajaxLoadImgList();
-		var url = '${basepath}/uploadify.do?id='+$("#id").val();
+		var url = '${basepath}/common/uploadify.do';
 		//alert(url);
 		$("#uploadify").uploadify({
 			//'auto'           : false,
@@ -533,11 +533,21 @@ KindEditor.ready(function(K) {
 //'fileTypeExts' : '*.jpg;*.bmp;*.png;*.gif', //控制可上传文件的扩展名，启用本项时需同时声明filedesc
 
            'multi'          : true,
-           'buttonText'     : '上传',
+           'buttonText'     : '本地上传',
            
            onUploadSuccess:function(file, data, response){
 				//alert("上传成功,data="+data+",file="+file+",response="+response);      
-				ajaxLoadImgList();
+//				ajaxLoadImgList();
+			   data = $.parseJSON(data);
+			   if(data.error == '1') {
+				   alert("上传失败：\n失败原因:" + data.msg);
+			   } else {
+					var $tr = $("#firstTr").clone();
+				   $tr.find("img[name=img]").attr("src", "${systemSetting().imageRootPath}" + data.filePath);
+				   $tr.find(":input[name=images]").val(data.filePath);
+				   $("#firstTr").parent().append($tr);
+				   $tr.show();
+			   }
            },
            onUploadError:function(file, errorCode, errorMsg) {
         	   alert("上传失败,data="+data+",file="+file+",response="+response);   
