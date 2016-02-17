@@ -7,7 +7,9 @@ String.prototype.endsWith = function (pattern) {
 //删除图片主路径
 function clearRootImagePath(picInput){
 	var _imgVal = picInput.val();
-	picInput.val(_imgVal.substring(imageRootPath.length));
+	if(_imgVal.indexOf(imageRootPath) >= 0) {
+		picInput.val(_imgVal.substring(imageRootPath.length));
+	}
 }
 /**
  * 后台脚本JS
