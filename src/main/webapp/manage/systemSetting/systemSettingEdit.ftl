@@ -267,7 +267,9 @@ function changeStyle(){
 	var qqHelpHtml;
 	KindEditor.ready(function(K) {
 		qqHelpHtml = K.create('textarea[name="qqHelpHtml"]', {
-			allowFileManager : true
+			allowFileManager : true,
+            uploadJson : '${basepath}/editor/upload',
+            fileManagerJson : '${basepath}/editor/fileManager'
 		});
 		K('input[name=getHtml]').click(function(e) {
 			alert(editor.html());
@@ -302,7 +304,7 @@ function changeStyle(){
 <script>
 KindEditor.ready(function(K) {
 	var editor = K.editor({
-		fileManagerJson : '${basepath}/resource/kindeditor-4.1.7/jsp/file_manager_json.jsp'
+		fileManagerJson : '${basepath}/editor/fileManager'
 	});
 	K('input[name=filemanager]').click(function() {
 		var imagesInputObj = $(this).parent().children("input[ccc=imagesInput]");
@@ -322,15 +324,6 @@ KindEditor.ready(function(K) {
 	});
 	
 });
-
-//删除图片主路径
-function clearRootImagePath(picInput){
-	var _pifeSpan = $("#pifeSpan").text();
-	var _imgVal = picInput.val();
-	console.log("1===>_imgVal = "+_imgVal);
-	console.log("2===>"+_imgVal.indexOf("/attached/"));
-	picInput.val(_imgVal.substring(_imgVal.indexOf("/attached/")));
-}
 
 function deleteImageByImgPaths(obj){
 	if ($("input:checked").size() == 0) {

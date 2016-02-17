@@ -15,6 +15,7 @@
     <script>
         var basepath = "${basepath}";
         var staticpath = "${staticpath}";
+        var imageRootPath = "${systemSetting().imageRootPath}";
         var non_responsive2 = "${non_responsive2}";
         <#if currentUser()??>
             var login = true;

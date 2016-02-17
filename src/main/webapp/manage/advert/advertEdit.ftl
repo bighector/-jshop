@@ -113,7 +113,9 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 	var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="html"]', {
-			allowFileManager : true
+			allowFileManager : true,
+            uploadJson : '${basepath}/editor/upload',
+            fileManagerJson : '${basepath}/editor/fileManager'
 		});
 		K('input[name=getHtml]').click(function(e) {
 			alert(editor.html());

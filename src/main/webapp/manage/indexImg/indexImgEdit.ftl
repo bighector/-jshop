@@ -23,8 +23,8 @@
 					<input type="button" name="filemanager" value="浏览图片" class="btn btn-warning"/>
 					<input type="text"  value="${e.picture!""}" name="picture"  id="picture" ccc="imagesInput" style="width: 600px;" data-rule="图片地址:required;picture;" />
 					<#if e.picture??>
-						<a target="_blank" href="${systemSetting().imageRootPath}/..${e.picture!""}">
-							<img style="max-width: 50px;max-height: 50px;" alt="" src="${systemSetting().imageRootPath}/..${e.picture!""}">
+						<a target="_blank" href="${systemSetting().imageRootPath}/${e.picture!""}">
+							<img style="max-width: 50px;max-height: 50px;" alt="" src="${systemSetting().imageRootPath}/${e.picture!""}">
 						</a>
 					</#if>
 				</td>
@@ -60,19 +60,10 @@
 		</table>
 	</form>
 <script>
-//删除图片主路径
-function clearRootImagePath(picInput){
-	var _pifeSpan = $("#pifeSpan").text();
-	var _imgVal = picInput.val();
-	picInput.val(_imgVal.substring(_imgVal.indexOf("/attached/")));
-	//if(_imgVal && _imgVal.length>0 && _imgVal.indexOf(_pifeSpan)==0){
-		//picInput.val(_imgVal.substring(_pifeSpan.length));
-	//}
-}
 
 KindEditor.ready(function(K) {
 	var editor = K.editor({
-		fileManagerJson : '${basepath}/resource/kindeditor-4.1.7/jsp/file_manager_json.jsp'
+		fileManagerJson : '${basepath}/editor/fileManager'
 	});
 	K('input[name=filemanager]').click(function() {
 		var imagesInputObj = $(this).parent().children("input[ccc=imagesInput]");

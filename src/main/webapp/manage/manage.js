@@ -3,6 +3,12 @@ String.prototype.endsWith = function (pattern) {
     var d = this.length - pattern.length;
     return d >= 0 && this.lastIndexOf(pattern) === d;
 }
+
+//删除图片主路径
+function clearRootImagePath(picInput){
+	var _imgVal = picInput.val();
+	picInput.val(_imgVal.substring(imageRootPath.length));
+}
 /**
  * 后台脚本JS
  */

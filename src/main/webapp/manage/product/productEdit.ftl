@@ -373,17 +373,6 @@ $(function() {
 	});
 });
 //删除图片主路径
-function clearRootImagePath(picInput){
-	var _pifeSpan = $("#pifeSpan").text();
-	var _imgVal = picInput.val();
-	console.log("1===>_imgVal = "+_imgVal);
-	//if(_imgVal && _imgVal.length>0 && _imgVal.indexOf(_pifeSpan)==0){
-		//picInput.val(_imgVal.substring(_pifeSpan.length));
-		console.log("2===>"+_imgVal.indexOf("/attached/"));
-		picInput.val(_imgVal.substring(_imgVal.indexOf("/attached/")));
-		
-	//}
-}
 function deleteImageByImgPaths(){
 	if ($("input:checked").size() == 0) {
 		alert("请选择要删除的图片！");

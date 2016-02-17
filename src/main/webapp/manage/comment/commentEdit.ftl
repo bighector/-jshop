@@ -37,7 +37,9 @@
 	var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="reply"]', {
-			allowFileManager : true
+			allowFileManager : true,
+            uploadJson : '${basepath}/editor/upload',
+            fileManagerJson : '${basepath}/editor/fileManager'
 		});
 		K('input[name=getHtml]').click(function(e) {
 			alert(editor.html());

@@ -30,7 +30,7 @@ public class CommonController {
     @RequestMapping("uploadify")
     @ResponseBody
     public String uploadify(@RequestParam("Filedata")MultipartFile filedata,
-                            @RequestParam(required = false, defaultValue = "0")String thumbnail) {
+                            @RequestParam(required = false, defaultValue = "1")String thumbnail) {
         boolean createThumbnail = "1".equals(thumbnail);
         SystemSetting systemSetting = SystemManager.getInstance().getSystemSetting();
         //文件保存目录路径
