@@ -1,4 +1,4 @@
-<%@page import="net.jeeshop.web.action.front.orders.PayInfo"%>
+<%@page import="net.jeeshop.web.action.front.paygate.PayInfo"%>
 <%@page import="net.jeeshop.core.pay.alipay.alipayescow.config.*"%>
 <%@page import="net.jeeshop.core.pay.alipay.alipayescow.util.*"%>
 <%

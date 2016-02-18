@@ -1,4 +1,4 @@
-package net.jeeshop.web.action.front.orders;
+package net.jeeshop.web.action.front.paygate;
 
 /**
  * 支付宝的付款信息对象
