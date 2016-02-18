@@ -4,7 +4,7 @@
 3、项目启动方式为maven方式，即使用maven命令：mvn tomcat6:run
 4、本地访问方式：
 后台管理页面
-http://127.0.0.1:8080/jeeshop/manage/user/login
+http://127.0.0.1:8080/jshop/manage/user/login
 后台账号
 	admin/123456	管理员账号，拥有全部权限
 门户测试账号：test1/123456

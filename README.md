@@ -85,14 +85,3 @@ JShop是在Jeeshop的基础上进行技术框架变更，以及业务功能完�
 
 					</ul>
 				</div>
-
-
-官网地址：http://www.jeeshop.net
-
-demo演示环境地址：
-
-大屏幕：http://demo.jeeshop.net/?responsive=y
-
-小屏幕：http://demo.jeeshop.net/?responsive=n
-
-下载地址：http://yun.baidu.com/share/link?shareid=1009909610&uk=2770653384
