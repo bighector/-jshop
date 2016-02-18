@@ -126,7 +126,7 @@
 									<td style="text-align: center;">${item.mobile!""}</td>
 									<td nowrap="nowrap" style="text-align: center;">
 										<#if item.isdefault?? && item.isdefault=="y">
-											<input type="radio" name="setDefaultRadio" value="${item.id!""}" checked="checked"/>
+											<input type="radio" current="1" name="setDefaultRadio" value="${item.id!""}" checked="checked"/>
 										<#else>
 											<input type="radio" name="setDefaultRadio" value="${item.id!""}"/>
 										</#if>
@@ -176,17 +176,23 @@
 <script type="text/javascript">
 $(function() {
 	$("input[name=setDefaultRadio]").click(function(){
-		var _url = "setAddressDefault?id="+$(this).val();
+		var $this = $(this);
+		var current = $this.attr("current");
+		if(current == "1") {
+			return false;
+		}
+		var _url = "setAddressDefault";
 		//alert(_url);
-		$.ajax({
+		$.ajax(_url,{
 		  type: 'POST',
-		  url: _url,
-		  data: {},
+		  data: {id:$this.val()},
 		  success: function(data){
+              $(":radio[name=setDefaultRadio][current=1]").attr("current", "0");
+              $this.attr("current", "1");
 			  alert("修改默认地址成功！");
 		  },
 		  dataType: "json",
-		  error:function(){
+		  error:function(XMLHttpRequest, textStatus, errorThrown){
 			alert("操作失败，请联系管理员或更换浏览器再试!");				  
 		  }
 		});
