@@ -2,9 +2,9 @@ package net.jeeshop.web.action.kindeditor;
 
 import net.jeeshop.core.front.SystemManager;
 import net.jeeshop.core.util.ImageUtils;
-import net.jeeshop.mobile.util.StringUtils;
 import net.jeeshop.services.common.SystemSetting;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
