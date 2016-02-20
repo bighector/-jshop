@@ -53,11 +53,6 @@
             </div>
         </div>
         
-        <!-- Footer 
-        <div id="da-footer">
-        	<div class="da-container clearfix">
-           	<p> 2013 xwcms . All Rights Reserved. xw素材网 | 备案号：晋ICP备13005902号</div>
-        </div>-->
     </div>
     
     <script type="text/javascript" src="<%=request.getContextPath() %>/resource/js/jquery-1.4.2.min.js"></script>
