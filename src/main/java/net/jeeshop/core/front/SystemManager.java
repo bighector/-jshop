@@ -605,7 +605,7 @@ public class SystemManager {
      * 后台发货页面物流公司列表
      * @return
      */
-    public static Map<String, String> getManageExpressMap() {
+    public Map<String, String> getManageExpressMap() {
 //        return manageExpressMap;
         Map<String,String> cachedMap = getCacheObject("manageExpressMap");
         if(cachedMap != null){
@@ -614,7 +614,7 @@ public class SystemManager {
         return SystemManager.manageExpressMap;
     }
 
-    public static void setManageExpressMap(Map<String, String> manageExpressMap) {
+    public void setManageExpressMap(Map<String, String> manageExpressMap) {
         putCacheObject("manageExpressMap", Lists.newArrayList(manageExpressMap));
     }
 

@@ -35,24 +35,16 @@ $(function(){
 	
 	//通用按钮的提交表单事件
 	$("form").on("valid.form", function(e, form){
-		console.log(this.isValid);
-        console.log("submit..."+form.buttonMethod);
-        
-        var buttonMethod = form.buttonMethod;
-		console.log(buttonMethod);
+        var buttonMethod = typeof(form.buttonMethod)=="undefined" ? "" : form.buttonMethod;
 		var _formAction = $(form).attr("action");
-		//var aa = _formAction.substring(0,_formAction.lastIndexOf("/")+1);
-        var aa = _formAction.endsWith("/")?_formAction : _formAction + "/";
-		console.log(aa);
-		
-		var lastFormAction = aa+buttonMethod;
-		console.log("lastFormAction="+lastFormAction);
-		$(form).attr("action",lastFormAction);
+		if(buttonMethod != "") {
+			_formAction = _formAction.endsWith("/")?_formAction : _formAction + "/";
+			_formAction += buttonMethod;
+		}
+		$(form).attr("action",_formAction);
         $(form).attr("method", "POST");
 		
-		console.log($(form).attr("action"));
-		
-		$.blockUI({ message: "系统处理中，请等待...",css: { 
+		$.blockUI({ message: "系统处理中，请等待...",css: {
             border: 'none', 
             padding: '15px', 
             backgroundColor: '#000', 

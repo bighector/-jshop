@@ -166,7 +166,7 @@
 							<img src="${basepath}/resource/images/action_add.gif">
 						</#if>
 					</td>
-					<td><a target="_blank" href="toEdit?id=${item.id}">编辑</a>|
+					<td><a href="toEdit?id=${item.id}">编辑</a>|
 					<a target="_blank" href="toPrint?id=${item.id}">打印</a>
 					</td>
 				</tr>
