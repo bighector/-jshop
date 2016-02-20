@@ -1,4 +1,4 @@
-<#macro htmlBase title="JEESHOP" jsFiles=[] cssFiels=[] nobody=false>
+<#macro htmlBase title="${systemSetting().systemCode}" jsFiles=[] cssFiels=[] nobody=false>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +36,7 @@
     <meta name="description" content="${systemSetting().description}"/>
     <meta name="keywords" content="${systemSetting().keywords}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>${title!"JEESHOP"}</title>
+    <title>${title!"${systemSetting().systemCode}"}</title>
     <link rel="shortcut icon" type="image/x-icon" href="${systemSetting().shortcuticon}">
     <link rel="stylesheet" href="${basepath}/resource/css/sticky-footer.css"  type="text/css">
     <link rel="stylesheet" href="${basepath}/resource/css/base.css"  type="text/css">
