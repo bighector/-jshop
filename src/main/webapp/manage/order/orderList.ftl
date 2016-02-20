@@ -70,28 +70,28 @@
                             <option value="${key}" <#if e.status?? && e.status==key>selected="selected" </#if>>${map[key]}</option>
 						</#list>
                     </select></td>
-				<td>支付状态</td>
-				<td>
+				<td>用户账号</td>
+				<td><input type="text"  value="${e.account!""}" name="account" class="search-query input-small"/></td>
+			</tr>
+			<tr>
+                <td>支付状态</td>
+                <td>
 					<#assign map = {'':'','n':'未支付','y':'完全支付'}>
                     <select id="paystatus" name="paystatus" class="search-query input-medium">
 						<#list map?keys as key>
                             <option value="${key}" <#if e.paystatus?? && e.paystatus==key>selected="selected" </#if>>${map[key]}</option>
 						</#list>
                     </select>
-					</td>
-				<td>用户账号</td>
-				<td><input type="text"  value="${e.account!""}" name="account" class="search-query input-small"/></td>
-				<td>时间范围</td>
-				<td><input id="d4311" class="Wdate search-query input-small" type="text" name="startDate"
-					value="${e.startDate!""}"
-					onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})"/>
-					~ 
-					<input id="d4312" class="Wdate search-query input-small" type="text" name="endDate"
-					value="${e.endDate!""}"
-					onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2020-10-01'})"/>
-				</td>
-			</tr>
-			<tr>
+                </td>
+                <td>时间范围</td>
+                <td><input id="d4311" class="Wdate search-query input-small" style="width:80px" type="text" name="startDate"
+                           value="${e.startDate!""}"
+                           onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})"/>
+                    ~
+                    <input id="d4312" class="Wdate search-query input-small" style="width:80px" type="text" name="endDate"
+                           value="${e.endDate!""}"
+                           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2020-10-01'})"/>
+                </td>
 				<td>退款状态</td>
 				<td colspan="21">
 					<#assign map = {'':'','WAIT_SELLER_AGREE':'等待卖家同意退款','WAIT_BUYER_RETURN_GOODS':'卖家同意退款，等待买家退货','WAIT_SELLER_CONFIRM_GOODS':'买家已退货，等待卖家收到退货','REFUND_SUCCESS':'退款成功，交易关闭'}>
