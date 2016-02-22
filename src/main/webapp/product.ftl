@@ -312,7 +312,7 @@ function defaultProductImg(){
 								
 								<#if e.specJsonString??>
 									<!-- 商品规格 -->
-									<input type="hidden" name="specJsonString" id="specJsonString"/>
+									<input type="hidden" name="specJsonString" id="specJsonString" value='${e.specJsonString}'/>
 									<div style="border:0px solid red;" class="spec" id="specDiv">
 										<dl>
 											<dt style="float: left;">尺寸：</dt>
@@ -480,7 +480,6 @@ $(function() {
 	
 	jQuery(".slideTxtBox").slide();
 	var ww = $("#productMainDiv").width();
-	console.log("aww="+ww);
 	$("#mainBox00").css("width",ww+"px");
 	$("#mainBox00").find("img[name=box_img]").css("max-width",ww+"px");
 	
@@ -489,28 +488,23 @@ $(function() {
 	//如果规格存在
 	if(specJsonStringVal && specJsonStringVal.length>0){
 		console.log("specJsonStringVal = " + specJsonStringVal);
-		var specJsonStringObject = eval('('+specJsonStringVal+')');
-		
-		for(var i=0;i<specJsonStringObject.length;i++){
-			console.log("specJsonStringObject = " + specJsonStringObject[i].specColor);
-		}
+		var specArray = eval('('+specJsonStringVal+')');
 
 		//规格被点击，则标记选中和不选中
 		$("#specDiv li").click(function(){
-			console.log("规格被点击。" + $(this).hasClass("specSelectCss"));
 			if($(this).hasClass("specNotAllowed")){
 				console.log("由于规格被禁用了，直接返回。");
 				return;
 			}
-			
+
 			$(this).parent().find("li").not(this).each(function(){
 				$(this).removeClass("specSelectCss");
-				$(this).attr("disabled","disabled");
+//				$(this).attr("disabled","disabled");
 			});
 			if($(this).is(".specSelectCss")){
 				console.log("removeClass specSelectCss");
 				$(this).removeClass("specSelectCss");
-				
+
 				//如果当前点击的是尺寸，则释放所有的颜色的禁用状态；如果点击的是颜色，则释放所有的尺寸禁用状态
 				if($(this).parent().attr("id")=="specSize"){
 					console.log("当前点击的是尺寸。");
@@ -531,120 +525,54 @@ $(function() {
 				console.log("addClass specSelectCss");
 				$(this).addClass("specSelectCss");
 			}
-			
+
 			//$("#specSize")
-			
-			var parentID = $(this).parent().attr("id");
-			console.log("parentID = " + parentID);
-			
+
+			var currentSpecName = $(this).parent().attr("id");//当前操作的规格名称
+			var currentSpecValue = $(this).text();
+			var specNames = ["specSize", "specColor"];//规格名列表
+			for(var i = 1; i < specNames.length; i++) {
+				var specName = specNames[i];
+				if(currentSpecName != specName) {
+					//非当前规格, 禁用不能选择的规格值
+					$("#" + specName + " li").each(function(){
+						var specValue = $(this).text();
+						var found = false;
+                        for(var i=0;i<specArray.length;i++){
+                            var specItem = specArray[i];
+                            if(specItem[specName]==specValue && currentSpecValue == specItem[currentSpecName]){
+                                found = true;
+								break;
+                            }
+                        }
+						console.log("检查结果: specName:" + specName + ", specValue:" + specValue + ",是否禁用:" + (!found))
+						if(!found) {
+							$(this).removeClass("specSelectCss").addClass("specNotAllowed");
+						} else {
+							$(this).removeClass("specNotAllowed");
+						}
+					});
+				}
+			}
+
+            console.log("规格选取结果。 specSize:" + $("#specSize .specSelectCss").text() + ",specColor:" + $("#specColor .specSelectCss").text());
+
 			if($("#specSize li").hasClass("specSelectCss") && $("#specColor li").hasClass("specSelectCss")){
-				console.log("都选中了。");
-				
-				console.log("选中的文本："+$("#specSize .specSelectCss").html());
+
 				//找出对应的规格
-				for(var i=0;i<specJsonStringObject.length;i++){
-					var specItem = specJsonStringObject[i];
-					if(specItem.specSize==$("#specSize .specSelectCss").html() 
+				for(var i=0;i<specArray.length;i++){
+					var specItem = specArray[i];
+					if(specItem.specSize==$("#specSize .specSelectCss").html()
 							&& specItem.specColor==$("#specColor .specSelectCss").html()){
-						console.log("找到了规格对象。");
 						//改变商品的价格和库存数
 						$("#nowPrice").text(specItem.specPrice);
 						$("#stock_span_id").text(specItem.specStock);
 						$("#specIdHidden").val(specItem.id);
-						console.log("选中的规格ID="+$("#specIdHidden").val());
 						break;
 					}
 				}
 				//specNotAllowed
-			}else if($("#specSize li").hasClass("specSelectCss")){
-				resetProductInfo();
-				//尺寸被选中了一个，则将于该尺寸不匹配的颜色禁用掉。
-				console.log("尺寸被选中了一个，则将于该尺寸不匹配的颜色禁用掉。");
-				//找出对应的规格
-				var colorArr = [];//与选中的规格相匹配的颜色集合
-				for(var i=0;i<specJsonStringObject.length;i++){
-					var specItem = specJsonStringObject[i];
-					if(specItem.specSize==$("#specSize .specSelectCss").html()){
-						colorArr.push(specItem.specColor);
-					}
-				}
-				
-				//释放所有颜色的鼠标禁用状态
-				$("#specColor li").each(function(){
-					$(this).removeClass("specNotAllowed");
-				});
-				
-				//找出于选择的尺寸不匹配的颜色，将其禁用掉。
-				for(var i=0;i<specJsonStringObject.length;i++){
-					var specItem = specJsonStringObject[i];
-					var hanFind = false;
-					for(var j=0;j<colorArr.length;j++){
-						if(specItem.specColor==colorArr[j]){
-							hanFind = true;
-							break;
-						}
-					}
-					
-					if(!hanFind){
-						console.log("禁掉的颜色有："+specItem.specColor);
-						
-						$("#specColor li").each(function(){
-							console.log("text="+$(this).text());
-							if($(this).text()==specItem.specColor){
-								console.log("找到了。");
-								$(this).addClass("specNotAllowed");
-								return false;
-							}
-						});
-					}
-				}
-				
-			}else if($("#specColor li").hasClass("specSelectCss")){
-				resetProductInfo();
-				//颜色被选中了一个，则将于该颜色不匹配的尺寸禁用掉。
-				console.log("颜色被选中了一个，则将于该颜色不匹配的尺寸禁用掉。");
-				
-				//找出对应的规格
-				var sizeArr = [];//与选中的规格相匹配的颜色集合
-				for(var i=0;i<specJsonStringObject.length;i++){
-					var specItem = specJsonStringObject[i];
-					if(specItem.specColor==$("#specColor .specSelectCss").html()){
-						sizeArr.push(specItem.specSize);
-					}
-				}
-				
-				//释放所有颜色的鼠标禁用状态
-				$("#specSize li").each(function(){
-					$(this).removeClass("specNotAllowed");
-				});
-				
-				//找出于选择的尺寸不匹配的颜色，将其禁用掉。
-				for(var i=0;i<specJsonStringObject.length;i++){
-					var specItem = specJsonStringObject[i];
-					var hanFind = false;
-					for(var j=0;j<sizeArr.length;j++){
-						if(specItem.specSize==sizeArr[j]){
-							hanFind = true;
-							break;
-						}
-					}
-					
-					if(!hanFind){
-						console.log("禁掉的尺寸有："+specItem.specSize);
-						
-						$("#specSize li").each(function(){
-							console.log("text="+$(this).text());
-							if($(this).text()==specItem.specSize){
-								console.log("找到了。");
-								$(this).addClass("specNotAllowed");
-								return false;
-							}
-						});
-					}
-				}
-				
 			}else{
-				console.log("都没选中。");
 				resetProductInfo();
 			}
 			
@@ -655,7 +583,6 @@ $(function() {
 
 //重置商品信息
 function resetProductInfo(){
-	console.log("resetProductInfo..."+$("#nowPriceHidden").val());
 	//设置值为商品原价格
 	$("#nowPrice").text($("#nowPriceHidden").val());
 	$("#stock_span_id").text($("#stockHidden").val());
