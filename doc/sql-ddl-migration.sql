@@ -191,60 +191,6 @@ CREATE TABLE `product_attr` (
 	PRIMARY KEY (`id`)
 ) comment='商品属性';
 
-/**
- * 会员管理模块
- */
-
-DROP TABLE IF EXISTS `member`;
-CREATE TABLE `member` (
-  `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
-  `username` varchar(45)  NOT NULL comment '登录名',
-  `nickname` varchar(45)  NOT NULL comment '昵称',
-  `password` varchar(45)   comment '密码',
-  `province` varchar(45)   comment '省份',
-  `city` varchar(45)   comment '城市',
-  `address` varchar(45)   comment '联系地址',
-  `post_code` varchar(45)   comment '邮政编码',
-  `card_type` varchar(45)   comment '证件类型',
-  `card_no` varchar(45)   comment '证件号',
-  `mobile` varchar(45)   comment '手机号',
-  `email` varchar(45)   comment '电子邮箱',
-  `is_email_active` varchar(2)  DEFAULT 'n' comment '邮箱是否已经激活,y-是，n-否',
-  `freeze` varchar(2)  NOT NULL DEFAULT 'n' comment '是否冻结,y-是,n-否',
-  `last_login_time` datetime  comment '最后登录时间',
-  `last_login_ip` varchar(45)   comment '最后登录IP',
-  `last_login_area` varchar(25)   comment '最后登录区域',
-  `diff_area_login` char(1)  DEFAULT 'n' comment '是否异地登录,y-是,n-否',
-  `regist_time` datetime  comment '注册时间',
-  `freeze_start_time` datetime  comment '冻结开始时间',
-  `freeze_end_time` datetime  comment '冻结结束时间',
-  `gender` varchar(2)  DEFAULT '0' comment '性别，1-男2-女0-未知',
-  `real_name` varchar(45)   comment '真实姓名',
-  `birthday` date  comment '出生日期',
-  `member_rank` int(11) comment '用户等级',
-  create_time datetime COMMENT '创建时间',
-  create_account varchar(64) COMMENT '创建人',
-  update_time datetime COMMENT '更新时间',
-  update_account varchar(64) COMMENT '更新人',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username_UNIQUE` (`username`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB comment='会员表';
-/**会员等级*/
-DROP TABLE IF EXISTS `member_rank`;
-CREATE TABLE `member_rank` (
-  `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID',
-  `code` varchar(15)  NOT NULL comment '代码',
-  `name` varchar(45)  NOT NULL comment '等级名称',
-  `min_score` int(11)  comment '积分上限',
-  `max_score` int(11)  comment '积分下限',
-  `remark` varchar(512)   comment '备注',
-  create_time datetime COMMENT '创建时间',
-  create_account varchar(64) COMMENT '创建人',
-  update_time datetime COMMENT '更新时间',
-  update_account varchar(64) COMMENT '更新人',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB comment='会员等级';
 
 /*商品规格*/
 DROP TABLE IF EXISTS `product_spec`;
