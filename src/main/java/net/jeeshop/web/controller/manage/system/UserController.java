@@ -14,7 +14,6 @@ import net.jeeshop.biz.system.service.SystemLogService;
 import net.jeeshop.biz.system.service.UserService;
 import net.jeeshop.core.ManageContainer;
 import net.jeeshop.core.exception.JShopException;
-import net.jeeshop.core.system.bean.User;
 import net.jeeshop.core.util.MD5;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
@@ -119,7 +118,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
             logger.error("登陆失败，账户或密码错误,{}", username);
             model.addAttribute("errorMsg", errorMsg);
             return page_input;
-        } else if (!u.getStatus().equals(User.user_status_y)) {
+        } else if (!u.getStatus().equals(SysUser.status_y)) {
             errorMsg = "帐号已被禁用，请联系管理员!";
             logger.error("帐号已被禁用，请联系管理员,{}", u.getUsername());
             model.addAttribute("errorMsg", errorMsg);
@@ -214,7 +213,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
      */
     @RequestMapping("unique")
     @ResponseBody
-    public String unique(@ModelAttribute("e") User e, HttpServletResponse response) throws IOException {
+    public String unique(@ModelAttribute("e") SysUser e, HttpServletResponse response) throws IOException {
         logger.debug("验证输入的字符的唯一性:" + e);
         response.setCharacterEncoding("utf-8");
         if (StringUtils.isNotBlank(e.getNickname())) {//验证昵称是否被占用
@@ -339,7 +338,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
      */
     @RequestMapping("checkOldPassword")
     @ResponseBody
-    public String checkOldPassword(@ModelAttribute("e") User e) throws Exception {
+    public String checkOldPassword(@ModelAttribute("e") SysUser e) throws Exception {
         logger.error("checkOldPassword.." + e.getPassword());
         if (StringUtils.isBlank(e.getPassword())) {
             return "{\"error\":\"旧密码不能为空!\"}";

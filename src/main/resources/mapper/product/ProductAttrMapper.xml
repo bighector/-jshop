@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.product.client.ProductAttrMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.product.model.ProductAttr" >
+    <id column="id" property="id" />
+    <result column="attr_name" property="attrName" />
+    <result column="ordinal" property="ordinal" />
+    <result column="is_mandated" property="isMandated" />
+    <result column="value_type" property="valueType" />
+    <result column="options_list" property="optionsList" />
+    <result column="create_time" property="createTime" />
+    <result column="create_account" property="createAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="category_id" property="categoryId" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, attr_name, ordinal, is_mandated, value_type, options_list, create_time, create_account, 
+    update_time, update_account, category_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.product.model.ProductAttrExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_attr
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_attr
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from product_attr
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
+    insert into product_attr (id, attr_name, ordinal, is_mandated, value_type, options_list, 
+      create_time, create_account, update_time, update_account, category_id
+      )
+    values (#{id}, #{attrName}, #{ordinal}, #{isMandated}, #{valueType}, #{optionsList}, 
+      #{createTime}, #{createAccount}, #{updateTime}, #{updateAccount}, #{categoryId}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
+    insert into product_attr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="attrName != null" >
+        attr_name,
+      </if>
+      <if test="ordinal != null" >
+        ordinal,
+      </if>
+      <if test="isMandated != null" >
+        is_mandated,
+      </if>
+      <if test="valueType != null" >
+        value_type,
+      </if>
+      <if test="optionsList != null" >
+        options_list,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="attrName != null" >
+        #{attrName},
+      </if>
+      <if test="ordinal != null" >
+        #{ordinal},
+      </if>
+      <if test="isMandated != null" >
+        #{isMandated},
+      </if>
+      <if test="valueType != null" >
+        #{valueType},
+      </if>
+      <if test="optionsList != null" >
+        #{optionsList},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.jeeshop.biz.product.model.ProductAttrExample" resultType="java.lang.Integer" >
+    select count(*) from product_attr
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
+    update product_attr
+    <set >
+      <if test="attrName != null" >
+        attr_name = #{attrName},
+      </if>
+      <if test="ordinal != null" >
+        ordinal = #{ordinal},
+      </if>
+      <if test="isMandated != null" >
+        is_mandated = #{isMandated},
+      </if>
+      <if test="valueType != null" >
+        value_type = #{valueType},
+      </if>
+      <if test="optionsList != null" >
+        options_list = #{optionsList},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
+    update product_attr
+    set attr_name = #{attrName},
+      ordinal = #{ordinal},
+      is_mandated = #{isMandated},
+      value_type = #{valueType},
+      options_list = #{optionsList},
+      create_time = #{createTime},
+      create_account = #{createAccount},
+      update_time = #{updateTime},
+      update_account = #{updateAccount},
+      category_id = #{categoryId}
+    where id = #{id}
+  </update>
+</mapper>

@@ -2,7 +2,6 @@ package net.jeeshop.core.freemarker.fn;
 
 import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;
-import net.jeeshop.core.PrivilegeUtil;
 import net.jeeshop.web.util.RequestHolder;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -30,6 +29,6 @@ public class PrivilegeChecker implements TemplateMethodModelEx {
         }
         HttpSession session = RequestHolder.getSession();
         logger.info("check privilege ,res : {}, session id :{}", res, session == null ? null : session.getId());
-        return PrivilegeUtil.check(session, res);
+        return true;
     }
 }

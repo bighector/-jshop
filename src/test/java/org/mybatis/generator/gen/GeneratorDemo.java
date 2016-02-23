@@ -11,11 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ *GeneratorDemo
  */
 public class GeneratorDemo {
-
-    //@Test
+/*    @Test
     public void genSystem() throws Exception {
         generateFiles("gen/generateConfig-system.xml");
     }
@@ -23,22 +22,29 @@ public class GeneratorDemo {
     public void genCms() throws Exception {
         generateFiles("gen/generateConfig-cms.xml");
     }
-    /*@Test
+    @Test
     public void genProduct() throws Exception {
         generateFiles("gen/generateConfig-product.xml");
-    }*/
-    @Test
-    public void genFriendlink() throws Exception {
-        generateFiles("gen/generateConfig-friendlink.xml");
     }
 
-    private void generateFiles(String configResource) throws Exception{
-
+    @Test
+    public void genMember() throws Exception {
+        generateFiles("gen/generateConfig-member.xml");
+    }*/
+	
+	@Test
+	public void genProductSpec() throws Exception
+	{
+		 generateFiles("gen/generateConfig-productspec.xml");
+	}
+    
+    private void generateFiles(String configResource) throws Exception
+    {
         List<String> warnings = new ArrayList<String>();
         ConfigurationParser cp = new ConfigurationParser(warnings);
-        Configuration config = cp.parseConfiguration(GeneratorDemo.class.getClassLoader()
+          Configuration config = cp.parseConfiguration(GeneratorDemo.class.getClassLoader()
                 .getResourceAsStream(configResource));
-        DefaultShellCallback shellCallback = new DefaultShellCallback(true);
+            DefaultShellCallback shellCallback = new DefaultShellCallback(true);
 
         try {
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, shellCallback, warnings);

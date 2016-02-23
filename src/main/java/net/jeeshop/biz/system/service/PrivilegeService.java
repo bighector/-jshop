@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class PrivilegeService extends BaseService<SysPrivilege, SysPrivilegeExample> {
+public class PrivilegeService extends BaseService<SysPrivilege, SysPrivilegeExample>
+{
     @Autowired
     private SysPrivilegeMapper sysPrivilegeMapper;
 
     @Override
-    protected BaseMapper<SysPrivilege, SysPrivilegeExample> getMapper() {
+    protected BaseMapper<SysPrivilege, SysPrivilegeExample> getMapper() 
+    {
         return sysPrivilegeMapper;
     }
-
-
 }

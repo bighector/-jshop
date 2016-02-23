@@ -4,7 +4,7 @@
   <select id="selectByRoleId" resultMap="net.jeeshop.biz.system.client.SysMenuMapper.BaseResultMap" parameterType="java.lang.Long" >
     select 
     m.*
-    from t_menu m, t_privilege p
+    from sys_menu m, sys_privilege p
     where m.id = p.mid and p.rid = #{rid}
   </select>
 
@@ -20,7 +20,7 @@
           m.update_time,
           m.create_account,
           m.update_account
-      from t_menu m, t_privilege p
+      from sys_menu m, sys_privilege p
       where m.id = p.mid 
       and m.pid=#{pid}
       <if test="rid != null">

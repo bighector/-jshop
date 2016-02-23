@@ -1,15 +1,6 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
-<@page.pageBase currentMenu=(e.type=="help")?string("文章管理","公告管理")>
-<style>
-#insertOrUpdateMsg{
-border: 0px solid #aaa;margin: 0px;position: fixed;top: 0;width: 100%;
-background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18px;color: red;
-}
-.btnCCC{
-	background-image: url("../img/glyphicons-halflings-white.png");
-	background-position: -288px 0;
-}
-</style>
+<@page.pageBase currentMenu="广告管理">
+
 <script>
 $(function(){
 	<#if e.id??>
@@ -20,6 +11,7 @@ $(function(){
 		});
 	});
 	</#if>
+	
 });
 </script>
 	<form action="${basepath}/manage/article" namespace="/manage" theme="simple" name="form" id="form" method="post">

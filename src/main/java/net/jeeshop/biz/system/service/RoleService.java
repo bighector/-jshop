@@ -2,7 +2,9 @@ package net.jeeshop.biz.system.service;
 
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.system.bean.SysRoleBean;
 import net.jeeshop.biz.system.client.SysPrivilegeMapper;
+import net.jeeshop.biz.system.client.SysPrivilegeMapperExt;
 import net.jeeshop.biz.system.client.SysRoleMapper;
 import net.jeeshop.biz.system.model.SysPrivilege;
 import net.jeeshop.biz.system.model.SysRole;
@@ -26,41 +28,43 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
     SysRoleMapper sysRoleMapper;
 
     @Autowired
-    SysPrivilegeMapper sysPrivilegeMapper;
-
+    SysPrivilegeMapperExt sysPrivilegeMapperExt;
     @Override
     protected BaseMapper<SysRole, SysRoleExample> getMapper() {
         return sysRoleMapper;
     }
 
     @Transactional
-    public void addRole(SysRole role) {
+    public void addRole(SysRoleBean role) {
         sysRoleMapper.insert(role);
         String rolePrivilege = role.getPrivileges();
         String[] rolePrivileges = rolePrivilege.split(",");
         List<SysPrivilege> privilegeList = fillPrivilege(rolePrivileges , role.getId());
         if (privilegeList.size() > 0) {
-            sysPrivilegeMapper.insertPrivileges(privilegeList);
+            sysPrivilegeMapperExt.insertPrivileges(privilegeList);
         }
     }
 
     @Transactional
-    public void updateRole(SysRole role) {
+    public void updateRole(SysRoleBean role)
+    {
         sysRoleMapper.updateByPrimaryKey(role);
         //删除现有角色权限
-        sysPrivilegeMapper.deleteByRid(role.getId());
+        sysPrivilegeMapperExt.deleteByRid(role.getId());
         //添加新的权限
         String rolePrivilege = role.getPrivileges();
         String[] rolePrivileges = rolePrivilege.split(",");
         List<SysPrivilege> privilegeList = fillPrivilege(rolePrivileges , role.getId());
         if (privilegeList.size() > 0) {
-            sysPrivilegeMapper.insertPrivileges(privilegeList);
+            sysPrivilegeMapperExt.insertPrivileges(privilegeList);
         }
     }
 
-    private List<SysPrivilege> fillPrivilege(String [] rolePrivileges , Long rid) {
+    private List<SysPrivilege> fillPrivilege(String [] rolePrivileges , Long rid)
+    {
         List<SysPrivilege> privilegeList = new ArrayList<SysPrivilege>();
-        for (String privilege : rolePrivileges) {
+        for (String privilege : rolePrivileges)
+        {
             SysPrivilege item = new SysPrivilege();
             item.setRid(rid);
             item.setMid(Long.parseLong(privilege));

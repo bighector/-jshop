@@ -32,30 +32,47 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="t_user" domainObjectName="SysUser">
+        <!-- 用户 -->
+        <table tableName="sys_user" domainObjectName="SysUser">
             <columnOverride column="id" javaType="java.lang.Long"/>
             <columnOverride column="rid" javaType="java.lang.Long"/>
         </table>
-        <table tableName="t_role" domainObjectName="SysRole">
+        <!-- 角色 -->
+        <table tableName="sys_role" domainObjectName="SysRole">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
-        <table tableName="t_menu" domainObjectName="SysMenu">
+        <!-- 菜单 -->
+        <table tableName="sys_menu" domainObjectName="SysMenu">
             <columnOverride column="id" javaType="java.lang.Long"/>
             <columnOverride column="pid" javaType="java.lang.Long"/>
         </table>
-        <table tableName="t_privilege" domainObjectName="SysPrivilege">
+        <!-- 权限 -->
+        <table tableName="sys_privilege" domainObjectName="SysPrivilege">
             <columnOverride column="id" javaType="java.lang.Long"/>
             <columnOverride column="rid" javaType="java.lang.Long"/>
             <columnOverride column="mid" javaType="java.lang.Long"/>
         </table>
 
-        <table tableName="t_system_setting" domainObjectName="SystemSetting">
+        <!-- 系统设置 -->
+        <table tableName="sys_system_setting" domainObjectName="SystemSetting">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
-        <table tableName="t_system_log" domainObjectName="SystemLog">
+        <!-- 系统日志 -->
+        <table tableName="sys_system_log" domainObjectName="SystemLog">
             <columnOverride column="id" javaType="java.lang.Long"/>
-        </table> 
-        <table tableName="t_express" domainObjectName="SystemExpress">
+        </table>
+        <!-- 区域 -->
+        <table tableName="sys_area" domainObjectName="SysArea">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="pid" javaType="java.lang.Long"/>
+        </table>
+        <!-- 配送方式 -->
+        <table tableName="sys_express" domainObjectName="Express">
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+
+        <!-- 键值对 -->
+        <table tableName="sys_key_value" domainObjectName="KeyValue">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
     </context>

@@ -9,7 +9,6 @@ import net.jeeshop.biz.system.client.SysUserMapper;
 import net.jeeshop.biz.system.client.SysUserMapperExt;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.biz.system.model.SysUserExample;
-import net.jeeshop.core.system.bean.User;
 import net.jeeshop.core.util.MD5;
 import net.jeeshop.web.util.LoginUserHolder;
 import org.apache.commons.lang.StringUtils;
@@ -27,6 +26,7 @@ import java.util.List;
 public class UserService extends BaseService<SysUser, SysUserExample> {
     @Autowired
     SysUserMapper sysUserMapper;
+    
     @Autowired
     SysUserMapperExt sysUserMapperExt;
 
@@ -88,7 +88,7 @@ public class UserService extends BaseService<SysUser, SysUserExample> {
         SysUser loginUser = LoginUserHolder.getLoginUser();
         newUser.setCreateAccount(loginUser.getUsername());
         if (StringUtils.isBlank(newUser.getStatus())) {
-            newUser.setStatus(User.user_status_y);
+            newUser.setStatus(SysUser.status_y);
         }
         newUser.setPassword(MD5.md5(newUser.getPassword()));
         sysUserMapper.insert(newUser);
