@@ -32,8 +32,8 @@
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
 
-        <table tableName="t_hot_query" domainObjectName="Hotquery">
-            <columnOverride column="id" javaType="java.lang.Long"/>
+        <table tableName="ecs_users" domainObjectName="Users">
+            <columnOverride column="user_id" javaType="java.lang.Long"/>
         </table>
     </context>
 

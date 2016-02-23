@@ -13,7 +13,7 @@
 				}},
 				{name:"tplType",title:"类型",data:"tplType",sWidth:"30"},
 				{name:"tplKey",title:"标识",data:"tplKey"},
-				{name:"tplName",title:"名称",data:"tplName"},
+				{name:"tplName",title:"名称",data:"tplName",sWidth:"60"},
 				{name:"remark",title:"内容",data:"remark"},
 				{name:"validStatus",title:"状态",data:"validStatus",sWidth:"30",render:function(data, type, row){
 					if(data == "1")
