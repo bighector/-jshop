@@ -32,8 +32,8 @@ JShop&Jeeshop的技术选型如下:
 * 文件上传: uploadify
 
 ##演示系统
-* 前台: [http://jshop.coding.io](http://jshop.coding.io)
-* 后台: [http://jshop.coding.io/manage/user/login](http://jshop.coding.io/manage/user/login) (admin/123456)
+* 前台: [http://jshop.ofmall.org:81/jshop](http://jshop.ofmall.org:81/jshop)
+* 后台: [http://jshop.ofmall.org:81/jshop/manage/user/login](http://jshop.ofmall.org:81/jshop/manage/user/login) (admin/123456)
 
 ##WIKI
 1. [快速入门](http://git.oschina.net/dinguangx/jshop/wikis/home)
