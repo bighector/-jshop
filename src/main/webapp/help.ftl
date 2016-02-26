@@ -49,7 +49,7 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12">
-							<@include_page path=newsInfoUrl/>
+							${news.content!""}
 						</div>
 					</div>
 				</div>

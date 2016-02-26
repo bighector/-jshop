@@ -49,7 +49,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<div style="border: 0px solid; text-align: left;" id="productdetailDiv">
-								<@include_page path=productHTMLUrl/>
+								${e.productHTML!""}
 							</div>
 						</div>
 					</div>
