@@ -136,14 +136,35 @@ ul, menu, dir {
 .focus{
 	color:#666;
 	width: 260px;
-	line-height: 36px;
 	background: #f7f7f7;
-	border: 1px solid #dddddd;
-	height: 36px;
-	padding: 0 5px;
 	border-radius:3px;
+	padding: 0 2px;
+	line-height: 32px;
+	border: 1px solid #dddddd;
+	height: 32px;
+}
+label{
+	margin-bottom:0px;
 }
 </style>
+<script type="text/javascript">
+	$(function(){
+		$('#account').bind('focus',function(){
+			if(!$('#regAccount_error').hasClass('focus'))
+				$('#regAccount_error').addClass('focus').append('输入账户，账户长度大于6位，小于30位');
+		})
+		
+		$('#nickname').bind('focus',function(){
+			if(!$('#regNickname_error').hasClass('focus'))
+				$('#regNickname_error').addClass('focus').append('输入昵称');
+		})
+		
+		$('#nickname').bind('focus',function(){
+			if(!$('#regNickname_error').hasClass('focus'))
+				$('#regNickname_error').addClass('focus').append('输入昵称');
+		})
+	})
+</script>
 </head>
 <body>
 	<div class="container">
@@ -186,26 +207,23 @@ ul, menu, dir {
 					<div class="col-md-10">
 						<form class="form-horizontal">
 							<div class="form-group">
-								<label for="nickname" class="col-md-2 control-label">昵称 :</label>
-								<div class="col-md-4">
-									<input name="nickname" type="text" class="form-control"
-										id="nickname" placeholder="请输入昵称"
-										data-rule="昵称:required;nickname;length[2~10];remote[unique.html]"
-										maxlength="100">
-								</div>
-								<label id="regName_error" class="focus">数字，字符 xxxx</label>
-							</div>
-
-							<div class="form-group">
 								<label for="account" class="col-md-2 control-label">账号:</label>
 								<div class="col-md-4">
 									<input name="account" type="text" class="form-control"
 										id="account" placeholder="请输入账号"
-										data-rule="账号:required;account;length[3~10];remote[unique.html]"
-										maxlength="100">
+										maxlength="30">
 								</div>
+								<label id="regAccount_error" class=""></label>
 							</div>
-
+							<div class="form-group">
+								<label for="nickname" class="col-md-2 control-label">昵称 :</label>
+								<div class="col-md-4">
+									<input name="nickname" type="text" class="form-control"
+										id="nickname" placeholder="请输入昵称"
+										maxlength="30">
+								</div>
+								<label id="regNickname_error" class=""></label>
+							</div>
 							<div class="form-group">
 								<label for="password" class="col-md-2 control-label">密码:</label>
 								<div class="col-md-4">
@@ -213,6 +231,7 @@ ul, menu, dir {
 										id="password" placeholder="请输入密码" maxlength="100"
 										data-rule="密码:required;password">
 								</div>
+								<label id="regPassword_error" class=""></label>
 							</div>
 
 							<div class="form-group">
@@ -222,6 +241,7 @@ ul, menu, dir {
 										id="password2" placeholder="请输入确认密码" maxlength="100"
 										data-rule="确认密码:required;match(password)">
 								</div>
+								<label id="regPassword2_error" class=""></label>
 							</div>
 
 							<div class="form-group">
@@ -229,9 +249,9 @@ ul, menu, dir {
 								<div class="col-md-4">
 									<input name="email" type="text" class="form-control" id="email"
 										maxlength="45"
-										data-rule="邮箱:required;email;length[1~45];remote[unique.html]"
 										placeholder="请输入邮箱，找回密码用的">
 								</div>
+								<label id="regEmail_error" class=""></label>
 							</div>
 
 							<div class="form-group">
