@@ -5,76 +5,76 @@ import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Member extends BaseModel implements Serializable {
-    /** ç™»å½•å */
+    /** µÇÂ¼Ãû */
     private String username;
 
-    /** æ˜µç§° */
+    /** êÇ³Æ */
     private String nickname;
 
-    /** å¯†ç  */
+    /** ÃÜÂë */
     private String password;
 
-    /** çœä»½ */
+    /** Ê¡·İ */
     private String province;
 
-    /** åŸå¸‚ */
+    /** ³ÇÊĞ */
     private String city;
 
-    /** è”ç³»åœ°å€ */
+    /** ÁªÏµµØÖ· */
     private String address;
 
-    /** é‚®æ”¿ç¼–ç  */
+    /** ÓÊÕş±àÂë */
     private String postCode;
 
-    /** è¯ä»¶ç±»å‹ */
+    /** Ö¤¼şÀàĞÍ */
     private String cardType;
 
-    /** è¯ä»¶å· */
+    /** Ö¤¼şºÅ */
     private String cardNo;
 
-    /** æ‰‹æœºå· */
+    /** ÊÖ»úºÅ */
     private String mobile;
 
-    /** ç”µå­é‚®ç®± */
+    /** µç×ÓÓÊÏä */
     private String email;
 
-    /** é‚®ç®±æ˜¯å¦å·²ç»æ¿€æ´»,y-æ˜¯ï¼Œn-å¦ */
+    /** ÓÊÏäÊÇ·ñÒÑ¾­¼¤»î,y-ÊÇ£¬n-·ñ */
     private String isEmailActive;
 
-    /** æ˜¯å¦å†»ç»“,y-æ˜¯,n-å¦ */
+    /** ÊÇ·ñ¶³½á,y-ÊÇ,n-·ñ */
     private String freeze;
 
-    /** æœ€åç™»å½•æ—¶é—´ */
+    /** ×îºóµÇÂ¼Ê±¼ä */
     private Date lastLoginTime;
 
-    /** æœ€åç™»å½•IP */
+    /** ×îºóµÇÂ¼IP */
     private String lastLoginIp;
 
-    /** æœ€åç™»å½•åŒºåŸŸ */
+    /** ×îºóµÇÂ¼ÇøÓò */
     private String lastLoginArea;
 
-    /** æ˜¯å¦å¼‚åœ°ç™»å½•,y-æ˜¯,n-å¦ */
+    /** ÊÇ·ñÒìµØµÇÂ¼,y-ÊÇ,n-·ñ */
     private String diffAreaLogin;
 
-    /** æ³¨å†Œæ—¶é—´ */
+    /** ×¢²áÊ±¼ä */
     private Date registTime;
 
-    /** å†»ç»“å¼€å§‹æ—¶é—´ */
+    /** ¶³½á¿ªÊ¼Ê±¼ä */
     private Date freezeStartTime;
 
-    /** å†»ç»“ç»“æŸæ—¶é—´ */
+    /** ¶³½á½áÊøÊ±¼ä */
     private Date freezeEndTime;
 
-    /** æ€§åˆ«ï¼Œ1-ç”·2-å¥³0-æœªçŸ¥ */
+    /** ĞÔ±ğ£¬1-ÄĞ2-Å®0-Î´Öª */
     private String gender;
 
-    /** çœŸå®å§“å */
+    /** ÕæÊµĞÕÃû */
     private String realName;
 
-    /** å‡ºç”Ÿæ—¥æœŸ */
+    /** ³öÉúÈÕÆÚ */
     private Date birthday;
 
-    /** ç”¨æˆ·ç­‰çº§ */
+    /** ÓÃ»§µÈ¼¶ */
     private Long memberRank;
 
     private static final long serialVersionUID = 1L;

@@ -38,10 +38,10 @@
             <columnOverride column="id" javaType="java.lang.Long"/>
             <columnOverride column="member_rank" javaType="java.lang.Long"/>
         </table>
-        <!-- 会员等级 -->
+        <!-- 会员等级
         <table tableName="member_rank" domainObjectName="MemberRank">
         	<columnOverride column="id" javaType="java.lang.Long"/>
-        </table>
+        </table> -->
     </context>
 
 </generatorConfiguration>
