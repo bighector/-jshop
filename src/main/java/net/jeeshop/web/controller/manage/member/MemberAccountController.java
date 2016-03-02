@@ -1,6 +1,10 @@
 package net.jeeshop.web.controller.manage.member;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.member.model.Member;
@@ -11,7 +15,10 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.google.gson.JsonObject;
 
 /**
  * @author ysqin Email: 442800318@qq.com
@@ -29,7 +36,7 @@ public class MemberAccountController extends
 	@Autowired
 	private MemberService accountService;
 
-	@Override
+	@Override	
 	public BaseService<Member, MemberExample> getService() {
 		return accountService;
 	}
@@ -44,6 +51,36 @@ public class MemberAccountController extends
 	public String memberRegister(ModelMap modelMap,HttpServletRequest request) {
 		
 		return page_toRegister;
+	}
+	
+	@RequestMapping("checkUsername")
+	public String checkUsername(ModelMap modelMap,HttpServletRequest request,HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json;charset=utf-8");
+		JsonObject retJson = new JsonObject();
+		String userName = request.getParameter("userName");
+		if(StringUtils.isEmpty(userName)){
+			retJson.addProperty("code", "2");
+			retJson.addProperty("msg", "请输入用户名");
+		}else{
+			MemberExample example = new MemberExample();
+			example.setUserName(userName);
+			List<Member> memberList = accountService.selectByExample(example);
+			
+			if(memberList!=null && memberList.size()==1){
+				retJson.addProperty("code", "0");
+				retJson.addProperty("msg", "可用");
+			}else{
+				retJson.addProperty("code", "1");
+				retJson.addProperty("msg", "不可用");
+			}
+		}
+		try {
+			response.getWriter().write(retJson.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

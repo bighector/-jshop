@@ -47,7 +47,7 @@ body {
 	position: relative;
 	height: 13px;
 	background-image:
-		url(//misc.360buyimg.com/user/myjd-2015/widget/order-detail/i/bg_state.jpg);
+		url(${basepath}/resource/img/bg_state.jpg);
 	background-repeat: no-repeat;
 }
 
@@ -146,12 +146,43 @@ ul, menu, dir {
 label{
 	margin-bottom:0px;
 }
+.succeed{
+    background: url(${basepath}/resource/img/sucess.png); center no-repeat #ffffff;
+}
+.blank {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 243px;
+    top: 7px;
+    padding: 3px;
+    float: none;
+}
 </style>
 <script type="text/javascript">
 	$(function(){
 		$('#account').bind('focus',function(){
 			if(!$('#regAccount_error').hasClass('focus'))
 				$('#regAccount_error').addClass('focus').append('输入账户，账户长度大于6位，小于30位');
+		}).bind('blur',function(){
+			if($(this).val().length > 6 && $(this).val().length<20){
+				$.ajax({
+					type: "post",
+					url: "checkUsername",
+					beforeSend:function(){},
+					data: {t: new Date().getTime(),userName:$(this).val()},
+					dataType: "json"
+				}).done(function(data) {
+					if(data.code==0){
+						$('#regAccount_error').addClass('succeed').addClass('blank');
+					}else{
+						$('#regAccount_error').addClass('succeed').addClass('blank');
+					}
+				})
+				.fail(function(emsg) {
+					
+				});
+			}
 		})
 		
 		$('#nickname').bind('focus',function(){
@@ -164,6 +195,21 @@ label{
 				$('#regNickname_error').addClass('focus').append('输入昵称');
 		})
 	})
+	
+	function changeImg(){
+		var imgSrc = $("#imgObj");
+        var src = imgSrc.attr("src");
+        imgSrc.attr("src", chgUrl(src));
+	}
+	function chgUrl(url) {
+		  var timestamp = (new Date()).valueOf();  
+		  if (url.indexOf("?timestamp=") > 0) {
+		    url = url.substring(0, url.indexOf("?timestamp="));
+		  }
+		  url=url+"?timestamp="+timestamp;
+		  console.log(url);
+		  return url;
+    }
 </script>
 </head>
 <body>
@@ -259,14 +305,14 @@ label{
 								<div class="col-md-2">
 									<input type="text" name="vcode" class="form-control" id="vcode"
 										placeholder="验证码"
-										data-rule="验证码:required;vcode;remote[unique.html]" size="4"
+										data-rule="验证码:required;vcode;" size="4"
 										maxlength="4">
 								</div>
 								<div class="col-md-4">
-									<img src="http://wmall.tuhua365.cn//ValidateImage.do"
-										id="codes2" onclick="javaScript:reloadImg2();"
+									<img src="${basepath}/codeController/code"
+										id="imgObj" onclick="javaScript:changeImg();"
 										class="vcodeCss"> <a href="javascript:void(0);"
-										onclick="javascript:reloadImg2();" class="btn btn-link btn-sm">看不清?换一张</a>
+										onclick="javaScript:changeImg();" class="btn btn-link btn-sm">看不清?换一张</a>
 								</div>
 							</div>
 
