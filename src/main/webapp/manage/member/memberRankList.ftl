@@ -1,5 +1,5 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
-<@page.pageBase currentMenu="键值对管理">
+<@page.pageBase currentMenu="会员等级">
 <script>
 	$(function(){
         var table = $('#dataTables-example').DataTable({

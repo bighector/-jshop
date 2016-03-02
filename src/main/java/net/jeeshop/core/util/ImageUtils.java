@@ -240,17 +240,4 @@ public class ImageUtils {
         os.close();
     }
 
-    public static void main(String[] args) {
-        try {
-            if (ratioZoom(new File("e:/source.png"), new File("e:/thumbnail.png"), 300d)) {
-                System.out.println("Success");
-            } else {
-                System.out.println("Error");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.print(e.toString());
-        }
-    }
-
 }
