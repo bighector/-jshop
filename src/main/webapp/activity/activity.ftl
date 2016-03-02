@@ -1,4 +1,4 @@
-<#import "/resource/common_html_front.ftl" as html>
+<#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
 <#import "/activity/activity_common_productList.ftl" as activity>
 <@html.htmlBase>

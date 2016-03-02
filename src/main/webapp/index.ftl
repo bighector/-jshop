@@ -1,9 +1,7 @@
-<#import "/resource/common_html_front.ftl" as html/>
+<#import "/template/common_html_front.ftl" as html/>
 <#import "/indexMenu.ftl" as menu/>
 <#import "/index_productList.ftl" as indexProduct/>
 <@html.htmlBase>
-<meta property="qc:admins" content="50702666757625530706654" />
-<meta property="wb:webmaster" content="28e244326adb6a77" />
 <style type="text/css">
 .alert123{
 /* 	padding: 10px; */
@@ -59,9 +57,9 @@ function defaultProductImg(){
 							</div>
 					</div>
 				</div>
-				<@indexProduct.indexProduct queryType="hot" productList=systemManager().hotProducts title="热门商品" />
-				<@indexProduct.indexProduct queryType="sale" productList=systemManager().saleProducts title="特价商品" />
-				<@indexProduct.indexProduct queryType="newest" productList=systemManager().newProducts title="最新商品" />
+				<@indexProduct.indexProduct queryType="hot" productList=hotProducts title="热门商品" />
+				<@indexProduct.indexProduct queryType="sale" productList=saleProducts title="特价商品" />
+				<@indexProduct.indexProduct queryType="newest" productList=newProducts title="最新商品" />
 			</div>
 			
 		</div>

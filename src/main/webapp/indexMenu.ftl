@@ -35,7 +35,7 @@ body{
 	<div class="container" style="min-height: 10px;margin-top:5px;margin-bottom:5px;border: 0px solid red;">
 		<div class="row">
 			<div class="col-xs-3">
-				<a href="${systemSetting().www}"><img style="max-height: 50px;" alt="myshop-logo" src="${systemSetting().log}"/></a>
+				<a href="${systemSetting().www}"><img style="max-height: 50px;" alt="myshop-logo" src="${systemSetting().logo}"/></a>
 			</div>
 			<div class="col-xs-6" style="border: 0px solid blue;padding-left:5px;">
 				<!-- search查询输入框 -->
@@ -52,8 +52,8 @@ body{
 								</button>
 								<a class="btn btn-success btn-sm" href="${basepath}/cart/cart.html">
 									<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;购物车
-									<#if shoppingCart()?? && shoppingCart().productList?? && shoppingCart().productList?size gt 0>
-                                        <span class="badge badge-success">${shoppingCart().productList?size}</span>
+									<#if shoppingCart?? && shoppingCart.productList?? && shoppingCart.productList?size gt 0>
+                                        <span class="badge badge-success">${shoppingCart.productList?size}</span>
 									</#if>
 								</a>
 							</span>
@@ -61,7 +61,7 @@ body{
 					</div>
 				</form>
 				<div style="text-align: left;margin-top: 5px;">热门搜索：
-					<#list systemManager().hotqueryList as item>
+					<#list hotQueryList as item>
                         <a class="hotSearch" href="${item.url}" target="_blank">
 							${item.key1!""}
                         </a>
@@ -70,13 +70,13 @@ body{
 			</div>
 			<div class="col-xs-3" style="height: 100%;">
 		    	<div class="row" style="height: 100%;">
-					<#if currentAccount()??>
+					<#if currentMember()??>
                         <span id="myshopMenuPPP" style="display: inline-block;z-index: 9999;position: relative;;">
 		          			<!-- 会员中心的菜单 -->
 		          			<span style="margin-top: 0px;">
 							  <a data-toggle="dropdown" style="display: block;margin-top: 0px;">
                                   <span class="glyphicon glyphicon-user"></span>&nbsp;用户中心
-                                  (${currentAccount().nickname})
+                                  (${currentMember().nickname})
                                   <span class="caret" style="display: inline-block;"></span>
                               </a>
 							  <ul class="dropdown-menu" id="myshopMenu" role="menu" style="display: none;margin-top: 0px;">
@@ -92,8 +92,8 @@ body{
 							</span>
 		          		</span>
 		          		<span style="display: none;">
-							${currentAccount().nickname!""}
-		          			(${currentAccount().loginType!""})
+							${currentMember().nickname!""}
+		          			(${currentMember().loginType!""})
 		          		</span>
 					<#else >
                         <span class="col-xs-12" id="loginOrRegSpan" style="font-size: 14px;">
@@ -124,28 +124,13 @@ body{
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
 	          <ul class="nav navbar-nav" >
-	          		<#--<%-->
-	          			<#--//out.println("request.getServletPath()="+request.getServletPath());-->
-	          				          		<#--if(request.getServletPath().endsWith("/index.jsp")){-->
-	          				          			<#--request.getSession().setAttribute(FrontContainer.selectMenu,"0");-->
-	          				          		<#--}else if(request.getServletPath().endsWith("/specialProductList.jsp")){-->
-	          				          			<#--request.getSession().setAttribute(FrontContainer.selectMenu,"special");-->
-	          				          		<#--}-->
-	          				          		<#--if(request.getSession().getAttribute(FrontContainer.selectMenu)==null){-->
-	          			          				<#--request.getSession().setAttribute(FrontContainer.selectMenu,"0");-->
-	          				          		<#--}-->
-	          				          		<#---->
-	          				          		<#--List<Catalog> catalogs = SystemManager.catalogs;-->
-	          			          			<#--application.setAttribute("catalogs", catalogs);-->
-	          		<#--%>-->
-	          		<!-- 首页 -->
 						<#if selectMenu=="0">
                             <li class="active"><a href="${systemSetting().www}"><b>首页</b></a></li>
 						<#else>
                             <li><a href="${systemSetting().www}"><b>首页</b></a></li>
 						</#if>
 					<!-- 类别作为菜单显示 -->
-						<#list systemManager().catalogs as item>
+						<#list categoryList as item>
 						    <#if item.showInNav == "y">
 								<li class="${(item.code == selectMenu)?string("active","")}"><a href="${basepath}/catalog/${item.code}.html"><b>${item.name}</b></a></li>
 							</#if>

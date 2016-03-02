@@ -5,76 +5,52 @@ import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Member extends BaseModel implements Serializable {
-    /** 登录名 */
     private String username;
 
-    /** 昵称 */
     private String nickname;
 
-    /** 密码 */
     private String password;
 
-    /** 省份 */
     private String province;
 
-    /** 城市 */
     private String city;
 
-    /** 联系地址 */
     private String address;
 
-    /** 邮政编码 */
     private String postCode;
 
-    /** 证件类型 */
     private String cardType;
 
-    /** 证件号 */
     private String cardNo;
 
-    /** 手机号 */
     private String mobile;
 
-    /** 电子邮箱 */
     private String email;
 
-    /** 邮箱是否已经激活,y-是，n-否 */
     private String isEmailActive;
 
-    /** 是否冻结,y-是,n-否 */
     private String freeze;
 
-    /** 最后登录时间 */
     private Date lastLoginTime;
 
-    /** 最后登录IP */
     private String lastLoginIp;
 
-    /** 最后登录区域 */
     private String lastLoginArea;
 
-    /** 是否异地登录,y-是,n-否 */
     private String diffAreaLogin;
 
-    /** 注册时间 */
     private Date registTime;
 
-    /** 冻结开始时间 */
     private Date freezeStartTime;
 
-    /** 冻结结束时间 */
     private Date freezeEndTime;
 
-    /** 性别，1-男2-女0-未知 */
     private String gender;
 
-    /** 真实姓名 */
     private String realName;
 
-    /** 出生日期 */
     private Date birthday;
 
-    /** 用户等级 */
     private Long memberRank;
 
     private static final long serialVersionUID = 1L;

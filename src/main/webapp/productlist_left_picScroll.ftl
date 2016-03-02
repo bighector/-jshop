@@ -29,9 +29,7 @@
 			</div>
 			<div class="bd">
 				<ul class="picList">
-					<#assign _code>${catalogCode!""}</#assign>
-						<#if systemManager().getProductsByCatalogCode(_code)??>
-						<#list systemManager().getProductsByCatalogCode(_code) as item>
+						<#list hotProductList as item>
 							<li class="row col-xs-12">
 								<div class="pic"><a href="${basepath}/product/${item.id}" target="_blank">
 									<img border="0" style="margin: auto;" src="${systemSetting().imageRootPath}/${item.picture!""}" /></a>
@@ -51,7 +49,6 @@
 								</div>
 							</li>
 						</#list>
-						</#if>
 				</ul>
 			</div>
 		</div>

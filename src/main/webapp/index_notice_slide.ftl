@@ -36,9 +36,9 @@
 	</div>
 	<div class="bd">
 		<ul>
-			<#list systemManager().noticeList as item>
+			<#list noticeList as item>
 				<li><a href="${basepath}/news/${item.id}" target="_blank" title="${item.title!""}">
-					<#if item_index==0>[新]</#if>${item.title!""}</a>
+					${item.title!""}</a>
 				</li>
 			</#list>
 		</ul>

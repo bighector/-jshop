@@ -1,5 +1,6 @@
 package net.jeeshop.web.util;
 
+import net.jeeshop.biz.member.model.Member;
 import net.jeeshop.biz.member.model.MemberRank;
 import net.jeeshop.biz.system.bean.MenuItem;
 import net.jeeshop.biz.system.model.SysUser;
@@ -14,6 +15,7 @@ import java.util.Collection;
  * Created by dylan on 15-2-11.
  */
 public class LoginUserHolder {
+
     public static SysUser getLoginUser(){
         HttpSession session = RequestHolder.getSession();
         return session == null ? null : (SysUser)session.getAttribute(ManageContainer.manage_session_user_info);
@@ -47,6 +49,11 @@ public class LoginUserHolder {
             session.setAttribute(ManageContainer.user_resource_menus_button, null);
             session.invalidate();
         }
+    }
+
+    public static Member getLoginMember() {
+        //FIXME
+        return null;
     }
 
 //    public static MemberRank getLoginAccount(){

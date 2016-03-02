@@ -1,6 +1,6 @@
 
 <#macro html currentMenu>
-    <#import "/resource/common_html_front.ftl" as html>
+    <#import "/template/common_html_front.ftl" as html>
     <#import "/indexMenu.ftl" as menu>
     <#import "/account/accountMenu.ftl" as accountMenu>
 <@html.htmlBase>

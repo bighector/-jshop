@@ -22,11 +22,12 @@
 	
 		<div class="container">
 			<div class="row IndexBottom">
-				<#list systemManager().newsCatalogs as item>
+				<#if helpList?? && helpList?size gt 0>
+				<#list helpList as item>
 					<div class="col-xs-2" style="text-align: center;">
 						<div class="row" style="margin-bottom: 10px;"><strong>${item.name!""}</strong></div>
-						<#if item.news??>
-						    <#list item.news as item>
+						<#if item.helps?? && item.helps?size gt 0>
+						    <#list item.helps as item>
                                 <div class="row" style="line-height: 20px;">
                                     <a href="${basepath}/help/${item.code}.html" target="_blank">
                                     ${item.title!""}
@@ -36,14 +37,15 @@
 						</#if>
 					</div>
 				</#list>
+				</#if>
 			</div>
 			<hr style="margin: 0px;">
 			<!-- 友情链接 -->
 			<div class="row" >
 				<div class="col-xs-12" style="text-align: center;">
 					<div style="text-align: center;margin: auto;">
-						<#if systemManager().navigations??>
-						    <#list systemManager().navigations as item>
+						<#if friendLinks?? && friendLinks?size gt 0>
+						    <#list friendLinks as item>
                                 <div style="float: left;margin: 5px;">
                                     <a href="http://${item.http!""}" target="_blank">${item.name!""}</a>
                                 </div>
@@ -71,8 +73,7 @@
 		</div>
 	</div>
 
-<#--<%@ include file="/resource/common_js.jsp"%>-->
-<#include "/fixed.ftl"/>
+<#include "/template/fixed.ftl"/>
 <script>
 $(function() {
 	$("#myshopMenuPPP").hover(
@@ -95,14 +96,3 @@ $(function() {
 	});
 });
 </script>
-
-
-	<!-- baidu fenxiang -->
-<!-- 
-<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;pos=right&amp;uid=732516" ></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript">
-document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
-</script>
- -->
-<!-- Baidu Button END -->
