@@ -10,6 +10,8 @@ public class MemberExample {
 
     protected boolean distinct;
 
+    protected String userName;
+    
     protected List<Criteria> oredCriteria;
 
     public MemberExample() {
@@ -2183,4 +2185,14 @@ public class MemberExample {
             this(condition, value, secondValue, null);
         }
     }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+    
+    
 }
