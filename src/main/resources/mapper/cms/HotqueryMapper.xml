@@ -5,10 +5,10 @@
     <id column="id" property="id" />
     <result column="keywork" property="keywork" />
     <result column="url" property="url" />
-    <result column="create_time" property="createTime" />
-    <result column="update_time" property="updateTime" />
     <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, keywork, url, create_time, update_time, create_account, update_account
+    id, keywork, url, create_account, create_time, update_account, update_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.HotQueryExample" >
     select
@@ -96,10 +96,10 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
-    insert into cms_hot_query (id, keywork, url, create_time, update_time, create_account, 
-      update_account)
-    values (#{id}, #{keywork}, #{url}, #{createTime}, #{updateTime}, #{createAccount}, 
-      #{updateAccount})
+    insert into cms_hot_query (id, keywork, url, create_account, create_time, update_account, 
+      update_time)
+    values (#{id}, #{keywork}, #{url}, #{createAccount}, #{createTime}, #{updateAccount}, 
+      #{updateTime})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
     insert into cms_hot_query
@@ -113,17 +113,17 @@
       <if test="url != null" >
         url,
       </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
       <if test="createAccount != null" >
         create_account,
       </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
       <if test="updateAccount != null" >
         update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -136,17 +136,17 @@
       <if test="url != null" >
         #{url},
       </if>
-      <if test="createTime != null" >
-        #{createTime},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime},
-      </if>
       <if test="createAccount != null" >
         #{createAccount},
       </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
       <if test="updateAccount != null" >
         #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
       </if>
     </trim>
   </insert>
@@ -165,17 +165,17 @@
       <if test="url != null" >
         url = #{url},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime},
-      </if>
       <if test="createAccount != null" >
         create_account = #{createAccount},
       </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
       <if test="updateAccount != null" >
         update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
       </if>
     </set>
     where id = #{id}
@@ -184,10 +184,10 @@
     update cms_hot_query
     set keywork = #{keywork},
       url = #{url},
-      create_time = #{createTime},
-      update_time = #{updateTime},
       create_account = #{createAccount},
-      update_account = #{updateAccount}
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime}
     where id = #{id}
   </update>
 </mapper>

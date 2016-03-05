@@ -6,7 +6,11 @@
     <result column="link_name" property="linkName" />
     <result column="link_url" property="linkUrl" />
     <result column="link_logo" property="linkLogo" />
-    <result column="oridnal" property="oridnal" />
+    <result column="ordinal" property="ordinal" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, link_name, link_url, link_logo, oridnal
+    id, link_name, link_url, link_logo, ordinal, create_account, create_time, update_account, 
+    update_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.FriendLinkExample" >
     select
@@ -94,8 +99,10 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
-    insert into cms_friend_link (id, link_name, link_url, link_logo, oridnal)
-    values (#{id}, #{linkName}, #{linkUrl}, #{linkLogo}, #{oridnal})
+    insert into cms_friend_link (id, link_name, link_url, link_logo, ordinal, create_account, 
+      create_time, update_account, update_time)
+    values (#{id}, #{linkName}, #{linkUrl}, #{linkLogo}, #{ordinal}, #{createAccount}, 
+      #{createTime}, #{updateAccount}, #{updateTime})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
     insert into cms_friend_link
@@ -112,8 +119,20 @@
       <if test="linkLogo != null" >
         link_logo,
       </if>
-      <if test="oridnal != null" >
-        oridnal,
+      <if test="ordinal != null" >
+        ordinal,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -129,8 +148,20 @@
       <if test="linkLogo != null" >
         #{linkLogo},
       </if>
-      <if test="oridnal != null" >
-        #{oridnal},
+      <if test="ordinal != null" >
+        #{ordinal},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
       </if>
     </trim>
   </insert>
@@ -152,8 +183,20 @@
       <if test="linkLogo != null" >
         link_logo = #{linkLogo},
       </if>
-      <if test="oridnal != null" >
-        oridnal = #{oridnal},
+      <if test="ordinal != null" >
+        ordinal = #{ordinal},
+      </if>
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
       </if>
     </set>
     where id = #{id}
@@ -163,7 +206,11 @@
     set link_name = #{linkName},
       link_url = #{linkUrl},
       link_logo = #{linkLogo},
-      oridnal = #{oridnal}
+      ordinal = #{ordinal},
+      create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime}
     where id = #{id}
   </update>
 </mapper>

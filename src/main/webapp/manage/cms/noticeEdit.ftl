@@ -2,7 +2,7 @@
 <@page.pageBase currentMenu="公告管理">
 
 
-	<form action="${basepath}/manage/notice"  theme="simple" name="form" id="form" method="post">
+	<form action="${basepath}/manage/cms/notice/"  theme="simple" name="form" id="form" method="post">
 		
 		<table class="table table-bordered">
 			<tr>

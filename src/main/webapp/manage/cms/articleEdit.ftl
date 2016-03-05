@@ -27,7 +27,7 @@
 		}
 	}
 </script>
-	<form action="${basepath}/manage/article" theme="simple" id="form" name="form">
+	<form action="${basepath}/manage/cms/article" theme="simple" id="form" name="form">
 		<input type="hidden" id="catalogID" value="${e.catalogId!""}" style="display: none;"/>
 		<input id="catalogID_currentID" value="${e.id!""}" style="display: none;"/>
 		<input type="hidden" value="${e.type!""}" name="type" id="type"/>

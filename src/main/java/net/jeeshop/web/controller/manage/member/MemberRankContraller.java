@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
 * @author ysqin
@@ -65,16 +66,16 @@ public class MemberRankContraller extends ManageBaseController<MemberRank, Membe
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "deleteByID", method = RequestMethod.GET)
-	public String deleteByID(Long id) throws Exception {
-		if (id == null) {
-			throw new NullPointerException("参数不正确！");
-		}
-
-		int isSuccess = accountRankService.deleteById(id);
-		logger.info("delete resule : {}", isSuccess);
-		return page_toList;
-	}
+	@Override
+    @RequestMapping(value = "/deleteByID", method = RequestMethod.GET)
+    public String deleteByID(Long id, RedirectAttributes flushAttrs) {
+        if (id == null) {
+            throw new NullPointerException("参数不正确！");
+        }
+        int isSuccess = accountRankService.deleteById(id);
+        logger.info("delete resule : {}", isSuccess);
+        return page_toList;
+    }
 
 	@RequestMapping("toAdd")
 	public String toAdd(MemberRank e, ModelMap model) {

@@ -33,9 +33,9 @@
         </javaClientGenerator>
 
         <!-- 文章分类 -->
-        <table tableName="cms_article_catalog" domainObjectName="ArticleCatalog">
+        <table tableName="cms_article_catagory" domainObjectName="ArticleCatagory">
             <columnOverride column="id" javaType="java.lang.Long"/>
-            <columnOverride column="pid" javaType="java.lang.Long"/>
+            <columnOverride column="parent_Id" javaType="java.lang.Long"/>
         </table>
         <!-- 公告管理 -->
         <table tableName="cms_notice" domainObjectName="Notice">
@@ -49,16 +49,14 @@
         <table tableName="cms_advert" domainObjectName="Advert">
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
-
         <!-- 友情链接 -->
         <table tableName="cms_friend_link" domainObjectName="FriendLink">
             <columnOverride column="id" javaType="java.lang.Long"/>
-            <columnOverride column="pid" javaType="java.lang.Long"/>
         </table>
+        <!-- 文章管理 -->
         <table tableName="cms_article" domainObjectName="Article">
             <columnOverride column="id" javaType="java.lang.Long"/>
-            <columnOverride column="catalog_id" javaType="java.lang.Long"/>
+            <columnOverride column="category_id" javaType="java.lang.Long"/>
         </table>
     </context>
-
 </generatorConfiguration>

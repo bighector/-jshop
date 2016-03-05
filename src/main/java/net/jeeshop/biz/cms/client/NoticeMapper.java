@@ -14,15 +14,11 @@ public interface NoticeMapper extends BaseMapper<Notice, NoticeExample> {
 
     int insertSelective(Notice record);
 
-    List<Notice> selectByExampleWithBLOBs(NoticeExample example);
-
     List<Notice> selectByExample(NoticeExample example);
 
     Notice selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Notice record);
-
-    int updateByPrimaryKeyWithBLOBs(Notice record);
 
     int updateByPrimaryKey(Notice record);
 }

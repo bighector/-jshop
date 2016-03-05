@@ -1,7 +1,5 @@
 package net.jeeshop.web.controller.manage.cms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -33,7 +31,7 @@ import net.jeeshop.web.util.LoginUserHolder;
  */
 
 @Controller
-@RequestMapping("/manage/notice/")
+@RequestMapping("/manage/cms/notice")
 public class NoticeController extends ManageBaseController<Notice, NoticeExample> {
 	
 	private static final Logger logger = LoggerFactory .getLogger(NoticeController.class);
@@ -66,8 +64,8 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 		if (StringUtils.isNotBlank(notice.getTitle())) {
 			criteria.andTitleLike("%"+notice.getTitle()+"%");
 		}
-		if (StringUtils.isNotBlank(notice.getStatus())) {
-			criteria.andStatusEqualTo(notice.getStatus());
+		if (StringUtils.isNotBlank(notice.getIsValid())) {
+			criteria.andIsValidEqualTo(notice.getIsValid());
 		}
 		noticeExample.setOrderByClause("id desc");
 		PageBean<Notice> pager = noticeService.selectPageList(noticeExample, queryBean);
@@ -117,7 +115,7 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 			notice.setCreateTime(nowTime);
 			notice.setUpdateAccount(loginUserName);
 			notice.setUpdateTime(nowTime);
-			notice.setStatus(Notice.status_n);
+			notice.setIsValid(Notice.status_n);
 			super.insert(notice, flushAttrs);
 
 		} else {

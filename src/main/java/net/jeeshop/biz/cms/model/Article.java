@@ -4,31 +4,36 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Article extends BaseModel implements Serializable {
+    /** 分类ID */
+    private Long categoryId;
+
     /** 标题 */
     private String title;
 
-    /** 副标题 */
-    private String secondTitle;
+    /** 子标题 */
+    private String subTitle;
 
-    /** 标题简称 */
+    /** 代码 */
     private String code;
 
-    /** 阅读次数 */
-    private Integer readerCount;
+    /** 阅读数 */
+    private Long readCount;
 
-    /** 文章是否显示到门户。y:显示；n：不显示；默认是n */
+    /** 文章状态 */
     private String status;
 
-    /** 文章目录ID,一个目录下面有多个文章，跟字典似的 */
-    private Long catalogId;
-
-    /** 排序 */
+    /** 顺序 */
     private Integer ordinal;
 
-    /** 内容 */
-    private String content;
-
     private static final long serialVersionUID = 1L;
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
 
     public String getTitle() {
         return title;
@@ -38,12 +43,12 @@ public class Article extends BaseModel implements Serializable {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getSecondTitle() {
-        return secondTitle;
+    public String getSubTitle() {
+        return subTitle;
     }
 
-    public void setSecondTitle(String secondTitle) {
-        this.secondTitle = secondTitle == null ? null : secondTitle.trim();
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle == null ? null : subTitle.trim();
     }
 
     public String getCode() {
@@ -54,12 +59,12 @@ public class Article extends BaseModel implements Serializable {
         this.code = code == null ? null : code.trim();
     }
 
-    public Integer getReaderCount() {
-        return readerCount;
+    public Long getReadCount() {
+        return readCount;
     }
 
-    public void setReaderCount(Integer readerCount) {
-        this.readerCount = readerCount;
+    public void setReadCount(Long readCount) {
+        this.readCount = readCount;
     }
 
     public String getStatus() {
@@ -70,27 +75,11 @@ public class Article extends BaseModel implements Serializable {
         this.status = status == null ? null : status.trim();
     }
 
-    public Long getCatalogId() {
-        return catalogId;
-    }
-
-    public void setCatalogId(Long catalogId) {
-        this.catalogId = catalogId;
-    }
-
     public Integer getOrdinal() {
         return ordinal;
     }
 
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
     }
 }

@@ -23,11 +23,8 @@ public class Advert extends BaseModel implements Serializable {
     /** 结束时间 */
     private Date endDate;
 
-    /** 广告状态 */
-    private String status;
-
-    /** 是否使用随机图片 */
-    private String useImagesRandom;
+    /** 是否有效，1-是0-否 */
+    private String isValid;
 
     private static final long serialVersionUID = 1L;
 
@@ -79,19 +76,11 @@ public class Advert extends BaseModel implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getStatus() {
-        return status;
+    public String getIsValid() {
+        return isValid;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
-    }
-
-    public String getUseImagesRandom() {
-        return useImagesRandom;
-    }
-
-    public void setUseImagesRandom(String useImagesRandom) {
-        this.useImagesRandom = useImagesRandom == null ? null : useImagesRandom.trim();
+    public void setIsValid(String isValid) {
+        this.isValid = isValid == null ? null : isValid.trim();
     }
 }

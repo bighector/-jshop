@@ -52,12 +52,12 @@ public class NoticeService extends BaseService<Notice, NoticeExample> {
 	      }
 	     List<Notice> updateNoticeList=new ArrayList<Notice>(noticeList.size());
 	      for(Notice notice:noticeList){
-	    	   if(statusY.equals(notice.getStatus())){
+	    	   if(statusY.equals(notice.getIsValid())){
 	    		   continue;
 	    	   }
 	    	   notice.setUpdateAccount(sysUser.getUsername());
 	    	   notice.setUpdateTime(nowDate);
-	    	   notice.setStatus(statusY);
+	    	   notice.setIsValid(statusY);
 	    	   updateNoticeList.add(notice);
 	    	   
 	      }

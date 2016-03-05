@@ -6,7 +6,7 @@ package net.jeeshop.biz.base.bean;
  */
 public class PageQueryBean {
     public static final int UNLIMIT_LENGTH = -1;
-    public static final int DEFAULT_LENGTH = 20;
+    public static final int DEFAULT_LENGTH = 10;
     private int start = 0;
     private int length = DEFAULT_LENGTH;
 

@@ -1,7 +1,7 @@
 <#import "/manage/tpl/pageBase.ftl" as page>
 <@page.pageBase currentMenu="公告管理">
 
-<form action="${basepath}/manage/notice" method="post">
+<form action="${basepath}/manage/cms/notice/" method="post">
 	<table class="table table-bordered">
 		<tr>
 			<td style="text-align: right;">状态</td>
@@ -29,7 +29,7 @@
 						<i class="icon-search icon-white"></i> 查询
 					</button>
                       
-                     <a href="${basepath}/manage/notice/toAdd" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> 添加</a>
+                     <a href="${basepath}/manage/cms/notice/toAdd" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> 添加</a>
                      
                     <button method="deletes" class="btn btn-danger" onclick="return submitIDs(this,'确定删除选择的记录?');">
 						<i class="icon-remove-sign icon-white"></i> 删除
@@ -82,9 +82,9 @@
                 {name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
                       
                      var returnOpt="";
-                     returnOpt+='<a href="${basepath}/manage/notice/toEdit?id=' + data + '">编辑</a>';
+                     returnOpt+='<a href="${basepath}/manage/cms/notice/toEdit?id=' + data + '">编辑</a>';
                      
-                    <#-- returnOpt+='<a href="${basepath}/manage/notice/toEdit?id=' + data + '">编辑</a>';-->
+                    <#-- returnOpt+='<a href="${basepath}/manage/cms/notice/toEdit?id=' + data + '">编辑</a>';-->
                     return returnOpt;
            
                 }}

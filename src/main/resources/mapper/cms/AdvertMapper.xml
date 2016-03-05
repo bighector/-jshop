@@ -9,8 +9,11 @@
     <result column="html" property="html" />
     <result column="start_date" property="startDate" />
     <result column="end_date" property="endDate" />
-    <result column="status" property="status" />
-    <result column="use_images_random" property="useImagesRandom" />
+    <result column="is_valid" property="isValid" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, code, remark, html, start_date, end_date, status, use_images_random
+    id, title, code, remark, html, start_date, end_date, is_valid, create_account, create_time, 
+    update_account, update_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.AdvertExample" >
     select
@@ -98,10 +102,10 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Advert" >
-    insert into cms_advert (id, title, code, remark, html, start_date, end_date, status, 
-      use_images_random)
-    values (#{id}, #{title}, #{code}, #{remark}, #{html}, #{startDate}, #{endDate}, #{status}, 
-      #{useImagesRandom})
+    insert into cms_advert (id, title, code, remark, html, start_date, end_date, is_valid, 
+      create_account, create_time, update_account, update_time)
+    values (#{id}, #{title}, #{code}, #{remark}, #{html}, #{startDate}, #{endDate}, #{isValid}, 
+      #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Advert" >
     insert into cms_advert
@@ -127,11 +131,20 @@
       <if test="endDate != null" >
         end_date,
       </if>
-      <if test="status != null" >
-        status,
+      <if test="isValid != null" >
+        is_valid,
       </if>
-      <if test="useImagesRandom != null" >
-        use_images_random,
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -156,11 +169,20 @@
       <if test="endDate != null" >
         #{endDate},
       </if>
-      <if test="status != null" >
-        #{status},
+      <if test="isValid != null" >
+        #{isValid},
       </if>
-      <if test="useImagesRandom != null" >
-        #{useImagesRandom},
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
       </if>
     </trim>
   </insert>
@@ -191,11 +213,20 @@
       <if test="endDate != null" >
         end_date = #{endDate},
       </if>
-      <if test="status != null" >
-        status = #{status},
+      <if test="isValid != null" >
+        is_valid = #{isValid},
       </if>
-      <if test="useImagesRandom != null" >
-        use_images_random = #{useImagesRandom},
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
       </if>
     </set>
     where id = #{id}
@@ -208,8 +239,11 @@
       html = #{html},
       start_date = #{startDate},
       end_date = #{endDate},
-      status = #{status},
-      use_images_random = #{useImagesRandom}
+      is_valid = #{isValid},
+      create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime}
     where id = #{id}
   </update>
 </mapper>

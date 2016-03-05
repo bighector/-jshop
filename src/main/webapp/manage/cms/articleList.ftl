@@ -63,7 +63,7 @@
 	}
 </script>-->
 
-<form action="${basepath}/manage/article" name="form" id="form" method="post">
+<form action="${basepath}/manage/cms/article/" name="form" id="form" method="post">
     <table class="table table-bordered">
         <tr>
             <td >标题</td>
@@ -140,9 +140,9 @@
                 {name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
 
                     var returnOpt="";
-                    returnOpt+='<a href="${basepath}/manage/article/toEdit?id=' + data + '">编辑</a>';
+                    returnOpt+='<a href="${basepath}/manage/cms/article/toEdit?id=' + data + '">编辑</a>';
 
-				<#-- returnOpt+='<a href="${basepath}/manage/notice/toEdit?id=' + data + '">编辑</a>';-->
+				<#-- returnOpt+='<a href="${basepath}/manage/cms/notice/toEdit?id=' + data + '">编辑</a>';-->
                     return returnOpt;
 
                 }}

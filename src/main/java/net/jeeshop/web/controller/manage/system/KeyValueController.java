@@ -17,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
 * @author ysqin
@@ -47,8 +48,7 @@ public class KeyValueController extends ManageBaseController<KeyValue, KeyValueE
     }
     
 
-	@SuppressWarnings("unchecked")
-	@RequestMapping("loadData")
+	@RequestMapping("/loadData")
     @ResponseBody
     public PageBean<KeyValue> loadData(KeyValue keyValue, PageQueryBean pageQueryBean) {
         KeyValueExample keyValueExample = new KeyValueExample();
@@ -72,12 +72,12 @@ public class KeyValueController extends ManageBaseController<KeyValue, KeyValueE
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "deleteByID", method = RequestMethod.GET)
-    public String deleteByID(Long id) throws Exception {
+	@Override
+    @RequestMapping(value = "/deleteByID", method = RequestMethod.GET)
+    public String deleteByID(Long id, RedirectAttributes flushAttrs) {
         if (id == null) {
             throw new NullPointerException("参数不正确！");
         }
-
         int isSuccess = keyValueService.deleteById(id);
         logger.info("delete resule : {}", isSuccess);
         return page_toList;

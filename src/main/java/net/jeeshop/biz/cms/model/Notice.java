@@ -7,17 +7,17 @@ public class Notice extends BaseModel implements Serializable {
     /** 标题 */
     private String title;
 
-    /** 阅读数 */
-    private Integer readerCount;
+    /** 内容 */
+    private String content;
 
-    /** 状态 */
-    private String status;
+    /** 阅读数 */
+    private Long readCount;
+
+    /** 是否有效，1-是0-否 */
+    private String isValid;
 
     /** 顺序 */
     private Integer ordinal;
-
-    /** 内容 */
-    private String content;
 
     private static final long serialVersionUID = 1L;
 
@@ -29,20 +29,28 @@ public class Notice extends BaseModel implements Serializable {
         this.title = title == null ? null : title.trim();
     }
 
-    public Integer getReaderCount() {
-        return readerCount;
+    public String getContent() {
+        return content;
     }
 
-    public void setReaderCount(Integer readerCount) {
-        this.readerCount = readerCount;
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
-    public String getStatus() {
-        return status;
+    public Long getReadCount() {
+        return readCount;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setReadCount(Long readCount) {
+        this.readCount = readCount;
+    }
+
+    public String getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(String isValid) {
+        this.isValid = isValid == null ? null : isValid.trim();
     }
 
     public Integer getOrdinal() {
@@ -51,13 +59,5 @@ public class Notice extends BaseModel implements Serializable {
 
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
     }
 }

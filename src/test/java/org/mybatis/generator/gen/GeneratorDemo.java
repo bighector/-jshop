@@ -30,12 +30,18 @@ public class GeneratorDemo {
     @Test
     public void genMember() throws Exception {
         generateFiles("gen/generateConfig-member.xml");
-    }*/
+    }
 	
 	@Test
 	public void genProductSpec() throws Exception
 	{
 		 generateFiles("gen/generateConfig-productspec.xml");
+	}*/
+	
+	@Test
+	public void genCmsCode() throws Exception
+	{
+		 generateFiles("gen/generateConfig-cms.xml");
 	}
     
     private void generateFiles(String configResource) throws Exception

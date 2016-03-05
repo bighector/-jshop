@@ -3,7 +3,7 @@
 <script>
 	$(function(){
 		var table = $('#dataTables-example').DataTable({
-			"ajax":{
+			ajax:{
 				url:"loadData",
 				dataSrc:"list"
 			},
@@ -11,28 +11,29 @@
 				{name:"id",orderable:false,title:'',data:"id",render:function(data,type,row){
 					return '<input type="checkbox" name="ids" value="'+data+'"/>';
 				}},
-				{name:"keywork",title:"关键字",data:"keywork",width:"50"},
-				{name:"url",title:"链接",data:"url"},
-				{name:"createAccount",title:"创建人",data:"createAccount",width:"50"},
+				{name:"keywork",title:"关键字",data:"keywork"},
+				{name:"url",title:"链接地址",data:"url"},
 				{name:"createTime",title:"创建时间",data:"createTime",render:function(data, type, row){
 					var d ="";
 					if(data != null)
 						d = new Date(data).format("yyyy-MM-dd HH:mm:ss")
 					return d;
 				}},
-				{name:"updateAccount",title:"更新人",data:"updateAccount",width:"50"},
 				{name:"updateTime",title:"更新时间",data:"updateTime",render:function(data, type, row){
 					var d = "";
 					if(data != null)
 						d = new Date(data).format("yyyy-MM-dd HH:mm:ss")
 					return d;
 				}},
-				{name:"oper", title:"操作", data:"id",width:"30",render: function (data, type, row, meta) {
-					<#if checkPrivilege("/manage//user/edit")>
-                        return '<a href="${basepath}/manage/cms/hotQuery/toEdit?id=' + data + '">编辑</a>';
-					<#else>
-                        return "";
+				{name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
+					var h = "";
+                	<#if checkPrivilege("/manage/user/edit")>
+                        h +=  '<a href="${basepath}/manage/cms/hotQuery/toEdit?id=' + data + '">编辑</a> ';
+                    </#if>
+                    <#if checkPrivilege("/manage/user/delete")>
+                       h += '&nbsp; <a href="${basepath}/manage/cms/hotQuery/deleteByID?id=' + data + '">删除</a>';
 					</#if>
+					return h;
                 }}
 			]
 		});
@@ -59,10 +60,7 @@
 				</td>
 			</tr>
 		</table>
-
-		<table class="display stripe cell-border" id="dataTables-example">
-	
+		<table class="display stripe cell-border" id="dataTables-example" style="text-align:center;">
 		</table>
 </form>
-	
 </@page.pageBase>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.cms.client.ArticleCatalogMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.ArticleCatalog" >
+<mapper namespace="net.jeeshop.biz.cms.client.ArticleCatagoryMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.ArticleCatagory" >
     <id column="id" property="id" />
-    <result column="name" property="name" />
-    <result column="pid" property="pid" />
-    <result column="ordinal" property="ordinal" />
-    <result column="type" property="type" />
-    <result column="code" property="code" />
-    <result column="create_time" property="createTime" />
+    <result column="parent_Id" property="parentId" />
+    <result column="category_name" property="categoryName" />
+    <result column="category_type" property="categoryType" />
+    <result column="category_code" property="categoryCode" />
     <result column="create_account" property="createAccount" />
-    <result column="update_time" property="updateTime" />
+    <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="ordinal" property="ordinal" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,15 +72,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, pid, ordinal, type, code, create_time, create_account, update_time, update_account
+    id, parent_Id, category_name, category_type, category_code, create_account, create_time, 
+    update_account, update_time, ordinal
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleCatalogExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleCatagoryExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from cms_article_catalog
+    from cms_article_catagory
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -91,136 +92,136 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from cms_article_catalog
+    from cms_article_catagory
     where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from cms_article_catalog
+    delete from cms_article_catagory
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.ArticleCatalog" >
-    insert into cms_article_catalog (id, name, pid, ordinal, type, code, create_time, create_account, 
-      update_time, update_account)
-    values (#{id}, #{name}, #{pid}, #{ordinal}, #{type}, #{code}, #{createTime}, #{createAccount}, 
-      #{updateTime}, #{updateAccount})
+  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
+    insert into cms_article_catagory (id, parent_Id, category_name, category_type, category_code, create_account, 
+      create_time, update_account, update_time, ordinal)
+    values (#{id}, #{parentId}, #{categoryName}, #{categoryType}, #{categoryCode}, #{createAccount}, 
+      #{createTime}, #{updateAccount}, #{updateTime}, #{ordinal})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.ArticleCatalog" >
-    insert into cms_article_catalog
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
+    insert into cms_article_catagory
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="parentId != null" >
+        parent_Id,
       </if>
-      <if test="pid != null" >
-        pid,
+      <if test="categoryName != null" >
+        category_name,
       </if>
-      <if test="ordinal != null" >
-        ordinal,
+      <if test="categoryType != null" >
+        category_type,
       </if>
-      <if test="type != null" >
-        type,
-      </if>
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="categoryCode != null" >
+        category_code,
       </if>
       <if test="createAccount != null" >
         create_account,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="createTime != null" >
+        create_time,
       </if>
       <if test="updateAccount != null" >
         update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="ordinal != null" >
+        ordinal,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
       </if>
-      <if test="name != null" >
-        #{name},
+      <if test="parentId != null" >
+        #{parentId},
       </if>
-      <if test="pid != null" >
-        #{pid},
+      <if test="categoryName != null" >
+        #{categoryName},
       </if>
-      <if test="ordinal != null" >
-        #{ordinal},
+      <if test="categoryType != null" >
+        #{categoryType},
       </if>
-      <if test="type != null" >
-        #{type},
-      </if>
-      <if test="code != null" >
-        #{code},
-      </if>
-      <if test="createTime != null" >
-        #{createTime},
+      <if test="categoryCode != null" >
+        #{categoryCode},
       </if>
       <if test="createAccount != null" >
         #{createAccount},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime},
+      <if test="createTime != null" >
+        #{createTime},
       </if>
       <if test="updateAccount != null" >
         #{updateAccount},
       </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="ordinal != null" >
+        #{ordinal},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.ArticleCatalogExample" resultType="java.lang.Integer" >
-    select count(*) from cms_article_catalog
+  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.ArticleCatagoryExample" resultType="java.lang.Integer" >
+    select count(*) from cms_article_catagory
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.ArticleCatalog" >
-    update cms_article_catalog
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
+    update cms_article_catagory
     <set >
-      <if test="name != null" >
-        name = #{name},
+      <if test="parentId != null" >
+        parent_Id = #{parentId},
       </if>
-      <if test="pid != null" >
-        pid = #{pid},
+      <if test="categoryName != null" >
+        category_name = #{categoryName},
       </if>
-      <if test="ordinal != null" >
-        ordinal = #{ordinal},
+      <if test="categoryType != null" >
+        category_type = #{categoryType},
       </if>
-      <if test="type != null" >
-        type = #{type},
-      </if>
-      <if test="code != null" >
-        code = #{code},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime},
+      <if test="categoryCode != null" >
+        category_code = #{categoryCode},
       </if>
       <if test="createAccount != null" >
         create_account = #{createAccount},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime},
+      <if test="createTime != null" >
+        create_time = #{createTime},
       </if>
       <if test="updateAccount != null" >
         update_account = #{updateAccount},
       </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="ordinal != null" >
+        ordinal = #{ordinal},
+      </if>
     </set>
     where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.ArticleCatalog" >
-    update cms_article_catalog
-    set name = #{name},
-      pid = #{pid},
-      ordinal = #{ordinal},
-      type = #{type},
-      code = #{code},
-      create_time = #{createTime},
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
+    update cms_article_catagory
+    set parent_Id = #{parentId},
+      category_name = #{categoryName},
+      category_type = #{categoryType},
+      category_code = #{categoryCode},
       create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
       update_time = #{updateTime},
-      update_account = #{updateAccount}
+      ordinal = #{ordinal}
     where id = #{id}
   </update>
 </mapper>

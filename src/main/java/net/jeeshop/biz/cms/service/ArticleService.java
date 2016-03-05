@@ -41,8 +41,8 @@ public class ArticleService extends BaseService<Article, ArticleExample> {
         if (StringUtils.isNotBlank(article.getCode())){
             criteria.andCodeLike("%"+article.getCode()+"%");
         }
-        if (article.getCatalogId() != null && article.getCatalogId() != 0L){
-            criteria.andCatalogIdEqualTo(article.getCatalogId());
+        if (article.getCategoryId() != null && article.getCategoryId() != 0L){
+            criteria.andCategoryIdEqualTo(article.getCategoryId());
         }
         PageBean<Article> pagerModel = super.selectPageList(example, pageQueryBean);
         return pagerModel;
