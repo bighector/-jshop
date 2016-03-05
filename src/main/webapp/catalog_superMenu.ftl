@@ -4,7 +4,7 @@
 	type="text/css">
 
 <div id="sidebar">
-	<#list systemManager().catalogs as item>
+	<#list categoryList as item>
        <div class="sidelist">
 			<span>
 				<h3>
@@ -13,7 +13,7 @@
 			</span>
 			<div class="i-list">
 				<ul>
-					<#if item.children??>
+					<#if item.children?? && item.children?size gt 0>
 						<#list item.children as sItem>
 						<li>
 		          			<a href="${basepath}/catalog/${sItem.code}.html">${sItem.name}</a>

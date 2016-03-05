@@ -14,7 +14,7 @@
  TRADE_SUCCESS(表示交易已经成功结束，可以对该交易做后续操作，如：分润、退款等);
  //********************************
  * */-->
-<#import "/resource/common_html_front.ftl" as html>
+<#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
 <@html.htmlBase title="支付宝页面跳转同步通知页面">
 	<@menu.menu selectMenu=""/>

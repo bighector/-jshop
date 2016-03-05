@@ -1,4 +1,4 @@
-<#import "/resource/common_html_front.ftl" as html>
+<#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
 <#import "/account/accountMenu.ftl" as accountMenu>
 <@html.htmlBase>
@@ -64,7 +64,7 @@
 				  
 				  <div class="form-group">
 				    <div class="col-lg-offset-2 col-lg-8">
-				    	<#if currentAccount().accountType??>
+				    	<#if currentMember().accountType??>
                             <div class="panel panel-default">
                                 <div class="panel-body" style="font-size: 16px;font-weight: normal;text-align: center;">
                                     <span class="glyphicon glyphicon-user"></span>亲，非系统账号登陆，无需修改密码哦！

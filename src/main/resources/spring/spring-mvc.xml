@@ -63,9 +63,9 @@
                 <entry key="checkPrivilege">
                     <bean class="net.jeeshop.core.freemarker.fn.PrivilegeChecker" />
                 </entry>
-                <!--<entry key="i18nParser">-->
-                    <!--<bean class="net.jeeshop.core.freemarker.fn.I18N" />-->
-                <!--</entry>-->
+                <entry key="currentMember">
+                    <bean class="net.jeeshop.core.freemarker.fn.CurrentMemberGetter" />
+                </entry>
                 <!--<entry key="keyValueParser">-->
                     <!--<bean class="net.jeeshop.core.freemarker.fn.KeyValueGetter" />-->
                 <!--</entry>-->

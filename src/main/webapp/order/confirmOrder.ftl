@@ -1,4 +1,4 @@
-<#import "/resource/common_html_front.ftl" as html>
+<#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
 <@html.htmlBase>
 <style type="text/css">
@@ -71,9 +71,9 @@
 								</div>
 							</div>
 						<#else>
-							<#if currentAccount()??>
+							<#if currentMember()??>
 								<div class="bs-callout bs-callout-danger author" style="text-align: left;font-size: 14px;margin: 2px 0px;">
-									暂时还没有收获地址！<a style="text-decoration: underline;" href="${basepath}/user/address.html">点此设置</a>
+									暂时还没有收货地址！<a style="text-decoration: underline;" href="${basepath}/user/address.html">点此设置</a>
 								</div>
 							</#if>
 						</#if>
