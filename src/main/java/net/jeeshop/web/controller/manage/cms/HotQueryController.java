@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * 2016年3月5日 上午10:44:12
  */
 @Controller
-@RequestMapping("/manage/cms/hotQuery")
+@RequestMapping("/manage/cms/hotQuery/")
 public class HotQueryController extends ManageBaseController<HotQuery, HotQueryExample> {
 
     @Autowired
@@ -42,7 +42,7 @@ public class HotQueryController extends ManageBaseController<HotQuery, HotQueryE
         return hotQueryService;
     }
     
-    @RequestMapping("/loadData")
+    @RequestMapping("loadData")
 	@ResponseBody
 	public PageBean<HotQuery> loadData(HotQuery hotQuery,PageQueryBean pageQueryBean) {
     	HotQueryExample hotQueryExample = new HotQueryExample();

@@ -1,29 +1,6 @@
 <#import "/manage/tpl/pageBase.ftl" as page/>
 <@page.pageBase currentMenu="文章分类">
-<script type="text/javascript">
-	$(function() {
-		$("#title").focus();
-	});
-
-	function onSubmit() {
-		//if($("#pid").val()==''){
-			//var t = $('#cc').combotree('tree');	// get the tree object
-			//var n = t.tree('getSelected');		// get selected node
-			//if(!n || !n.id){
-				//alert("请选择父亲类别");
-				//return false;
-			//}
-			//$("#pid").val(n.id);
-		//}
-		
-		if ($.trim($("#name").val()) == "") {
-			alert("名称不能为空!");
-			$("#title").focus();
-			return false;
-		}
-	}
-</script>
-	<form action="${basepath}/manage/articleCatalog" theme="simple" id="form" name="form">
+	<form action="${basepath}/manage/articleCatalog" id="form" name="form">
 		<input id="catalogID" value="${e.pid!""}" style="display: none;"/>
 		<input id="catalogID_currentID" value="${e.id!""}" style="display: none;"/>
 		<input type="hidden" value="${e.type!""}" name="type" id="type"/>
@@ -32,12 +9,12 @@
 			<tr style="background-color: #dff0d8">
 				<td colspan="2" style="background-color: #dff0d8;text-align: center;">
 					<strong>编辑分类</strong>
-						<span class="badge badge-success">文章分类</span>&nbsp;<strong>
+						<span class="badge badge-success">文章分类</span>&nbsp;
 				</td>
 			</tr>
 			<tr style="display: none;">
 				<td>id</td>
-				<td><input type="hidden" value="${e.id!""}" name="id" label="id" /></td>
+				<td><input type="hidden" value="${e.id!""}" name="id" lable="id" /></td>
 			</tr>
 				<tr>
 				<td style="text-align: right;">大类</td>
@@ -57,20 +34,17 @@
 			</tr>
 			<tr>
 				<td style="text-align: right;">名称</td>
-				<td style="text-align: left;"><input type="text"  value="${e.name!""}" name="name"  id="name" data-rule="名称;required;name;" size="20" maxlength="20"
-						/></td>
+				<td style="text-align: left;"><input type="text"  value="${e.name!""}" name="name"  id="name" data-rule="名称;required;name;" size="20" maxlength="20"/></td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">编码</td>
 				<td style="text-align: left;">
 <!-- 							<input type="button" onclick="getCode()" value="自动获取" class="btn btn-default"/> -->
 					<input type="text"  value="${e.code!""}" name="code"  data-rule="编码;required;code;length[1~45];remote[uniqueCode, id]" size="45" maxlength="45" id="code" /></td>
-<#--<%-- 						<td style="text-align: left;"><input type="text"  value="${e.code!""}" name="code"  data-rule="编码;required;code;" size="20" maxlength="20" id="code" /></td> --%>-->
 			</tr>
 			<tr>
 				<td style="text-align: right;">顺序</td>
-				<td style="text-align: left;"><input type="text"  value="${e.ordinal!""}" name="ordinal"  data-rule="顺序;required;integer;ordinal;" size="20" maxlength="20"
-						id="ordinal" /></td>
+				<td style="text-align: left;"><input type="text"  value="${e.ordinal!""}" name="ordinal"  data-rule="顺序;required;integer;ordinal;" size="20" maxlength="20"	id="ordinal" /></td>
 			</tr>
 			
 			<tr>
@@ -91,8 +65,8 @@
 	
 <script type="text/javascript">
 $(function(){
+	$("#title").focus();
 	selectDefaultCatalog();
-	
 	$("#name").blur(function(){
 		getCode();
 	});

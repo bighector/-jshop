@@ -31,7 +31,7 @@ import net.jeeshop.web.util.LoginUserHolder;
  */
 
 @Controller
-@RequestMapping("/manage/cms/notice")
+@RequestMapping("/manage/cms/notice/")
 public class NoticeController extends ManageBaseController<Notice, NoticeExample> {
 	
 	private static final Logger logger = LoggerFactory .getLogger(NoticeController.class);

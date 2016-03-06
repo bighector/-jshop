@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/manage/advert")
+@RequestMapping("/manage/cms/advert/")
 public class AdvertController extends ManageBaseController<Advert, AdvertExample>{
 	  private static final String page_toList = "/manage/cms/advertList";
 	    private static final String page_toAdd = "/manage/cms/advertEdit";

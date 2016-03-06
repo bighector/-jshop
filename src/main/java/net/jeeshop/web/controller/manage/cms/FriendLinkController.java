@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * 2016年3月5日 上午10:44:12
  */
 @Controller
-@RequestMapping("/manage/cms/navigation")
+@RequestMapping("/manage/cms/navigation/")
 public class FriendLinkController extends ManageBaseController<FriendLink, FriendLinkExample> {
 
     @Autowired
@@ -41,7 +41,7 @@ public class FriendLinkController extends ManageBaseController<FriendLink, Frien
         return friendsLinkService;
     }
     
-    @RequestMapping("/loadData")
+    @RequestMapping("loadData")
 	@ResponseBody
 	public PageBean<FriendLink> loadData(FriendLink friendLink,PageQueryBean pageQueryBean) {
     	FriendLinkExample friendLinkExample = new FriendLinkExample();

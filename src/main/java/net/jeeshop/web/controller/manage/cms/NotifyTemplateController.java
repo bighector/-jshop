@@ -30,7 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * 2016年1月11日 下午10:32:53
  */
 @Controller
-@RequestMapping("/manage/cms/notifyTemplate")
+@RequestMapping("/manage/cms/notifyTemplate/")
 public class NotifyTemplateController extends ManageBaseController<NotifyTemplate, NotifyTemplateExample>{
 	@Autowired
 	private NotifyTemplateService notifyTemplateService;
@@ -69,7 +69,7 @@ public class NotifyTemplateController extends ManageBaseController<NotifyTemplat
 		return super.insert(e, flushAttrs);
 	}
 	
-	@RequestMapping(value="/selectTemplateByKey",method=RequestMethod.POST)
+	@RequestMapping(value="selectTemplateByKey",method=RequestMethod.POST)
 	public  void  selectTemplateByKey(@RequestParam("tplKey")String tplKey,NotifyTemplateExample example){
 		example.createCriteria().andTplTypeEqualTo(tplKey);
 		List<NotifyTemplate> list = notifyTemplateService.selectByExample(example);

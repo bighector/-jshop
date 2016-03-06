@@ -26,7 +26,7 @@ import java.util.List;
  * Created by pingge on 2016/1/15.
  */
 @Controller
-@RequestMapping("/manage/article/")
+@RequestMapping("/manage/cms/article/")
 public class ArticleController extends ManageBaseController<Article, ArticleExample>{
 
     @Autowired

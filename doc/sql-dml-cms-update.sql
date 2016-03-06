@@ -1,0 +1,10 @@
+use jshop;
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/article/selectList' WHERE `id`='7';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/indexImg/selectList' WHERE `id`='9';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/advert/selectList' WHERE `id`='40';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/articleCatalog/selectList' WHERE `id`='43';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/navigation/selectList' WHERE `id`='45';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/notice/selectList' WHERE `id`='71';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/notifyTemplate/selectList' WHERE `id`='87';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/email/selectList' WHERE `id`='88';
+UPDATE `jshop`.`sys_menu` SET `url`='/manage/cms/hotQuery/selectList' WHERE `id`='94';

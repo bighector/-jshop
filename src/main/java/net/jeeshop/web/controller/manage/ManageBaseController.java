@@ -55,7 +55,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @return
      * @throws Exception
      */
-    @RequestMapping("/selectList")
+    @RequestMapping("selectList")
     public String selectList(ModelMap modelMap)
     {
         beforeToList(modelMap);
@@ -74,7 +74,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @return
      * @throws Exception
      */
-    @RequestMapping("/toEdit")
+    @RequestMapping("toEdit")
     public String toEdit(@ModelAttribute("id") Long id, ModelMap modelMap) 
     {
         Model e = getService().selectById(id);
@@ -97,7 +97,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @return
      * @throws Exception
      */
-    @RequestMapping("/toAdd")
+    @RequestMapping("toAdd")
     public String toAdd(@ModelAttribute("e") Model e, ModelMap modelMap) {
         beforeToAdd(e, modelMap);
         return page_toAdd;
@@ -113,7 +113,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/deletes", method = RequestMethod.POST)
+    @RequestMapping(value = "deletes", method = RequestMethod.POST)
     public String deletes(Long[] ids, RedirectAttributes flushAttrs)
     {
         getService().deletes(ids);
@@ -125,7 +125,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
      * @param ids
      * @param flushAttrs
      */
-    @RequestMapping(value = "/deleteByID", method = RequestMethod.GET)
+    @RequestMapping(value = "deleteByID", method = RequestMethod.GET)
     public String deleteByID(Long id, RedirectAttributes flushAttrs)
     {
         getService().deleteById(id);
