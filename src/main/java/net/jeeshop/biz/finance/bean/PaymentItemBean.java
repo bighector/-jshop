@@ -1,6 +1,7 @@
 package net.jeeshop.biz.finance.bean;
 
 import com.google.common.collect.Maps;
+import net.jeeshop.biz.finance.enums.PaymentTypeCode;
 
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class PaymentItemBean {
     /**
      * 支付方式
      */
-    private String paymentType;
+    private PaymentTypeCode paymentType;
     /**
      * 支付金额
      */
@@ -23,11 +24,11 @@ public class PaymentItemBean {
      */
     private Map<String,String> extraInfos = Maps.newHashMap();
 
-    public String getPaymentType() {
+    public PaymentTypeCode getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(String paymentType) {
+    public void setPaymentType(PaymentTypeCode paymentType) {
         this.paymentType = paymentType;
     }
 
@@ -37,5 +38,13 @@ public class PaymentItemBean {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public Map<String, String> getExtraInfos() {
+        return extraInfos;
+    }
+
+    public void setExtraInfos(Map<String, String> extraInfos) {
+        this.extraInfos = extraInfos;
     }
 }

@@ -3,6 +3,8 @@ package net.jeeshop.biz.finance.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import net.jeeshop.biz.finance.enums.PaymentTypeCode;
+import net.jeeshop.biz.finance.enums.RefundStatus;
 
 public class PaymentRefundItemExample {
     protected String orderByClause;
@@ -621,62 +623,62 @@ public class PaymentRefundItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeEqualTo(String value) {
+        public Criteria andPaymentTypeEqualTo(PaymentTypeCode value) {
             addCriterion("payment_type =", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeNotEqualTo(String value) {
+        public Criteria andPaymentTypeNotEqualTo(PaymentTypeCode value) {
             addCriterion("payment_type <>", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeGreaterThan(String value) {
+        public Criteria andPaymentTypeGreaterThan(PaymentTypeCode value) {
             addCriterion("payment_type >", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeGreaterThanOrEqualTo(String value) {
+        public Criteria andPaymentTypeGreaterThanOrEqualTo(PaymentTypeCode value) {
             addCriterion("payment_type >=", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeLessThan(String value) {
+        public Criteria andPaymentTypeLessThan(PaymentTypeCode value) {
             addCriterion("payment_type <", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeLessThanOrEqualTo(String value) {
+        public Criteria andPaymentTypeLessThanOrEqualTo(PaymentTypeCode value) {
             addCriterion("payment_type <=", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeLike(String value) {
+        public Criteria andPaymentTypeLike(PaymentTypeCode value) {
             addCriterion("payment_type like", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeNotLike(String value) {
+        public Criteria andPaymentTypeNotLike(PaymentTypeCode value) {
             addCriterion("payment_type not like", value, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeIn(List<String> values) {
+        public Criteria andPaymentTypeIn(List<PaymentTypeCode> values) {
             addCriterion("payment_type in", values, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeNotIn(List<String> values) {
+        public Criteria andPaymentTypeNotIn(List<PaymentTypeCode> values) {
             addCriterion("payment_type not in", values, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeBetween(String value1, String value2) {
+        public Criteria andPaymentTypeBetween(PaymentTypeCode value1, PaymentTypeCode value2) {
             addCriterion("payment_type between", value1, value2, "paymentType");
             return (Criteria) this;
         }
 
-        public Criteria andPaymentTypeNotBetween(String value1, String value2) {
+        public Criteria andPaymentTypeNotBetween(PaymentTypeCode value1, PaymentTypeCode value2) {
             addCriterion("payment_type not between", value1, value2, "paymentType");
             return (Criteria) this;
         }
@@ -751,62 +753,62 @@ public class PaymentRefundItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusEqualTo(String value) {
+        public Criteria andRefundStatusEqualTo(RefundStatus value) {
             addCriterion("refund_status =", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusNotEqualTo(String value) {
+        public Criteria andRefundStatusNotEqualTo(RefundStatus value) {
             addCriterion("refund_status <>", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusGreaterThan(String value) {
+        public Criteria andRefundStatusGreaterThan(RefundStatus value) {
             addCriterion("refund_status >", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusGreaterThanOrEqualTo(String value) {
+        public Criteria andRefundStatusGreaterThanOrEqualTo(RefundStatus value) {
             addCriterion("refund_status >=", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusLessThan(String value) {
+        public Criteria andRefundStatusLessThan(RefundStatus value) {
             addCriterion("refund_status <", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusLessThanOrEqualTo(String value) {
+        public Criteria andRefundStatusLessThanOrEqualTo(RefundStatus value) {
             addCriterion("refund_status <=", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusLike(String value) {
+        public Criteria andRefundStatusLike(RefundStatus value) {
             addCriterion("refund_status like", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusNotLike(String value) {
+        public Criteria andRefundStatusNotLike(RefundStatus value) {
             addCriterion("refund_status not like", value, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusIn(List<String> values) {
+        public Criteria andRefundStatusIn(List<RefundStatus> values) {
             addCriterion("refund_status in", values, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusNotIn(List<String> values) {
+        public Criteria andRefundStatusNotIn(List<RefundStatus> values) {
             addCriterion("refund_status not in", values, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusBetween(String value1, String value2) {
+        public Criteria andRefundStatusBetween(RefundStatus value1, RefundStatus value2) {
             addCriterion("refund_status between", value1, value2, "refundStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRefundStatusNotBetween(String value1, String value2) {
+        public Criteria andRefundStatusNotBetween(RefundStatus value1, RefundStatus value2) {
             addCriterion("refund_status not between", value1, value2, "refundStatus");
             return (Criteria) this;
         }

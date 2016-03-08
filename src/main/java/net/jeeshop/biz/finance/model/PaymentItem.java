@@ -3,6 +3,8 @@ package net.jeeshop.biz.finance.model;
 import java.io.Serializable;
 import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.finance.enums.PaymentStatus;
+import net.jeeshop.biz.finance.enums.PaymentTypeCode;
 
 public class PaymentItem extends BaseModel implements Serializable {
     /** 支付方式 */
@@ -12,13 +14,13 @@ public class PaymentItem extends BaseModel implements Serializable {
     private Long paymentId;
 
     /** 支付方式代码 */
-    private String paymentType;
+    private PaymentTypeCode paymentType;
 
     /** 支付编码 */
     private String paymentNum;
 
     /** 支付状态 */
-    private String paymentStatus;
+    private PaymentStatus paymentStatus;
 
     /** 金额 */
     private Double amount;
@@ -56,12 +58,12 @@ public class PaymentItem extends BaseModel implements Serializable {
         this.paymentId = paymentId;
     }
 
-    public String getPaymentType() {
+    public PaymentTypeCode getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType == null ? null : paymentType.trim();
+    public void setPaymentType(PaymentTypeCode paymentType) {
+        this.paymentType = paymentType;
     }
 
     public String getPaymentNum() {
@@ -72,12 +74,12 @@ public class PaymentItem extends BaseModel implements Serializable {
         this.paymentNum = paymentNum == null ? null : paymentNum.trim();
     }
 
-    public String getPaymentStatus() {
+    public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }
 
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus == null ? null : paymentStatus.trim();
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
     public Double getAmount() {

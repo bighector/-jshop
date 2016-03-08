@@ -2,10 +2,11 @@ package net.jeeshop.biz.finance.model;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.finance.enums.PaymentTypeCode;
 
 public class PaymentType extends BaseModel implements Serializable {
     /** 支付方式代码 */
-    private String paymentType;
+    private PaymentTypeCode paymentType;
 
     /** 支付方式名称 */
     private String typeName;
@@ -18,12 +19,12 @@ public class PaymentType extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getPaymentType() {
+    public PaymentTypeCode getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType == null ? null : paymentType.trim();
+    public void setPaymentType(PaymentTypeCode paymentType) {
+        this.paymentType = paymentType;
     }
 
     public String getTypeName() {

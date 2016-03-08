@@ -2,6 +2,8 @@ package net.jeeshop.biz.finance.model;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.finance.enums.PaymentTypeCode;
+import net.jeeshop.biz.finance.enums.RefundStatus;
 
 public class PaymentRefundItem extends BaseModel implements Serializable {
     /** 退款ID */
@@ -14,13 +16,13 @@ public class PaymentRefundItem extends BaseModel implements Serializable {
     private Long paymentItemId;
 
     /** 支付方式代码 */
-    private String paymentType;
+    private PaymentTypeCode paymentType;
 
     /** 金额 */
     private Double amount;
 
     /** 退款状态 */
-    private String refundStatus;
+    private RefundStatus refundStatus;
 
     /** 会员ID */
     private Long memberId;
@@ -54,12 +56,12 @@ public class PaymentRefundItem extends BaseModel implements Serializable {
         this.paymentItemId = paymentItemId;
     }
 
-    public String getPaymentType() {
+    public PaymentTypeCode getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType == null ? null : paymentType.trim();
+    public void setPaymentType(PaymentTypeCode paymentType) {
+        this.paymentType = paymentType;
     }
 
     public Double getAmount() {
@@ -70,12 +72,12 @@ public class PaymentRefundItem extends BaseModel implements Serializable {
         this.amount = amount;
     }
 
-    public String getRefundStatus() {
+    public RefundStatus getRefundStatus() {
         return refundStatus;
     }
 
-    public void setRefundStatus(String refundStatus) {
-        this.refundStatus = refundStatus == null ? null : refundStatus.trim();
+    public void setRefundStatus(RefundStatus refundStatus) {
+        this.refundStatus = refundStatus;
     }
 
     public Long getMemberId() {
