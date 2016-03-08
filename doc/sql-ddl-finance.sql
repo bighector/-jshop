@@ -209,15 +209,6 @@ CREATE TABLE fin_points_payment_award_link
 ) COMMENT = '积分支付关联发放记录';
 
 
-CREATE TABLE fin_tax_config
-(
-	id bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-	create_account varchar(64) COMMENT '创建人',
-	create_time datetime COMMENT '创建时间',
-	update_account varchar(64) COMMENT '更新人',
-	update_time datetime COMMENT '更新时间',
-	PRIMARY KEY (id)
-) COMMENT = '税率配置';
 
 
 

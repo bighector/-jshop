@@ -37,7 +37,13 @@ public class GeneratorDemo {
 	{
 		 generateFiles("gen/generateConfig-productspec.xml");
 	}*/
-	
+
+
+    @Test
+    public void genFinance() throws Exception {
+        generateFiles("gen/generateConfig-finance.xml");
+    }
+
 	@Test
 	public void genCmsCode() throws Exception
 	{
