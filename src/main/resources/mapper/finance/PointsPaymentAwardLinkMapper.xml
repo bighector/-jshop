@@ -97,18 +97,15 @@
     delete from fin_points_payment_award_link
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PointsPaymentAwardLink" >
-    insert into fin_points_payment_award_link (id, create_account, create_time, update_account, update_time, 
-      points_award_id, points_payment_id, amount)
-    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{pointsAwardId}, #{pointsPaymentId}, #{amount})
+  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PointsPaymentAwardLink" useGeneratedKeys="true" keyProperty="id" >
+    insert into fin_points_payment_award_link (create_account, create_time, update_account, update_time, points_award_id, 
+      points_payment_id, amount)
+    values (#{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, #{pointsAwardId}, 
+      #{pointsPaymentId}, #{amount})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PointsPaymentAwardLink" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PointsPaymentAwardLink" useGeneratedKeys="true" keyProperty="id" >
     insert into fin_points_payment_award_link
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="createAccount != null" >
         create_account,
       </if>
@@ -132,9 +129,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
-      </if>
       <if test="createAccount != null" >
         #{createAccount},
       </if>

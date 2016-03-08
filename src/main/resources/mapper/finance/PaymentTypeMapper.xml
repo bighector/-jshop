@@ -98,18 +98,15 @@
     delete from fin_payment_type
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PaymentType" >
-    insert into fin_payment_type (id, create_account, create_time, update_account, update_time, 
-      payment_type, type_name, is_valid, remark)
-    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{paymentType}, #{typeName}, #{isValid}, #{remark})
+  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PaymentType" useGeneratedKeys="true" keyProperty="id" >
+    insert into fin_payment_type (create_account, create_time, update_account, update_time, payment_type, 
+      type_name, is_valid, remark)
+    values (#{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, #{paymentType}, 
+      #{typeName}, #{isValid}, #{remark})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PaymentType" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PaymentType" useGeneratedKeys="true" keyProperty="id" >
     insert into fin_payment_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="createAccount != null" >
         create_account,
       </if>
@@ -136,9 +133,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
-      </if>
       <if test="createAccount != null" >
         #{createAccount},
       </if>

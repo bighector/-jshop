@@ -106,22 +106,17 @@
     delete from fin_payment_item
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PaymentItem" >
-    insert into fin_payment_item (id, create_account, create_time, update_account, update_time, 
-      payment_type_id, payment_id, payment_type, payment_num, payment_status, 
-      amount, member_id, response_num, response_time, payment_complete_date, 
-      refunded_amount)
-    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{paymentTypeId}, #{paymentId}, #{paymentType}, #{paymentNum}, #{paymentStatus}, 
-      #{amount}, #{memberId}, #{responseNum}, #{responseTime}, #{paymentCompleteDate}, 
-      #{refundedAmount})
+  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PaymentItem" useGeneratedKeys="true" keyProperty="id" >
+    insert into fin_payment_item (create_account, create_time, update_account, update_time, payment_type_id, 
+      payment_id, payment_type, payment_num, payment_status, amount, member_id, 
+      response_num, response_time, payment_complete_date, refunded_amount)
+    values (#{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, #{paymentTypeId}, 
+      #{paymentId}, #{paymentType}, #{paymentNum}, #{paymentStatus}, #{amount}, #{memberId}, 
+      #{responseNum}, #{responseTime}, #{paymentCompleteDate}, #{refundedAmount})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PaymentItem" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PaymentItem" useGeneratedKeys="true" keyProperty="id" >
     insert into fin_payment_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="createAccount != null" >
         create_account,
       </if>
@@ -169,9 +164,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
-      </if>
       <if test="createAccount != null" >
         #{createAccount},
       </if>

@@ -101,20 +101,17 @@
     delete from fin_points_account_history
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PointsAccountHistory" >
-    insert into fin_points_account_history (id, create_account, create_time, update_account, update_time, 
-      points_account_id, member_id, oper_type, amount, post_balance_amount, 
-      post_frozen_amount, remark)
-    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{pointsAccountId}, #{memberId}, #{operType}, #{amount}, #{postBalanceAmount}, 
-      #{postFrozenAmount}, #{remark})
+  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PointsAccountHistory" useGeneratedKeys="true" keyProperty="id" >
+    insert into fin_points_account_history (create_account, create_time, update_account, update_time, points_account_id, 
+      member_id, oper_type, amount, post_balance_amount, post_frozen_amount, 
+      remark)
+    values (#{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, #{pointsAccountId}, 
+      #{memberId}, #{operType}, #{amount}, #{postBalanceAmount}, #{postFrozenAmount}, 
+      #{remark})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PointsAccountHistory" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PointsAccountHistory" useGeneratedKeys="true" keyProperty="id" >
     insert into fin_points_account_history
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="createAccount != null" >
         create_account,
       </if>
@@ -150,9 +147,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
-      </if>
       <if test="createAccount != null" >
         #{createAccount},
       </if>

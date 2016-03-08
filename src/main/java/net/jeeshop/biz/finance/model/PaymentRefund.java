@@ -2,6 +2,7 @@ package net.jeeshop.biz.finance.model;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.finance.enums.RefundStatus;
 
 public class PaymentRefund extends BaseModel implements Serializable {
     /** 会员ID */
@@ -23,7 +24,7 @@ public class PaymentRefund extends BaseModel implements Serializable {
     private String remark;
 
     /** 退款状态 */
-    private String refundStatus;
+    private RefundStatus refundStatus;
 
     /** 退单来源 */
     private String refundSource;
@@ -81,12 +82,12 @@ public class PaymentRefund extends BaseModel implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getRefundStatus() {
+    public RefundStatus getRefundStatus() {
         return refundStatus;
     }
 
-    public void setRefundStatus(String refundStatus) {
-        this.refundStatus = refundStatus == null ? null : refundStatus.trim();
+    public void setRefundStatus(RefundStatus refundStatus) {
+        this.refundStatus = refundStatus;
     }
 
     public String getRefundSource() {

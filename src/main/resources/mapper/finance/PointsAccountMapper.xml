@@ -97,18 +97,15 @@
     delete from fin_points_account
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PointsAccount" >
-    insert into fin_points_account (id, create_account, create_time, update_account, update_time, 
-      member_id, balance_amount, frozen_amount)
-    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{memberId}, #{balanceAmount}, #{frozenAmount})
+  <insert id="insert" parameterType="net.jeeshop.biz.finance.model.PointsAccount" useGeneratedKeys="true" keyProperty="id" >
+    insert into fin_points_account (create_account, create_time, update_account, update_time, member_id, 
+      balance_amount, frozen_amount)
+    values (#{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, #{memberId}, 
+      #{balanceAmount}, #{frozenAmount})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PointsAccount" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.finance.model.PointsAccount" useGeneratedKeys="true" keyProperty="id" >
     insert into fin_points_account
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="createAccount != null" >
         create_account,
       </if>
@@ -132,9 +129,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
-      </if>
       <if test="createAccount != null" >
         #{createAccount},
       </if>
