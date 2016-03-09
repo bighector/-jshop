@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.order.client.BrandMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.order.model.Brand" >
+    <id column="id" property="id" />
+    <result column="brand_name" property="brandName" />
+    <result column="logo" property="logo" />
+    <result column="office_site" property="officeSite" />
+    <result column="description" property="description" />
+    <result column="ordinal" property="ordinal" />
+    <result column="create_time" property="createTime" />
+    <result column="create_account" property="createAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="update_account" property="updateAccount" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, brand_name, logo, office_site, description, ordinal, create_time, create_account, 
+    update_time, update_account
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.order.model.BrandExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pro_brand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from pro_brand
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pro_brand
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="net.jeeshop.biz.order.model.Brand" >
+    insert into pro_brand (id, brand_name, logo, office_site, description, ordinal, 
+      create_time, create_account, update_time, update_account)
+    values (#{id}, #{brandName}, #{logo}, #{officeSite}, #{description}, #{ordinal}, 
+      #{createTime}, #{createAccount}, #{updateTime}, #{updateAccount})
+  </insert>
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.order.model.Brand" >
+    insert into pro_brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="officeSite != null" >
+        office_site,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="ordinal != null" >
+        ordinal,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="brandName != null" >
+        #{brandName},
+      </if>
+      <if test="logo != null" >
+        #{logo},
+      </if>
+      <if test="officeSite != null" >
+        #{officeSite},
+      </if>
+      <if test="description != null" >
+        #{description},
+      </if>
+      <if test="ordinal != null" >
+        #{ordinal},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.jeeshop.biz.order.model.BrandExample" resultType="java.lang.Integer" >
+    select count(*) from pro_brand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.order.model.Brand" >
+    update pro_brand
+    <set >
+      <if test="brandName != null" >
+        brand_name = #{brandName},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo},
+      </if>
+      <if test="officeSite != null" >
+        office_site = #{officeSite},
+      </if>
+      <if test="description != null" >
+        description = #{description},
+      </if>
+      <if test="ordinal != null" >
+        ordinal = #{ordinal},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.order.model.Brand" >
+    update pro_brand
+    set brand_name = #{brandName},
+      logo = #{logo},
+      office_site = #{officeSite},
+      description = #{description},
+      ordinal = #{ordinal},
+      create_time = #{createTime},
+      create_account = #{createAccount},
+      update_time = #{updateTime},
+      update_account = #{updateAccount}
+    where id = #{id}
+  </update>
+</mapper>

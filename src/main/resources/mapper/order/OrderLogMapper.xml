@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.order.client.OrderLogMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.order.model.OrderLog" >
+    <id column="id" property="id" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="order_id" property="orderId" />
+    <result column="oper_type" property="operType" />
+    <result column="content" property="content" />
+    <result column="oper_time" property="operTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, create_account, create_time, update_account, update_time, order_id, oper_type, 
+    content, oper_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.order.model.OrderLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ord_order_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ord_order_log
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ord_order_log
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="net.jeeshop.biz.order.model.OrderLog" >
+    insert into ord_order_log (id, create_account, create_time, update_account, update_time, 
+      order_id, oper_type, content, oper_time)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{orderId}, #{operType}, #{content}, #{operTime})
+  </insert>
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.order.model.OrderLog" >
+    insert into ord_order_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="operType != null" >
+        oper_type,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="operTime != null" >
+        oper_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="orderId != null" >
+        #{orderId},
+      </if>
+      <if test="operType != null" >
+        #{operType},
+      </if>
+      <if test="content != null" >
+        #{content},
+      </if>
+      <if test="operTime != null" >
+        #{operTime},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.jeeshop.biz.order.model.OrderLogExample" resultType="java.lang.Integer" >
+    select count(*) from ord_order_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.order.model.OrderLog" >
+    update ord_order_log
+    <set >
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId},
+      </if>
+      <if test="operType != null" >
+        oper_type = #{operType},
+      </if>
+      <if test="content != null" >
+        content = #{content},
+      </if>
+      <if test="operTime != null" >
+        oper_time = #{operTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.order.model.OrderLog" >
+    update ord_order_log
+    set create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime},
+      order_id = #{orderId},
+      oper_type = #{operType},
+      content = #{content},
+      oper_time = #{operTime}
+    where id = #{id}
+  </update>
+</mapper>

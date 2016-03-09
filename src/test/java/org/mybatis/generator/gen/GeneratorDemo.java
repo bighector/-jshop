@@ -49,6 +49,11 @@ public class GeneratorDemo {
 	{
 		 generateFiles("gen/generateConfig-cms.xml");
 	}
+	
+	@Test
+	public void genOrderCode() throws Exception {
+		generateFiles("gen/generateConfig-order.xml");
+	}
     
     private void generateFiles(String configResource) throws Exception
     {

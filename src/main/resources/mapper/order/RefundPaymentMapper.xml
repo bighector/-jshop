@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.order.client.RefundPaymentMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.order.model.RefundPayment" >
+    <id column="id" property="id" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="member_id" property="memberId" />
+    <result column="order_num" property="orderNum" />
+    <result column="order_id" property="orderId" />
+    <result column="refund_order_id" property="refundOrderId" />
+    <result column="request_num" property="requestNum" />
+    <result column="pay_amount" property="payAmount" />
+    <result column="amount" property="amount" />
+    <result column="refund_status" property="refundStatus" />
+    <result column="payment_num" property="paymentNum" />
+    <result column="refund_num" property="refundNum" />
+    <result column="refund_time" property="refundTime" />
+    <result column="remark" property="remark" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, create_account, create_time, update_account, update_time, member_id, order_num, 
+    order_id, refund_order_id, request_num, pay_amount, amount, refund_status, payment_num, 
+    refund_num, refund_time, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.order.model.RefundPaymentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ord_refund_payment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ord_refund_payment
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ord_refund_payment
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="net.jeeshop.biz.order.model.RefundPayment" >
+    insert into ord_refund_payment (id, create_account, create_time, update_account, update_time, 
+      member_id, order_num, order_id, refund_order_id, request_num, pay_amount, 
+      amount, refund_status, payment_num, refund_num, refund_time, remark
+      )
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{memberId}, #{orderNum}, #{orderId}, #{refundOrderId}, #{requestNum}, #{payAmount}, 
+      #{amount}, #{refundStatus}, #{paymentNum}, #{refundNum}, #{refundTime}, #{remark}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.order.model.RefundPayment" >
+    insert into ord_refund_payment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="orderNum != null" >
+        order_num,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="refundOrderId != null" >
+        refund_order_id,
+      </if>
+      <if test="requestNum != null" >
+        request_num,
+      </if>
+      <if test="payAmount != null" >
+        pay_amount,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="refundStatus != null" >
+        refund_status,
+      </if>
+      <if test="paymentNum != null" >
+        payment_num,
+      </if>
+      <if test="refundNum != null" >
+        refund_num,
+      </if>
+      <if test="refundTime != null" >
+        refund_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="memberId != null" >
+        #{memberId},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum},
+      </if>
+      <if test="orderId != null" >
+        #{orderId},
+      </if>
+      <if test="refundOrderId != null" >
+        #{refundOrderId},
+      </if>
+      <if test="requestNum != null" >
+        #{requestNum},
+      </if>
+      <if test="payAmount != null" >
+        #{payAmount},
+      </if>
+      <if test="amount != null" >
+        #{amount},
+      </if>
+      <if test="refundStatus != null" >
+        #{refundStatus},
+      </if>
+      <if test="paymentNum != null" >
+        #{paymentNum},
+      </if>
+      <if test="refundNum != null" >
+        #{refundNum},
+      </if>
+      <if test="refundTime != null" >
+        #{refundTime},
+      </if>
+      <if test="remark != null" >
+        #{remark},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.jeeshop.biz.order.model.RefundPaymentExample" resultType="java.lang.Integer" >
+    select count(*) from ord_refund_payment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.order.model.RefundPayment" >
+    update ord_refund_payment
+    <set >
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId},
+      </if>
+      <if test="orderNum != null" >
+        order_num = #{orderNum},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId},
+      </if>
+      <if test="refundOrderId != null" >
+        refund_order_id = #{refundOrderId},
+      </if>
+      <if test="requestNum != null" >
+        request_num = #{requestNum},
+      </if>
+      <if test="payAmount != null" >
+        pay_amount = #{payAmount},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount},
+      </if>
+      <if test="refundStatus != null" >
+        refund_status = #{refundStatus},
+      </if>
+      <if test="paymentNum != null" >
+        payment_num = #{paymentNum},
+      </if>
+      <if test="refundNum != null" >
+        refund_num = #{refundNum},
+      </if>
+      <if test="refundTime != null" >
+        refund_time = #{refundTime},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.order.model.RefundPayment" >
+    update ord_refund_payment
+    set create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime},
+      member_id = #{memberId},
+      order_num = #{orderNum},
+      order_id = #{orderId},
+      refund_order_id = #{refundOrderId},
+      request_num = #{requestNum},
+      pay_amount = #{payAmount},
+      amount = #{amount},
+      refund_status = #{refundStatus},
+      payment_num = #{paymentNum},
+      refund_num = #{refundNum},
+      refund_time = #{refundTime},
+      remark = #{remark}
+    where id = #{id}
+  </update>
+</mapper>
