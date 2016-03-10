@@ -5,34 +5,34 @@ import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class OrderPay extends BaseModel implements Serializable {
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** è®¢å�•ç¼–å�· */
+    /** 订单编号 */
     private String orderNum;
 
-    /** è®¢å�•ID */
+    /** 订单ID */
     private Long orderId;
 
-    /** æ”¯ä»˜è¯·æ±‚å�· */
+    /** 支付请求号 */
     private String requestNum;
 
-    /** è®¢å�•æ€»é‡‘é¢� */
+    /** 订单总金额 */
     private Double amount;
 
-    /** æ”¯ä»˜çŠ¶æ€� */
+    /** 支付状态 */
     private String payStatus;
 
-    /** æ”¯ä»˜æ–¹å¼�(æ”¯ä»˜å®�ï¼Œç§¯åˆ†ç­‰) */
+    /** 支付方式(支付宝，积分等) */
     private String paymentType;
 
-    /** æ”¯ä»˜æµ�æ°´å�· */
+    /** 支付流水号 */
     private String paymentNum;
 
-    /** æ”¯ä»˜æ—¶é—´ */
+    /** 支付时间 */
     private Date paymentTime;
 
-    /** æ ‡é¢˜ */
+    /** 标题 */
     private String title;
 
     private static final long serialVersionUID = 1L;

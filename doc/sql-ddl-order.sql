@@ -218,7 +218,7 @@ CREATE TABLE ord_refund_order_item
 	update_account varchar(64) COMMENT '更新人',
 	update_time datetime COMMENT '更新时间',
 	order_id bigint NOT NULL COMMENT '订单ID',
-	return_order_id bigint NOT NULL COMMENT '退单ID',
+	refund_order_id bigint NOT NULL COMMENT '退单ID',
 	order_item_id bigint NOT NULL COMMENT '订单项ID',
 	member_id bigint NOT NULL COMMENT '会员ID',
 	product_id bigint NOT NULL COMMENT '商品ID',

@@ -4,22 +4,22 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class OrderComment extends BaseModel implements Serializable {
-    /** è®¢å�•ID */
+    /** 订单ID */
     private Long orderId;
 
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** è¯„è®ºå†…å®¹ */
+    /** 评论内容 */
     private String content;
 
-    /** æ ‡é¢˜ */
+    /** 标题 */
     private String title;
 
-    /** è®¢å�•è¯„çº§ */
+    /** 订单评级 */
     private Integer star;
 
-    /** æ˜¯å�¦å·²å›žå¤�ï¼Œ1-æ˜¯0-å�¦ */
+    /** 是否已回复，1-是0-否 */
     private String isReply;
 
     private static final long serialVersionUID = 1L;

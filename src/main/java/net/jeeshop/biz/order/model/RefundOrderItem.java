@@ -4,25 +4,25 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class RefundOrderItem extends BaseModel implements Serializable {
-    /** è®¢å�•ID */
+    /** 订单ID */
     private Long orderId;
 
-    /** é€€å�•ID */
-    private Long returnOrderId;
+    /** 退单ID */
+    private Long refundOrderId;
 
-    /** è®¢å�•é¡¹ID */
+    /** 订单项ID */
     private Long orderItemId;
 
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** å•†å“�ID */
+    /** 商品ID */
     private Long productId;
 
-    /** æ•°é‡� */
+    /** 数量 */
     private Integer quantity;
 
-    /** é‡‘é¢� */
+    /** 金额 */
     private Double amount;
 
     private static final long serialVersionUID = 1L;
@@ -35,12 +35,12 @@ public class RefundOrderItem extends BaseModel implements Serializable {
         this.orderId = orderId;
     }
 
-    public Long getReturnOrderId() {
-        return returnOrderId;
+    public Long getRefundOrderId() {
+        return refundOrderId;
     }
 
-    public void setReturnOrderId(Long returnOrderId) {
-        this.returnOrderId = returnOrderId;
+    public void setRefundOrderId(Long refundOrderId) {
+        this.refundOrderId = refundOrderId;
     }
 
     public Long getOrderItemId() {

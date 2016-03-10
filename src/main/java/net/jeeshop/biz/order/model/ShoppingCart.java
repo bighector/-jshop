@@ -4,19 +4,19 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class ShoppingCart extends BaseModel implements Serializable {
-    /** å•†å“�ID */
+    /** 商品ID */
     private Long productId;
 
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** æ•°é‡� */
+    /** 数量 */
     private Integer quantity;
 
-    /** å•†å“�å��ç§° */
+    /** 商品名称 */
     private String productName;
 
-    /** æ˜¯å�¦æœ‰æ•ˆ ï¼Œ1-æ˜¯0-å�¦ */
+    /** 是否有效 ，1-是0-否 */
     private String isValid;
 
     private static final long serialVersionUID = 1L;

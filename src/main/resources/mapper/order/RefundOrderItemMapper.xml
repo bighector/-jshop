@@ -8,7 +8,7 @@
     <result column="update_account" property="updateAccount" />
     <result column="update_time" property="updateTime" />
     <result column="order_id" property="orderId" />
-    <result column="return_order_id" property="returnOrderId" />
+    <result column="refund_order_id" property="refundOrderId" />
     <result column="order_item_id" property="orderItemId" />
     <result column="member_id" property="memberId" />
     <result column="product_id" property="productId" />
@@ -74,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, create_account, create_time, update_account, update_time, order_id, return_order_id, 
+    id, create_account, create_time, update_account, update_time, order_id, refund_order_id, 
     order_item_id, member_id, product_id, quantity, amount
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.order.model.RefundOrderItemExample" >
@@ -103,10 +103,10 @@
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.order.model.RefundOrderItem" >
     insert into ord_refund_order_item (id, create_account, create_time, update_account, update_time, 
-      order_id, return_order_id, order_item_id, member_id, product_id, quantity, 
+      order_id, refund_order_id, order_item_id, member_id, product_id, quantity, 
       amount)
     values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{orderId}, #{returnOrderId}, #{orderItemId}, #{memberId}, #{productId}, #{quantity}, 
+      #{orderId}, #{refundOrderId}, #{orderItemId}, #{memberId}, #{productId}, #{quantity}, 
       #{amount})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.order.model.RefundOrderItem" >
@@ -130,8 +130,8 @@
       <if test="orderId != null" >
         order_id,
       </if>
-      <if test="returnOrderId != null" >
-        return_order_id,
+      <if test="refundOrderId != null" >
+        refund_order_id,
       </if>
       <if test="orderItemId != null" >
         order_item_id,
@@ -168,8 +168,8 @@
       <if test="orderId != null" >
         #{orderId},
       </if>
-      <if test="returnOrderId != null" >
-        #{returnOrderId},
+      <if test="refundOrderId != null" >
+        #{refundOrderId},
       </if>
       <if test="orderItemId != null" >
         #{orderItemId},
@@ -212,8 +212,8 @@
       <if test="orderId != null" >
         order_id = #{orderId},
       </if>
-      <if test="returnOrderId != null" >
-        return_order_id = #{returnOrderId},
+      <if test="refundOrderId != null" >
+        refund_order_id = #{refundOrderId},
       </if>
       <if test="orderItemId != null" >
         order_item_id = #{orderItemId},
@@ -240,7 +240,7 @@
       update_account = #{updateAccount},
       update_time = #{updateTime},
       order_id = #{orderId},
-      return_order_id = #{returnOrderId},
+      refund_order_id = #{refundOrderId},
       order_item_id = #{orderItemId},
       member_id = #{memberId},
       product_id = #{productId},

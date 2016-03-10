@@ -4,16 +4,16 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class OrderPayItem extends BaseModel implements Serializable {
-    /** æ”¯ä»˜æ–¹å¼�(æ”¯ä»˜å®�ï¼Œç§¯åˆ†ç­‰) */
+    /** 支付方式(支付宝，积分等) */
     private String paymentType;
 
-    /** é‡‘é¢� */
+    /** 金额 */
     private Double amount;
 
-    /** æ”¯ä»˜æ˜Žç»†ä¿¡æ�¯ */
+    /** 支付明细信息 */
     private String detailMsg;
 
-    /** æ”¯ä»˜ID */
+    /** 支付ID */
     private Long orderPayId;
 
     private static final long serialVersionUID = 1L;

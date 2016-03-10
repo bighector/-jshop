@@ -4,13 +4,13 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class MemberFavorite extends BaseModel implements Serializable {
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** å•†å“�ID */
+    /** 商品ID */
     private Long productId;
 
-    /** æ˜¯å�¦æœ‰æ•ˆ ï¼Œ1-æ˜¯0-å�¦ */
+    /** 是否有效 ，1-是0-否 */
     private String isValid;
 
     private static final long serialVersionUID = 1L;

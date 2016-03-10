@@ -5,40 +5,40 @@ import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class RefundPayment extends BaseModel implements Serializable {
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** è®¢å�•ç¼–å�· */
+    /** 订单编号 */
     private String orderNum;
 
-    /** è®¢å�•ID */
+    /** 订单ID */
     private Long orderId;
 
-    /** é€€å�•ID */
+    /** 退单ID */
     private Long refundOrderId;
 
-    /** é€€æ¬¾è¯·æ±‚å�· */
+    /** 退款请求号 */
     private String requestNum;
 
-    /** åŽŸæ”¯ä»˜é‡‘é¢� */
+    /** 原支付金额 */
     private Double payAmount;
 
-    /** è®¢å�•æ€»é‡‘é¢� */
+    /** 订单总金额 */
     private Double amount;
 
-    /** é€€æ¬¾çŠ¶æ€� */
+    /** 退款状态 */
     private String refundStatus;
 
-    /** æ”¯ä»˜æµ�æ°´å�· */
+    /** 支付流水号 */
     private String paymentNum;
 
-    /** é€€æ¬¾æµ�æ°´å�· */
+    /** 退款流水号 */
     private String refundNum;
 
-    /** é€€æ¬¾å®Œæˆ�æ—¶é—´ */
+    /** 退款完成时间 */
     private Date refundTime;
 
-    /** å¤‡æ³¨ */
+    /** 备注 */
     private String remark;
 
     private static final long serialVersionUID = 1L;

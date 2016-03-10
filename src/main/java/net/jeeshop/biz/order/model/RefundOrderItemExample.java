@@ -491,63 +491,63 @@ public class RefundOrderItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdIsNull() {
-            addCriterion("return_order_id is null");
+        public Criteria andRefundOrderIdIsNull() {
+            addCriterion("refund_order_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdIsNotNull() {
-            addCriterion("return_order_id is not null");
+        public Criteria andRefundOrderIdIsNotNull() {
+            addCriterion("refund_order_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdEqualTo(Long value) {
-            addCriterion("return_order_id =", value, "returnOrderId");
+        public Criteria andRefundOrderIdEqualTo(Long value) {
+            addCriterion("refund_order_id =", value, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdNotEqualTo(Long value) {
-            addCriterion("return_order_id <>", value, "returnOrderId");
+        public Criteria andRefundOrderIdNotEqualTo(Long value) {
+            addCriterion("refund_order_id <>", value, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdGreaterThan(Long value) {
-            addCriterion("return_order_id >", value, "returnOrderId");
+        public Criteria andRefundOrderIdGreaterThan(Long value) {
+            addCriterion("refund_order_id >", value, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("return_order_id >=", value, "returnOrderId");
+        public Criteria andRefundOrderIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("refund_order_id >=", value, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdLessThan(Long value) {
-            addCriterion("return_order_id <", value, "returnOrderId");
+        public Criteria andRefundOrderIdLessThan(Long value) {
+            addCriterion("refund_order_id <", value, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdLessThanOrEqualTo(Long value) {
-            addCriterion("return_order_id <=", value, "returnOrderId");
+        public Criteria andRefundOrderIdLessThanOrEqualTo(Long value) {
+            addCriterion("refund_order_id <=", value, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdIn(List<Long> values) {
-            addCriterion("return_order_id in", values, "returnOrderId");
+        public Criteria andRefundOrderIdIn(List<Long> values) {
+            addCriterion("refund_order_id in", values, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdNotIn(List<Long> values) {
-            addCriterion("return_order_id not in", values, "returnOrderId");
+        public Criteria andRefundOrderIdNotIn(List<Long> values) {
+            addCriterion("refund_order_id not in", values, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdBetween(Long value1, Long value2) {
-            addCriterion("return_order_id between", value1, value2, "returnOrderId");
+        public Criteria andRefundOrderIdBetween(Long value1, Long value2) {
+            addCriterion("refund_order_id between", value1, value2, "refundOrderId");
             return (Criteria) this;
         }
 
-        public Criteria andReturnOrderIdNotBetween(Long value1, Long value2) {
-            addCriterion("return_order_id not between", value1, value2, "returnOrderId");
+        public Criteria andRefundOrderIdNotBetween(Long value1, Long value2) {
+            addCriterion("refund_order_id not between", value1, value2, "refundOrderId");
             return (Criteria) this;
         }
 

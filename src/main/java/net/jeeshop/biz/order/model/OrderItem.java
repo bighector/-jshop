@@ -4,22 +4,22 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class OrderItem extends BaseModel implements Serializable {
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** å•†å“�ID */
+    /** 商品ID */
     private Long productId;
 
-    /** å�•ä»· */
+    /** 单价 */
     private Double price;
 
-    /** æ•°é‡� */
+    /** 数量 */
     private Integer quantity;
 
-    /** é‡‘é¢� */
+    /** 金额 */
     private Double amount;
 
-    /** è®¢å�•ID */
+    /** 订单ID */
     private Long orderId;
 
     private static final long serialVersionUID = 1L;

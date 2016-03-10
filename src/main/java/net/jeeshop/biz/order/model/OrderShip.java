@@ -4,34 +4,34 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class OrderShip extends BaseModel implements Serializable {
-    /** ä¼šå‘˜ID */
+    /** 会员ID */
     private Long memberId;
 
-    /** è®¢å�•ID */
+    /** 订单ID */
     private Long orderId;
 
-    /** æ”¶è´§äºº */
+    /** 收货人 */
     private String receiver;
 
-    /** çœ�ä»½ä»£ç � */
+    /** 省份代码 */
     private String province;
 
-    /** åœ°å¸‚ä»£ç � */
+    /** 地市代码 */
     private String city;
 
-    /** åŒºåŽ¿ä»£ç � */
+    /** 区县代码 */
     private String area;
 
-    /** è�”ç³»åœ°å�€ */
+    /** 联系地址 */
     private String address;
 
-    /** é‚®æ”¿ç¼–ç � */
+    /** 邮政编码 */
     private String postcode;
 
-    /** è�”ç³»ç”µè¯� */
+    /** 联系电话 */
     private String mobile;
 
-    /** ç”µè¯�å�·ç � */
+    /** 电话号码 */
     private String phone;
 
     private static final long serialVersionUID = 1L;

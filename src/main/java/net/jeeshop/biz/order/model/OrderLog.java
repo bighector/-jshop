@@ -5,16 +5,16 @@ import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class OrderLog extends BaseModel implements Serializable {
-    /** è®¢å�•ID */
+    /** 订单ID */
     private Long orderId;
 
-    /** æ“�ä½œç±»åž‹ */
+    /** 操作类型 */
     private String operType;
 
-    /** æ—¥å¿—å†…å®¹ */
+    /** 日志内容 */
     private String content;
 
-    /** æ“�ä½œæ—¶é—´ */
+    /** 操作时间 */
     private Date operTime;
 
     private static final long serialVersionUID = 1L;
