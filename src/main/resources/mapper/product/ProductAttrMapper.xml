@@ -82,7 +82,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from product_attr
+    from pro_product_attr
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,27 +93,22 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from product_attr
+    from pro_product_attr
     where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from product_attr
+    delete from pro_product_attr
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
-    insert into product_attr (id, attr_name, ordinal, is_mandated, value_type, options_list, 
-      create_time, create_account, update_time, update_account, category_id
-      )
-    values (#{id}, #{attrName}, #{ordinal}, #{isMandated}, #{valueType}, #{optionsList}, 
-      #{createTime}, #{createAccount}, #{updateTime}, #{updateAccount}, #{categoryId}
-      )
+  <insert id="insert" parameterType="net.jeeshop.biz.product.model.ProductAttr" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_product_attr (attr_name, ordinal, is_mandated, value_type, options_list, create_time, 
+      create_account, update_time, update_account, category_id)
+    values (#{attrName}, #{ordinal}, #{isMandated}, #{valueType}, #{optionsList}, #{createTime}, 
+      #{createAccount}, #{updateTime}, #{updateAccount}, #{categoryId})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
-    insert into product_attr
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.ProductAttr" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_product_attr
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="attrName != null" >
         attr_name,
       </if>
@@ -146,9 +141,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
-      </if>
       <if test="attrName != null" >
         #{attrName},
       </if>
@@ -182,13 +174,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.product.model.ProductAttrExample" resultType="java.lang.Integer" >
-    select count(*) from product_attr
+    select count(*) from pro_product_attr
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
-    update product_attr
+    update pro_product_attr
     <set >
       <if test="attrName != null" >
         attr_name = #{attrName},
@@ -224,7 +216,7 @@
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.product.model.ProductAttr" >
-    update product_attr
+    update pro_product_attr
     set attr_name = #{attrName},
       ordinal = #{ordinal},
       is_mandated = #{isMandated},

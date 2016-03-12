@@ -28,15 +28,15 @@ import net.jeeshop.biz.product.model.ProductSpecVal;
 public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExample>
 {
 	@Autowired
-	private ProductSpecMapper productspec;
+	private ProductSpecMapper productSpecMapper;
 	
 	@Autowired
-	private ProductSpecValMapperExt productspecvalext;
+	private ProductSpecValMapperExt productSpecValMapperExt;
 	
 	@Override
 	protected BaseMapper<ProductSpec,ProductSpecExample> getMapper()
 	{
-		return productspec;
+		return productSpecMapper;
 	}
 	
 	@Override
@@ -48,10 +48,10 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
 		inserts+=getMapper().insert(spec);
 		
 		//将前台的数据装换成 List<ProdcutSpecVal>
-		if(spec.getVaList()==null || spec.getVaList().size() <= 0)
+		/*if(spec.getVaList()==null || spec.getVaList().size() <= 0)
 		{
 			spec.setVaList( getValsList(spec.getId(),spec.getSpecVals(),spec.getSpecOrders()) );
-		}
+		}*/
 		
 		spec.setCreateTime(new Date());
 		spec.setUpdateTime(spec.getCreateTime());
@@ -68,16 +68,16 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
 		int updates=0;
 		
 		//将前台的数据装换成 List<ProdcutSpecVal>
-		if(spec.getVaList()==null || spec.getVaList().size() <= 0)
+		/*if(spec.getVaList()==null || spec.getVaList().size() <= 0)
 		{
 			spec.setVaList( getValsList(spec.getId(),spec.getSpecVals(),spec.getSpecOrders()) );
-		}
+		}*/
 		
 		/*更新 规格*/
 		updates+=getMapper().updateByPrimaryKey(spec);
 		
 		/*删除旧规格值*/
-		productspecvalext.deleteBySpecId(spec.getId());
+		productSpecValMapperExt.deleteBySpecId(spec.getId());
 		
 		/*插入新的规格值*/
 		updates+=InsertSpecValues(spec);	
@@ -94,7 +94,7 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
 		deletes+=getMapper().deleteByPrimaryKey(id);
 		
 		/*删除规格值*/
-		deletes+=productspecvalext.deleteBySpecId(id);
+		deletes+=productSpecValMapperExt.deleteBySpecId(id);
 		
 		return deletes;
 	}
@@ -103,7 +103,7 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
 	public ProductSpec selectById(long id)
 	{
 		ProductSpec spec = getMapper().selectByPrimaryKey(id);
-		spec.setVaList(productspecvalext.selectBySpecId(id));
+		//spec.setVaList(productSpecValMapperExt.selectBySpecId(id));
 		return spec;
 	}
 	
@@ -116,10 +116,10 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
             {
             	List<ProductSpec> specs = getMapper().selectByExample(example);
             	
-            	for(ProductSpec e : specs)
+            	/*for(ProductSpec e : specs)
             	{
-            		e.setVaList(productspecvalext.selectBySpecId(e.getId()));
-            	}
+            		e.setVaList(productSpecValMapperExt.selectBySpecId(e.getId()));
+            	}*/
             	
             	return specs;
             }
@@ -136,8 +136,8 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
 		   {
 			   if(spec_val[i].equals("") || ordinal[i]==0) continue;
 			   ProductSpecVal e = new ProductSpecVal();
-			   e.setSpecId(specId);
-			   e.setSpecVal(spec_val[i]);
+			   e.setId(specId);
+			   e.setSpecValue(spec_val[i]);
 			   e.setOrdinal(ordinal[i]);
 			   vals.add(e);
 		   }
@@ -155,11 +155,9 @@ public class ProductSpecService extends BaseService<ProductSpec,ProductSpecExamp
 	 */
 	private int InsertSpecValues(ProductSpec spec)
 	{
-		 if( spec.getVaList() != null && spec.getVaList().size() > 0 )
-		 { 
-			return  productspecvalext.insertSpecValues(spec.getVaList());
+		 if( spec!= null ){ 
+			return  productSpecValMapperExt.insertValuesByProductSpec(spec);
 		 }
-		 
 		 return 0;
 	}
 }

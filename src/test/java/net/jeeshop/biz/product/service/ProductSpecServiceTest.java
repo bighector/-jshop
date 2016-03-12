@@ -54,10 +54,10 @@ public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecE
 		inserts+=getMapper().insert(spec);
 		
 		//将前台的数据装换成 List<ProdcutSpecVal>
-		if(spec.getVaList()==null || spec.getVaList().size() <= 0)
+		/*if(spec.getVaList()==null || spec.getVaList().size() <= 0)
 		{
-			spec.setVaList( getValsList(spec.getId(),spec.getSpecVals(),spec.getSpecOrders()) );
-		}
+			spec.setVaList( getValsList(spec.getId(),spec.getSpececVals(),spec.getSpecOrders()) );
+		}*/
 		
 		spec.setCreateTime(new Date());
 		spec.setUpdateTime(spec.getCreateTime());
@@ -74,10 +74,10 @@ public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecE
 		int updates=0;
 		
 		//将前台的数据装换成 List<ProdcutSpecVal>
-		if(spec.getVaList()==null || spec.getVaList().size() <= 0)
+		/*if(spec.getVaList()==null || spec.getVaList().size() <= 0)
 		{
 			spec.setVaList( getValsList(spec.getId(),spec.getSpecVals(),spec.getSpecOrders()) );
-		}
+		}*/
 		
 		/*更新 规格*/
 		updates+=getMapper().updateByPrimaryKey(spec);
@@ -109,7 +109,7 @@ public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecE
 	public ProductSpec selectById(long id)
 	{
 		ProductSpec spec = getMapper().selectByPrimaryKey(id);
-		spec.setVaList(productspecvalext.selectBySpecId(id));
+		//spec.setVaList(productspecvalext.selectBySpecId(id));
 		return spec;
 	}
 	
@@ -122,10 +122,10 @@ public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecE
             {
             	List<ProductSpec> specs = getMapper().selectByExample(example);
             	
-            	for(ProductSpec e : specs)
+            	/*for(ProductSpec e : specs)
             	{
             		e.setVaList(productspecvalext.selectBySpecId(e.getId()));
-            	}
+            	}*/
             	
             	return specs;
             }
@@ -142,8 +142,8 @@ public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecE
 		   {
 			   if(spec_val[i].equals("") || ordinal[i]==0) continue;
 			   ProductSpecVal e = new ProductSpecVal();
-			   e.setSpecId(specId);
-			   e.setSpecVal(spec_val[i]);
+			   e.setId(specId);
+			   e.setSpecValue(spec_val[i]);
 			   e.setOrdinal(ordinal[i]);
 			   vals.add(e);
 		   }
@@ -161,8 +161,8 @@ public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecE
 		
 		ProductSpecExample.Criteria test = sel.createCriteria();
 		
-		test.andSpecificationLike("%C%");
-		test.andCatagoryNameLike("%%");
+		test.andSpecNameLike("%C%");
+		//test.andCatagoryNameLike("%%");
 		
 		
 		
@@ -176,9 +176,9 @@ public class ProductSpecServiceTest extends BaseService<ProductSpec,ProductSpecE
 	 */
 	private int InsertSpecValues(ProductSpec spec)
 	{
-		 if( spec.getVaList() != null && spec.getVaList().size() > 0 )
+		 if( spec != null )
 		 { 
-			return  productspecvalext.insertSpecValues(spec.getVaList());
+			return  productspecvalext.insertValuesByProductSpec(spec);
 		 }
 		 
 		 return 0;

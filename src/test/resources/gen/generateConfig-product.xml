@@ -31,8 +31,29 @@
                              targetProject="src/main/java">
             <property name="rootInterface" value="net.jeeshop.biz.base.client.BaseMapper"/>
         </javaClientGenerator>
-
+		<!-- 商品品牌 -->
         <table tableName="pro_brand" domainObjectName="Brand">
+        	<generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+        <!-- 商品规格 -->
+        <table tableName="pro_spec_group" domainObjectName="ProductSpec">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+        <!-- 商品规格值 -->
+        <table tableName="pro_spec_group_value" domainObjectName="ProductSpecVal">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+        <!-- 商品属性 -->
+        <table tableName="pro_product_attr" domainObjectName="ProductAttr">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="id" javaType="java.lang.Long"/>
+        </table>
+        <!-- 商品与商品属性关联表 -->
+        <table tableName="pro_product_attr_link" domainObjectName="ProductAttrLink">
+            <generatedKey column="id" sqlStatement="JDBC"/>
             <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
     </context>

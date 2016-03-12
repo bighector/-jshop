@@ -17,7 +17,7 @@ public class Brand extends BaseModel implements Serializable {
     private String description;
 
     /** 排序 */
-    private Long ordinal;
+    private Integer ordinal;
 
     private static final long serialVersionUID = 1L;
 
@@ -53,11 +53,11 @@ public class Brand extends BaseModel implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
-    public Long getOrdinal() {
+    public Integer getOrdinal() {
         return ordinal;
     }
 
-    public void setOrdinal(Long ordinal) {
+    public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
     }
 }

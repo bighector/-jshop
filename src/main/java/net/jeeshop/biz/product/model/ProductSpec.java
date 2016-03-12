@@ -1,43 +1,35 @@
 package net.jeeshop.biz.product.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
-
 import net.jeeshop.biz.base.model.BaseModel;
 
-public class ProductSpec extends BaseModel implements Serializable 
-{
-    private static final long serialVersionUID = 1L;
-	
+public class ProductSpec extends BaseModel implements Serializable {
     /** 规格名称 */
-    private String specification;
+    private String specName;
 
-    /** 排序 */
+    /** 顺序 */
     private Integer ordinal;
 
-    /** 所属分类id */
-    private Integer catagoryId;
+    /** 值类型，int-整型，string-字符型,color-颜色型,img-图片型 */
+    private String valueType;
 
-    /** 所属分类名称 */
-    private String catagoryName;
+    /** 商品分类ID */
+    private Long categoryId;
 
-    /** 是否删除0:未删除;1:已删除 */
-    private Integer isDel=0;
-	
-	/*规格值 - 后台到页面 */
-	private List<ProductSpecVal> vaList;
-	
-	/*页面到后台*/
-	String[]  specVals;
-	Integer[] specOrders;
+    /** 是否有效,1-是0-否 */
+    private String isValid;
 
-    public String getSpecification() {
-        return specification;
+    /** 人性化名称(规格重名时用这个区分) */
+    private String friendlyName;
+
+    private static final long serialVersionUID = 1L;
+
+    public String getSpecName() {
+        return specName;
     }
 
-    public void setSpecification(String specification) {
-        this.specification = specification == null ? null : specification.trim();
+    public void setSpecName(String specName) {
+        this.specName = specName == null ? null : specName.trim();
     }
 
     public Integer getOrdinal() {
@@ -48,66 +40,35 @@ public class ProductSpec extends BaseModel implements Serializable
         this.ordinal = ordinal;
     }
 
-    public Integer getCatagoryId() {
-        return catagoryId;
+    public String getValueType() {
+        return valueType;
     }
 
-    public void setCatagoryId(Integer catagoryId) {
-        this.catagoryId = catagoryId;
+    public void setValueType(String valueType) {
+        this.valueType = valueType == null ? null : valueType.trim();
     }
 
-    public String getCatagoryName() {
-        return catagoryName;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCatagoryName(String catagoryName) {
-        this.catagoryName = catagoryName == null ? null : catagoryName.trim();
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public Integer getIsDel() {
-        return isDel;
+    public String getIsValid() {
+        return isValid;
     }
 
-    public void setIsDel(Integer isDel) {
-        this.isDel = isDel;
+    public void setIsValid(String isValid) {
+        this.isValid = isValid == null ? null : isValid.trim();
     }
 
-	public Integer[] getSpecOrders() {
-		return specOrders;
-	}
+    public String getFriendlyName() {
+        return friendlyName;
+    }
 
-	public void setSpecOrders(Integer[] specOrders) {
-		this.specOrders = specOrders;
-	}
-	
-	public List<ProductSpecVal> getVaList() {
-		return vaList;
-	}
-
-	public void setVaList(List<ProductSpecVal> list) {
-		this.vaList = list;
-	}
-
-	public String[] getSpecVals() {
-		return specVals;
-	}
-
-	public void setSpecVals(String[] specVals) {
-		this.specVals = specVals;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public String toString() 
-	{
-		return "ProductSpec [specification=" + specification + ", ordinal="
-				+ ordinal + ", catagoryId=" + catagoryId + ", catagoryName="
-				+ catagoryName + ", isDel=" + isDel + ", list=" + vaList
-				+ ", specVals=" + Arrays.toString(specVals) + ", specOrders="
-				+ Arrays.toString(specOrders) + "]";
-	}
-
+    public void setFriendlyName(String friendlyName) {
+        this.friendlyName = friendlyName == null ? null : friendlyName.trim();
+    }
 }

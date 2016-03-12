@@ -52,10 +52,10 @@ public class ProductSpecController extends ManageBaseController<ProductSpec, Pro
 		ProductSpecExample example=new ProductSpecExample();
 		
 		//规格名称查询
-		if(spec.getSpecification()!=null && !spec.getSpecification().equals(""))
+		if(spec.getSpecName()!=null && !spec.getSpecName().equals(""))
 		{
 			ProductSpecExample.Criteria sel = example.createCriteria();
-			sel.andSpecificationLike("%" +spec.getSpecification() + "%");
+			sel.andSpecNameLike("%" +spec.getSpecName() + "%");
 		}
 
 		return getService().selectPageList(example, pageQueryBean);

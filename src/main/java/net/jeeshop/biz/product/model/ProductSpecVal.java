@@ -1,40 +1,39 @@
 package net.jeeshop.biz.product.model;
 
 import java.io.Serializable;
-
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class ProductSpecVal extends BaseModel implements Serializable {
-    /** 规格值 */
-    private String specVal;
+    /** 商品规格ID */
+    private Long specGroupId;
 
-    /** 所属规格id */
-    private Long specId;
+    /** 规格值 */
+    private String specValue;
 
     /** 排序 */
     private Integer ordinal;
 
+    /** 规格名称 */
+    private String specName;
+
     private static final long serialVersionUID = 1L;
 
-    public String getSpecVal() {
-        return specVal;
+    public Long getSpecGroupId() {
+        return specGroupId;
     }
 
-    public void setSpecVal(String specVal) {
-        this.specVal = specVal == null ? null : specVal.trim();
-    }
-    
-    @JsonIgnore
-    public Long getSpecId() {
-        return specId;
+    public void setSpecGroupId(Long specGroupId) {
+        this.specGroupId = specGroupId;
     }
 
-    public void setSpecId(Long specId) {
-        this.specId = specId;
+    public String getSpecValue() {
+        return specValue;
     }
-    
+
+    public void setSpecValue(String specValue) {
+        this.specValue = specValue == null ? null : specValue.trim();
+    }
+
     public Integer getOrdinal() {
         return ordinal;
     }
@@ -43,11 +42,11 @@ public class ProductSpecVal extends BaseModel implements Serializable {
         this.ordinal = ordinal;
     }
 
-	@Override
-	public String toString() {
-		return "ProductSpecVal [specVal=" + specVal + ", specId=" + specId
-				+ ", ordinal=" + ordinal + "]";
-	}
-    
-    
+    public String getSpecName() {
+        return specName;
+    }
+
+    public void setSpecName(String specName) {
+        this.specName = specName == null ? null : specName.trim();
+    }
 }

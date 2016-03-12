@@ -99,18 +99,15 @@
     delete from pro_brand
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.product.model.Brand" >
-    insert into pro_brand (id, brand_name, logo, office_site, description, ordinal, 
-      create_time, create_account, update_time, update_account)
-    values (#{id}, #{brandName}, #{logo}, #{officeSite}, #{description}, #{ordinal}, 
-      #{createTime}, #{createAccount}, #{updateTime}, #{updateAccount})
+  <insert id="insert" parameterType="net.jeeshop.biz.product.model.Brand" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_brand (brand_name, logo, office_site, description, ordinal, create_time, 
+      create_account, update_time, update_account)
+    values (#{brandName}, #{logo}, #{officeSite}, #{description}, #{ordinal}, #{createTime}, 
+      #{createAccount}, #{updateTime}, #{updateAccount})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.Brand" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.Brand" useGeneratedKeys="true" keyProperty="id" >
     insert into pro_brand
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="brandName != null" >
         brand_name,
       </if>
@@ -140,9 +137,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
-      </if>
       <if test="brandName != null" >
         #{brandName},
       </if>

@@ -15,8 +15,7 @@ public interface ProductSpecMapper extends BaseMapper<ProductSpec, ProductSpecEx
     int insertSelective(ProductSpec record);
 
     List<ProductSpec> selectByExample(ProductSpecExample example);
-    
-    @Override
+
     ProductSpec selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(ProductSpec record);

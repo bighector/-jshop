@@ -461,52 +461,52 @@ public class BrandExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalEqualTo(Long value) {
+        public Criteria andOrdinalEqualTo(Integer value) {
             addCriterion("ordinal =", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalNotEqualTo(Long value) {
+        public Criteria andOrdinalNotEqualTo(Integer value) {
             addCriterion("ordinal <>", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalGreaterThan(Long value) {
+        public Criteria andOrdinalGreaterThan(Integer value) {
             addCriterion("ordinal >", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalGreaterThanOrEqualTo(Long value) {
+        public Criteria andOrdinalGreaterThanOrEqualTo(Integer value) {
             addCriterion("ordinal >=", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalLessThan(Long value) {
+        public Criteria andOrdinalLessThan(Integer value) {
             addCriterion("ordinal <", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalLessThanOrEqualTo(Long value) {
+        public Criteria andOrdinalLessThanOrEqualTo(Integer value) {
             addCriterion("ordinal <=", value, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalIn(List<Long> values) {
+        public Criteria andOrdinalIn(List<Integer> values) {
             addCriterion("ordinal in", values, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalNotIn(List<Long> values) {
+        public Criteria andOrdinalNotIn(List<Integer> values) {
             addCriterion("ordinal not in", values, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalBetween(Long value1, Long value2) {
+        public Criteria andOrdinalBetween(Integer value1, Integer value2) {
             addCriterion("ordinal between", value1, value2, "ordinal");
             return (Criteria) this;
         }
 
-        public Criteria andOrdinalNotBetween(Long value1, Long value2) {
+        public Criteria andOrdinalNotBetween(Integer value1, Integer value2) {
             addCriterion("ordinal not between", value1, value2, "ordinal");
             return (Criteria) this;
         }

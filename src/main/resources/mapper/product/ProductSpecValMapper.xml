@@ -3,13 +3,14 @@
 <mapper namespace="net.jeeshop.biz.product.client.ProductSpecValMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.product.model.ProductSpecVal" >
     <id column="id" property="id" />
-    <result column="spec_val" property="specVal" />
-    <result column="spec_id" property="specId" />
-    <result column="ordinal" property="ordinal" />
-    <result column="create_time" property="createTime" />
-    <result column="update_time" property="updateTime" />
     <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="spec_group_id" property="specGroupId" />
+    <result column="spec_value" property="specValue" />
+    <result column="ordinal" property="ordinal" />
+    <result column="spec_name" property="specName" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, spec_val, spec_id, ordinal, create_time, update_time, create_account, update_account
+    id, create_account, create_time, update_account, update_time, spec_group_id, spec_value, 
+    ordinal, spec_name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.product.model.ProductSpecValExample" >
     select
@@ -78,7 +80,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from product_spec_val
+    from pro_spec_group_value
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,116 +91,120 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from product_spec_val
+    from pro_spec_group_value
     where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from product_spec_val
+    delete from pro_spec_group_value
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.product.model.ProductSpecVal" >
-    insert into product_spec_val (id, spec_val, spec_id, ordinal, create_time, update_time, create_account, 
-      update_account)
-    values (#{id}, #{specVal}, #{specId}, #{ordinal}, #{createTime}, #{updateTime}, #{createAccount}, 
-      #{updateAccount})
+  <insert id="insert" parameterType="net.jeeshop.biz.product.model.ProductSpecVal" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_spec_group_value (create_account, create_time, update_account, update_time, spec_group_id, 
+      spec_value, ordinal, spec_name)
+    values (#{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, #{specGroupId}, 
+      #{specValue}, #{ordinal}, #{specName})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.ProductSpecVal" >
-    insert into product_spec_val
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.ProductSpecVal" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_spec_group_value
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="specVal != null" >
-        spec_val,
-      </if>
-      <if test="specId != null" >
-        spec_id,
-      </if>
-      <if test="ordinal != null" >
-        ordinal,
+      <if test="createAccount != null" >
+        create_account,
       </if>
       <if test="createTime != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="createAccount != null" >
-        create_account,
-      </if>
       <if test="updateAccount != null" >
         update_account,
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id},
+      <if test="updateTime != null" >
+        update_time,
       </if>
-      <if test="specVal != null" >
-        #{specVal},
+      <if test="specGroupId != null" >
+        spec_group_id,
       </if>
-      <if test="specId != null" >
-        #{specId},
+      <if test="specValue != null" >
+        spec_value,
       </if>
       <if test="ordinal != null" >
-        #{ordinal},
+        ordinal,
+      </if>
+      <if test="specName != null" >
+        spec_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="createAccount != null" >
+        #{createAccount},
       </if>
       <if test="createTime != null" >
         #{createTime},
       </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
       <if test="updateTime != null" >
         #{updateTime},
       </if>
-      <if test="createAccount != null" >
-        #{createAccount},
+      <if test="specGroupId != null" >
+        #{specGroupId},
       </if>
-      <if test="updateAccount != null" >
-        #{updateAccount},
+      <if test="specValue != null" >
+        #{specValue},
+      </if>
+      <if test="ordinal != null" >
+        #{ordinal},
+      </if>
+      <if test="specName != null" >
+        #{specName},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.product.model.ProductSpecValExample" resultType="java.lang.Integer" >
-    select count(*) from product_spec_val
+    select count(*) from pro_spec_group_value
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.product.model.ProductSpecVal" >
-    update product_spec_val
+    update pro_spec_group_value
     <set >
-      <if test="specVal != null" >
-        spec_val = #{specVal},
-      </if>
-      <if test="specId != null" >
-        spec_id = #{specId},
-      </if>
-      <if test="ordinal != null" >
-        ordinal = #{ordinal},
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime},
       </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
       <if test="updateTime != null" >
         update_time = #{updateTime},
       </if>
-      <if test="createAccount != null" >
-        create_account = #{createAccount},
+      <if test="specGroupId != null" >
+        spec_group_id = #{specGroupId},
       </if>
-      <if test="updateAccount != null" >
-        update_account = #{updateAccount},
+      <if test="specValue != null" >
+        spec_value = #{specValue},
+      </if>
+      <if test="ordinal != null" >
+        ordinal = #{ordinal},
+      </if>
+      <if test="specName != null" >
+        spec_name = #{specName},
       </if>
     </set>
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.product.model.ProductSpecVal" >
-    update product_spec_val
-    set spec_val = #{specVal},
-      spec_id = #{specId},
-      ordinal = #{ordinal},
+    update pro_spec_group_value
+    set create_account = #{createAccount},
       create_time = #{createTime},
+      update_account = #{updateAccount},
       update_time = #{updateTime},
-      create_account = #{createAccount},
-      update_account = #{updateAccount}
+      spec_group_id = #{specGroupId},
+      spec_value = #{specValue},
+      ordinal = #{ordinal},
+      spec_name = #{specName}
     where id = #{id}
   </update>
 </mapper>
