@@ -32,7 +32,8 @@ public class PaymentController {
         //TODO 1. 参数验签
         PaymentBean paymentBean = new Gson().fromJson(message, PaymentBean.class);
         //TODO 2. 参数校验
-        PaymentResultBean paymentResult = paymentService.requestPayment(paymentBean);
+        Payment payment = paymentService.savePaymentRequest(paymentBean);
+        PaymentResultBean paymentResult = paymentService.payPayment(payment.getId());
         PaymentResult result = paymentResult.getPaymentResult();
         if(result == PaymentResult.SUCCESS) {
             //支付成功

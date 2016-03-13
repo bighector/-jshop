@@ -24,6 +24,9 @@ public class ResultBean<T> implements Serializable {
         this.msg = msg;
     }
 
+    public boolean isSuccess() {
+        return CODE_SUCCESS.equalsIgnoreCase(code);
+    }
     public String getCode() {
         return code;
     }

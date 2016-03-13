@@ -13,6 +13,7 @@ public class PaymentResultBean {
     private String requestNum;//请求支付号
     private Long memberId;//会员ID
     private double amount;//支付金额
+    private double waitPayAmount;//等待支付金额
     private String paymentNum;//支付流水号
     private PaymentResult paymentResult;//是否支付成功
     private String payUrl;//支付URL
@@ -55,6 +56,14 @@ public class PaymentResultBean {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public double getWaitPayAmount() {
+        return waitPayAmount;
+    }
+
+    public void setWaitPayAmount(double waitPayAmount) {
+        this.waitPayAmount = waitPayAmount;
     }
 
     public String getPaymentNum() {
