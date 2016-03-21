@@ -1,4 +1,4 @@
-package net.jeeshop.core.freemarker.fn;
+package net.jeeshop.web.freemarker.fn;
 
 import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;
@@ -6,6 +6,7 @@ import net.jeeshop.web.util.RequestHolder;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by dylan on 15-1-19.
  */
+@Component("fn.privilegeChecker")
 public class PrivilegeChecker implements TemplateMethodModelEx {
     private static Logger logger = LoggerFactory.getLogger(PrivilegeChecker.class);
     @Override

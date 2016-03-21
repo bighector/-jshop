@@ -7,9 +7,8 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
-    <!--<context:component-scan base-package="net.jeeshop.web.action" />-->
     <context:component-scan base-package="net.jeeshop.web.controller" />
-    <!--<import resource="classpath*:strutsSpring/front/spring_struts.xml"/>-->
+    <context:component-scan base-package="net.jeeshop.web.freemarker.fn" />
     <!-- 配置自定义转换服务器 -->
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
     </bean>
@@ -51,27 +50,12 @@
         <!-- 全局变量部分 -->
         <property name="freemarkerVariables">
             <map>
-                <!--<entry key="systemManager">-->
-                    <!--<bean class="net.jeeshop.core.freemarker.fn.SystemManagerGetter" />-->
-                <!--</entry>-->
-                <entry key="systemSetting">
-                    <bean class="net.jeeshop.core.freemarker.fn.SystemSettingGetter" />
-                </entry>
-                <entry key="currentUser">
-                    <bean class="net.jeeshop.core.freemarker.fn.CurrentUserGetter" />
-                </entry>
-                <entry key="checkPrivilege">
-                    <bean class="net.jeeshop.core.freemarker.fn.PrivilegeChecker" />
-                </entry>
-                <entry key="currentMember">
-                    <bean class="net.jeeshop.core.freemarker.fn.CurrentMemberGetter" />
-                </entry>
-                <!--<entry key="keyValueParser">-->
-                    <!--<bean class="net.jeeshop.core.freemarker.fn.KeyValueGetter" />-->
-                <!--</entry>-->
-                <!--<entry key="shoppingCart">-->
-                    <!--<bean class="net.jeeshop.core.freemarker.fn.ShoppingCartGetter" />-->
-                <!--</entry>-->
+                <entry key="systemManager" value-ref="fn.systemManager"/>
+                <entry key="systemSetting" value-ref="fn.systemSetting"/>
+                <entry key="currentUser" value-ref="fn.currentUser"/>
+                <entry key="checkPrivilege" value-ref="fn.privilegeChecker"/>
+                <entry key="currentMember" value-ref="fn.currentMember"/>
+                <entry key="currentUser" value-ref="fn.currentUser"/>
             </map>
         </property>
     </bean>
