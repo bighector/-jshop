@@ -7,20 +7,6 @@ import java.util.Date;
 import org.apache.commons.lang.time.DateUtils;
 
 public class DateTimeUtil {
-	public static void main(String[] args) throws Exception {
-		
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//		System.out.println(getDateTimeString(sdf.parse("2013-11-2 7:00:00")));
-//		System.out.println(getDateTimeString(sdf.parse("2013-11-2 6:00:00")));
-//		System.out.println(getDateTimeString(sdf.parse("2013-11-1 6:00:00")));
-//		System.out.println(getDateTimeString(sdf.parse("2013-10-31 6:00:00")));
-////		System.out.println(getDateTimeString(sdf.parse("2013-10-30 8:00:00")));
-//		System.out.println(getDateTimeString(sdf.parse("2013-10-30 6:00:00")));
-//		
-//		System.out.println(sdf.format(DateUtils.addHours(new Date(), 2)));
-		
-		System.out.println(getActivityEndDateTimeString("2014-04-30 6:00:00"));
-	}
 	private static final long m = 60*1000L;//分
 	private static final long hour = 3600*1000L;//小时
 	private static final long day = 24*hour;//天
