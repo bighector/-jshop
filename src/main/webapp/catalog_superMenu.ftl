@@ -4,7 +4,7 @@
 	type="text/css">
 
 <div id="sidebar">
-	<#list categoryList as item>
+	<#list GlobalData["product.categoryList"] as item>
        <div class="sidelist">
 			<span>
 				<h3>

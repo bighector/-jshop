@@ -1,4 +1,4 @@
-package net.jeeshop.core.freemarker.view;
+package net.jeeshop.web.freemarker.view;
 
 import freemarker.ext.servlet.FreemarkerServlet;
 import freemarker.ext.servlet.IncludePage;
@@ -17,6 +17,7 @@ public class FreemarkerView extends FreeMarkerView {
     protected SimpleHash buildTemplateModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) {
         SimpleHash hash = super.buildTemplateModel(model, request, response);
         hash.put(FreemarkerServlet.KEY_INCLUDE, new IncludePage(request, response));
+        hash.put("GlobalData", new GlobalDataHashModel(getObjectWrapper()));
         return hash;
     }
 }

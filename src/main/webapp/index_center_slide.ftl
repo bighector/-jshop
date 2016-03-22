@@ -5,7 +5,7 @@
     <div class="J_slide" style="height: 100%;">
       <div class="J_slide_clip">
         <ul class="J_slide_list">
-			<#list indexImages as item>
+			<#list GlobalData["cms.indexImages"] as item>
 		          <li class="J_slide_item">
 		          <#if item.link??>
 			          <a href="${item.link!""}" target="_blank">
@@ -21,7 +21,7 @@
         </ul>
       </div>
       <ul class="J_slide_trigger">
-		<#list indexImages as item>
+		<#list GlobalData["cms.indexImages"] as item>
 	        <li class="">
 	        	<a href="javascript:" title="${item.title!""}">
 				${item.title!""}

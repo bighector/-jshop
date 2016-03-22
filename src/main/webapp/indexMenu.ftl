@@ -52,8 +52,8 @@ body{
 								</button>
 								<a class="btn btn-success btn-sm" href="${basepath}/cart/cart.html">
 									<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;购物车
-									<#if shoppingCart?? && shoppingCart.productList?? && shoppingCart.productList?size gt 0>
-                                        <span class="badge badge-success">${shoppingCart.productList?size}</span>
+									<#if GlobalData["account.shoppingCart"]?? && GlobalData["account.shoppingCart"].productList?? && GlobalData["account.shoppingCart"].productList?size gt 0>
+                                        <span class="badge badge-success">${GlobalData["account.shoppingCart"].productList?size}</span>
 									</#if>
 								</a>
 							</span>
@@ -61,7 +61,7 @@ body{
 					</div>
 				</form>
 				<div style="text-align: left;margin-top: 5px;">热门搜索：
-					<#list hotQueryList as item>
+					<#list GlobalData["cms.hotQueryList"] as item>
                         <a class="hotSearch" href="${item.url}" target="_blank">
 							${item.key1!""}
                         </a>
@@ -130,7 +130,7 @@ body{
                             <li><a href="${systemSetting().www}"><b>首页</b></a></li>
 						</#if>
 					<!-- 类别作为菜单显示 -->
-						<#list categoryList as item>
+						<#list GlobalData["product.categoryList"] as item>
 						    <#if item.showInNav == "y">
 								<li class="${(item.code == selectMenu)?string("active","")}"><a href="${basepath}/catalog/${item.code}.html"><b>${item.name}</b></a></li>
 							</#if>

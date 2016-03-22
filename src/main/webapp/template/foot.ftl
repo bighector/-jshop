@@ -22,8 +22,8 @@
 	
 		<div class="container">
 			<div class="row IndexBottom">
-				<#if helpList?? && helpList?size gt 0>
-				<#list helpList as item>
+				<#if GlobalData["cms.helpList"]?? && GlobalData["cms.helpList"]?size gt 0>
+				<#list GlobalData["cms.helpList"] as item>
 					<div class="col-xs-2" style="text-align: center;">
 						<div class="row" style="margin-bottom: 10px;"><strong>${item.name!""}</strong></div>
 						<#if item.helps?? && item.helps?size gt 0>
@@ -44,8 +44,8 @@
 			<div class="row" >
 				<div class="col-xs-12" style="text-align: center;">
 					<div style="text-align: center;margin: auto;">
-						<#if friendLinks?? && friendLinks?size gt 0>
-						    <#list friendLinks as item>
+						<#if GlobalData["cms.friendLinkList"]?? && GlobalData["cms.friendLinkList"]?size gt 0>
+						    <#list GlobalData["cms.friendLinkList"] as item>
                                 <div style="float: left;margin: 5px;">
                                     <a href="http://${item.http!""}" target="_blank">${item.name!""}</a>
                                 </div>

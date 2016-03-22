@@ -29,7 +29,7 @@
 			</div>
 			<div class="bd">
 				<ul class="picList">
-						<#list hotProductList as item>
+						<#list GlobalData["product.hotProducts"] as item>
 							<li class="row col-xs-12">
 								<div class="pic"><a href="${basepath}/product/${item.id}" target="_blank">
 									<img border="0" style="margin: auto;" src="${systemSetting().imageRootPath}/${item.picture!""}" /></a>

@@ -57,9 +57,9 @@ function defaultProductImg(){
 							</div>
 					</div>
 				</div>
-				<@indexProduct.indexProduct queryType="hot" productList=hotProducts title="热门商品" />
-				<@indexProduct.indexProduct queryType="sale" productList=saleProducts title="特价商品" />
-				<@indexProduct.indexProduct queryType="newest" productList=newProducts title="最新商品" />
+				<@indexProduct.indexProduct queryType="hot" productList=GlobalData["product.hotProducts"] title="热门商品" />
+				<@indexProduct.indexProduct queryType="sale" productList=GlobalData["product.saleProducts"] title="特价商品" />
+				<@indexProduct.indexProduct queryType="newest" productList=GlobalData["product.newProducts"] title="最新商品" />
 			</div>
 			
 		</div>
