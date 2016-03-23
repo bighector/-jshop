@@ -18,7 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public abstract class BaseService<E extends BaseModel, Example> {
+public abstract class BaseService<E extends BaseModel, Example>
+{
     protected Logger logger = LoggerFactory.getLogger(getClass());
     abstract protected BaseMapper<E, Example> getMapper();
 

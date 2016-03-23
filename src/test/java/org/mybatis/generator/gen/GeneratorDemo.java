@@ -36,7 +36,7 @@ public class GeneratorDemo {
 	public void genProductSpec() throws Exception
 	{
 		 generateFiles("gen/generateConfig-productspec.xml");
-	}*/
+	}
 
 
     @Test
@@ -53,6 +53,11 @@ public class GeneratorDemo {
 	@Test
 	public void genOrderCode() throws Exception {
 		generateFiles("gen/generateConfig-order.xml");
+	}*/
+	
+	@Test
+	public void genOrderCode() throws Exception {
+		generateFiles("gen/generateConfig-Category.xml");
 	}
     
     private void generateFiles(String configResource) throws Exception

@@ -10,8 +10,10 @@
     function changeAreas(pid) {
         changeData(pid, '#area', 'void');
     }
-    function changeData(pid, div, func) {
-        $.post('loadAreasByPid?pid='+pid, function(json){
+    function changeData(pid, div, func) 
+    {
+        $.post('loadAreasByPid?pid='+pid, function(json)
+        {
             json = eval('(' + json + ')');
 
             var htmlCity = '';
@@ -31,7 +33,8 @@
         });
     }
 
-    function del(id) {
+    function del(id) 
+    {
         $('#_form').attr("action", '${basepath}/manage/area/deletes?ids='+id);
         $('#_form').submit();
     }

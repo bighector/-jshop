@@ -4,7 +4,8 @@ package net.jeeshop.biz.base.bean;
  * @author dinguangx@163.com
  * @date 2015-12-21 23:37
  */
-public class PageQueryBean {
+public class PageQueryBean
+{
     public static final int UNLIMIT_LENGTH = -1;
     public static final int DEFAULT_LENGTH = 10;
     private int start = 0;

@@ -28,7 +28,8 @@ public class AreaController extends ManageBaseController<SysArea, SysAreaExample
     private static final String page_areaTree = "/manage/system/area/areaTree";
     private static final String page_toEdit = "/manage/system/area/edit";
 
-    public AreaController() {
+    public AreaController() 
+    {
         super.page_toEdit = page_toEdit;
         super.page_toList = page_areaTree;
         super.page_toAdd = page_toEdit;
@@ -94,7 +95,8 @@ public class AreaController extends ManageBaseController<SysArea, SysAreaExample
     }
 
     //输出菜单到页面
-    private String writer(Collection list) {
+    private String writer(Collection list) 
+    {
         JSONArray json = JSONArray.fromObject(list);
         String jsonStr = json.toString();
         try {

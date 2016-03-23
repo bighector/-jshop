@@ -11,7 +11,8 @@ import java.util.List;
  * 区域节点，每一个AreaItem对应一个节点
  * @author alafighting
  */
-public class AreaItem {
+public class AreaItem
+{
     private Long id;// 0：根节点，否则是子节点
     private Long pid;// 父级节点
     private String name;// 区域名称

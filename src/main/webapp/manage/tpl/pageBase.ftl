@@ -20,15 +20,22 @@
                  <li><a href="${systemSetting().www}" target="_blank"><i class="glyphicon glyphicon-globe"></i> 访问站点</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> ${currentUser().nickname!currentUser().username} <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> 
+                           ${currentUser().nickname!currentUser().username} 
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="${basepath}/manage/user/show?account=${currentUser().username}" target="_blank"><i class="fa fa-user fa-fw"></i> 用户信息</a>
+                        <li>
+                            <a href="${basepath}/manage/user/show?account=${currentUser().username}" target="_blank">
+                               <i class="fa fa-user fa-fw"></i> 用户信息
+                            </a>
                         </li>
-                        <li><a href="${basepath}/manage/user/toChangePwd"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
+                        <li>
+                             <a href="${basepath}/manage/user/toChangePwd"><i class="fa fa-gear fa-fw"></i> 修改密码</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="${basepath}/manage/user/logout"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
+                        <li>
+                           <a href="${basepath}/manage/user/logout"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -39,13 +46,6 @@
         </nav>
 
         <div id="page-wrapper">
-            <#--<div class="row">-->
-                <#--<div class="col-lg-12">-->
-                    <#--<h3 class="page-header">${currentMenu!"Dashboard"}</h3>-->
-                <#--</div>-->
-                <#--<!-- /.col-lg-12 &ndash;&gt;-->
-            <#--</div>-->
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar navbar-default">

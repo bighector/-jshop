@@ -68,7 +68,8 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
         LinkedHashMap<Long, AreaItem> root = new LinkedHashMap<Long, AreaItem>();
         // 循环添加到集合
         iterator = areas.iterator();
-        while (iterator.hasNext()) {
+        while (iterator.hasNext()) 
+        {
             SysArea area = iterator.next();
             AreaItem item = new AreaItem(area.getName(), null);
             item.setId(area.getId());
