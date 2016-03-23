@@ -96,10 +96,9 @@ public class CategoryServiceTest extends BaseService<Category,CategoryExample>
 	@Test
 	public void Test()
 	{
-	     for(Category c : selectByName("three"))
-	     {
-	    	 System.out.println(c);
-	     }
+	    Category c = super.selectById(3L);
+	    
+	    System.out.println(selectCategory(c));
 	}
 	
 	public List<Category> selectByName(String name)
@@ -124,27 +123,20 @@ public class CategoryServiceTest extends BaseService<Category,CategoryExample>
 
 	private Category selectCategory(Category  c)
 	{
-		Category result=null;
+		Category parent=null;
 		switch(c.getLevel())
 		{
-			case 1: result = c; break; 
+			case 1: parent = c; break; 
 			
-			case 2: result = super.selectById(c.getPid()); //获取一层分类
-					if(result == null)  return c;
-					result.addChild(c);
-			        break;
-			        
-			case 3: result=super.selectById(c.getPid()); //获取第二层分类
-			 		if(result!=null)
-			 		{
-					  result.addChild(c);
-					  result=selectCategory(result);    //递归获取第一层分类
-			 		}
-			 		else {   result = c; }
-					break;
+			default:parent = super.selectById(c.getPid());
+					if(parent!= null)  {   
+						                 parent.addChild(c);
+						                 parent = selectCategory(parent);
+									   }
+					else               { parent = c; }
 		}
 		
-		return result;
+		return parent;
 	}
 	
 	public  Collection<Category> loadCateByParent(Long Pid)
