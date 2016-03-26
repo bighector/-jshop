@@ -4,37 +4,40 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class MemberRank extends BaseModel implements Serializable {
-    /** 代码 */
-    private String code;
-
     /** 等级名称 */
-    private String name;
+    private String rankName;
 
-    /** 积分上限 */
+    /** 等级代码 */
+    private String rankCode;
+
+    /** 积分下限(含） */
     private Integer minScore;
 
-    /** 积分下限 */
+    /** 积分上限(不含) */
     private Integer maxScore;
 
     /** 备注 */
     private String remark;
 
+    /** 是否有效,1-是0-否 */
+    private String isValid;
+
     private static final long serialVersionUID = 1L;
 
-    public String getCode() {
-        return code;
+    public String getRankName() {
+        return rankName;
     }
 
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
+    public void setRankName(String rankName) {
+        this.rankName = rankName == null ? null : rankName.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getRankCode() {
+        return rankCode;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setRankCode(String rankCode) {
+        this.rankCode = rankCode == null ? null : rankCode.trim();
     }
 
     public Integer getMinScore() {
@@ -59,5 +62,13 @@ public class MemberRank extends BaseModel implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(String isValid) {
+        this.isValid = isValid == null ? null : isValid.trim();
     }
 }

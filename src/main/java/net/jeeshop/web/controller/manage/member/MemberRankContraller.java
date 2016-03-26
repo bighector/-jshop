@@ -51,8 +51,8 @@ public class MemberRankContraller extends ManageBaseController<MemberRank, Membe
 	{
 		MemberRankExample accountRankExample = new MemberRankExample();
 		MemberRankExample.Criteria criteria = accountRankExample.createCriteria();
-		if(StringUtils.isNotEmpty(memberRank.getName())){
-			criteria.andNameEqualTo(memberRank.getName());
+		if(StringUtils.isNotEmpty(memberRank.getRankName())){
+			criteria.andRankNameEqualTo(memberRank.getRankName());
 		}
 		@SuppressWarnings("rawtypes")
 		PageBean pager = accountRankService.selectPageBean(accountRankExample,
