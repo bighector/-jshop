@@ -33,7 +33,7 @@
         </javaClientGenerator>
 
         <!-- 文章分类 -->
-        <table tableName="cms_article_catagery" domainObjectName="ArticleCatagery">
+        <table tableName="cms_article_category" domainObjectName="ArticleCategory">
         </table>
         <!-- 公告管理 -->
         <table tableName="cms_notice" domainObjectName="Notice">

@@ -81,7 +81,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from cms_article_catagory
+    from cms_article_category
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,21 +92,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from cms_article_catagory
+    from cms_article_category
     where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from cms_article_catagory
+    delete from cms_article_category
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    insert into cms_article_catagory (id, create_account, create_time, update_account, update_time, 
+    insert into cms_article_category (id, create_account, create_time, update_account, update_time, 
       parent_Id, category_name, category_type, category_code, ordinal)
     values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
       #{parentId}, #{categoryName}, #{categoryType}, #{categoryCode}, #{ordinal})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    insert into cms_article_catagory
+    insert into cms_article_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -173,13 +173,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.ArticleCategoryExample" resultType="java.lang.Integer" >
-    select count(*) from cms_article_catagory
+    select count(*) from cms_article_category
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    update cms_article_catagory
+    update cms_article_category
     <set >
       <if test="createAccount != null" >
         create_account = #{createAccount},
@@ -212,7 +212,7 @@
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    update cms_article_catagory
+    update cms_article_category
     set create_account = #{createAccount},
       create_time = #{createTime},
       update_account = #{updateAccount},
