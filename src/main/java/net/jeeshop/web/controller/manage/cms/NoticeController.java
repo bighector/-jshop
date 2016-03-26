@@ -64,7 +64,7 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 		if (StringUtils.isNotBlank(notice.getTitle())) {
 			criteria.andTitleLike("%"+notice.getTitle()+"%");
 		}
-		if (StringUtils.isNotBlank(notice.getIsValid())) {
+		if (notice.getIsValid() != null) {
 			criteria.andIsValidEqualTo(notice.getIsValid());
 		}
 		noticeExample.setOrderByClause("id desc");
@@ -115,7 +115,7 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 			notice.setCreateTime(nowTime);
 			notice.setUpdateAccount(loginUserName);
 			notice.setUpdateTime(nowTime);
-			notice.setIsValid(Notice.status_n);
+			notice.setIsValid(false);
 			super.insert(notice, flushAttrs);
 
 		} else {
