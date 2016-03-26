@@ -3,8 +3,8 @@ package net.jeeshop.web.controller.manage.product;
 import java.util.Collection;
 
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.product.model.Category;
-import net.jeeshop.biz.product.model.CategoryExample;
+import net.jeeshop.biz.product.model.ProductCategory;
+import net.jeeshop.biz.product.model.ProductCategoryExample;
 import net.jeeshop.biz.product.service.CategoryService;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.sf.json.JSONArray;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/manage/category")
-public class CategoryController extends ManageBaseController<Category,CategoryExample>
+public class ProductCategoryController extends ManageBaseController<ProductCategory,ProductCategoryExample>
 {
 	@Autowired
 	private CategoryService service;
@@ -32,15 +32,15 @@ public class CategoryController extends ManageBaseController<Category,CategoryEx
 	private static String page_toAdd  = null;
 	private static String page_toEdit = null;
 	
-	public CategoryController()
+	public ProductCategoryController()
 	{
-		super.page_toAdd  = CategoryController.page_toAdd;
-		super.page_toEdit = CategoryController.page_toEdit;
-		super.page_toList = CategoryController.page_toList;
+		super.page_toAdd  = ProductCategoryController.page_toAdd;
+		super.page_toEdit = ProductCategoryController.page_toEdit;
+		super.page_toList = ProductCategoryController.page_toList;
 	}
 
 	@Override
-	public BaseService<Category, CategoryExample> getService()
+	public BaseService<ProductCategory, ProductCategoryExample> getService()
 	{
 		return service;
 	}
@@ -77,7 +77,7 @@ public class CategoryController extends ManageBaseController<Category,CategoryEx
      * @param req 
      * @return
      */
-    private String writer(Collection<Category> list) 
+    private String writer(Collection<ProductCategory> list)
     {
         JSONArray json = JSONArray.fromObject(list);
         String jsonStr = json.toString();

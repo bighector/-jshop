@@ -2,6 +2,7 @@ package net.jeeshop.biz.product.model;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.product.enums.ProductAttrValueType;
 
 public class ProductAttr extends BaseModel implements Serializable {
     /** 属性名称 */
@@ -11,10 +12,10 @@ public class ProductAttr extends BaseModel implements Serializable {
     private Integer ordinal;
 
     /** 是否必须,1-是0-否 */
-    private String isMandated;
+    private Boolean isMandated;
 
     /** 值类型，input-手工输入, list-列表选择 */
-    private String valueType;
+    private ProductAttrValueType valueType;
 
     /** 可选值列表，以逗号分隔; 当value_type为list时使用 */
     private String optionsList;
@@ -40,20 +41,20 @@ public class ProductAttr extends BaseModel implements Serializable {
         this.ordinal = ordinal;
     }
 
-    public String getIsMandated() {
+    public Boolean getIsMandated() {
         return isMandated;
     }
 
-    public void setIsMandated(String isMandated) {
-        this.isMandated = isMandated == null ? null : isMandated.trim();
+    public void setIsMandated(Boolean isMandated) {
+        this.isMandated = isMandated;
     }
 
-    public String getValueType() {
+    public ProductAttrValueType getValueType() {
         return valueType;
     }
 
-    public void setValueType(String valueType) {
-        this.valueType = valueType == null ? null : valueType.trim();
+    public void setValueType(ProductAttrValueType valueType) {
+        this.valueType = valueType;
     }
 
     public String getOptionsList() {

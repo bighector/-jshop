@@ -3,20 +3,15 @@ package net.jeeshop.product.controller;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.product.model.Category;
-import net.jeeshop.biz.product.model.CategoryExample;
-import net.jeeshop.biz.product.model.ProductSpec;
-import net.jeeshop.biz.product.model.ProductSpecExample;
+import net.jeeshop.biz.product.model.ProductCategory;
+import net.jeeshop.biz.product.model.ProductCategoryExample;
 import net.jeeshop.biz.product.service.CategoryService;
-import net.jeeshop.biz.product.service.ProductSpecService;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author: pj_zhong
@@ -25,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/applicationContext.xml")
-public class CategoryControllerTest extends ManageBaseController<Category,CategoryExample>
+public class ProductCategoryControllerTest extends ManageBaseController<ProductCategory,ProductCategoryExample>
 {
 	@Autowired
 	private CategoryService service;
@@ -37,7 +32,7 @@ public class CategoryControllerTest extends ManageBaseController<Category,Catego
 	@org.junit.Test
 	public void Test()
 	{
-		CategoryControllerTest test= new CategoryControllerTest();
+		ProductCategoryControllerTest test= new ProductCategoryControllerTest();
 		
 		PageQueryBean bean = new PageQueryBean();
 		
@@ -48,7 +43,7 @@ public class CategoryControllerTest extends ManageBaseController<Category,Catego
 	
 	}
 	
-	public CategoryControllerTest()
+	public ProductCategoryControllerTest()
 	{
 		super.page_toAdd  = this.page_toAdd;
 		super.page_toEdit = this.page_toEdit;
@@ -56,15 +51,15 @@ public class CategoryControllerTest extends ManageBaseController<Category,Catego
 	}
 
 	@Override
-	public BaseService<Category, CategoryExample> getService() {
+	public BaseService<ProductCategory, ProductCategoryExample> getService() {
 		// TODO Auto-generated method stub
 		return service;
 	}
 	
-	public  PageBean<Category> loadDate(Category cate, PageQueryBean pageQueryBean)
+	public  PageBean<ProductCategory> loadDate(ProductCategory cate, PageQueryBean pageQueryBean)
 	{
 
-		return getService().selectPageList(new CategoryExample(), pageQueryBean);
+		return getService().selectPageList(new ProductCategoryExample(), pageQueryBean);
 	}
 	
 

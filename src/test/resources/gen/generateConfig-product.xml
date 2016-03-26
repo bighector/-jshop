@@ -39,7 +39,8 @@
         <!-- 商品规格 -->
         <table tableName="pro_spec_group" domainObjectName="ProductSpec">
             <generatedKey column="id" sqlStatement="JDBC"/>
-            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="is_Valid" javaType="java.lang.Boolean"/>
+            <columnOverride column="value_type" javaType="net.jeeshop.biz.product.enums.ProductSpecValueType"/>
         </table>
         <!-- 商品规格值 -->
         <table tableName="pro_spec_group_value" domainObjectName="ProductSpecVal">
@@ -49,12 +50,48 @@
         <!-- 商品属性 -->
         <table tableName="pro_product_attr" domainObjectName="ProductAttr">
             <generatedKey column="id" sqlStatement="JDBC"/>
-            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="is_mandated" javaType="java.lang.Boolean"/>
+            <columnOverride column="value_type" javaType="net.jeeshop.biz.product.enums.ProductAttrValueType"/>
         </table>
+
         <!-- 商品与商品属性关联表 -->
         <table tableName="pro_product_attr_link" domainObjectName="ProductAttrLink">
             <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="is_valid" javaType="java.lang.Boolean"/>
+        </table>
+
+        <!-- 商品分类 -->
+        <table tableName="pro_product_category" domainObjectName="ProductCategory">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <!-- 商品信息 -->
+        <table tableName="pro_product_info" domainObjectName="ProductInfo">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="is_new" javaType="java.lang.Boolean"/>
+            <columnOverride column="is_hot" javaType="java.lang.Boolean"/>
+            <columnOverride column="product_status" javaType="net.jeeshop.biz.product.enums.ProductStatus"/>
+        </table>
+        <table tableName="pro_product" domainObjectName="Product">
+            <generatedKey column="id" sqlStatement="JDBC"/>
             <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="is_new" javaType="java.lang.Boolean"/>
+            <columnOverride column="is_hot" javaType="java.lang.Boolean"/>
+            <columnOverride column="product_status" javaType="net.jeeshop.biz.product.enums.ProductStatus"/>
+        </table>
+        <!-- 商品图片 -->
+        <table tableName="pro_product_image" domainObjectName="ProductImage">
+
+            <columnOverride column="is_Main_Image" javaType="java.lang.Boolean"/>
+        </table>
+        <!-- 商品与商品规格关联管理 -->
+        <table tableName="pro_product_info_spec_link" domainObjectName="ProductInfoSpecLink">
+        </table>
+        <!-- 商品与商品值关联关系 -->
+        <table tableName="pro_product_spec_value_link" domainObjectName="ProductSpecValueLink">
+        </table>
+        <!-- 商品评论 -->
+        <table tableName="pro_product_comment" domainObjectName="ProductComment">
         </table>
     </context>
 

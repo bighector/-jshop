@@ -8,14 +8,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.jeeshop.biz.base.bean.PageBean;
-import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.product.client.CategoryMapper;
-import net.jeeshop.biz.product.model.Category;
-import net.jeeshop.biz.product.model.CategoryExample;
-import net.jeeshop.biz.product.model.CategoryExample.Criteria;
+import net.jeeshop.biz.product.client.ProductCategoryMapper;
+import net.jeeshop.biz.product.model.ProductCategory;
+import net.jeeshop.biz.product.model.ProductCategoryExample;
+import net.jeeshop.biz.product.model.ProductCategoryExample.Criteria;
 
 /**
  * @author: pj_zhong
@@ -23,13 +21,13 @@ import net.jeeshop.biz.product.model.CategoryExample.Criteria;
  * @date 2016-3-15
  */
 @Service
-public class CategoryService extends BaseService<Category,CategoryExample>
+public class CategoryService extends BaseService<ProductCategory,ProductCategoryExample>
 {
 	@Autowired
-	private CategoryMapper categoryMapper;
+	private ProductCategoryMapper categoryMapper;
 
 	@Override
-	protected BaseMapper<Category, CategoryExample> getMapper() {
+	protected BaseMapper<ProductCategory, ProductCategoryExample> getMapper() {
 		// TODO Auto-generated method stub
 		return categoryMapper;
 	}
@@ -59,9 +57,9 @@ public class CategoryService extends BaseService<Category,CategoryExample>
 	 * @return 返回 该分类的最高级父类(并且包含它)或者自身
 	 */
 	@Override
-	public Category selectById(long id)
+	public ProductCategory selectById(long id)
 	{
-		Category result = super.selectById(id);
+		ProductCategory result = super.selectById(id);
 		
 		return selectCategory(result);
 	}
@@ -71,16 +69,16 @@ public class CategoryService extends BaseService<Category,CategoryExample>
 	 * @param c
 	 * @return 返回 该分类的最高级父类(并且包含它)或者自身
 	 */
-	private Category selectCategory(Category  c)
+	private ProductCategory selectCategory(ProductCategory c)
 	{
-		Category parent=null;
+		ProductCategory parent=null;
 		switch(c.getLevel())
 		{
 			case 1: parent = c; break; 
 		
 			default:parent = super.selectById(c.getPid());
 					if(parent!= null)  {   
-					                     parent.addChild(c);
+//					                     parent.addChild(c);
 					                     parent = selectCategory(parent);
 					                   } 
 				    else               { parent = c; }
@@ -94,11 +92,11 @@ public class CategoryService extends BaseService<Category,CategoryExample>
 	 public int deleteById(long id)
 	 {
 		int row=0;
-		Collection<Category> children = loadCateByParent(id);
+		Collection<ProductCategory> children = loadCateByParent(id);
 		
 		if(children!=null && !children.isEmpty())
 		{
-			for(Category c : children)
+			for(ProductCategory c : children)
 				row+=deleteById(c.getId());
 		}
 				
@@ -111,12 +109,12 @@ public class CategoryService extends BaseService<Category,CategoryExample>
 	 * @param Pid 
 	 * @return
 	 */
-	public  Collection<Category> loadCateByParent(Long Pid)
+	public  Collection<ProductCategory> loadCateByParent(Long Pid)
 	{
 		if(Pid==null)
 		    Pid=0L;
 		
-		CategoryExample query = new CategoryExample();
+		ProductCategoryExample query = new ProductCategoryExample();
 		Criteria  condition= query.createCriteria();
 		condition.andIsValidEqualTo("1");
 		condition.andPidEqualTo(Pid);
@@ -130,28 +128,28 @@ public class CategoryService extends BaseService<Category,CategoryExample>
 	 * 加载所有分类(1-3级)
 	 * @return
 	 */
-	public Collection<Category> loadAll()
+	public Collection<ProductCategory> loadAll()
 	{	
-		CategoryExample query = new CategoryExample();
+		ProductCategoryExample query = new ProductCategoryExample();
 		query.createCriteria().andIsValidEqualTo("1");
-		List<Category> categories = getMapper().selectByExample(query);
+		List<ProductCategory> categories = getMapper().selectByExample(query);
 		
 		//把结果放到Iterchange中转站，方便接下来的分类
-		HashMap<Long,Category> Iterchange = new HashMap<Long,Category>();
-		for(Category c: categories)
+		HashMap<Long,ProductCategory> Iterchange = new HashMap<Long,ProductCategory>();
+		for(ProductCategory c: categories)
 		{
 			   Iterchange.put(c.getId(), c);
 		}
 			
-		List<Category> root = new ArrayList<Category>();
-		Category parent;
+		List<ProductCategory> root = new ArrayList<ProductCategory>();
+		ProductCategory parent;
 		
 		//分类  
-		for(Category c: Iterchange.values())
+		for(ProductCategory c: Iterchange.values())
 		{
 			if(c.getPid()==0)  {  root.add(c); }
 			else               {  parent = Iterchange.get(c.getPid());
-			                      if(parent!=null) { parent.addChild(c); }
+//			                      if(parent!=null) { parent.addChild(c); }
 							   }              	
 		}
 		return root;

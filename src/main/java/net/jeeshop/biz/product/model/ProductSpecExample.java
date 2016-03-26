@@ -3,6 +3,7 @@ package net.jeeshop.biz.product.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import net.jeeshop.biz.product.enums.ProductSpecValueType;
 
 public class ProductSpecExample {
     protected String orderByClause;
@@ -311,62 +312,62 @@ public class ProductSpecExample {
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeEqualTo(String value) {
+        public Criteria andValueTypeEqualTo(ProductSpecValueType value) {
             addCriterion("value_type =", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotEqualTo(String value) {
+        public Criteria andValueTypeNotEqualTo(ProductSpecValueType value) {
             addCriterion("value_type <>", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeGreaterThan(String value) {
+        public Criteria andValueTypeGreaterThan(ProductSpecValueType value) {
             addCriterion("value_type >", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeGreaterThanOrEqualTo(String value) {
+        public Criteria andValueTypeGreaterThanOrEqualTo(ProductSpecValueType value) {
             addCriterion("value_type >=", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeLessThan(String value) {
+        public Criteria andValueTypeLessThan(ProductSpecValueType value) {
             addCriterion("value_type <", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeLessThanOrEqualTo(String value) {
+        public Criteria andValueTypeLessThanOrEqualTo(ProductSpecValueType value) {
             addCriterion("value_type <=", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeLike(String value) {
+        public Criteria andValueTypeLike(ProductSpecValueType value) {
             addCriterion("value_type like", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotLike(String value) {
+        public Criteria andValueTypeNotLike(ProductSpecValueType value) {
             addCriterion("value_type not like", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeIn(List<String> values) {
+        public Criteria andValueTypeIn(List<ProductSpecValueType> values) {
             addCriterion("value_type in", values, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotIn(List<String> values) {
+        public Criteria andValueTypeNotIn(List<ProductSpecValueType> values) {
             addCriterion("value_type not in", values, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeBetween(String value1, String value2) {
+        public Criteria andValueTypeBetween(ProductSpecValueType value1, ProductSpecValueType value2) {
             addCriterion("value_type between", value1, value2, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotBetween(String value1, String value2) {
+        public Criteria andValueTypeNotBetween(ProductSpecValueType value1, ProductSpecValueType value2) {
             addCriterion("value_type not between", value1, value2, "valueType");
             return (Criteria) this;
         }
@@ -701,62 +702,62 @@ public class ProductSpecExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsValidEqualTo(String value) {
+        public Criteria andIsValidEqualTo(Boolean value) {
             addCriterion("is_valid =", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidNotEqualTo(String value) {
+        public Criteria andIsValidNotEqualTo(Boolean value) {
             addCriterion("is_valid <>", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidGreaterThan(String value) {
+        public Criteria andIsValidGreaterThan(Boolean value) {
             addCriterion("is_valid >", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidGreaterThanOrEqualTo(String value) {
+        public Criteria andIsValidGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_valid >=", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidLessThan(String value) {
+        public Criteria andIsValidLessThan(Boolean value) {
             addCriterion("is_valid <", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidLessThanOrEqualTo(String value) {
+        public Criteria andIsValidLessThanOrEqualTo(Boolean value) {
             addCriterion("is_valid <=", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidLike(String value) {
+        public Criteria andIsValidLike(Boolean value) {
             addCriterion("is_valid like", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidNotLike(String value) {
+        public Criteria andIsValidNotLike(Boolean value) {
             addCriterion("is_valid not like", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidIn(List<String> values) {
+        public Criteria andIsValidIn(List<Boolean> values) {
             addCriterion("is_valid in", values, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidNotIn(List<String> values) {
+        public Criteria andIsValidNotIn(List<Boolean> values) {
             addCriterion("is_valid not in", values, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidBetween(String value1, String value2) {
+        public Criteria andIsValidBetween(Boolean value1, Boolean value2) {
             addCriterion("is_valid between", value1, value2, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidNotBetween(String value1, String value2) {
+        public Criteria andIsValidNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_valid not between", value1, value2, "isValid");
             return (Criteria) this;
         }

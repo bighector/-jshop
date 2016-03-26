@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.product.client.ProductAttrLinkMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.product.model.ProductAttrLink" >
+    <id column="id" property="id" />
+    <result column="attr_name" property="attrName" />
+    <result column="attr_value" property="attrValue" />
+    <result column="product_attr_id" property="productAttrId" />
+    <result column="product_info_id" property="productInfoId" />
+    <result column="create_time" property="createTime" />
+    <result column="create_account" property="createAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="update_account" property="updateAccount" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, attr_name, attr_value, product_attr_id, product_info_id, create_time, create_account, 
+    update_time, update_account
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.product.model.ProductAttrLinkExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pro_product_attr_link
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from pro_product_attr_link
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pro_product_attr_link
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="net.jeeshop.biz.product.model.ProductAttrLink" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_product_attr_link (attr_name, attr_value, product_attr_id, product_info_id, create_time, 
+      create_account, update_time, update_account)
+    values (#{attrName}, #{attrValue}, #{productAttrId}, #{productInfoId}, #{createTime}, 
+      #{createAccount}, #{updateTime}, #{updateAccount})
+  </insert>
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.ProductAttrLink" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_product_attr_link
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attrName != null" >
+        attr_name,
+      </if>
+      <if test="attrValue != null" >
+        attr_value,
+      </if>
+      <if test="productAttrId != null" >
+        product_attr_id,
+      </if>
+      <if test="productInfoId != null" >
+        product_info_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attrName != null" >
+        #{attrName},
+      </if>
+      <if test="attrValue != null" >
+        #{attrValue},
+      </if>
+      <if test="productAttrId != null" >
+        #{productAttrId},
+      </if>
+      <if test="productInfoId != null" >
+        #{productInfoId},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.jeeshop.biz.product.model.ProductAttrLinkExample" resultType="java.lang.Integer" >
+    select count(*) from pro_product_attr_link
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.product.model.ProductAttrLink" >
+    update pro_product_attr_link
+    <set >
+      <if test="attrName != null" >
+        attr_name = #{attrName},
+      </if>
+      <if test="attrValue != null" >
+        attr_value = #{attrValue},
+      </if>
+      <if test="productAttrId != null" >
+        product_attr_id = #{productAttrId},
+      </if>
+      <if test="productInfoId != null" >
+        product_info_id = #{productInfoId},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.product.model.ProductAttrLink" >
+    update pro_product_attr_link
+    set attr_name = #{attrName},
+      attr_value = #{attrValue},
+      product_attr_id = #{productAttrId},
+      product_info_id = #{productInfoId},
+      create_time = #{createTime},
+      create_account = #{createAccount},
+      update_time = #{updateTime},
+      update_account = #{updateAccount}
+    where id = #{id}
+  </update>
+</mapper>

@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public class JavaTypeResolverExt extends JavaTypeResolverDefaultImpl {
     protected boolean forceLong = true;//无小数位时，优先使用Long
-    protected boolean forceDouble = true;//无小数位时，优先使用double,而不是bigDecimal,比forceBigDecimals优先级高
+    protected boolean forceDouble = true;//有小数位时，优先使用double,而不是bigDecimal,比forceBigDecimals优先级高
 
     public void addConfigurationProperties(Properties properties) {
         forceLong = StringUtility
