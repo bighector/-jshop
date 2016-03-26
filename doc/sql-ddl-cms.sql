@@ -4,7 +4,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS cms_advert;
 DROP TABLE IF EXISTS cms_article;
-DROP TABLE IF EXISTS cms_article_catagory;
+DROP TABLE IF EXISTS cms_article_category;
 DROP TABLE IF EXISTS cms_friend_link;
 DROP TABLE IF EXISTS cms_hot_query;
 DROP TABLE IF EXISTS cms_notice;
@@ -50,7 +50,7 @@ CREATE TABLE cms_article
 ) COMMENT = '文章管理';
 
 
-CREATE TABLE cms_article_catagory
+CREATE TABLE cms_article_category
 (
 	id bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
 	create_account varchar(64) COMMENT '创建人',
@@ -109,3 +109,6 @@ CREATE TABLE cms_notice
 	ordinal int COMMENT '顺序',
 	PRIMARY KEY (id)
 ) COMMENT = '系统通知';
+
+
+

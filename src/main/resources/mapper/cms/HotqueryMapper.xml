@@ -3,12 +3,12 @@
 <mapper namespace="net.jeeshop.biz.cms.client.HotQueryMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.HotQuery" >
     <id column="id" property="id" />
-    <result column="keywork" property="keywork" />
-    <result column="url" property="url" />
     <result column="create_account" property="createAccount" />
     <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
     <result column="update_time" property="updateTime" />
+    <result column="keywork" property="keywork" />
+    <result column="url" property="url" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, keywork, url, create_account, create_time, update_account, update_time
+    id, create_account, create_time, update_account, update_time, keywork, url
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.HotQueryExample" >
     select
@@ -96,22 +96,16 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
-    insert into cms_hot_query (id, keywork, url, create_account, create_time, update_account, 
-      update_time)
-    values (#{id}, #{keywork}, #{url}, #{createAccount}, #{createTime}, #{updateAccount}, 
-      #{updateTime})
+    insert into cms_hot_query (id, create_account, create_time, update_account, update_time, 
+      keywork, url)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{keywork}, #{url})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
     insert into cms_hot_query
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
-      </if>
-      <if test="keywork != null" >
-        keywork,
-      </if>
-      <if test="url != null" >
-        url,
       </if>
       <if test="createAccount != null" >
         create_account,
@@ -125,16 +119,16 @@
       <if test="updateTime != null" >
         update_time,
       </if>
+      <if test="keywork != null" >
+        keywork,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
-      </if>
-      <if test="keywork != null" >
-        #{keywork},
-      </if>
-      <if test="url != null" >
-        #{url},
       </if>
       <if test="createAccount != null" >
         #{createAccount},
@@ -148,6 +142,12 @@
       <if test="updateTime != null" >
         #{updateTime},
       </if>
+      <if test="keywork != null" >
+        #{keywork},
+      </if>
+      <if test="url != null" >
+        #{url},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.HotQueryExample" resultType="java.lang.Integer" >
@@ -159,12 +159,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
     update cms_hot_query
     <set >
-      <if test="keywork != null" >
-        keywork = #{keywork},
-      </if>
-      <if test="url != null" >
-        url = #{url},
-      </if>
       <if test="createAccount != null" >
         create_account = #{createAccount},
       </if>
@@ -177,17 +171,23 @@
       <if test="updateTime != null" >
         update_time = #{updateTime},
       </if>
+      <if test="keywork != null" >
+        keywork = #{keywork},
+      </if>
+      <if test="url != null" >
+        url = #{url},
+      </if>
     </set>
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
     update cms_hot_query
-    set keywork = #{keywork},
-      url = #{url},
-      create_account = #{createAccount},
+    set create_account = #{createAccount},
       create_time = #{createTime},
       update_account = #{updateAccount},
-      update_time = #{updateTime}
+      update_time = #{updateTime},
+      keywork = #{keywork},
+      url = #{url}
     where id = #{id}
   </update>
 </mapper>

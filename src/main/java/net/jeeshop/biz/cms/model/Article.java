@@ -2,11 +2,9 @@ package net.jeeshop.biz.cms.model;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.cms.enums.ArticleStatus;
 
 public class Article extends BaseModel implements Serializable {
-    /** 分类ID */
-    private Long categoryId;
-
     /** 标题 */
     private String title;
 
@@ -20,20 +18,15 @@ public class Article extends BaseModel implements Serializable {
     private Long readCount;
 
     /** 文章状态 */
-    private String status;
+    private ArticleStatus status;
 
     /** 顺序 */
     private Integer ordinal;
 
+    /** 分类ID */
+    private Long categoryId;
+
     private static final long serialVersionUID = 1L;
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
 
     public String getTitle() {
         return title;
@@ -67,12 +60,12 @@ public class Article extends BaseModel implements Serializable {
         this.readCount = readCount;
     }
 
-    public String getStatus() {
+    public ArticleStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setStatus(ArticleStatus status) {
+        this.status = status;
     }
 
     public Integer getOrdinal() {
@@ -81,5 +74,13 @@ public class Article extends BaseModel implements Serializable {
 
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }

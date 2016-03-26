@@ -3,7 +3,7 @@ package net.jeeshop.biz.cms.model;
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
-public class ArticleCatagory extends BaseModel implements Serializable {
+public class ArticleCategory extends BaseModel implements Serializable {
     /** 父ID */
     private Long parentId;
 

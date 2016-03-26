@@ -3,10 +3,10 @@ package net.jeeshop.web.controller.manage.cms;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.cms.bean.ArticleCatagoryBean;
+import net.jeeshop.biz.cms.bean.ArticleCatageryBean;
 import net.jeeshop.biz.cms.model.Article;
 import net.jeeshop.biz.cms.model.ArticleExample;
-import net.jeeshop.biz.cms.service.ArticleCatagoryService;
+import net.jeeshop.biz.cms.service.ArticleCategoryService;
 import net.jeeshop.biz.cms.service.ArticleService;
 import net.jeeshop.core.util.PinYinUtil;
 import net.jeeshop.web.controller.manage.ManageBaseController;
@@ -33,7 +33,7 @@ public class ArticleController extends ManageBaseController<Article, ArticleExam
     private ArticleService articleService;
 
     @Autowired
-    private ArticleCatagoryService articleCatalogService;
+    private ArticleCategoryService articleCatalogService;
 
     private static final String page_toList = "/manage/cms/articleList";
     private static final String page_toAdd = "/manage/cms/articleEdit";
@@ -64,25 +64,25 @@ public class ArticleController extends ManageBaseController<Article, ArticleExam
 
     @Override
     protected void beforeToAdd(Article e, ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
+        modelMap.addAttribute("catalogs",(List<ArticleCatageryBean>)articleCatalogService.loadRoot());
         super.beforeToAdd(e, modelMap);
     }
 
     @Override
     protected void beforeToEdit(Article e, ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
+        modelMap.addAttribute("catalogs",(List<ArticleCatageryBean>)articleCatalogService.loadRoot());
         super.beforeToEdit(e, modelMap);
     }
 
     @Override
     protected void beforeToList(ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
+        modelMap.addAttribute("catalogs",(List<ArticleCatageryBean>)articleCatalogService.loadRoot());
         super.beforeToList(modelMap);
     }
 
     @Override
     public String toEdit(@ModelAttribute("id") Long id, ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
+        modelMap.addAttribute("catalogs",(List<ArticleCatageryBean>)articleCatalogService.loadRoot());
         return super.toEdit(id, modelMap);
     }
 

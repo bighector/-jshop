@@ -1,7 +1,6 @@
 package net.jeeshop.core;
 
-import com.google.common.collect.Lists;
-import net.jeeshop.biz.cms.bean.ArticleCatagoryBean;
+import net.jeeshop.biz.cms.bean.ArticleCatageryBean;
 import net.jeeshop.biz.system.bean.SystemSettingBean;
 import net.jeeshop.core.cache.CacheProvider;
 import net.jeeshop.core.cache.SimpleCacheProvider;
@@ -124,12 +123,12 @@ public class SystemManager {
      * 文章目录列表
      * @return
      */
-    public List<ArticleCatagoryBean> getArticleCatalogs() {
+    public List<ArticleCatageryBean> getArticleCatalogs() {
     //    return getCacheObject("articleCatalogs");
     	return null;
     }
 
-    public void setArticleCatalogs(List<ArticleCatagoryBean> catalogsArticle) {
+    public void setArticleCatalogs(List<ArticleCatageryBean> catalogsArticle) {
         putCacheObject("articleCatalogs", (Serializable)catalogsArticle);
     }
 

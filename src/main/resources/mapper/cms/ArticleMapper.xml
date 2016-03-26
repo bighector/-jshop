@@ -3,17 +3,17 @@
 <mapper namespace="net.jeeshop.biz.cms.client.ArticleMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.Article" >
     <id column="id" property="id" />
-    <result column="category_id" property="categoryId" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
     <result column="title" property="title" />
     <result column="sub_title" property="subTitle" />
     <result column="code" property="code" />
     <result column="read_count" property="readCount" />
     <result column="status" property="status" />
     <result column="ordinal" property="ordinal" />
-    <result column="create_account" property="createAccount" />
-    <result column="create_time" property="createTime" />
-    <result column="update_account" property="updateAccount" />
-    <result column="update_time" property="updateTime" />
+    <result column="category_id" property="categoryId" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, category_id, title, sub_title, code, read_count, status, ordinal, create_account, 
-    create_time, update_account, update_time
+    id, create_account, create_time, update_account, update_time, title, sub_title, code, 
+    read_count, status, ordinal, category_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleExample" >
     select
@@ -102,10 +102,12 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Article" >
-    insert into cms_article (id, category_id, title, sub_title, code, read_count, status, 
-      ordinal, create_account, create_time, update_account, update_time)
-    values (#{id}, #{categoryId}, #{title}, #{subTitle}, #{code}, #{readCount}, #{status}, 
-      #{ordinal}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime})
+    insert into cms_article (id, create_account, create_time, update_account, update_time, 
+      title, sub_title, code, read_count, status, ordinal, category_id
+      )
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{title}, #{subTitle}, #{code}, #{readCount}, #{status}, #{ordinal}, #{categoryId}
+      )
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Article" >
     insert into cms_article
@@ -113,8 +115,17 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="categoryId != null" >
-        category_id,
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
       </if>
       <if test="title != null" >
         title,
@@ -134,25 +145,25 @@
       <if test="ordinal != null" >
         ordinal,
       </if>
-      <if test="createAccount != null" >
-        create_account,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateAccount != null" >
-        update_account,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="categoryId != null" >
+        category_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
       </if>
-      <if test="categoryId != null" >
-        #{categoryId},
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
       </if>
       <if test="title != null" >
         #{title},
@@ -172,17 +183,8 @@
       <if test="ordinal != null" >
         #{ordinal},
       </if>
-      <if test="createAccount != null" >
-        #{createAccount},
-      </if>
-      <if test="createTime != null" >
-        #{createTime},
-      </if>
-      <if test="updateAccount != null" >
-        #{updateAccount},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime},
+      <if test="categoryId != null" >
+        #{categoryId},
       </if>
     </trim>
   </insert>
@@ -195,8 +197,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.Article" >
     update cms_article
     <set >
-      <if test="categoryId != null" >
-        category_id = #{categoryId},
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
       </if>
       <if test="title != null" >
         title = #{title},
@@ -216,34 +227,25 @@
       <if test="ordinal != null" >
         ordinal = #{ordinal},
       </if>
-      <if test="createAccount != null" >
-        create_account = #{createAccount},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime},
-      </if>
-      <if test="updateAccount != null" >
-        update_account = #{updateAccount},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime},
+      <if test="categoryId != null" >
+        category_id = #{categoryId},
       </if>
     </set>
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.Article" >
     update cms_article
-    set category_id = #{categoryId},
+    set create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime},
       title = #{title},
       sub_title = #{subTitle},
       code = #{code},
       read_count = #{readCount},
       status = #{status},
       ordinal = #{ordinal},
-      create_account = #{createAccount},
-      create_time = #{createTime},
-      update_account = #{updateAccount},
-      update_time = #{updateTime}
+      category_id = #{categoryId}
     where id = #{id}
   </update>
 </mapper>

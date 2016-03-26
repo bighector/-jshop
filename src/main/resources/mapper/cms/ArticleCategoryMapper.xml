@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.cms.client.ArticleCatagoryMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.ArticleCatagory" >
+<mapper namespace="net.jeeshop.biz.cms.client.ArticleCategoryMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.ArticleCategory" >
     <id column="id" property="id" />
-    <result column="parent_Id" property="parentId" />
-    <result column="category_name" property="categoryName" />
-    <result column="category_type" property="categoryType" />
-    <result column="category_code" property="categoryCode" />
     <result column="create_account" property="createAccount" />
     <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
     <result column="update_time" property="updateTime" />
+    <result column="parent_Id" property="parentId" />
+    <result column="category_name" property="categoryName" />
+    <result column="category_type" property="categoryType" />
+    <result column="category_code" property="categoryCode" />
     <result column="ordinal" property="ordinal" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -72,10 +72,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, parent_Id, category_name, category_type, category_code, create_account, create_time, 
-    update_account, update_time, ordinal
+    id, create_account, create_time, update_account, update_time, parent_Id, category_name, 
+    category_type, category_code, ordinal
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleCatagoryExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleCategoryExample" >
     select
     <if test="distinct" >
       distinct
@@ -99,29 +99,17 @@
     delete from cms_article_catagory
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
-    insert into cms_article_catagory (id, parent_Id, category_name, category_type, category_code, create_account, 
-      create_time, update_account, update_time, ordinal)
-    values (#{id}, #{parentId}, #{categoryName}, #{categoryType}, #{categoryCode}, #{createAccount}, 
-      #{createTime}, #{updateAccount}, #{updateTime}, #{ordinal})
+  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
+    insert into cms_article_catagory (id, create_account, create_time, update_account, update_time, 
+      parent_Id, category_name, category_type, category_code, ordinal)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{parentId}, #{categoryName}, #{categoryType}, #{categoryCode}, #{ordinal})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
     insert into cms_article_catagory
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
-      </if>
-      <if test="parentId != null" >
-        parent_Id,
-      </if>
-      <if test="categoryName != null" >
-        category_name,
-      </if>
-      <if test="categoryType != null" >
-        category_type,
-      </if>
-      <if test="categoryCode != null" >
-        category_code,
       </if>
       <if test="createAccount != null" >
         create_account,
@@ -135,6 +123,18 @@
       <if test="updateTime != null" >
         update_time,
       </if>
+      <if test="parentId != null" >
+        parent_Id,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="categoryType != null" >
+        category_type,
+      </if>
+      <if test="categoryCode != null" >
+        category_code,
+      </if>
       <if test="ordinal != null" >
         ordinal,
       </if>
@@ -142,18 +142,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
-      </if>
-      <if test="parentId != null" >
-        #{parentId},
-      </if>
-      <if test="categoryName != null" >
-        #{categoryName},
-      </if>
-      <if test="categoryType != null" >
-        #{categoryType},
-      </if>
-      <if test="categoryCode != null" >
-        #{categoryCode},
       </if>
       <if test="createAccount != null" >
         #{createAccount},
@@ -167,32 +155,32 @@
       <if test="updateTime != null" >
         #{updateTime},
       </if>
+      <if test="parentId != null" >
+        #{parentId},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName},
+      </if>
+      <if test="categoryType != null" >
+        #{categoryType},
+      </if>
+      <if test="categoryCode != null" >
+        #{categoryCode},
+      </if>
       <if test="ordinal != null" >
         #{ordinal},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.ArticleCatagoryExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.ArticleCategoryExample" resultType="java.lang.Integer" >
     select count(*) from cms_article_catagory
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
     update cms_article_catagory
     <set >
-      <if test="parentId != null" >
-        parent_Id = #{parentId},
-      </if>
-      <if test="categoryName != null" >
-        category_name = #{categoryName},
-      </if>
-      <if test="categoryType != null" >
-        category_type = #{categoryType},
-      </if>
-      <if test="categoryCode != null" >
-        category_code = #{categoryCode},
-      </if>
       <if test="createAccount != null" >
         create_account = #{createAccount},
       </if>
@@ -205,22 +193,34 @@
       <if test="updateTime != null" >
         update_time = #{updateTime},
       </if>
+      <if test="parentId != null" >
+        parent_Id = #{parentId},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName},
+      </if>
+      <if test="categoryType != null" >
+        category_type = #{categoryType},
+      </if>
+      <if test="categoryCode != null" >
+        category_code = #{categoryCode},
+      </if>
       <if test="ordinal != null" >
         ordinal = #{ordinal},
       </if>
     </set>
     where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.ArticleCatagory" >
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
     update cms_article_catagory
-    set parent_Id = #{parentId},
-      category_name = #{categoryName},
-      category_type = #{categoryType},
-      category_code = #{categoryCode},
-      create_account = #{createAccount},
+    set create_account = #{createAccount},
       create_time = #{createTime},
       update_account = #{updateAccount},
       update_time = #{updateTime},
+      parent_Id = #{parentId},
+      category_name = #{categoryName},
+      category_type = #{categoryType},
+      category_code = #{categoryCode},
       ordinal = #{ordinal}
     where id = #{id}
   </update>

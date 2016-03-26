@@ -33,30 +33,25 @@
         </javaClientGenerator>
 
         <!-- 文章分类 -->
-        <table tableName="cms_article_catagory" domainObjectName="ArticleCatagory">
-            <columnOverride column="id" javaType="java.lang.Long"/>
-            <columnOverride column="parent_Id" javaType="java.lang.Long"/>
+        <table tableName="cms_article_catagery" domainObjectName="ArticleCatagery">
         </table>
         <!-- 公告管理 -->
         <table tableName="cms_notice" domainObjectName="Notice">
-            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="is_Valid" javaType="java.lang.Boolean"/>
         </table>
         <!-- 热门查询 -->
         <table tableName="cms_hot_query" domainObjectName="HotQuery">
-            <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
         <!-- 广告 -->
         <table tableName="cms_advert" domainObjectName="Advert">
-            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="is_Valid" javaType="java.lang.Boolean"/>
         </table>
         <!-- 友情链接 -->
         <table tableName="cms_friend_link" domainObjectName="FriendLink">
-            <columnOverride column="id" javaType="java.lang.Long"/>
         </table>
         <!-- 文章管理 -->
         <table tableName="cms_article" domainObjectName="Article">
-            <columnOverride column="id" javaType="java.lang.Long"/>
-            <columnOverride column="category_id" javaType="java.lang.Long"/>
+            <columnOverride column="status" javaType="net.jeeshop.biz.cms.enums.ArticleStatus"/>
         </table>
     </context>
 </generatorConfiguration>

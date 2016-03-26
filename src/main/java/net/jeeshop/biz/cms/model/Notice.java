@@ -14,7 +14,7 @@ public class Notice extends BaseModel implements Serializable {
     private Long readCount;
 
     /** 是否有效，1-是0-否 */
-    private String isValid;
+    private Boolean isValid;
 
     /** 顺序 */
     private Integer ordinal;
@@ -45,12 +45,12 @@ public class Notice extends BaseModel implements Serializable {
         this.readCount = readCount;
     }
 
-    public String getIsValid() {
+    public Boolean getIsValid() {
         return isValid;
     }
 
-    public void setIsValid(String isValid) {
-        this.isValid = isValid == null ? null : isValid.trim();
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 
     public Integer getOrdinal() {
