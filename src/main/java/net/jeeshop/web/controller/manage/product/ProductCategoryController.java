@@ -1,13 +1,17 @@
 package net.jeeshop.web.controller.manage.product;
 
 import java.util.Collection;
+import java.util.List;
 
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.cms.bean.ArticleCategoryBean;
+import net.jeeshop.biz.product.bean.ProductCategoryBean;
 import net.jeeshop.biz.product.model.ProductCategory;
 import net.jeeshop.biz.product.model.ProductCategoryExample;
-import net.jeeshop.biz.product.service.CategoryService;
+import net.jeeshop.biz.product.service.ProductCategoryService;
 import net.jeeshop.web.controller.manage.ManageBaseController;
-import net.sf.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,21 +26,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date Mar 17, 2016
  */
 @Controller
-@RequestMapping("/manage/category")
+@RequestMapping("/manage/product/category")
 public class ProductCategoryController extends ManageBaseController<ProductCategory,ProductCategoryExample>
 {
 	@Autowired
-	private CategoryService service;
-	
-	private static String page_toList = "manage/product/category/categoryList";
-	private static String page_toAdd  = null;
-	private static String page_toEdit = null;
+	private ProductCategoryService service;
+
+	private static final String page_toList = "/manage/product/productCategoryList";
+	private static final String page_toAdd = "/manage/product/productCategoryEdit";
+	private static final String page_toEdit = "/manage/product/productCategoryEdit";
 	
 	public ProductCategoryController()
 	{
-		super.page_toAdd  = ProductCategoryController.page_toAdd;
-		super.page_toEdit = ProductCategoryController.page_toEdit;
-		super.page_toList = ProductCategoryController.page_toList;
+		super.page_toAdd  = page_toAdd;
+		super.page_toEdit = page_toEdit;
+		super.page_toList = page_toList;
 	}
 
 	@Override
@@ -45,12 +49,35 @@ public class ProductCategoryController extends ManageBaseController<ProductCateg
 		return service;
 	}
 	
+	/**
+	 * 公共的分页方法
+	 *
+	 * @return
+	 * @throws Exception
+	 */
 	@Override
-	public void beforeToList(ModelMap modelMap) 
-	{
-	     modelMap.put("categories", service.loadCateByParent(0L));
+	@RequestMapping("selectList")
+	public String selectList(ModelMap modelMap) {
+		List<ProductCategoryBean> root = service.loadRoot();
+		List<ProductCategoryBean> result = Lists.newArrayList();
+		for (ProductCategoryBean cata : root) {
+			appendChildren(cata, result);
+		}
+		modelMap.addAttribute("list", result);
+		return page_toList;
 	}
-	
+
+	private void appendChildren(ProductCategoryBean catalog, List<ProductCategoryBean> list) {
+		if (catalog == null) {
+			return;
+		}
+		list.add(catalog);
+		if (catalog.getChildren() != null && catalog.getChildren().size() > 0) {
+			for (ProductCategoryBean cata : catalog.getChildren()) {
+				appendChildren(cata, list);
+			}
+		}
+	}
 	
 	@RequestMapping("loadByPid")
     @ResponseBody
@@ -64,29 +91,20 @@ public class ProductCategoryController extends ManageBaseController<ProductCateg
 	
     @RequestMapping("loadAll")
     @ResponseBody
-    public String loadAllCate()
+    public String loadAllCategory()
     {
     	return writer(service.loadAll());
     }
-    
-    
-    
+
+
+
     /**
      * JSON数据输出
-     * @param obj
-     * @param req 
      * @return
      */
     private String writer(Collection<ProductCategory> list)
     {
-        JSONArray json = JSONArray.fromObject(list);
-        String jsonStr = json.toString();
-        try {
-            return jsonStr;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonStr;
+		return new Gson().toJson(list);
     }
 
 }

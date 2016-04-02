@@ -5,7 +5,7 @@ import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.product.model.ProductCategory;
 import net.jeeshop.biz.product.model.ProductCategoryExample;
-import net.jeeshop.biz.product.service.CategoryService;
+import net.jeeshop.biz.product.service.ProductCategoryService;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 
 import org.junit.runner.RunWith;
@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ProductCategoryControllerTest extends ManageBaseController<ProductCategory,ProductCategoryExample>
 {
 	@Autowired
-	private CategoryService service;
+	private ProductCategoryService service;
 	
 	private static String page_toList = null;
 	private static String page_toAdd  = null;
