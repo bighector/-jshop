@@ -1,7 +1,7 @@
 package net.jeeshop.biz.cms.service;
 
 import com.google.common.collect.Lists;
-import net.jeeshop.biz.cms.bean.ArticleCatageryBean;
+import net.jeeshop.biz.cms.bean.ArticleCategoryBean;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.client.BaseMapper;
@@ -52,14 +52,14 @@ public class ArticleCategoryService extends BaseService<ArticleCategory, Article
      *
      * @return
      */
-    public List<ArticleCatageryBean> loadRoot() {
+    public List<ArticleCategoryBean> loadRoot() {
         ArticleCategoryExample example = getExampleWithOrder();
         ArticleCategoryExample.Criteria criteria = example.createCriteria();
         criteria.andParentIdEqualTo(0L);
 
         List<ArticleCategory> rootCatalogs = articleCatagoryMapper.selectByExample(example);
-        List<ArticleCatageryBean> result = convertList(rootCatalogs);
-        for (ArticleCatageryBean catalogBean : result) {
+        List<ArticleCategoryBean> result = convertList(rootCatalogs);
+        for (ArticleCategoryBean catalogBean : result) {
             loadChildrenRecursive(catalogBean);
         }
         return result;
@@ -71,10 +71,10 @@ public class ArticleCategoryService extends BaseService<ArticleCategory, Article
         return example;
     }
 
-    private List<ArticleCatageryBean> convertList(List<ArticleCategory> articleCatalogs) {
-        List<ArticleCatageryBean> result = Lists.newArrayList();
+    private List<ArticleCategoryBean> convertList(List<ArticleCategory> articleCatalogs) {
+        List<ArticleCategoryBean> result = Lists.newArrayList();
         for (ArticleCategory catalog : articleCatalogs) {
-            result.add(new ArticleCatageryBean(catalog));
+            result.add(new ArticleCategoryBean(catalog));
         }
         return result;
     }
@@ -84,13 +84,13 @@ public class ArticleCategoryService extends BaseService<ArticleCategory, Article
      *
      * @param item
      */
-    private void loadChildrenRecursive(ArticleCatageryBean item) {
+    private void loadChildrenRecursive(ArticleCategoryBean item) {
         ArticleCategoryExample example = getExampleWithOrder();
         ArticleCategoryExample.Criteria criteria = example.createCriteria();
-        criteria.andIdEqualTo(item.getId());
+        criteria.andParentIdEqualTo(item.getId());
         item.setChildren(convertList(articleCatagoryMapper.selectByExample(example)));
         if (item.getChildren() != null && item.getChildren().size() > 0) {
-            for (ArticleCatageryBean bean : item.getChildren()) {
+            for (ArticleCategoryBean bean : item.getChildren()) {
                 loadChildrenRecursive(bean);
             }
         }

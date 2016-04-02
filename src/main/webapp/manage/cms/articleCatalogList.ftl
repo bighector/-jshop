@@ -29,10 +29,6 @@
 						var _form = $("#form");
 						_form.attr("action","selectList");
 						_form.submit();
-							
-						  //alert("删除成功！");
-						  //document.form.action = "catalog!selectList.action";   
-					      //document.form.submit();   
 					  }
 					  jQuery.unblockUI();
 				  },
@@ -50,8 +46,6 @@
 	}
 	//编辑
 	function editSelect(id){
-		//document.form1.action = "catalog!toEdit.action?e.id="+node.id;
-        //document.form1.submit();
         var _url = "toEdit?id="+id;
         var _form = $("#form");
 		_form.attr("action",_url);
@@ -62,11 +56,6 @@
 		<table class="table table-bordered table-condensed table-hover">
 			<tr>
 				<td colspan="16">
-
-					<#--<a href="selectList" class="btn btn-primary">-->
-						<#--<i class="icon-search icon-white"></i> 查询-->
-					<#--</a>-->
-						
 
 					<a href="toAdd" class="btn btn-success">
 						<i class="icon-plus-sign icon-white"></i> 添加
@@ -87,11 +76,11 @@
 				<th nowrap="nowrap" align="right">操作</th>
 			</tr>
 			<#list list as item>
-            <tr class="treegrid-${item.id} ${(item.pid==0)?string("","treegrid-parent-"+item.pid)}">
+            <tr class="treegrid-${item.id} ${(item.parentId==0)?string("","treegrid-parent-"+item.parentId)}">
                 <td>${item.id!""}</td>
-                <td>${item.name!""}</td>
+                <td>${item.categoryName!""}</td>
                 <td>${item.ordinal!""}</td>
-                <td>${item.code!""}</td>
+                <td>${item.categoryCode!""}</td>
 				<td>
 					<button class="btn btn-warning" onclick="return editSelect('${item.id}');">
                     <i class="icon-edit icon-white"></i> 编辑

@@ -43,6 +43,8 @@ public class SystemLogService extends BaseService<SystemLog, SystemLogExample> {
         systemlog.setAccount(currentUser.getUsername());
         systemlog.setLogType(logType);
         systemlog.setCreateTime(new Date());
+        systemlog.setUpdateTime(new Date());
+        systemlog.setLogTime(new Date());
         systemlog.setLoginIp(AddressUtils.getIp(RequestHolder.getRequest()));
 
         String address = null;

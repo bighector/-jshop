@@ -1,17 +1,15 @@
 package net.jeeshop.core;
 
-import net.jeeshop.biz.cms.bean.ArticleCatageryBean;
+import net.jeeshop.biz.cms.bean.ArticleCategoryBean;
 import net.jeeshop.biz.system.bean.SystemSettingBean;
 import net.jeeshop.core.cache.CacheProvider;
 import net.jeeshop.core.cache.SimpleCacheProvider;
-import net.jeeshop.core.listener.SystemListener;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
@@ -26,7 +24,7 @@ public class SystemManager {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(SystemManager.class);
     @Autowired
     @Qualifier("appProperties")
-	private static Properties appProperties;
+	private Properties appProperties;
     private static CacheProvider cacheProvider = new SimpleCacheProvider();
 	private static SystemManager instance;
 
@@ -116,12 +114,12 @@ public class SystemManager {
      * 文章目录列表
      * @return
      */
-    public List<ArticleCatageryBean> getArticleCatalogs() {
+    public List<ArticleCategoryBean> getArticleCatalogs() {
     //    return getCacheObject("articleCatalogs");
     	return null;
     }
 
-    public void setArticleCatalogs(List<ArticleCatageryBean> catalogsArticle) {
+    public void setArticleCatalogs(List<ArticleCategoryBean> catalogsArticle) {
         putCacheObject("articleCatalogs", (Serializable)catalogsArticle);
     }
 

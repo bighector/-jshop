@@ -8,23 +8,23 @@ import net.jeeshop.core.util.BeanUtilsExt;
 /**
 * Created by dylan on 15-9-5.
 */
-public class ArticleCatageryBean extends ArticleCategory {
+public class ArticleCategoryBean extends ArticleCategory {
 	private static final long serialVersionUID = 1600799011967259967L;
 
-	public ArticleCatageryBean() {
+	public ArticleCategoryBean() {
     }
 
-    public ArticleCatageryBean(ArticleCategory catalog) {
+    public ArticleCategoryBean(ArticleCategory catalog) {
         convertFrom(catalog);
     }
 
-    private List<ArticleCatageryBean> children;
+    private List<ArticleCategoryBean> children;
 
-    public List<ArticleCatageryBean> getChildren() {
+    public List<ArticleCategoryBean> getChildren() {
         return children;
     }
 
-    public void setChildren(List<ArticleCatageryBean> children) {
+    public void setChildren(List<ArticleCategoryBean> children) {
         this.children = children;
     }
 
