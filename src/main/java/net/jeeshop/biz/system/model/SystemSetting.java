@@ -7,53 +7,47 @@ public class SystemSetting extends BaseModel implements Serializable {
     /** 系统代号 */
     private String systemCode;
 
-    /** 系统名称 */
-    private String name;
+    /** 应用名称 */
+    private String appName;
 
     /** 门户页面 */
-    private String www;
+    private String website;
 
-    /** logo */
+    /** LOGO */
     private String logo;
 
     /** 标题 */
     private String title;
 
-    /** 描述 */
+    /** 描述信息 */
     private String description;
 
     /** 关键字 */
     private String keywords;
 
     /** 图标 */
-    private String shortcuticon;
+    private String shortcutIcon;
 
-    /** 地址 */
+    /** 联系地址 */
     private String address;
 
     /** 联系电话 */
-    private String tel;
+    private String telphone;
 
-    /** 联系邮箱 */
+    /** 邮箱 */
     private String email;
 
     /** 备案号 */
     private String icp;
 
-    /** 是否开放 */
-    private String isOpen;
+    /** 是否开放,1-是0-否 */
+    private Boolean isOpen;
 
-    /** 关站信息 */
+    /** 网站关闭提示语 */
     private String closeMsg;
-
-    /** QQ */
-    private String qq;
 
     /** 图片根路径 */
     private String imageRootPath;
-
-    /** 后台地址 */
-    private String manageHttp;
 
     /** 默认产品图片 */
     private String defaultProductImg;
@@ -61,22 +55,16 @@ public class SystemSetting extends BaseModel implements Serializable {
     /** 样式 */
     private String style;
 
-    /** 版本号 */
+    /** 系统版本号 */
     private String version;
 
-    /** 后台左侧菜单叶子节点的图标 */
-    private String manageLeftTreeLeafIcon;
-
-    /** 站长统计代码 */
+    /** 统计代码 */
     private String statisticsCode;
 
-    /** 是否开放响应式 */
-    private String openResponsive;
+    /** 是否开放响应式,1-是0-否 */
+    private String isResponsive;
 
-    /** qq 联系信息 */
-    private String qqHelpHtml;
-
-    /** 图片 */
+    /** 图片集 */
     private String images;
 
     private static final long serialVersionUID = 1L;
@@ -89,20 +77,20 @@ public class SystemSetting extends BaseModel implements Serializable {
         this.systemCode = systemCode == null ? null : systemCode.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getAppName() {
+        return appName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setAppName(String appName) {
+        this.appName = appName == null ? null : appName.trim();
     }
 
-    public String getWww() {
-        return www;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setWww(String www) {
-        this.www = www == null ? null : www.trim();
+    public void setWebsite(String website) {
+        this.website = website == null ? null : website.trim();
     }
 
     public String getLogo() {
@@ -137,12 +125,12 @@ public class SystemSetting extends BaseModel implements Serializable {
         this.keywords = keywords == null ? null : keywords.trim();
     }
 
-    public String getShortcuticon() {
-        return shortcuticon;
+    public String getShortcutIcon() {
+        return shortcutIcon;
     }
 
-    public void setShortcuticon(String shortcuticon) {
-        this.shortcuticon = shortcuticon == null ? null : shortcuticon.trim();
+    public void setShortcutIcon(String shortcutIcon) {
+        this.shortcutIcon = shortcutIcon == null ? null : shortcutIcon.trim();
     }
 
     public String getAddress() {
@@ -153,12 +141,12 @@ public class SystemSetting extends BaseModel implements Serializable {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getTel() {
-        return tel;
+    public String getTelphone() {
+        return telphone;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
+    public void setTelphone(String telphone) {
+        this.telphone = telphone == null ? null : telphone.trim();
     }
 
     public String getEmail() {
@@ -177,12 +165,12 @@ public class SystemSetting extends BaseModel implements Serializable {
         this.icp = icp == null ? null : icp.trim();
     }
 
-    public String getIsOpen() {
+    public Boolean getIsOpen() {
         return isOpen;
     }
 
-    public void setIsOpen(String isOpen) {
-        this.isOpen = isOpen == null ? null : isOpen.trim();
+    public void setIsOpen(Boolean isOpen) {
+        this.isOpen = isOpen;
     }
 
     public String getCloseMsg() {
@@ -193,28 +181,12 @@ public class SystemSetting extends BaseModel implements Serializable {
         this.closeMsg = closeMsg == null ? null : closeMsg.trim();
     }
 
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
-    }
-
     public String getImageRootPath() {
         return imageRootPath;
     }
 
     public void setImageRootPath(String imageRootPath) {
         this.imageRootPath = imageRootPath == null ? null : imageRootPath.trim();
-    }
-
-    public String getManageHttp() {
-        return manageHttp;
-    }
-
-    public void setManageHttp(String manageHttp) {
-        this.manageHttp = manageHttp == null ? null : manageHttp.trim();
     }
 
     public String getDefaultProductImg() {
@@ -241,14 +213,6 @@ public class SystemSetting extends BaseModel implements Serializable {
         this.version = version == null ? null : version.trim();
     }
 
-    public String getManageLeftTreeLeafIcon() {
-        return manageLeftTreeLeafIcon;
-    }
-
-    public void setManageLeftTreeLeafIcon(String manageLeftTreeLeafIcon) {
-        this.manageLeftTreeLeafIcon = manageLeftTreeLeafIcon == null ? null : manageLeftTreeLeafIcon.trim();
-    }
-
     public String getStatisticsCode() {
         return statisticsCode;
     }
@@ -257,20 +221,12 @@ public class SystemSetting extends BaseModel implements Serializable {
         this.statisticsCode = statisticsCode == null ? null : statisticsCode.trim();
     }
 
-    public String getOpenResponsive() {
-        return openResponsive;
+    public String getIsResponsive() {
+        return isResponsive;
     }
 
-    public void setOpenResponsive(String openResponsive) {
-        this.openResponsive = openResponsive == null ? null : openResponsive.trim();
-    }
-
-    public String getQqHelpHtml() {
-        return qqHelpHtml;
-    }
-
-    public void setQqHelpHtml(String qqHelpHtml) {
-        this.qqHelpHtml = qqHelpHtml == null ? null : qqHelpHtml.trim();
+    public void setIsResponsive(String isResponsive) {
+        this.isResponsive = isResponsive == null ? null : isResponsive.trim();
     }
 
     public String getImages() {

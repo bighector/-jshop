@@ -9,4 +9,12 @@
     <context:component-scan base-package="net.jeeshop.biz"/>
     <bean class="net.jeeshop.core.SystemManager"/>
     <bean class="net.jeeshop.core.cache.CacheInitiator"/>
+
+    <bean id="appProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:conf.properties</value>
+            </list>
+        </property>
+    </bean>
 </beans>

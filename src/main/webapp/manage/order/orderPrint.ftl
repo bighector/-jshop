@@ -24,8 +24,8 @@
 				</tr>
 				<tr>
 					<th nowrap="nowrap">交易平台</th>
-					<td nowrap="nowrap" colspan="21">${systemSetting().name}
-						(${systemSetting().www })
+					<td nowrap="nowrap" colspan="21">${systemSetting().appName}
+						(${systemSetting().website })
 					</td>
 				</tr>
 				<tr>

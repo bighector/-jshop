@@ -3,14 +3,14 @@
 <mapper namespace="net.jeeshop.biz.system.client.ExpressMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.Express" >
     <id column="id" property="id" />
-    <result column="code" property="code" />
-    <result column="name" property="name" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="express_code" property="expressCode" />
+    <result column="express_name" property="expressName" />
     <result column="fee" property="fee" />
     <result column="ordinal" property="ordinal" />
-    <result column="create_time" property="createTime" />
-    <result column="create_account" property="createAccount" />
-    <result column="update_time" property="updateTime" />
-    <result column="update_account" property="updateAccount" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, code, name, fee, ordinal, create_time, create_account, update_time, update_account
+    id, create_account, create_time, update_account, update_time, express_code, express_name, 
+    fee, ordinal
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.ExpressExample" >
     select
@@ -98,10 +99,10 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.Express" >
-    insert into sys_express (id, code, name, fee, ordinal, create_time, create_account, 
-      update_time, update_account)
-    values (#{id}, #{code}, #{name}, #{fee}, #{ordinal}, #{createTime}, #{createAccount}, 
-      #{updateTime}, #{updateAccount})
+    insert into sys_express (id, create_account, create_time, update_account, update_time, 
+      express_code, express_name, fee, ordinal)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{expressCode}, #{expressName}, #{fee}, #{ordinal})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.Express" >
     insert into sys_express
@@ -109,11 +110,23 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="code != null" >
-        code,
+      <if test="createAccount != null" >
+        create_account,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="expressCode != null" >
+        express_code,
+      </if>
+      <if test="expressName != null" >
+        express_name,
       </if>
       <if test="fee != null" >
         fee,
@@ -121,46 +134,34 @@
       <if test="ordinal != null" >
         ordinal,
       </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="createAccount != null" >
-        create_account,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="updateAccount != null" >
-        update_account,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
       </if>
-      <if test="code != null" >
-        #{code},
+      <if test="createAccount != null" >
+        #{createAccount},
       </if>
-      <if test="name != null" >
-        #{name},
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="expressCode != null" >
+        #{expressCode},
+      </if>
+      <if test="expressName != null" >
+        #{expressName},
       </if>
       <if test="fee != null" >
         #{fee},
       </if>
       <if test="ordinal != null" >
         #{ordinal},
-      </if>
-      <if test="createTime != null" >
-        #{createTime},
-      </if>
-      <if test="createAccount != null" >
-        #{createAccount},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime},
-      </if>
-      <if test="updateAccount != null" >
-        #{updateAccount},
       </if>
     </trim>
   </insert>
@@ -173,11 +174,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.Express" >
     update sys_express
     <set >
-      <if test="code != null" >
-        code = #{code},
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
       </if>
-      <if test="name != null" >
-        name = #{name},
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="expressCode != null" >
+        express_code = #{expressCode},
+      </if>
+      <if test="expressName != null" >
+        express_name = #{expressName},
       </if>
       <if test="fee != null" >
         fee = #{fee},
@@ -185,31 +198,19 @@
       <if test="ordinal != null" >
         ordinal = #{ordinal},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime},
-      </if>
-      <if test="createAccount != null" >
-        create_account = #{createAccount},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime},
-      </if>
-      <if test="updateAccount != null" >
-        update_account = #{updateAccount},
-      </if>
     </set>
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.Express" >
     update sys_express
-    set code = #{code},
-      name = #{name},
-      fee = #{fee},
-      ordinal = #{ordinal},
+    set create_account = #{createAccount},
       create_time = #{createTime},
-      create_account = #{createAccount},
+      update_account = #{updateAccount},
       update_time = #{updateTime},
-      update_account = #{updateAccount}
+      express_code = #{expressCode},
+      express_name = #{expressName},
+      fee = #{fee},
+      ordinal = #{ordinal}
     where id = #{id}
   </update>
 </mapper>

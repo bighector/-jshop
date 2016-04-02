@@ -7,10 +7,10 @@
     <#assign responsive>${Session["responsive"]!""}</#assign>
     <#if responsive == "y">
         <#assign non_responsive2>n</#assign>
-    <#elseif systemSetting().openResponsive == "n">
-        <#assign non_responsive2>y</#assign>
-    <#else >
+    <#elseif systemSetting().isResponsive>
         <#assign non_responsive2>n</#assign>
+    <#else >
+        <#assign non_responsive2>y</#assign>
     </#if>
     <#assign style>${RequestParameters.style!""}</#assign>
     <#if style=="">
@@ -63,14 +63,14 @@
 
 </head>
     <#if nobody>
-        <#if systemSetting().isOpen=="n">
+        <#if !systemSetting().isOpen>
         ${systemSetting().closeMsg!"系统关闭，请联系管理员"}
             <#return />
         </#if>
         <#nested />
     <#else >
     <body>
-        <#if systemSetting().isOpen=="n">
+        <#if !systemSetting().isOpen>
         ${systemSetting().closeMsg!"系统关闭，请联系管理员"}
             <#return />
         </#if>

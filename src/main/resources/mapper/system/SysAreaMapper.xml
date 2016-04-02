@@ -3,12 +3,12 @@
 <mapper namespace="net.jeeshop.biz.system.client.SysAreaMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SysArea" >
     <id column="id" property="id" />
-    <result column="pid" property="pid" />
-    <result column="name" property="name" />
-    <result column="create_time" property="createTime" />
     <result column="create_account" property="createAccount" />
-    <result column="update_time" property="updateTime" />
+    <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="parent_id" property="parentId" />
+    <result column="area_name" property="areaName" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, pid, name, create_time, create_account, update_time, update_account
+    id, create_account, create_time, update_account, update_time, parent_id, area_name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SysAreaExample" >
     select
@@ -96,10 +96,10 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.SysArea" >
-    insert into sys_area (id, pid, name, create_time, create_account, update_time, update_account
-      )
-    values (#{id}, #{pid}, #{name}, #{createTime}, #{createAccount}, #{updateTime}, #{updateAccount}
-      )
+    insert into sys_area (id, create_account, create_time, update_account, update_time, 
+      parent_id, area_name)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{parentId}, #{areaName})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysArea" >
     insert into sys_area
@@ -107,46 +107,46 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="pid != null" >
-        pid,
-      </if>
-      <if test="name != null" >
-        name,
+      <if test="createAccount != null" >
+        create_account,
       </if>
       <if test="createTime != null" >
         create_time,
       </if>
-      <if test="createAccount != null" >
-        create_account,
+      <if test="updateAccount != null" >
+        update_account,
       </if>
       <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="updateAccount != null" >
-        update_account,
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="areaName != null" >
+        area_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
       </if>
-      <if test="pid != null" >
-        #{pid},
-      </if>
-      <if test="name != null" >
-        #{name},
+      <if test="createAccount != null" >
+        #{createAccount},
       </if>
       <if test="createTime != null" >
         #{createTime},
       </if>
-      <if test="createAccount != null" >
-        #{createAccount},
+      <if test="updateAccount != null" >
+        #{updateAccount},
       </if>
       <if test="updateTime != null" >
         #{updateTime},
       </if>
-      <if test="updateAccount != null" >
-        #{updateAccount},
+      <if test="parentId != null" >
+        #{parentId},
+      </if>
+      <if test="areaName != null" >
+        #{areaName},
       </if>
     </trim>
   </insert>
@@ -159,35 +159,35 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SysArea" >
     update sys_area
     <set >
-      <if test="pid != null" >
-        pid = #{pid},
-      </if>
-      <if test="name != null" >
-        name = #{name},
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime},
       </if>
-      <if test="createAccount != null" >
-        create_account = #{createAccount},
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
       </if>
       <if test="updateTime != null" >
         update_time = #{updateTime},
       </if>
-      <if test="updateAccount != null" >
-        update_account = #{updateAccount},
+      <if test="parentId != null" >
+        parent_id = #{parentId},
+      </if>
+      <if test="areaName != null" >
+        area_name = #{areaName},
       </if>
     </set>
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SysArea" >
     update sys_area
-    set pid = #{pid},
-      name = #{name},
+    set create_account = #{createAccount},
       create_time = #{createTime},
-      create_account = #{createAccount},
+      update_account = #{updateAccount},
       update_time = #{updateTime},
-      update_account = #{updateAccount}
+      parent_id = #{parentId},
+      area_name = #{areaName}
     where id = #{id}
   </update>
 </mapper>

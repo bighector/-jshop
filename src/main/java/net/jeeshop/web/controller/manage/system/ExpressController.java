@@ -53,8 +53,8 @@ public class ExpressController extends  ManageBaseController<Express, ExpressExa
     public PageBean<Express> loadData(Express queryParams, PageQueryBean pageQueryBean) {
         ExpressExample example = new ExpressExample();
         ExpressExample.Criteria criteria = example.createCriteria();
-        if (StringUtils.isNotBlank(queryParams.getCode())) {
-            criteria.andCodeEqualTo(queryParams.getCode());
+        if (StringUtils.isNotBlank(queryParams.getExpressCode())) {
+            criteria.andExpressCodeEqualTo(queryParams.getExpressCode());
         }
         example.setOrderByClause("id desc");
         PageBean<Express> pager = expressService.selectPageList(example, pageQueryBean);
@@ -89,9 +89,9 @@ public class ExpressController extends  ManageBaseController<Express, ExpressExa
     public String unique(@ModelAttribute("e") Express e, HttpServletResponse response) throws IOException {
         logger.debug("验证输入的字符的唯一性:" + e);
         response.setCharacterEncoding("utf-8");
-        if (StringUtils.isNotBlank(e.getCode())) {//验证快递编码是否存在
-            logger.debug("验证快递编码是否存在:" + e.getCode());
-            Express express = expressService.selectByCode(e.getCode());
+        if (StringUtils.isNotBlank(e.getExpressCode())) {//验证快递编码是否存在
+            logger.debug("验证快递编码是否存在:" + e.getExpressCode());
+            Express express = expressService.selectByCode(e.getExpressCode());
 
             if (express == null) {
                 //数据库中不存在此编码

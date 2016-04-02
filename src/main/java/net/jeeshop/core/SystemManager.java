@@ -7,6 +7,8 @@ import net.jeeshop.core.cache.SimpleCacheProvider;
 import net.jeeshop.core.listener.SystemListener;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -22,7 +24,9 @@ import java.util.*;
  */
 public class SystemManager {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(SystemManager.class);
-	private static Properties p = new Properties();
+    @Autowired
+    @Qualifier("appProperties")
+	private static Properties appProperties;
     private static CacheProvider cacheProvider = new SimpleCacheProvider();
 	private static SystemManager instance;
 
@@ -40,17 +44,6 @@ public class SystemManager {
 		init();
 	}
 	private static void init(){
-		try {
-			p.load(SystemListener.class
-					.getResourceAsStream("/system.properties"));
-//			code.load(new BufferedReader(new InputStreamReader(SystemListener.class
-//					.getResourceAsStream("/code.properties"), "utf-8")));
-			logger.info(p.toString());
-//			log.info(code.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
         manageExpressMap.put("shunfeng", "顺风快递");
         manageExpressMap.put("ems", "EMS");
         manageExpressMap.put("shentong", "申通E物流");
@@ -64,7 +57,7 @@ public class SystemManager {
 	}
 	
 	public String getProperty(String key){
-		return p.getProperty(key);
+		return appProperties.getProperty(key);
 	}
 	
 	private Random random = new Random();

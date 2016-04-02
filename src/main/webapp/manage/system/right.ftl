@@ -34,9 +34,6 @@ $(function() {
 			<div id="tabs">
 				<ul>
 					<li><a href="#tabs-1" style="font-size: 14px;">十万火急</a>
-<!-- 						<a href="#"> -->
-<#--<%-- 							<img alt="" src="${systemSetting().manageHttp}/resource/images/refresh.png"> --%>-->
-<!-- 						</a> -->
 					</li>
 					<li><a href="#tabs-2" style="font-size: 14px;">基本设置</a></li>
 					<li><a href="#tabs-3" style="font-size: 14px;">图片设置</a></li>
@@ -106,80 +103,80 @@ $(function() {
 					<table class="table table-condensed">
 						<tr>
 							<td style="text-align: right;">系统版本:</td>
-							<td style="text-align: left;">${systemSetting().getVersion() }</td>
+							<td style="text-align: left;">${systemSetting().version }</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">系统代号:</td>
-							<td style="text-align: left;">${systemSetting().getSystemCode() }</td>
+							<td style="text-align: left;">${systemSetting().systemCode }</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">名称:</td>
-							<td style="text-align: left;">${systemSetting().getName() }</td>
+							<td style="text-align: left;">${systemSetting().appName }</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">简介:</td>
-							<td style="text-align: left;">${systemSetting().getWww() }</td>
+							<td style="text-align: left;">${systemSetting().website }</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">log:</td>
-							<td style="text-align: left;">${systemSetting().getLog() }</td>
+							<td style="text-align: left;">${systemSetting().logo }</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">网站标题:</td>
-							<td style="text-align: left;">${systemSetting().getTitle() }</td>
+							<td style="text-align: left;">${systemSetting().title }</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">description:</td>
 							<td style="text-align: left;">
-								${systemSetting().getDescription() }
+								${systemSetting().description }
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">keywords:</td>
 							<td style="text-align: left;">
-								${systemSetting().getKeywords() }
+								${systemSetting().keywords }
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">shortcuticon:</td>
 							<td style="text-align: left;">
-								${systemSetting().getShortcuticon() }
+								${systemSetting().shortcutIcon }
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">联系地址:</td>
 							<td style="text-align: left;">
-								${systemSetting().getAddress() }
+								${systemSetting().address }
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">联系电话:</td>
 							<td style="text-align: left;">
-								${systemSetting().getTel() }
+								${systemSetting().telphone }
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">邮箱:</td>
 							<td style="text-align: left;">
-								${systemSetting().getEmail() }
+								${systemSetting().email }
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">备案号:</td>
 							<td style="text-align: left;">
-								${systemSetting().getIcp() }
+								${systemSetting().icp }
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">是否开放网站:</td>
 							<td style="text-align: left;">
-								<input type="checkbox" disabled="disabled"  checked="${systemSetting().getIsopen() }" value="${systemSetting().getIsopen() }"/>
+								<input type="checkbox" disabled="disabled"  checked="${systemSetting().isOpen }" value="${systemSetting().isOpen }"/>
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">关闭信息:</td>
 							<td style="text-align: left;">
-								${systemSetting().getCloseMsg() }
+								${systemSetting().closeMsg }
 							</td>
 						</tr>
 					</table>
@@ -188,7 +185,7 @@ $(function() {
 					<table class="table table-condensed">
 						<tr>
 							<td style="text-align: right;">图片根路径</td>
-							<td style="text-align: left;" >${systemSetting().getImageRootPath() }</td>
+							<td style="text-align: left;" >${systemSetting().imageRootPath }</td>
 						</tr>
 					</table>
 				</div>

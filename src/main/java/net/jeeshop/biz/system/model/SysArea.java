@@ -5,26 +5,26 @@ import net.jeeshop.biz.base.model.BaseModel;
 
 public class SysArea extends BaseModel implements Serializable {
     /** 父级ID */
-    private Long pid;
+    private Long parentId;
 
     /** 区域名称 */
-    private String name;
+    private String areaName;
 
     private static final long serialVersionUID = 1L;
 
-    public Long getPid() {
-        return pid;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setPid(Long pid) {
-        this.pid = pid;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
-    public String getName() {
-        return name;
+    public String getAreaName() {
+        return areaName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setAreaName(String areaName) {
+        this.areaName = areaName == null ? null : areaName.trim();
     }
 }

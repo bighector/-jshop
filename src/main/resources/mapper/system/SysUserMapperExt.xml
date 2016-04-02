@@ -6,12 +6,12 @@
   </resultMap>
   <select id="selectByParams" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SysUserExample" >
       select u.*,r.role_name from sys_user u, sys_role r
-      where u.rid = r.id
+      where u.role_id = r.id
       order by u.username desc
     </select>
     <select id="selectUserBeanById" resultMap="BaseResultMap" parameterType="long" >
         select u.*,r.role_name from sys_user u, sys_role r
-        where u.rid = r.id
+        where u.role_id = r.id
         and u.id = #{id}
     </select>
 </mapper>

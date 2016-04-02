@@ -27,7 +27,7 @@
                     </a>
                 </#if>
 
-                <a class="btn btn-info" target="_blank" href="${systemSetting().www}/product/${e.id!""}.html">
+                <a class="btn btn-info" target="_blank" href="${systemSetting().website}/product/${e.id!""}.html">
                     <i class="icon-eye-open icon-white"></i> 查看</a>
                 <a target="_blank" href="${basepath}/freemarker/create?method=staticProductByID&id=${e.id!""}" class="btn btn-warning">
                     <i class="icon-refresh icon-white"></i> 静态化</a>

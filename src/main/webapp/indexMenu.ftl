@@ -35,7 +35,7 @@ body{
 	<div class="container" style="min-height: 10px;margin-top:5px;margin-bottom:5px;border: 0px solid red;">
 		<div class="row">
 			<div class="col-xs-3">
-				<a href="${systemSetting().www}"><img style="max-height: 50px;" alt="myshop-logo" src="${systemSetting().logo}"/></a>
+				<a href="${systemSetting().website}"><img style="max-height: 50px;" alt="myshop-logo" src="${systemSetting().logo}"/></a>
 			</div>
 			<div class="col-xs-6" style="border: 0px solid blue;padding-left:5px;">
 				<!-- search查询输入框 -->
@@ -102,7 +102,7 @@ body{
 					</#if>
 
 		          	<div style="vertical-align: middle;margin-top: 10px;font-size: 18px;z-index: 0;">
-		          		<span class="glyphicon glyphicon-earphone"></span>&nbsp;<#--客服热线:-->${systemSetting().tel}
+		          		<span class="glyphicon glyphicon-earphone"></span>&nbsp;<#--客服热线:-->${systemSetting().telphone}
 		          	</div>
 		    	</div>
 			</div>
@@ -115,7 +115,7 @@ body{
 <div class="navbar navbar-default" style="margin-bottom: 15px;z-index: 111">
       <div class="container">
         <div class="navbar-header col-xs-3" style="text-align: center;" id="navbar-header">
-			  <a class="navbar-brand" href="${systemSetting().www}" style="font-weight: bold;margin-left: 5px;">全部商品分类</a>
+			  <a class="navbar-brand" href="${systemSetting().website}" style="font-weight: bold;margin-left: 5px;">全部商品分类</a>
 	          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
@@ -125,9 +125,9 @@ body{
         <div class="navbar-collapse collapse" id="navbar-main">
 	          <ul class="nav navbar-nav" >
 						<#if selectMenu=="0">
-                            <li class="active"><a href="${systemSetting().www}"><b>首页</b></a></li>
+                            <li class="active"><a href="${systemSetting().website}"><b>首页</b></a></li>
 						<#else>
-                            <li><a href="${systemSetting().www}"><b>首页</b></a></li>
+                            <li><a href="${systemSetting().website}"><b>首页</b></a></li>
 						</#if>
 					<!-- 类别作为菜单显示 -->
 						<#list GlobalData["product.categoryList"] as item>

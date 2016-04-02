@@ -23,7 +23,7 @@
                         </#if>
 
                        
-                        <a class="btn btn-info" target="_blank" href="${systemSetting().www}/news/${e.id!""}.html">
+                        <a class="btn btn-info" target="_blank" href="${systemSetting().website}/news/${e.id!""}.html">
                         <i class="icon-eye-open icon-white"></i> 查看</a>
                         
                         <a id="btnStatic" href="#" class="btn btn-warning">

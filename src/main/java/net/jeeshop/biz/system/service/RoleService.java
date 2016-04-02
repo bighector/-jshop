@@ -50,7 +50,7 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
     {
         sysRoleMapper.updateByPrimaryKey(role);
         //删除现有角色权限
-        sysPrivilegeMapperExt.deleteByRid(role.getId());
+        sysPrivilegeMapperExt.deleteByRoleId(role.getId());
         //添加新的权限
         String rolePrivilege = role.getPrivileges();
         String[] rolePrivileges = rolePrivilege.split(",");
@@ -66,8 +66,8 @@ public class RoleService extends BaseService<SysRole, SysRoleExample> {
         for (String privilege : rolePrivileges)
         {
             SysPrivilege item = new SysPrivilege();
-            item.setRid(rid);
-            item.setMid(Long.parseLong(privilege));
+            item.setRoleId(rid);
+            item.setResourceId(Long.parseLong(privilege));
             item.setCreateTime(new Date());
             privilegeList.add(item);
         }

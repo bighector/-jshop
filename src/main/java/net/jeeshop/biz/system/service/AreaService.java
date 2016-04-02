@@ -3,12 +3,9 @@ package net.jeeshop.biz.system.service;
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.bean.AreaItem;
-import net.jeeshop.biz.system.bean.MenuItem;
-import net.jeeshop.biz.system.bean.MenuType;
 import net.jeeshop.biz.system.client.SysAreaMapper;
 import net.jeeshop.biz.system.model.SysArea;
 import net.jeeshop.biz.system.model.SysAreaExample;
-import net.jeeshop.biz.system.model.SysMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +55,7 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
         SysAreaExample query = null;
         if (pid != null) {
             query = new SysAreaExample();
-            query.createCriteria().andPidEqualTo(pid);
+            query.createCriteria().andParentIdEqualTo(pid);
         }
 
         List<SysArea> areas = sysAreaMapper.selectByExample(query);
@@ -71,10 +68,10 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
         while (iterator.hasNext()) 
         {
             SysArea area = iterator.next();
-            AreaItem item = new AreaItem(area.getName(), null);
+            AreaItem item = new AreaItem(area.getAreaName(), null);
             item.setId(area.getId());
-            item.setPid(area.getPid());
-            item.setName(area.getName());
+            item.setPid(area.getParentId());
+            item.setName(area.getAreaName());
 
             if (item.getPid().equals(0) || item.getPid().equals(pid)) {
                 root.put(item.getId(), item);
@@ -85,10 +82,10 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
         iterator = areas.iterator();
         while (iterator.hasNext()) {
             SysArea area = iterator.next();
-            AreaItem item = new AreaItem(area.getName(), null);
+            AreaItem item = new AreaItem(area.getAreaName(), null);
             item.setId(area.getId());
-            item.setPid(area.getPid());
-            item.setName(area.getName());
+            item.setPid(area.getParentId());
+            item.setName(area.getAreaName());
 
             AreaItem parentItem = root.get(item.getPid());
             if (parentItem != null) {
@@ -100,10 +97,10 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
         iterator = areas.iterator();
         while (iterator.hasNext()) {
             SysArea area = iterator.next();
-            AreaItem item = new AreaItem(area.getName(), null);
+            AreaItem item = new AreaItem(area.getAreaName(), null);
             item.setId(area.getId());
-            item.setPid(area.getPid());
-            item.setName(area.getName());
+            item.setPid(area.getParentId());
+            item.setName(area.getAreaName());
 
             for (AreaItem parentItem : root.values()) {
                 if (parentItem.getChildren() != null) {
@@ -130,13 +127,13 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
     }
 
     @Override
-    public long insert(SysArea articleCatalog) {
-        if (articleCatalog != null) {
-            if (articleCatalog.getPid() == null) {
-                articleCatalog.setPid(0L);
+    public long insert(SysArea sysArea) {
+        if (sysArea != null) {
+            if (sysArea.getParentId() == null) {
+                sysArea.setParentId(0L);
             }
         }
-        return super.insert(articleCatalog);
+        return super.insert(sysArea);
     }
 
     @Override

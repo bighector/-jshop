@@ -1,45 +1,44 @@
 package net.jeeshop.biz.system.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Express extends BaseModel implements Serializable {
-    /** 配送方式编码 */
-    private String code;
+    /** 配送方式代码 */
+    private String expressCode;
 
     /** 配送方式名称 */
-    private String name;
+    private String expressName;
 
     /** 配送费用 */
-    private BigDecimal fee;
+    private Double fee;
 
-    /** 显示顺序 */
+    /** 顺序 */
     private Integer ordinal;
 
     private static final long serialVersionUID = 1L;
 
-    public String getCode() {
-        return code;
+    public String getExpressCode() {
+        return expressCode;
     }
 
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
+    public void setExpressCode(String expressCode) {
+        this.expressCode = expressCode == null ? null : expressCode.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getExpressName() {
+        return expressName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setExpressName(String expressName) {
+        this.expressName = expressName == null ? null : expressName.trim();
     }
 
-    public BigDecimal getFee() {
+    public Double getFee() {
         return fee;
     }
 
-    public void setFee(BigDecimal fee) {
+    public void setFee(Double fee) {
         this.fee = fee;
     }
 

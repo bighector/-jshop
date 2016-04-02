@@ -56,8 +56,8 @@ public class AreaController extends ManageBaseController<SysArea, SysAreaExample
 
     protected void beforeToEdit(SysArea area, ModelMap model) {
         if (area != null) {
-            model.put("pid", area.getPid());
-            model.put("pname", area.getName());
+            model.put("pid", area.getParentId());
+            model.put("pname", area.getAreaName());
         }
     }
 
@@ -65,16 +65,16 @@ public class AreaController extends ManageBaseController<SysArea, SysAreaExample
     protected void beforeToAdd(SysArea area, ModelMap model) {
         long pidValue = 0;
         try {
-            if (area.getPid() != null) {
-                pidValue = area.getPid();
+            if (area.getParentId() != null) {
+                pidValue = area.getParentId();
             }
         } catch (Exception e) {
         }
 
         if (pidValue != 0) {
             area = areaService.selectById(pidValue);
-            model.put("pid", area.getPid());
-            model.put("pname", area.getName());
+            model.put("pid", area.getParentId());
+            model.put("pname", area.getAreaName());
         }
     }
 

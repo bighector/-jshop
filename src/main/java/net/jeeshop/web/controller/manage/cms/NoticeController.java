@@ -129,7 +129,7 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 	
 	@RequestMapping(value = "updateStatusY", method = RequestMethod.POST)
 	public String updateStatusY(Long[] ids, RedirectAttributes flushAttrs) {
-		noticeService.updateStatus(ids, Notice.status_y);
+		noticeService.updateStatus(ids, true);
 		addMessage(flushAttrs, "操作成功!");
 		return "redirect:selectList";
 
@@ -142,7 +142,7 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 	 */
     @RequestMapping(value = "up")
 	public String up(Long id,  RedirectAttributes flushAttrs) throws Exception {
-		return updateDownOrUp0(id, Notice.status_y, flushAttrs);
+		return updateDownOrUp0(id, true, flushAttrs);
 	}
 
 	
@@ -154,21 +154,21 @@ public class NoticeController extends ManageBaseController<Notice, NoticeExample
 	 */
     @RequestMapping(value = "down")
 	public String down(Long id, RedirectAttributes flushAttrs) throws Exception {
-		return updateDownOrUp0(id,Notice.status_n, flushAttrs);
+		return updateDownOrUp0(id,false, flushAttrs);
 	}
     
-    private String updateDownOrUp0(Long id, String statusY, RedirectAttributes flushAttrs) {
+    private String updateDownOrUp0(Long id, boolean isValid, RedirectAttributes flushAttrs) {
 	    if(id==null){
 	    	throw new NullPointerException("参数不能为空！");
 	    }
-	    noticeService.updateStatus(new Long[]{id}, statusY);
+	    noticeService.updateStatus(new Long[]{id}, isValid);
 	    addMessage(flushAttrs, "更新成功!");
 		return "redirect:toEdit?id="+id;
 	}
 	
 	@RequestMapping(value = "updateStatusN", method = RequestMethod.POST)
 	public String updateStatusN(Long[] ids, RedirectAttributes flushAttrs) {
-		noticeService.updateStatus(ids, Notice.status_n);
+		noticeService.updateStatus(ids, false);
 		addMessage(flushAttrs, "操作成功!");
 		return "redirect:selectList";
 	}

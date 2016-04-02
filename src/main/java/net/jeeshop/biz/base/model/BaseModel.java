@@ -15,8 +15,6 @@ public class BaseModel implements Serializable {
     private String createAccount;
     private Date updateTime;
     private String updateAccount;
-    public static final String status_y = "y";
-    public static final String status_n = "n";
 
     public Long getId() {
         return id;

@@ -1,4 +1,4 @@
-package net.jeeshop.biz.system.bean;
+package net.jeeshop.biz.system.enums;
 
 /**
  * @author dinguangx@163.com

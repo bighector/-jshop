@@ -6,7 +6,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="login-panel panel panel-success">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><b>${systemSetting().name}</b>-后台</h3>
+                    <h3 class="panel-title"><b>${systemSetting().appName}</b>-后台</h3>
                 </div>
                 <div class="panel-body">
                     <form role="form" id="formLogin" action="${basepath}/manage/user/login" method="post">

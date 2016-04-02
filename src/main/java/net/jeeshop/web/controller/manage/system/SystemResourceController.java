@@ -2,13 +2,14 @@ package net.jeeshop.web.controller.manage.system;
 
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.bean.MenuItem;
-import net.jeeshop.biz.system.bean.MenuType;
-import net.jeeshop.biz.system.model.SysMenu;
-import net.jeeshop.biz.system.model.SysMenuExample;
+import net.jeeshop.biz.system.enums.ResourceType;
 import net.jeeshop.biz.system.model.SysPrivilege;
 import net.jeeshop.biz.system.model.SysPrivilegeExample;
-import net.jeeshop.biz.system.service.MenuService;
+import net.jeeshop.biz.system.model.SysResource;
+import net.jeeshop.biz.system.model.SysResourceExample;
+import net.jeeshop.biz.system.service.ResourceService;
 import net.jeeshop.biz.system.service.PrivilegeService;
+import net.jeeshop.core.util.EnumUtils;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.sf.json.JSONArray;
 import org.apache.commons.lang.StringUtils;
@@ -30,24 +31,24 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/manage/menu/")
-public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuExample> {
+public class SystemResourceController extends ManageBaseController<SysResource, SysResourceExample> {
 
     @Autowired
-    private MenuService menuService;
+    private ResourceService resourceService;
 
     @Autowired
     private PrivilegeService privilegeService;
 
     @Override
-    public BaseService<SysMenu, SysMenuExample> getService() {
-        return menuService;
+    public BaseService<SysResource, SysResourceExample> getService() {
+        return resourceService;
     }
 
     private static final String PAGE_TOLIST = "/manage/system/menu/menuList";
     private static final String PAGE_TOEDIT = "/manage/system/menu/editMenu";
     private static final String PAGE_ADDORUPDATE = "/manage/system/menu/addOrUpdate";
 
-    SystemMenuController() {
+    SystemResourceController() {
         super.page_toList = PAGE_TOLIST ;
         super.page_toEdit = PAGE_TOEDIT ;
         super.page_toAdd = PAGE_TOEDIT ;
@@ -59,12 +60,12 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
                                 @RequestParam(required = false) String id) throws Exception 
     {
         // 加载全部的菜单
-        List<MenuItem> menus = menuService.loadMenus(null, Long.parseLong(pid), "#");
+        List<MenuItem> menus = resourceService.loadMenus(null, Long.parseLong(pid), "#");
         if(StringUtils.isNotBlank(id)) {
             // 加载指定角色的权限
             SysPrivilegeExample privilegeExample = new SysPrivilegeExample();
             SysPrivilegeExample.Criteria criteria = privilegeExample.createCriteria();
-            criteria.andRidEqualTo(Long.parseLong(id));
+            criteria.andRoleIdEqualTo(Long.parseLong(id));
             List<SysPrivilege> rolePs = privilegeService.selectByExample(privilegeExample);
             // 拿角色拥有的菜单和全部的菜单做比对，进行勾选
             for (int i = 0; i < rolePs.size(); i++) {
@@ -83,7 +84,7 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
     private void checkRoleMenu(SysPrivilege p, List<MenuItem> menus){
         for (int j = 0; j < menus.size(); j++) {
             MenuItem menu = menus.get(j);
-            if (p.getMid().equals(menu.getId())) {
+            if (p.getResourceId().equals(menu.getId())) {
                 menu.setChecked(true);
                 return;
             }else{
@@ -113,7 +114,7 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
      */
     @RequestMapping(value = "showcase" , method = RequestMethod.GET)
     public String showcase(@RequestParam String id , ModelMap model) {
-        SysMenu sysMenu = menuService.selectById(Long.parseLong(id));
+        SysResource sysMenu = resourceService.selectById(Long.parseLong(id));
         model.addAttribute("e", sysMenu);
         return PAGE_ADDORUPDATE;
     }
@@ -138,43 +139,43 @@ public class SystemMenuController extends ManageBaseController<SysMenu, SysMenuE
         String n_orderNum = request.getParameter("n_orderNum");
         String n_type = request.getParameter("n_type");
 
-        SysMenu itemMenu = null;
+        SysResource itemMenu = null;
         if(n_name!=null && !n_name.trim().equals("")){
-            itemMenu = new SysMenu();
+            itemMenu = new SysResource();
             //添加子菜单
             if(parentOrChild.equals("0")){//顶级模块
-                itemMenu.setPid(0l);
-                itemMenu.setType(MenuType.module.toString());
+                itemMenu.setParentId(0l);
+                itemMenu.setResourceType(ResourceType.module);
             } else if(parentOrChild.equals("1")){//顶级页面
-                itemMenu.setPid(0l);
-                itemMenu.setType(MenuType.page.toString());
+                itemMenu.setParentId(0l);
+                itemMenu.setResourceType(ResourceType.page);
             } else if(parentOrChild.equals("2")){//子模块
-                itemMenu.setPid(Long.parseLong(id));
-                itemMenu.setType(MenuType.module.toString());
+                itemMenu.setParentId(Long.parseLong(id));
+                itemMenu.setResourceType(ResourceType.module);
             } else if(parentOrChild.equals("3")){//子页面
-                itemMenu.setPid(Long.parseLong(id));
-                itemMenu.setType(MenuType.page.toString());
+                itemMenu.setParentId(Long.parseLong(id));
+                itemMenu.setResourceType(ResourceType.page);
             } else if(parentOrChild.equals("4")){   //功能
-                itemMenu.setPid(Long.parseLong(id));
-                itemMenu.setType(MenuType.button.toString());
+                itemMenu.setParentId(Long.parseLong(id));
+                itemMenu.setResourceType(ResourceType.button);
             } else {
                 throw new IllegalAccessException("添加菜单异常。");
             }
-            itemMenu.setName(n_name);
-            itemMenu.setUrl(n_url);
-            itemMenu.setOrderNum(Integer.valueOf(n_orderNum));
-            itemMenu.setType(n_type);
+            itemMenu.setResourceName(n_name);
+            itemMenu.setResourceValue(n_url);
+            itemMenu.setOrdinal(Integer.valueOf(n_orderNum));
+//            itemMenu.setResourceType(n_type);
         }
         //修改父菜单
-        SysMenu m = new SysMenu();
+        SysResource m = new SysResource();
         m.setId(Long.parseLong(id));
-        m.setName(name);
-        m.setUrl(url);
-        m.setPid(Long.parseLong(pid));
-        m.setOrderNum(Integer.valueOf(orderNum));
-        m.setType(type);
+        m.setResourceName(name);
+        m.setResourceValue(url);
+        m.setParentId(Long.parseLong(pid));
+        m.setOrdinal(Integer.valueOf(orderNum));
+        m.setResourceType(EnumUtils.parseEnum(ResourceType.class, type));
 
-        menuService.addOrUpdate(m, itemMenu);
+        resourceService.addOrUpdate(m, itemMenu);
 
         return "ok";
     }

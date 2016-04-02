@@ -13,5 +13,5 @@ public interface SysPrivilegeMapperExt extends SysPrivilegeMapper
      * 删除指定角色的权限
      * @param id
      */
-    void deleteByRid(Long id);
+    void deleteByRoleId(Long id);
 }

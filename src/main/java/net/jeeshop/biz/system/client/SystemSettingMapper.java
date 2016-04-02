@@ -14,15 +14,11 @@ public interface SystemSettingMapper extends BaseMapper<SystemSetting, SystemSet
 
     int insertSelective(SystemSetting record);
 
-    List<SystemSetting> selectByExampleWithBLOBs(SystemSettingExample example);
-
     List<SystemSetting> selectByExample(SystemSettingExample example);
 
     SystemSetting selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(SystemSetting record);
-
-    int updateByPrimaryKeyWithBLOBs(SystemSetting record);
 
     int updateByPrimaryKey(SystemSetting record);
 }
