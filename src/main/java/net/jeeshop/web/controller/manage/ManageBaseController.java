@@ -36,17 +36,6 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
     protected String page_toEdit = null;
     protected String page_toAdd = null;
     
-    protected HttpServletRequest request;
-    protected HttpServletResponse response;
-    protected HttpSession session;
-   
-    @ModelAttribute
-    public void loadServlet(HttpServletRequest request, HttpServletResponse response){
-    	this.request = request;
-    	this.response = response;
-    	this.session = request.getSession();
-    }
-
     public abstract BaseService<Model, Example> getService();
 
     /**
@@ -177,23 +166,4 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
         return selectList(model);
     }
     
-    /**
-     * JSON数据输出
-     * @param obj
-     * @param req 
-     * @return
-     */
-    public void writeToJson(Object obj)
-    {
-    	try{
-    		JSONArray ja = JSONArray.fromObject(obj);
-    		PrintWriter write = response.getWriter();
-    		write.print( ja.toString());
-    		write.flush();
-    		write.close();
-    	}catch(Exception e){
-    		logger.error("输出JSON格式数据异常", e);
-    	}
-    }
-
 }

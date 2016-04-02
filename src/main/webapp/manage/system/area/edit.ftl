@@ -7,15 +7,12 @@
 </style>
 
 <form action="${basepath}/manage/area" id="form" method="post">
+   <input type="hidden" name="id" value="${e.id!""}">
 	<table class="table table-bordered">
 		<tr>
 			<td colspan="2" style="background-color: #dff0d8;text-align: center;">
-				<strong>帐号编辑</strong>
+				<strong>区域编辑</strong>
 			</td>
-		</tr>
-		<tr style="display:none;">
-			<th>pid</th>
-			<td><input type="hidden" name="pid" value="${(RequestParameters.pid)!""}"></td>
 		</tr>
 		<tr>
 			<th class="td_right">所属上级</th>
@@ -26,12 +23,12 @@
 		<tr>
 			<th class="td_right">区域名称</th>
 			<td style="text-align: left;">
-                <input type="text" name="name" value="${name!""}" data-rule="名称:required;length[1~20]">
+                <input type="text" name="areaName" value="${e.areaName!""}" data-rule="名称:required;length[1~20]">
 			</td>
 		</tr>
 		<tr >
 			<td colspan="2" style="text-align: center;">
-				<#if (parent.id)??>
+				<#if e.id??>
 					<button method="update" class="btn btn-success">
 						<i class="icon-ok icon-white"></i> 修改
 					</button>

@@ -1,5 +1,6 @@
 package net.jeeshop.web.controller.manage.system;
 
+import com.google.gson.Gson;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.bean.AreaItem;
 import net.jeeshop.biz.system.model.SysArea;
@@ -55,20 +56,14 @@ public class AreaController extends ManageBaseController<SysArea, SysAreaExample
     }
 
     protected void beforeToEdit(SysArea area, ModelMap model) {
-        if (area != null) {
-            model.put("pid", area.getParentId());
-            model.put("pname", area.getAreaName());
-        }
+        beforeToAdd(area, model);
     }
 
     @Override
     protected void beforeToAdd(SysArea area, ModelMap model) {
         long pidValue = 0;
-        try {
-            if (area.getParentId() != null) {
-                pidValue = area.getParentId();
-            }
-        } catch (Exception e) {
+        if(area != null && area.getParentId() != null) {
+            pidValue = area.getParentId();
         }
 
         if (pidValue != 0) {
@@ -97,14 +92,7 @@ public class AreaController extends ManageBaseController<SysArea, SysAreaExample
     //输出菜单到页面
     private String writer(Collection list) 
     {
-        JSONArray json = JSONArray.fromObject(list);
-        String jsonStr = json.toString();
-        try {
-            return jsonStr;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonStr;
+        return new Gson().toJson(list);
     }
 
 }
