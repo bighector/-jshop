@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @author dingguangxian144
+ * @author dylan
  * @date 2016-04-04 19-46
  */
 @Controller
@@ -121,19 +121,28 @@ public class LoginController {
 
     @RequestMapping("uniqueEmail")
     @ResponseBody
-    public String uniqueEmail() {
+    public String uniqueEmail(String email) {
+        if(memberService.selectByEmail(email) != null) {
+            return "邮箱已经被注册!";
+        }
         return "";
     }
 
     @RequestMapping("uniqueNickname")
     @ResponseBody
-    public String uniqueNickname() {
+    public String uniqueNickname(String nickName) {
+        if(memberService.selectByNickname(nickName) != null) {
+            return "昵称已经被使用!";
+        }
         return "";
     }
 
     @RequestMapping("uniqueUsername")
     @ResponseBody
-    public String uniqueUsername() {
+    public String uniqueUsername(String username) {
+        if(memberService.selectByUsername(username) != null) {
+            return "用户名已经被使用!";
+        }
         return "";
     }
 }

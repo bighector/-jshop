@@ -7,5 +7,22 @@ package net.jeeshop.biz.member.enums;
  * Email: dinguangx@163.com
  */
 public enum GenderType {
-    Male, Female, Unknown;
+    Male(1), Female(2), Unknown(0);
+    private int value;
+    private GenderType(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public static GenderType parseValue(int value) {
+        for(GenderType type : GenderType.values()) {
+            if(type.getValue() == value) {
+                return type;
+            }
+        }
+        return null;
+    }
 }
