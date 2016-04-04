@@ -11,41 +11,6 @@
 	<@menu.menu selectMenu=""/>
 	<div class="container">
 		<div class="row" style="margin-top: 10px;">
-			<#--<div class="col-xs-4" style="background-color:#fff;border:0px;">-->
-				<#--<div id="advert" style="text-align: right;">-->
-					<#--<div style="margin-top: 100px;text-align: right;font-weight: 600" >-->
-						<#--<div class="panel panel-default">-->
-							<#--<div class="panel-heading">也可以这样登陆：</div>-->
-						  <#--<div class="panel-body">-->
-						    <#---->
-						    <#---->
-						    <#--<div>-->
-								<#--<a href="${basepath}/account/qqLogin.html" title="使用QQ号登陆">-->
-			              		<#--<img src="${systemSetting().website}/resource/images/qqLogin.png">-->
-			              	<#--</a>-->
-							<#--</div>-->
-			              	<#--<br>-->
-	              	<#---->
-			              	<#--<div>-->
-				              	<#--<a  href="${basepath}/account/sinawb.html" title="使用新浪微博账号登陆">-->
-				              		<#--<img src="${systemSetting().website}/resource/images/sinawbLogin.png">-->
-				              	<#--</a>-->
-			              	<#--</div>-->
-			              	<#--<br>-->
-	              	<#---->
-			              	<#--<div>-->
-				              	<#--<a href="${basepath}/account/alipayFastLogin.html" title="使用支付宝快捷登陆">-->
-									<#--<img src="${systemSetting().website}/resource/images/alipay_fastlogin.jpg" alt="支付宝快捷登陆">-->
-								<#--</a>-->
-			              	<#--</div>-->
-							<#--<br>-->
-					<#---->
-						  <#--</div>-->
-						<#--</div>-->
-					<#--</div>-->
-					<#---->
-				<#--</div>-->
-			<#--</div>		-->
 				<div class="row">
 					<div class="col-md-12" style="font-size: 14px;font-weight: normal;">
 						<span class="label label-success" style="font-size:100%;">
@@ -70,20 +35,20 @@
                     </div>
                     <div class="panel-body">
 						<div class="col-md-10 col-md-offset-1">
-				<form role="form" id="form" method="post" class="form-horizontal" action="${basepath}/account/doRegister.html" theme="simple" >
+				<form role="form" id="form" method="post" class="form-horizontal" action="${basepath}/member/doRegister" theme="simple" >
 				  <div class="form-group">
-				    <label for="nickname" class="col-md-2 control-label">昵称</label>
+				    <label for="nickName" class="col-md-2 control-label">昵称</label>
 				    <div class="col-md-6">
-					    <input  name="nickname" type="text" class="form-control" id="nickname" placeholder="请输入昵称"
-					    data-rule="昵称:required;nickname;length[2~10];remote[unique.html]" maxlength="100"/>
+					    <input  name="nickName" type="text" class="form-control" id="nickName" placeholder="请输入昵称"
+					    data-rule="昵称:required;nickName;length[2~10];remote[uniqueNickname]" maxlength="100"/>
 				    </div>
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="account" class="col-md-2 control-label">账号</label>
+				    <label for="username" class="col-md-2 control-label">账号</label>
 				    <div class="col-md-6">
-					    <input  name="account" type="text" class="form-control" id="account" placeholder="请输入账号"
-					    data-rule="账号:required;account;length[3~10];remote[unique.html]" maxlength="100" />
+					    <input  name="username" type="text" class="form-control" id="username" placeholder="请输入账号"
+					    data-rule="账号:required;username;length[3~10];remote[uniqueUsername]" maxlength="100" />
 				    </div>
 				  </div>
 				  
@@ -91,7 +56,7 @@
 				    <label for="password" class="col-md-2 control-label">密码</label>
 				    <div class="col-md-6">
 					    <input  name="password" type="password" class="form-control" id="password" placeholder="请输入密码"
-					    maxlength="100" data-rule="密码:required;password"/>
+					    maxlength="20" data-rule="密码:required;password"/>
 				    </div>
 				  </div>
 				  
@@ -107,7 +72,7 @@
 				    <label for="email" class="col-md-2 control-label">邮箱</label>
 				    <div class="col-md-6">
 					    <input  name="email" type="text" class="form-control" id="email" maxlength="45"
-					    data-rule="邮箱:required;email;length[1~45];remote[unique.html]" placeholder="请输入邮箱，找回密码用的" />
+					    data-rule="邮箱:required;email;length[1~45];remote[uniqueEmail]" placeholder="请输入邮箱，找回密码用的" />
 				    </div>
 				  </div>
 				  
@@ -115,7 +80,7 @@
 				    <label for="vcode" class="col-md-2 control-label">验证码</label>
 				    <div class="col-md-2">
 					    <input type="text" name="vcode" type="text" class="form-control" id="vcode" placeholder="验证码"
-					    data-rule="验证码:required;vcode;remote[unique.html]" size="4" maxlength="4" />
+					    data-rule="验证码:required;vcode;" size="4" maxlength="4" />
 				    </div>
 				    <div class="col-md-4 col-md-offset-1">
 				    	<img src="${systemSetting().website}/ValidateImage.do" id="codes2"
@@ -129,7 +94,7 @@
                         <label for="link-zcxy">注册协议</label>
                         </div>
                         <div class="col-md-6">
-                            <a target="_blank" id="link-zcxy" class="btn btn-link btn-md" href="${systemSetting().website}/help/zcxy.html">jshop用户注册协议</a>
+                            <a target="_blank" id="link-zcxy" class="btn btn-link btn-md" href="${basepath}/cms/article/zcxy.html">用户注册协议</a>
                         </div>
                     </div>
 				  <div class="form-group">
@@ -147,7 +112,7 @@
 		</div>
 <script type="text/javascript">
 function reloadImg2() {
-	document.getElementById("codes2").src = "${systemSetting().website}/ValidateImage.do?" + "radom="
+	document.getElementById("codes2").src = "${basepath}/ValidateImage.do?" + "radom="
 			+ Math.random();
 	$("#vcode2").focus();
 }

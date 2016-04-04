@@ -71,7 +71,7 @@ body{
 			<div class="col-xs-3" style="height: 100%;">
 		    	<div class="row" style="height: 100%;">
 					<#if currentMember()??>
-                        <span id="myshopMenuPPP" style="display: inline-block;z-index: 9999;position: relative;;">
+                        <span id="myshopMenuSpan" style="display: inline-block;z-index: 9999;position: relative;;">
 		          			<!-- 会员中心的菜单 -->
 		          			<span style="margin-top: 0px;">
 							  <a data-toggle="dropdown" style="display: block;margin-top: 0px;">
@@ -93,11 +93,10 @@ body{
 		          		</span>
 		          		<span style="display: none;">
 							${currentMember().nickname!""}
-		          			(${currentMember().loginType!""})
 		          		</span>
 					<#else >
                         <span class="col-xs-12" id="loginOrRegSpan" style="font-size: 14px;">
-		          			<a href="${basepath}/account/login">登陆</a>|<a href="${basepath}/account/register">注册</a>
+		          			<a href="${basepath}/member/login">登陆</a>|<a href="${basepath}/member/register">注册</a>
 		          		</span>
 					</#if>
 

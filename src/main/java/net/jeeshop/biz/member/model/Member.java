@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.biz.member.enums.GenderType;
+import net.jeeshop.biz.member.enums.IdType;
 
 public class Member extends BaseModel implements Serializable {
     /** 登录名 */
@@ -34,7 +35,7 @@ public class Member extends BaseModel implements Serializable {
     private String mobile;
 
     /** 证件类型 */
-    private String idType;
+    private IdType idType;
 
     /** 证件号码 */
     private String idNum;
@@ -49,10 +50,10 @@ public class Member extends BaseModel implements Serializable {
     private String area;
 
     /** 邮箱是否已经激活,1-是0-否 */
-    private String isEmailActive;
+    private Boolean isEmailActive;
 
     /** 是否冻结，1-是0-否 */
-    private String isFreeze;
+    private Boolean isFreeze;
 
     /** 最后登录时间 */
     private Date lastLoginTime;
@@ -149,12 +150,12 @@ public class Member extends BaseModel implements Serializable {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public String getIdType() {
+    public IdType getIdType() {
         return idType;
     }
 
-    public void setIdType(String idType) {
-        this.idType = idType == null ? null : idType.trim();
+    public void setIdType(IdType idType) {
+        this.idType = idType;
     }
 
     public String getIdNum() {
@@ -189,20 +190,20 @@ public class Member extends BaseModel implements Serializable {
         this.area = area == null ? null : area.trim();
     }
 
-    public String getIsEmailActive() {
+    public Boolean getIsEmailActive() {
         return isEmailActive;
     }
 
-    public void setIsEmailActive(String isEmailActive) {
-        this.isEmailActive = isEmailActive == null ? null : isEmailActive.trim();
+    public void setIsEmailActive(Boolean isEmailActive) {
+        this.isEmailActive = isEmailActive;
     }
 
-    public String getIsFreeze() {
+    public Boolean getIsFreeze() {
         return isFreeze;
     }
 
-    public void setIsFreeze(String isFreeze) {
-        this.isFreeze = isFreeze == null ? null : isFreeze.trim();
+    public void setIsFreeze(Boolean isFreeze) {
+        this.isFreeze = isFreeze;
     }
 
     public Date getLastLoginTime() {

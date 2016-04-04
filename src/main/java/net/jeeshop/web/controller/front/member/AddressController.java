@@ -1,4 +1,4 @@
-package net.jeeshop.web.controller.front.account;
+package net.jeeshop.web.controller.front.member;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("account")
-public class AccountAddressController {
+public class AddressController {
 }

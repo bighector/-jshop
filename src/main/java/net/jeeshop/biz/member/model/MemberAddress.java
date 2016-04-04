@@ -29,7 +29,7 @@ public class MemberAddress extends BaseModel implements Serializable {
     private String phone;
 
     /** 是否默认地址，1-是0-否 */
-    private String isDefault;
+    private Boolean isDefault;
 
     /** 会员ID */
     private Long memberId;
@@ -100,12 +100,12 @@ public class MemberAddress extends BaseModel implements Serializable {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getIsDefault() {
+    public Boolean getIsDefault() {
         return isDefault;
     }
 
-    public void setIsDefault(String isDefault) {
-        this.isDefault = isDefault == null ? null : isDefault.trim();
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
     }
 
     public Long getMemberId() {

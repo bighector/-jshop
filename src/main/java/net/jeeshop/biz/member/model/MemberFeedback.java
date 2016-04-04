@@ -14,7 +14,7 @@ public class MemberFeedback extends BaseModel implements Serializable {
     private String content;
 
     /** 是否已经回复,1-是0-否 */
-    private String isReply;
+    private Boolean isReply;
 
     private static final long serialVersionUID = 1L;
 
@@ -42,11 +42,11 @@ public class MemberFeedback extends BaseModel implements Serializable {
         this.content = content == null ? null : content.trim();
     }
 
-    public String getIsReply() {
+    public Boolean getIsReply() {
         return isReply;
     }
 
-    public void setIsReply(String isReply) {
-        this.isReply = isReply == null ? null : isReply.trim();
+    public void setIsReply(Boolean isReply) {
+        this.isReply = isReply;
     }
 }

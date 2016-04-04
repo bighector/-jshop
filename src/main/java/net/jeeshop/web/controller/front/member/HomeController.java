@@ -1,7 +1,9 @@
-package net.jeeshop.web.controller.front.account;
+package net.jeeshop.web.controller.front.member;
 
+import net.jeeshop.biz.member.model.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author dylan
@@ -9,15 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Email: dinguangx@163.com
  */
 @Controller
-@RequestMapping("/account")
-public class AccountHomeController {
+@RequestMapping("/member")
+public class HomeController {
     @RequestMapping("/home")
     public String home() {
         return "account/home";
-    }
-
-    @RequestMapping("/login")
-    public String login() {
-        return "redirect:home";
     }
 }

@@ -24,9 +24,9 @@ public abstract class BaseService<E extends BaseModel, Example>
     abstract protected BaseMapper<E, Example> getMapper();
 
     @Transactional
-    public long insert(E articleCatalog)
+    public long insert(E entity)
     {
-        return getMapper().insert(articleCatalog);
+        return getMapper().insertSelective(entity);
     }
 
     @Transactional
@@ -47,8 +47,8 @@ public abstract class BaseService<E extends BaseModel, Example>
     }
 
     @Transactional
-    public int update(E articleCatalog) {
-        return getMapper().updateByPrimaryKeySelective(articleCatalog);
+    public int update(E entity) {
+        return getMapper().updateByPrimaryKeySelective(entity);
     }
 
     public E selectById(long id) {

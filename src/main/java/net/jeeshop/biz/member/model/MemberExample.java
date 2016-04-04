@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import net.jeeshop.biz.member.enums.GenderType;
+import net.jeeshop.biz.member.enums.IdType;
 
 public class MemberExample {
     protected String orderByClause;
@@ -1062,62 +1063,62 @@ public class MemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeEqualTo(String value) {
+        public Criteria andIdTypeEqualTo(IdType value) {
             addCriterion("id_type =", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeNotEqualTo(String value) {
+        public Criteria andIdTypeNotEqualTo(IdType value) {
             addCriterion("id_type <>", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeGreaterThan(String value) {
+        public Criteria andIdTypeGreaterThan(IdType value) {
             addCriterion("id_type >", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeGreaterThanOrEqualTo(String value) {
+        public Criteria andIdTypeGreaterThanOrEqualTo(IdType value) {
             addCriterion("id_type >=", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeLessThan(String value) {
+        public Criteria andIdTypeLessThan(IdType value) {
             addCriterion("id_type <", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeLessThanOrEqualTo(String value) {
+        public Criteria andIdTypeLessThanOrEqualTo(IdType value) {
             addCriterion("id_type <=", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeLike(String value) {
+        public Criteria andIdTypeLike(IdType value) {
             addCriterion("id_type like", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeNotLike(String value) {
+        public Criteria andIdTypeNotLike(IdType value) {
             addCriterion("id_type not like", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeIn(List<String> values) {
+        public Criteria andIdTypeIn(List<IdType> values) {
             addCriterion("id_type in", values, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeNotIn(List<String> values) {
+        public Criteria andIdTypeNotIn(List<IdType> values) {
             addCriterion("id_type not in", values, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeBetween(String value1, String value2) {
+        public Criteria andIdTypeBetween(IdType value1, IdType value2) {
             addCriterion("id_type between", value1, value2, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeNotBetween(String value1, String value2) {
+        public Criteria andIdTypeNotBetween(IdType value1, IdType value2) {
             addCriterion("id_type not between", value1, value2, "idType");
             return (Criteria) this;
         }
@@ -1412,62 +1413,62 @@ public class MemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveEqualTo(String value) {
+        public Criteria andIsEmailActiveEqualTo(Boolean value) {
             addCriterion("is_email_active =", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveNotEqualTo(String value) {
+        public Criteria andIsEmailActiveNotEqualTo(Boolean value) {
             addCriterion("is_email_active <>", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveGreaterThan(String value) {
+        public Criteria andIsEmailActiveGreaterThan(Boolean value) {
             addCriterion("is_email_active >", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveGreaterThanOrEqualTo(String value) {
+        public Criteria andIsEmailActiveGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_email_active >=", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveLessThan(String value) {
+        public Criteria andIsEmailActiveLessThan(Boolean value) {
             addCriterion("is_email_active <", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveLessThanOrEqualTo(String value) {
+        public Criteria andIsEmailActiveLessThanOrEqualTo(Boolean value) {
             addCriterion("is_email_active <=", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveLike(String value) {
+        public Criteria andIsEmailActiveLike(Boolean value) {
             addCriterion("is_email_active like", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveNotLike(String value) {
+        public Criteria andIsEmailActiveNotLike(Boolean value) {
             addCriterion("is_email_active not like", value, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveIn(List<String> values) {
+        public Criteria andIsEmailActiveIn(List<Boolean> values) {
             addCriterion("is_email_active in", values, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveNotIn(List<String> values) {
+        public Criteria andIsEmailActiveNotIn(List<Boolean> values) {
             addCriterion("is_email_active not in", values, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveBetween(String value1, String value2) {
+        public Criteria andIsEmailActiveBetween(Boolean value1, Boolean value2) {
             addCriterion("is_email_active between", value1, value2, "isEmailActive");
             return (Criteria) this;
         }
 
-        public Criteria andIsEmailActiveNotBetween(String value1, String value2) {
+        public Criteria andIsEmailActiveNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_email_active not between", value1, value2, "isEmailActive");
             return (Criteria) this;
         }
@@ -1482,62 +1483,62 @@ public class MemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeEqualTo(String value) {
+        public Criteria andIsFreezeEqualTo(Boolean value) {
             addCriterion("is_freeze =", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeNotEqualTo(String value) {
+        public Criteria andIsFreezeNotEqualTo(Boolean value) {
             addCriterion("is_freeze <>", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeGreaterThan(String value) {
+        public Criteria andIsFreezeGreaterThan(Boolean value) {
             addCriterion("is_freeze >", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeGreaterThanOrEqualTo(String value) {
+        public Criteria andIsFreezeGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_freeze >=", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeLessThan(String value) {
+        public Criteria andIsFreezeLessThan(Boolean value) {
             addCriterion("is_freeze <", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeLessThanOrEqualTo(String value) {
+        public Criteria andIsFreezeLessThanOrEqualTo(Boolean value) {
             addCriterion("is_freeze <=", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeLike(String value) {
+        public Criteria andIsFreezeLike(Boolean value) {
             addCriterion("is_freeze like", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeNotLike(String value) {
+        public Criteria andIsFreezeNotLike(Boolean value) {
             addCriterion("is_freeze not like", value, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeIn(List<String> values) {
+        public Criteria andIsFreezeIn(List<Boolean> values) {
             addCriterion("is_freeze in", values, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeNotIn(List<String> values) {
+        public Criteria andIsFreezeNotIn(List<Boolean> values) {
             addCriterion("is_freeze not in", values, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeBetween(String value1, String value2) {
+        public Criteria andIsFreezeBetween(Boolean value1, Boolean value2) {
             addCriterion("is_freeze between", value1, value2, "isFreeze");
             return (Criteria) this;
         }
 
-        public Criteria andIsFreezeNotBetween(String value1, String value2) {
+        public Criteria andIsFreezeNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_freeze not between", value1, value2, "isFreeze");
             return (Criteria) this;
         }

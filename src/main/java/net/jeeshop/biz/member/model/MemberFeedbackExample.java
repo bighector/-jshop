@@ -641,62 +641,62 @@ public class MemberFeedbackExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyEqualTo(String value) {
+        public Criteria andIsReplyEqualTo(Boolean value) {
             addCriterion("is_reply =", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyNotEqualTo(String value) {
+        public Criteria andIsReplyNotEqualTo(Boolean value) {
             addCriterion("is_reply <>", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyGreaterThan(String value) {
+        public Criteria andIsReplyGreaterThan(Boolean value) {
             addCriterion("is_reply >", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyGreaterThanOrEqualTo(String value) {
+        public Criteria andIsReplyGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_reply >=", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyLessThan(String value) {
+        public Criteria andIsReplyLessThan(Boolean value) {
             addCriterion("is_reply <", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyLessThanOrEqualTo(String value) {
+        public Criteria andIsReplyLessThanOrEqualTo(Boolean value) {
             addCriterion("is_reply <=", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyLike(String value) {
+        public Criteria andIsReplyLike(Boolean value) {
             addCriterion("is_reply like", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyNotLike(String value) {
+        public Criteria andIsReplyNotLike(Boolean value) {
             addCriterion("is_reply not like", value, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyIn(List<String> values) {
+        public Criteria andIsReplyIn(List<Boolean> values) {
             addCriterion("is_reply in", values, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyNotIn(List<String> values) {
+        public Criteria andIsReplyNotIn(List<Boolean> values) {
             addCriterion("is_reply not in", values, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyBetween(String value1, String value2) {
+        public Criteria andIsReplyBetween(Boolean value1, Boolean value2) {
             addCriterion("is_reply between", value1, value2, "isReply");
             return (Criteria) this;
         }
 
-        public Criteria andIsReplyNotBetween(String value1, String value2) {
+        public Criteria andIsReplyNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_reply not between", value1, value2, "isReply");
             return (Criteria) this;
         }
