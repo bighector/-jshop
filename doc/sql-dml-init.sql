@@ -27,7 +27,7 @@ INSERT INTO `sys_resource`(id,parent_id,resource_value,resource_name,ordinal,res
 (38,1,'/manage/express/selectList','配送方式',6,'page'),
 (40,6,'/manage/cms/advert/selectList','广告管理',8,'page'),
 (43,6,'/manage/cms/articleCatalog/selectList','文章分类',1,'page'),
-(45,6,'/manage/cms/navigation/selectList','友情链接',5,'page'),
+(45,6,'/manage/cms/friendLink/selectList','友情链接',5,'page'),
 (46,23,'/manage/comment/selectList','评论管理',3,'page'),
 (48,1,'/manage/area/areaTree','区域管理',5,'page'),
 (49,1,'/manage/systemSetting/toEdit','系统设置',9,'page'),

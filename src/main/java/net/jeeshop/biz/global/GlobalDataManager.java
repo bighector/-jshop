@@ -21,7 +21,6 @@ public class GlobalDataManager {
     @PostConstruct
     public void init() {
         initProductDataGetter();
-        initCmsDataGetter();
         initAccountCenterDataGetter();
     }
 
@@ -68,45 +67,6 @@ public class GlobalDataManager {
         });
     }
 
-    public void initCmsDataGetter() {
-        //cms data getter
-        //friend link list
-        addDataGetter(new DataGetter<List>("cms.friendLinkList", DataGetter.DataType.LIST) {
-            @Override
-            public List getData() {
-                return Lists.newArrayList();
-            }
-        });
-        //notice list
-        addDataGetter(new DataGetter<List>("cms.noticeList", DataGetter.DataType.LIST) {
-            @Override
-            public List getData() {
-                return Lists.newArrayList();
-            }
-        });
-        //help list
-        addDataGetter(new DataGetter<List>("cms.helpList", DataGetter.DataType.LIST) {
-            @Override
-            public List getData() {
-                return Lists.newArrayList();
-            }
-        });
-        //index image list
-        addDataGetter(new DataGetter<List>("cms.indexImages", DataGetter.DataType.LIST) {
-            @Override
-            public List getData() {
-                return Lists.newArrayList();
-            }
-        });
-        //hot query list
-        addDataGetter(new DataGetter<List>("cms.hotQueryList", DataGetter.DataType.LIST) {
-            @Override
-            public List getData() {
-                return Lists.newArrayList();
-            }
-        });
-
-    }
 
     public void initAccountCenterDataGetter() {
 

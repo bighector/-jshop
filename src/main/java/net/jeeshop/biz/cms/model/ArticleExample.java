@@ -3,7 +3,6 @@ package net.jeeshop.biz.cms.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import net.jeeshop.biz.cms.enums.ArticleStatus;
 
 public class ArticleExample {
     protected String orderByClause;
@@ -502,73 +501,73 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleIsNull() {
-            addCriterion("sub_title is null");
+        public Criteria andContentIsNull() {
+            addCriterion("content is null");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleIsNotNull() {
-            addCriterion("sub_title is not null");
+        public Criteria andContentIsNotNull() {
+            addCriterion("content is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleEqualTo(String value) {
-            addCriterion("sub_title =", value, "subTitle");
+        public Criteria andContentEqualTo(String value) {
+            addCriterion("content =", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleNotEqualTo(String value) {
-            addCriterion("sub_title <>", value, "subTitle");
+        public Criteria andContentNotEqualTo(String value) {
+            addCriterion("content <>", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleGreaterThan(String value) {
-            addCriterion("sub_title >", value, "subTitle");
+        public Criteria andContentGreaterThan(String value) {
+            addCriterion("content >", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleGreaterThanOrEqualTo(String value) {
-            addCriterion("sub_title >=", value, "subTitle");
+        public Criteria andContentGreaterThanOrEqualTo(String value) {
+            addCriterion("content >=", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleLessThan(String value) {
-            addCriterion("sub_title <", value, "subTitle");
+        public Criteria andContentLessThan(String value) {
+            addCriterion("content <", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleLessThanOrEqualTo(String value) {
-            addCriterion("sub_title <=", value, "subTitle");
+        public Criteria andContentLessThanOrEqualTo(String value) {
+            addCriterion("content <=", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleLike(String value) {
-            addCriterion("sub_title like", value, "subTitle");
+        public Criteria andContentLike(String value) {
+            addCriterion("content like", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleNotLike(String value) {
-            addCriterion("sub_title not like", value, "subTitle");
+        public Criteria andContentNotLike(String value) {
+            addCriterion("content not like", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleIn(List<String> values) {
-            addCriterion("sub_title in", values, "subTitle");
+        public Criteria andContentIn(List<String> values) {
+            addCriterion("content in", values, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleNotIn(List<String> values) {
-            addCriterion("sub_title not in", values, "subTitle");
+        public Criteria andContentNotIn(List<String> values) {
+            addCriterion("content not in", values, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleBetween(String value1, String value2) {
-            addCriterion("sub_title between", value1, value2, "subTitle");
+        public Criteria andContentBetween(String value1, String value2) {
+            addCriterion("content between", value1, value2, "content");
             return (Criteria) this;
         }
 
-        public Criteria andSubTitleNotBetween(String value1, String value2) {
-            addCriterion("sub_title not between", value1, value2, "subTitle");
+        public Criteria andContentNotBetween(String value1, String value2) {
+            addCriterion("content not between", value1, value2, "content");
             return (Criteria) this;
         }
 
@@ -702,73 +701,73 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusIsNull() {
-            addCriterion("status is null");
+        public Criteria andIsValidIsNull() {
+            addCriterion("is_valid is null");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIsNotNull() {
-            addCriterion("status is not null");
+        public Criteria andIsValidIsNotNull() {
+            addCriterion("is_valid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(ArticleStatus value) {
-            addCriterion("status =", value, "status");
+        public Criteria andIsValidEqualTo(Boolean value) {
+            addCriterion("is_valid =", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(ArticleStatus value) {
-            addCriterion("status <>", value, "status");
+        public Criteria andIsValidNotEqualTo(Boolean value) {
+            addCriterion("is_valid <>", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(ArticleStatus value) {
-            addCriterion("status >", value, "status");
+        public Criteria andIsValidGreaterThan(Boolean value) {
+            addCriterion("is_valid >", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(ArticleStatus value) {
-            addCriterion("status >=", value, "status");
+        public Criteria andIsValidGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_valid >=", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(ArticleStatus value) {
-            addCriterion("status <", value, "status");
+        public Criteria andIsValidLessThan(Boolean value) {
+            addCriterion("is_valid <", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(ArticleStatus value) {
-            addCriterion("status <=", value, "status");
+        public Criteria andIsValidLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_valid <=", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLike(ArticleStatus value) {
-            addCriterion("status like", value, "status");
+        public Criteria andIsValidLike(Boolean value) {
+            addCriterion("is_valid like", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotLike(ArticleStatus value) {
-            addCriterion("status not like", value, "status");
+        public Criteria andIsValidNotLike(Boolean value) {
+            addCriterion("is_valid not like", value, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<ArticleStatus> values) {
-            addCriterion("status in", values, "status");
+        public Criteria andIsValidIn(List<Boolean> values) {
+            addCriterion("is_valid in", values, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<ArticleStatus> values) {
-            addCriterion("status not in", values, "status");
+        public Criteria andIsValidNotIn(List<Boolean> values) {
+            addCriterion("is_valid not in", values, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(ArticleStatus value1, ArticleStatus value2) {
-            addCriterion("status between", value1, value2, "status");
+        public Criteria andIsValidBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_valid between", value1, value2, "isValid");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(ArticleStatus value1, ArticleStatus value2) {
-            addCriterion("status not between", value1, value2, "status");
+        public Criteria andIsValidNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_valid not between", value1, value2, "isValid");
             return (Criteria) this;
         }
 

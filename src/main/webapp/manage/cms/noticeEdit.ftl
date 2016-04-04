@@ -2,7 +2,7 @@
 <@page.pageBase currentMenu="公告管理">
 
 
-	<form action="${basepath}/manage/cms/notice/"  theme="simple" name="form" id="form" method="post">
+	<form action="${basepath}/manage/cms/notice"  theme="simple" name="form" id="form" method="post">
 		
 		<table class="table table-bordered">
 			<tr>
@@ -14,20 +14,18 @@
                         </button>
 
 
-                        <#if e.status??&&e.status=="y">
-                        <a action="news" id="btnDown" href="down?id=${e.id}" class="btn btn-warning" onclick="return confirm(\"确定不显示此文章吗?\");">
+                        <#if e.isValid?? && !e.isValid>
+                        <a action="news" id="btnDown" href="down?id=${e.id}" class="btn btn-warning" onclick="return confirm(\"确定不显示此公告吗?\");">
                         <i class="icon-arrow-down icon-white"></i> 不显示</a>
                         <#else>
-                            <a action="news" id="btnUp" href="up?id=${e.id}" class="btn btn-warning" onclick="return confirm(\"确定显示此文章吗?\");">
+                            <a action="news" id="btnUp" href="up?id=${e.id}" class="btn btn-warning" onclick="return confirm(\"确定显示此公告吗?\");">
                             <i class="icon-arrow-up icon-white"></i> 显示</a>
                         </#if>
 
                        
-                        <a class="btn btn-info" target="_blank" href="${systemSetting().website}/news/${e.id!""}.html">
+                        <a class="btn btn-info" target="_blank" href="${systemSetting().website}/cms/notice/${e.id!""}.html">
                         <i class="icon-eye-open icon-white"></i> 查看</a>
                         
-                        <a id="btnStatic" href="#" class="btn btn-warning">
-                        <i class="icon-refresh icon-white"></i> 静态化</a>
 					<#else>
                         <button method="insert" class="btn btn-success">
                             <i class="icon-ok icon-white"></i> 新增
@@ -50,62 +48,36 @@
 				<td style="text-align: left;"><input type="text" value="${e.title!""}" name="title" style="width: 80%;" id="title"
 				data-rule="标题:required;title;length[1~45];"/></td>
 			</tr>
+            <tr>
+                <td style="text-align: right;">是否有效</td>
+                <td style="text-align: left;">
+					<#assign map={"1":"是","0":"否"}>
+                    <select id="status" name="isValid" data-rule="是否有效:required;" class="input-medium">
+					<#list map ? keys as key>
+						<option value="${key}" <#if e.isValid??&&e.isValid?string("1","0")==key>selected="selected"</#if>>${map[key]}</option>
+					</#list>
+                </td>
+            </tr>
 			<tr>
 				<td style="text-align: right;">内容</td>
-				<td style="text-align: left;">
-					<textarea name="content" style="width:100%;height:400px;visibility:hidden;" id="content"
-					data-rule="内容:required;content;">${e.content!""}</textarea>
+                <td style="text-align: left;">
+                    <textarea name="content" class="form-control" rows="20" id="content"
+                     data-rule="内容;content;length[4~4000];">${e.content!""}</textarea>
 				</td>
 			</tr>
 		</table>
 	</form>
 <script type="text/javascript">
- var editor;
 $(function(){
-    initTextEdit();
-   	$("#title").focus();   	
-	<#if e.id??>
-	var id = "${e.id}";
-	$("#btnStatic").click(function(){
-		$.post("${basepath}/freemarker/create?method=staticNewsByID&id="+id, null ,function(response){
-			alert(response == "success" ? "操作成功！" : "操作失败!");
-		});
-	});
-	</#if>
-});
-function initTextEdit(){
+   	$("#title").focus();
+	var id = "${e.id!""}";
+
+    var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
 			allowFileManager : true
 		});
-		K('input[name=getHtml]').click(function(e) {
-			alert(editor.html());
-		});
-		K('input[name=isEmpty]').click(function(e) {
-			alert(editor.isEmpty());
-		});
-		K('input[name=getText]').click(function(e) {
-			alert(editor.text());
-		});
-		K('input[name=selectedHtml]').click(function(e) {
-			alert(editor.selectedHtml());
-		});
-		K('input[name=setHtml]').click(function(e) {
-			editor.html('<h3>Hello KindEditor</h3>');
-		});
-		K('input[name=setText]').click(function(e) {
-			editor.text('<h3>Hello KindEditor</h3>');
-		});
-		K('input[name=insertHtml]').click(function(e) {
-			editor.insertHtml('<strong>插入HTML</strong>');
-		});
-		K('input[name=appendHtml]').click(function(e) {
-			editor.appendHtml('<strong>添加HTML</strong>');
-		});
-		K('input[name=clear]').click(function(e) {
-			editor.html('');
-		});
 	});
-}
+});
 </script>
 </@page.pageBase>

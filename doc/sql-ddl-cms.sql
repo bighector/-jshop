@@ -40,11 +40,11 @@ CREATE TABLE cms_article
 	update_account varchar(64) COMMENT '更新人',
 	update_time datetime COMMENT '更新时间',
 	title varchar(128) NOT NULL COMMENT '标题',
-	sub_title varchar(255) NOT NULL COMMENT '子标题',
+	content varchar(4000) NOT NULL COMMENT '内容',
 	code varchar(128) COMMENT '代码',
-	read_count bigint COMMENT '阅读数',
-	status varchar(32) COMMENT '文章状态',
-	ordinal int COMMENT '顺序',
+	read_count bigint COMMENT '阅读数' default 0,
+	is_valid char(1) COMMENT '是否可用,1-是0-否',
+	ordinal int COMMENT '顺序' default 0,
 	category_id bigint NOT NULL COMMENT '分类ID',
 	PRIMARY KEY (id)
 ) COMMENT = '文章管理';
@@ -61,7 +61,7 @@ CREATE TABLE cms_article_category
 	category_name varchar(128) NOT NULL COMMENT '分类名称',
 	category_type varchar(32) COMMENT '分类类型',
 	category_code varchar(128) NOT NULL COMMENT '分类代码',
-	ordinal int COMMENT '顺序',
+	ordinal int COMMENT '顺序' default 0,
 	PRIMARY KEY (id),
 	UNIQUE (category_code)
 ) COMMENT = '文章分类';
@@ -104,9 +104,9 @@ CREATE TABLE cms_notice
 	update_time datetime COMMENT '更新时间',
 	title varchar(128) NOT NULL COMMENT '标题',
 	content varchar(4000) COMMENT '内容',
-	read_count bigint COMMENT '阅读数',
-	is_valid char(1) COMMENT '是否有效，1-是0-否',
-	ordinal int COMMENT '顺序',
+	read_count bigint COMMENT '阅读数' default 0,
+	is_valid char(1) COMMENT '是否有效，1-是0-否' default 1,
+	ordinal int COMMENT '顺序' default 0,
 	PRIMARY KEY (id)
 ) COMMENT = '系统通知';
 

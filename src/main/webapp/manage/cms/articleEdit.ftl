@@ -31,7 +31,6 @@
 		<input type="hidden" id="catalogID" value="${e.catalogId!""}" style="display: none;"/>
 		<input id="catalogID_currentID" value="${e.id!""}" style="display: none;"/>
 		<input type="hidden" value="${e.type!""}" name="type" id="type"/>
-		
 		<table class="table table-bordered" style="width: 95%;margin: auto;">
 			<tr style="background-color: #dff0d8">
 				<td colspan="2" style="background-color: #dff0d8;text-align: center;">
@@ -44,15 +43,15 @@
 				<td><input type="hidden" value="${e.id!""}" name="id" label="id" /></td>
 			</tr>
 				<tr>
-				<td style="text-align: right;">大类${e.catalogId!""}</td>
+				<td style="text-align: right;">文章分类</td>
 				<td style="text-align: left;">
-					<select onchange="catalogChange(this)" name="catalogId" id="catalogSelect">
+					<select name="categoryId" id="catalogSelect">
 						<option></option>
-                        <#list catalogs as item>
-							<option pid="0" value="${item.id!""}"><font color='red'>${item.name!""}</font></option>
+                        <#list categories as item>
+							<option value="${item.id!""}" ${(e.categoryId?? && item.id==e.categoryId)?string("selected","")}>${item.categoryName!""}</option>
                             <#if item.children?? && item.children?size gt 0>
                                 <#list item.children as item>
-                                    <option value="${item.id!""}">&nbsp;&nbsp;&nbsp;&nbsp;${item.name!""}</option>
+                                    <option value="${item.id!""}" ${(e.categoryId?? && item.id==e.categoryId)?string("selected","")}>&nbsp;&nbsp;&nbsp;&nbsp;${item.categoryName!""}</option>
                                 </#list>
                             </#if>
                         </#list>
@@ -65,34 +64,29 @@
 						/></td>
 			</tr>
             <tr>
-                <td style="text-align: right;">标题简称</td>
+                <td style="text-align: right;">编码</td>
                 <td style="text-align: left;">
                     <input type="text"  value="${e.code!""}" name="code"  data-rule="编码;required;code;length[1~80];remote[uniqueCode, id]" size="45" maxlength="80" id="code" /></td>
             </tr>
             <tr>
-                <td style="text-align: right;">副标题</td>
-                <td style="text-align: left;"><input type="text"  value="${e.secondTitle!""}" name="secondTitle"  id="secondTitle" data-rule="名称;required;secondTitle;" size="20" maxlength="20"
-                /></td>
-            </tr>
-            <tr>
-                <td style="text-align: right;">是否显示到门户</td>
+                <td style="text-align: right;">是否有效</td>
                 <td style="text-align: left;">
-					<#assign map={"":"","y":"是","n":"否"}>
-                    <select id="status" name="status" data-rule="是否显示到门户:required;" class="input-medium">
+					<#assign map={"1":"是","0":"否"}>
+                    <select id="status" name="isValid" data-rule="是否有效:required;" class="input-medium">
 					<#list map ? keys as key>
-						<option value="${key}" <#if e.status??&&e.status==key>selected="selected"</#if>>${map[key]}</option>
+						<option value="${key}" <#if e.isValid??&&e.isValid?string("1","0")==key>selected="selected"</#if>>${map[key]}</option>
 					</#list>
                 </td>
             </tr>
             <tr>
                 <td style="text-align: right;">内容</td>
-                <td style="text-align: left;"><textarea name="content" class="form-control" rows="3" id="introduce"
-                     data-rule="内容;required;content;length[4~500];">${e.content!""}</textarea>
+                <td style="text-align: left;"><textarea name="content" class="form-control" rows="20" id="content"
+                     data-rule="内容;required;content;length[4~4000];">${e.content!""}</textarea>
                 </td>
             </tr>
             <tr>
 				<td style="text-align: right;">顺序</td>
-				<td style="text-align: left;"><input type="text"  value="${e.ordinal!""}" name="ordinal"  data-rule="顺序;required;integer;order1;" size="20" maxlength="20"
+				<td style="text-align: left;"><input type="text"  value="${e.ordinal!"0"}" name="ordinal"  data-rule="顺序;required;integer;order1;" size="20" maxlength="20"
 						id="ordinal" /></td>
 			</tr>
 
@@ -118,6 +112,14 @@ $(function(){
 	
 	$("#title").blur(function(){
 		getCode();
+	});
+
+    //富文本编辑器
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true
+		});
 	});
 });
 function selectDefaultCatalog(){

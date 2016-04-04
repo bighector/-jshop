@@ -7,7 +7,7 @@
     <#assign responsive>${Session["responsive"]!""}</#assign>
     <#if responsive == "y">
         <#assign non_responsive2>n</#assign>
-    <#elseif systemSetting().isResponsive>
+    <#elseif systemSetting().isResponsive??>
         <#assign non_responsive2>n</#assign>
     <#else >
         <#assign non_responsive2>y</#assign>
@@ -38,7 +38,7 @@
     <meta name="keywords" content="${systemSetting().keywords}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>${title!"Ofmall"}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="${systemSetting().shortcuticon}">
+    <link rel="shortcut icon" type="image/x-icon" href="${systemSetting().shortcutIcon}">
     <link rel="stylesheet" href="${basepath}/resource/css/sticky-footer.css"  type="text/css">
     <link rel="stylesheet" href="${basepath}/resource/css/base.css"  type="text/css">
     <link rel="stylesheet" href="${basepath}/resource/bootstrap3.3.4/css/${style}/bootstrap.min.css"  type="text/css">

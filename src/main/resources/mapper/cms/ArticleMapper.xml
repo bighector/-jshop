@@ -8,10 +8,10 @@
     <result column="update_account" property="updateAccount" />
     <result column="update_time" property="updateTime" />
     <result column="title" property="title" />
-    <result column="sub_title" property="subTitle" />
+    <result column="content" property="content" />
     <result column="code" property="code" />
     <result column="read_count" property="readCount" />
-    <result column="status" property="status" />
+    <result column="is_valid" property="isValid" />
     <result column="ordinal" property="ordinal" />
     <result column="category_id" property="categoryId" />
   </resultMap>
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, create_account, create_time, update_account, update_time, title, sub_title, code, 
-    read_count, status, ordinal, category_id
+    id, create_account, create_time, update_account, update_time, title, content, code, 
+    read_count, is_valid, ordinal, category_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleExample" >
     select
@@ -103,10 +103,10 @@
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Article" >
     insert into cms_article (id, create_account, create_time, update_account, update_time, 
-      title, sub_title, code, read_count, status, ordinal, category_id
+      title, content, code, read_count, is_valid, ordinal, category_id
       )
     values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{title}, #{subTitle}, #{code}, #{readCount}, #{status}, #{ordinal}, #{categoryId}
+      #{title}, #{content}, #{code}, #{readCount}, #{isValid}, #{ordinal}, #{categoryId}
       )
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Article" >
@@ -130,8 +130,8 @@
       <if test="title != null" >
         title,
       </if>
-      <if test="subTitle != null" >
-        sub_title,
+      <if test="content != null" >
+        content,
       </if>
       <if test="code != null" >
         code,
@@ -139,8 +139,8 @@
       <if test="readCount != null" >
         read_count,
       </if>
-      <if test="status != null" >
-        status,
+      <if test="isValid != null" >
+        is_valid,
       </if>
       <if test="ordinal != null" >
         ordinal,
@@ -168,8 +168,8 @@
       <if test="title != null" >
         #{title},
       </if>
-      <if test="subTitle != null" >
-        #{subTitle},
+      <if test="content != null" >
+        #{content},
       </if>
       <if test="code != null" >
         #{code},
@@ -177,8 +177,8 @@
       <if test="readCount != null" >
         #{readCount},
       </if>
-      <if test="status != null" >
-        #{status},
+      <if test="isValid != null" >
+        #{isValid},
       </if>
       <if test="ordinal != null" >
         #{ordinal},
@@ -212,8 +212,8 @@
       <if test="title != null" >
         title = #{title},
       </if>
-      <if test="subTitle != null" >
-        sub_title = #{subTitle},
+      <if test="content != null" >
+        content = #{content},
       </if>
       <if test="code != null" >
         code = #{code},
@@ -221,8 +221,8 @@
       <if test="readCount != null" >
         read_count = #{readCount},
       </if>
-      <if test="status != null" >
-        status = #{status},
+      <if test="isValid != null" >
+        is_valid = #{isValid},
       </if>
       <if test="ordinal != null" >
         ordinal = #{ordinal},
@@ -240,10 +240,10 @@
       update_account = #{updateAccount},
       update_time = #{updateTime},
       title = #{title},
-      sub_title = #{subTitle},
+      content = #{content},
       code = #{code},
       read_count = #{readCount},
-      status = #{status},
+      is_valid = #{isValid},
       ordinal = #{ordinal},
       category_id = #{categoryId}
     where id = #{id}

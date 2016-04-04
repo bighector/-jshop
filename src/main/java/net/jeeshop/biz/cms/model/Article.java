@@ -2,14 +2,13 @@ package net.jeeshop.biz.cms.model;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
-import net.jeeshop.biz.cms.enums.ArticleStatus;
 
 public class Article extends BaseModel implements Serializable {
     /** 标题 */
     private String title;
 
-    /** 子标题 */
-    private String subTitle;
+    /** 内容 */
+    private String content;
 
     /** 代码 */
     private String code;
@@ -17,8 +16,8 @@ public class Article extends BaseModel implements Serializable {
     /** 阅读数 */
     private Long readCount;
 
-    /** 文章状态 */
-    private ArticleStatus status;
+    /** 是否可用,1-是0-否 */
+    private Boolean isValid;
 
     /** 顺序 */
     private Integer ordinal;
@@ -36,12 +35,12 @@ public class Article extends BaseModel implements Serializable {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getSubTitle() {
-        return subTitle;
+    public String getContent() {
+        return content;
     }
 
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle == null ? null : subTitle.trim();
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     public String getCode() {
@@ -60,12 +59,12 @@ public class Article extends BaseModel implements Serializable {
         this.readCount = readCount;
     }
 
-    public ArticleStatus getStatus() {
-        return status;
+    public Boolean getIsValid() {
+        return isValid;
     }
 
-    public void setStatus(ArticleStatus status) {
-        this.status = status;
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 
     public Integer getOrdinal() {

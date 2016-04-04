@@ -150,6 +150,8 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
     	SysUser user = LoginUserHolder.getLoginUser();
 		e.setCreateAccount(user.getUsername());//创建用户
 		e.setCreateTime(new Date());
+        e.setUpdateAccount(user.getUsername());//创建用户
+        e.setUpdateTime(new Date());
     	getService().insert(e);
         addMessage(flushAttrs, "插入操作成功！");
         return "redirect:selectList";
