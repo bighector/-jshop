@@ -10,7 +10,7 @@ import java.sql.Types;
 import java.util.Properties;
 
 /**
- * Created by dingguangxian on 7/6/15.
+ * Created by Dylan.Ding on 7/6/15.
  */
 public class JavaTypeResolverExt extends JavaTypeResolverDefaultImpl {
     protected boolean forceLong = true;//无小数位时，优先使用Long

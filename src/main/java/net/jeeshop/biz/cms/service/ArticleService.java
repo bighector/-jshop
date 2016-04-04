@@ -4,7 +4,9 @@ import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.cms.bean.ArticleBean;
 import net.jeeshop.biz.cms.client.ArticleMapper;
+import net.jeeshop.biz.cms.client.ArticleMapperExt;
 import net.jeeshop.biz.cms.model.Article;
 import net.jeeshop.biz.cms.model.ArticleExample;
 import org.apache.commons.lang.StringUtils;
@@ -21,6 +23,8 @@ public class ArticleService extends BaseService<Article, ArticleExample> {
 
     @Autowired
     private ArticleMapper articleMapper;
+    @Autowired
+    private ArticleMapperExt articleMapperExt;
 
     @Override
     protected BaseMapper<Article, ArticleExample> getMapper() {
@@ -32,25 +36,23 @@ public class ArticleService extends BaseService<Article, ArticleExample> {
      * @param article
      * @return
      */
-    public PageBean<Article> selectPageList(Article article, PageQueryBean pageQueryBean){
-        ArticleExample example = getExampleWithOrder();
-        ArticleExample.Criteria criteria = example.createCriteria();
+    public PageBean<ArticleBean> selectPageBeanList(final ArticleBean article, PageQueryBean pageQueryBean){
         if (StringUtils.isNotBlank(article.getTitle())){
-            criteria.andTitleLike("%"+article.getTitle()+"%");
+            article.setTitle("%"+article.getTitle().trim()+"%");
         }
         if (StringUtils.isNotBlank(article.getCode())){
-            criteria.andCodeLike("%"+article.getCode()+"%");
+            article.setCode("%"+article.getCode().trim()+"%");
         }
         if (article.getCategoryId() != null && article.getCategoryId() != 0L){
-            criteria.andCategoryIdEqualTo(article.getCategoryId());
+            article.setCategoryId(article.getCategoryId());
         }
-        PageBean<Article> pagerModel = super.selectPageList(example, pageQueryBean);
+        PageBean<ArticleBean> pagerModel = super.executePageQuery(new PageQueryExecutor<ArticleBean>() {
+            @Override
+            public List<ArticleBean> executeQuery() {
+                return articleMapperExt.selectArticleBeanList(article);
+            }
+        }, pageQueryBean);
         return pagerModel;
-    }
-    private ArticleExample getExampleWithOrder() {
-        ArticleExample example = new ArticleExample();
-        example.setOrderByClause("ordinal asc");
-        return example;
     }
 
     /**
@@ -65,6 +67,6 @@ public class ArticleService extends BaseService<Article, ArticleExample> {
         criteria.andCodeEqualTo(StringUtils.trimToEmpty(code));
 
         List<Article> catalogs = articleMapper.selectByExample(example);
-        return catalogs.size() > 1 ? catalogs.get(0) : null;
+        return catalogs.size() > 0 ? catalogs.get(0) : null;
     }
 }
