@@ -11,6 +11,9 @@ public class PageQueryBean
     private int start = 0;
     private int length = DEFAULT_LENGTH;
 
+    public PageQueryBean() {
+    }
+
     public PageQueryBean(int length) {
         this.length = length;
     }

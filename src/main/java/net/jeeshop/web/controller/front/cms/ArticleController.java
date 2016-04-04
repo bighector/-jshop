@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Dylan.Ding
  * @date 2016-04-04 17-36
  */
-@Controller("frontArticleController")
+@Controller("front.articleController")
 @RequestMapping("cms/article")
 public class ArticleController {
 

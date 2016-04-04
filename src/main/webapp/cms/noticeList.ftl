@@ -48,12 +48,12 @@ img{border: 0px;}
 							<#list pager.list as item>
 								<tr>
 									<td>
-										<a href="${basepath}/news/${item.id!""}.html" title="${item.title!""}">
+										<a href="${basepath}/cms/notice/${item.id!""}.html" title="${item.title!""}">
 											${item.title!""}
 										</a>
 									</td>
 									<td>
-										${item.createtime!""}
+										${item.createTime?datetime}
 									</td>
 								</tr>
 							</#list>
@@ -62,7 +62,7 @@ img{border: 0px;}
 						<div class="row" style="margin-top: 10px;">
 							<div class="col-xs-12" style="border: 0px solid;text-align: right;">
 								<#if pager.list??>
-									<#include "/pager.ftl"/>
+								<!-- TODO分页结果 -->
 								</#if>
 							</div>
 						</div>

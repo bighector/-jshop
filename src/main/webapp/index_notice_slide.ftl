@@ -37,7 +37,7 @@
 	<div class="bd">
 		<ul>
 			<#list GlobalData["cms.noticeList"] as item>
-				<li><a href="${basepath}/cms/notice/${item.id}" target="_blank" title="${item.title!""}">
+				<li><a href="${basepath}/cms/notice/${item.id}.html" target="_blank" title="${item.title!""}">
 					${item.title!""}</a>
 				</li>
 			</#list>
