@@ -11,11 +11,14 @@ import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.web.controller.BaseController;
+import net.jeeshop.web.controller.manage.cms.NoticeController;
 import net.jeeshop.web.util.LoginUserHolder;
 import net.jeeshop.web.util.RequestHolder;
 import net.sf.json.JSONArray;
 
 import org.apache.shiro.web.session.HttpServletSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,7 +42,7 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
     protected HttpServletRequest request;
     protected HttpServletResponse response;
     protected HttpSession session;
-   
+    
     @ModelAttribute
     public void loadServlet(HttpServletRequest request, HttpServletResponse response){
     	this.request = request;

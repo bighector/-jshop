@@ -25,7 +25,7 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
 
 /**
- * 公告管理 controller
+ * 通知管理 controller
  * @author zuowen
  *
  */
@@ -33,11 +33,8 @@ import net.jeeshop.web.util.LoginUserHolder;
 @Controller
 @RequestMapping("/manage/cms/notice/")
 public class NoticeController extends ManageBaseController<Notice, NoticeExample> {
-	
-	private static final Logger logger = LoggerFactory .getLogger(NoticeController.class);
-	
 	@Autowired
-	NoticeService noticeService;
+	private NoticeService noticeService;
 	
 	private static final String page_toList = "/manage/cms/noticeList";
 	private static final String page_toAdd = "/manage/cms/noticeEdit";
