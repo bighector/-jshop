@@ -3,6 +3,7 @@ package net.jeeshop.biz.product.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import net.jeeshop.biz.product.enums.ProductAttrValueType;
 
 public class ProductAttrExample {
     protected String orderByClause;
@@ -311,62 +312,62 @@ public class ProductAttrExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedEqualTo(String value) {
+        public Criteria andIsMandatedEqualTo(Boolean value) {
             addCriterion("is_mandated =", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedNotEqualTo(String value) {
+        public Criteria andIsMandatedNotEqualTo(Boolean value) {
             addCriterion("is_mandated <>", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedGreaterThan(String value) {
+        public Criteria andIsMandatedGreaterThan(Boolean value) {
             addCriterion("is_mandated >", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedGreaterThanOrEqualTo(String value) {
+        public Criteria andIsMandatedGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_mandated >=", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedLessThan(String value) {
+        public Criteria andIsMandatedLessThan(Boolean value) {
             addCriterion("is_mandated <", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedLessThanOrEqualTo(String value) {
+        public Criteria andIsMandatedLessThanOrEqualTo(Boolean value) {
             addCriterion("is_mandated <=", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedLike(String value) {
+        public Criteria andIsMandatedLike(Boolean value) {
             addCriterion("is_mandated like", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedNotLike(String value) {
+        public Criteria andIsMandatedNotLike(Boolean value) {
             addCriterion("is_mandated not like", value, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedIn(List<String> values) {
+        public Criteria andIsMandatedIn(List<Boolean> values) {
             addCriterion("is_mandated in", values, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedNotIn(List<String> values) {
+        public Criteria andIsMandatedNotIn(List<Boolean> values) {
             addCriterion("is_mandated not in", values, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedBetween(String value1, String value2) {
+        public Criteria andIsMandatedBetween(Boolean value1, Boolean value2) {
             addCriterion("is_mandated between", value1, value2, "isMandated");
             return (Criteria) this;
         }
 
-        public Criteria andIsMandatedNotBetween(String value1, String value2) {
+        public Criteria andIsMandatedNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_mandated not between", value1, value2, "isMandated");
             return (Criteria) this;
         }
@@ -381,62 +382,62 @@ public class ProductAttrExample {
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeEqualTo(String value) {
+        public Criteria andValueTypeEqualTo(ProductAttrValueType value) {
             addCriterion("value_type =", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotEqualTo(String value) {
+        public Criteria andValueTypeNotEqualTo(ProductAttrValueType value) {
             addCriterion("value_type <>", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeGreaterThan(String value) {
+        public Criteria andValueTypeGreaterThan(ProductAttrValueType value) {
             addCriterion("value_type >", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeGreaterThanOrEqualTo(String value) {
+        public Criteria andValueTypeGreaterThanOrEqualTo(ProductAttrValueType value) {
             addCriterion("value_type >=", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeLessThan(String value) {
+        public Criteria andValueTypeLessThan(ProductAttrValueType value) {
             addCriterion("value_type <", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeLessThanOrEqualTo(String value) {
+        public Criteria andValueTypeLessThanOrEqualTo(ProductAttrValueType value) {
             addCriterion("value_type <=", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeLike(String value) {
+        public Criteria andValueTypeLike(ProductAttrValueType value) {
             addCriterion("value_type like", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotLike(String value) {
+        public Criteria andValueTypeNotLike(ProductAttrValueType value) {
             addCriterion("value_type not like", value, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeIn(List<String> values) {
+        public Criteria andValueTypeIn(List<ProductAttrValueType> values) {
             addCriterion("value_type in", values, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotIn(List<String> values) {
+        public Criteria andValueTypeNotIn(List<ProductAttrValueType> values) {
             addCriterion("value_type not in", values, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeBetween(String value1, String value2) {
+        public Criteria andValueTypeBetween(ProductAttrValueType value1, ProductAttrValueType value2) {
             addCriterion("value_type between", value1, value2, "valueType");
             return (Criteria) this;
         }
 
-        public Criteria andValueTypeNotBetween(String value1, String value2) {
+        public Criteria andValueTypeNotBetween(ProductAttrValueType value1, ProductAttrValueType value2) {
             addCriterion("value_type not between", value1, value2, "valueType");
             return (Criteria) this;
         }

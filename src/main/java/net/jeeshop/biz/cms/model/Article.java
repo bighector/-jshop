@@ -4,14 +4,11 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Article extends BaseModel implements Serializable {
-    /** 分类ID */
-    private Long categoryId;
-
     /** 标题 */
     private String title;
 
-    /** 子标题 */
-    private String subTitle;
+    /** 内容 */
+    private String content;
 
     /** 代码 */
     private String code;
@@ -19,21 +16,16 @@ public class Article extends BaseModel implements Serializable {
     /** 阅读数 */
     private Long readCount;
 
-    /** 文章状态 */
-    private String status;
+    /** 是否可用,1-是0-否 */
+    private Boolean isValid;
 
     /** 顺序 */
     private Integer ordinal;
 
+    /** 分类ID */
+    private Long categoryId;
+
     private static final long serialVersionUID = 1L;
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
 
     public String getTitle() {
         return title;
@@ -43,12 +35,12 @@ public class Article extends BaseModel implements Serializable {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getSubTitle() {
-        return subTitle;
+    public String getContent() {
+        return content;
     }
 
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle == null ? null : subTitle.trim();
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     public String getCode() {
@@ -67,12 +59,12 @@ public class Article extends BaseModel implements Serializable {
         this.readCount = readCount;
     }
 
-    public String getStatus() {
-        return status;
+    public Boolean getIsValid() {
+        return isValid;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 
     public Integer getOrdinal() {
@@ -81,5 +73,13 @@ public class Article extends BaseModel implements Serializable {
 
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }

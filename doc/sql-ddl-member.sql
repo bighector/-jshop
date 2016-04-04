@@ -41,7 +41,7 @@ CREATE TABLE member
 	regist_time datetime COMMENT '注册时间',
 	freeze_start_time datetime COMMENT '冻结起始时间',
 	freeze_end_time datetime COMMENT '冻结结束时间',
-	member_rank_id bigint NOT NULL COMMENT '会员等级ID',
+	member_rank_id bigint COMMENT '会员等级ID',
 	PRIMARY KEY (id),
 	UNIQUE (username(20)),
 	UNIQUE (nick_name(40)),

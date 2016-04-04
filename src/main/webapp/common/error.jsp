@@ -12,7 +12,7 @@
 <meta name="HandheldFriendly" content="true" />
 <meta name="MobileOptimized" content="320" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="shortcut icon" href="<%=SystemManager.getInstance().getSystemSetting().getShortcuticon()%>">
+<link rel="shortcut icon" href="<%=SystemManager.getInstance().getSystemSetting().getShortcutIcon()%>">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/404/1/css/dandelion.css"  media="screen" />
 
 <title>错误页面</title>
@@ -43,8 +43,7 @@
                 	
                 	<%
                 	String system_debug = SystemManager.getInstance().getProperty("system_debug");
-                	//out.println("system_debug="+system_debug);
-                	if(StringUtils.isNotBlank(system_debug) && system_debug.equals("debug") && 1==2){
+                	if(StringUtils.isNotBlank(system_debug) && "debug".equals(system_debug)){
                 	%>
                 	<div style="font-size: 14px;font-weight: bold;color: red;text-align: center;">
                 		 错误信息：<%=request.getSession().getAttribute(FrontContainer.action_exception_error)%><br>

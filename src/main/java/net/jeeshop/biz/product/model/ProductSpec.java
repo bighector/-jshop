@@ -2,6 +2,7 @@ package net.jeeshop.biz.product.model;
 
 import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.product.enums.ProductSpecValueType;
 
 public class ProductSpec extends BaseModel implements Serializable {
     /** 规格名称 */
@@ -11,13 +12,13 @@ public class ProductSpec extends BaseModel implements Serializable {
     private Integer ordinal;
 
     /** 值类型，int-整型，string-字符型,color-颜色型,img-图片型 */
-    private String valueType;
+    private ProductSpecValueType valueType;
 
     /** 商品分类ID */
     private Long categoryId;
 
     /** 是否有效,1-是0-否 */
-    private String isValid;
+    private Boolean isValid;
 
     /** 人性化名称(规格重名时用这个区分) */
     private String friendlyName;
@@ -40,12 +41,12 @@ public class ProductSpec extends BaseModel implements Serializable {
         this.ordinal = ordinal;
     }
 
-    public String getValueType() {
+    public ProductSpecValueType getValueType() {
         return valueType;
     }
 
-    public void setValueType(String valueType) {
-        this.valueType = valueType == null ? null : valueType.trim();
+    public void setValueType(ProductSpecValueType valueType) {
+        this.valueType = valueType;
     }
 
     public Long getCategoryId() {
@@ -56,12 +57,12 @@ public class ProductSpec extends BaseModel implements Serializable {
         this.categoryId = categoryId;
     }
 
-    public String getIsValid() {
+    public Boolean getIsValid() {
         return isValid;
     }
 
-    public void setIsValid(String isValid) {
-        this.isValid = isValid == null ? null : isValid.trim();
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 
     public String getFriendlyName() {

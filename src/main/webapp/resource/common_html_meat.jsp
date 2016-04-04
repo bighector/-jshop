@@ -28,5 +28,5 @@ if(!non_responsive2){
 <title><%=SystemManager.getInstance().getSystemSetting().getTitle()%></title>
 <meta name="description" content="<%=SystemManager.getInstance().getSystemSetting().getDescription()%>" />
 <meta name="keywords"  content="<%=SystemManager.getInstance().getSystemSetting().getKeywords()%>" />
-<link rel="shortcut icon" type="image/x-icon" href="<%=SystemManager.getInstance().getSystemSetting().getShortcuticon()%>">
+<link rel="shortcut icon" type="image/x-icon" href="<%=SystemManager.getInstance().getSystemSetting().getShortcutIcon()%>">
 

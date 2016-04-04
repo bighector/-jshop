@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.jeeshop.biz.product.client.ProductMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.product.model.Product" >
+    <id column="id" property="id" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="product_info_id" property="productInfoId" />
+    <result column="product_name" property="productName" />
+    <result column="market_price" property="marketPrice" />
+    <result column="cost_price" property="costPrice" />
+    <result column="price" property="price" />
+    <result column="storage" property="storage" />
+    <result column="main_image" property="mainImage" />
+    <result column="hit_count" property="hitCount" />
+    <result column="is_new" property="isNew" />
+    <result column="is_hot" property="isHot" />
+    <result column="keywords" property="keywords" />
+    <result column="title" property="title" />
+    <result column="product_status" property="productStatus" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, create_account, create_time, update_account, update_time, product_info_id, product_name, 
+    market_price, cost_price, price, storage, main_image, hit_count, is_new, is_hot, 
+    keywords, title, product_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.product.model.ProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pro_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from pro_product
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pro_product
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="net.jeeshop.biz.product.model.Product" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_product (create_account, create_time, update_account, update_time, product_info_id, 
+      product_name, market_price, cost_price, price, storage, main_image, 
+      hit_count, is_new, is_hot, keywords, title, product_status)
+    values (#{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, #{productInfoId}, 
+      #{productName}, #{marketPrice}, #{costPrice}, #{price}, #{storage}, #{mainImage}, 
+      #{hitCount}, #{isNew}, #{isHot}, #{keywords}, #{title}, #{productStatus})
+  </insert>
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.Product" useGeneratedKeys="true" keyProperty="id" >
+    insert into pro_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="productInfoId != null" >
+        product_info_id,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="marketPrice != null" >
+        market_price,
+      </if>
+      <if test="costPrice != null" >
+        cost_price,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="storage != null" >
+        storage,
+      </if>
+      <if test="mainImage != null" >
+        main_image,
+      </if>
+      <if test="hitCount != null" >
+        hit_count,
+      </if>
+      <if test="isNew != null" >
+        is_new,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="keywords != null" >
+        keywords,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="productStatus != null" >
+        product_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="productInfoId != null" >
+        #{productInfoId},
+      </if>
+      <if test="productName != null" >
+        #{productName},
+      </if>
+      <if test="marketPrice != null" >
+        #{marketPrice},
+      </if>
+      <if test="costPrice != null" >
+        #{costPrice},
+      </if>
+      <if test="price != null" >
+        #{price},
+      </if>
+      <if test="storage != null" >
+        #{storage},
+      </if>
+      <if test="mainImage != null" >
+        #{mainImage},
+      </if>
+      <if test="hitCount != null" >
+        #{hitCount},
+      </if>
+      <if test="isNew != null" >
+        #{isNew},
+      </if>
+      <if test="isHot != null" >
+        #{isHot},
+      </if>
+      <if test="keywords != null" >
+        #{keywords},
+      </if>
+      <if test="title != null" >
+        #{title},
+      </if>
+      <if test="productStatus != null" >
+        #{productStatus},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.jeeshop.biz.product.model.ProductExample" resultType="java.lang.Integer" >
+    select count(*) from pro_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.product.model.Product" >
+    update pro_product
+    <set >
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="productInfoId != null" >
+        product_info_id = #{productInfoId},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName},
+      </if>
+      <if test="marketPrice != null" >
+        market_price = #{marketPrice},
+      </if>
+      <if test="costPrice != null" >
+        cost_price = #{costPrice},
+      </if>
+      <if test="price != null" >
+        price = #{price},
+      </if>
+      <if test="storage != null" >
+        storage = #{storage},
+      </if>
+      <if test="mainImage != null" >
+        main_image = #{mainImage},
+      </if>
+      <if test="hitCount != null" >
+        hit_count = #{hitCount},
+      </if>
+      <if test="isNew != null" >
+        is_new = #{isNew},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot},
+      </if>
+      <if test="keywords != null" >
+        keywords = #{keywords},
+      </if>
+      <if test="title != null" >
+        title = #{title},
+      </if>
+      <if test="productStatus != null" >
+        product_status = #{productStatus},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.product.model.Product" >
+    update pro_product
+    set create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime},
+      product_info_id = #{productInfoId},
+      product_name = #{productName},
+      market_price = #{marketPrice},
+      cost_price = #{costPrice},
+      price = #{price},
+      storage = #{storage},
+      main_image = #{mainImage},
+      hit_count = #{hitCount},
+      is_new = #{isNew},
+      is_hot = #{isHot},
+      keywords = #{keywords},
+      title = #{title},
+      product_status = #{productStatus}
+    where id = #{id}
+  </update>
+</mapper>

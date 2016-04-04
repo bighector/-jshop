@@ -3,12 +3,12 @@ package net.jeeshop.web.controller.manage.system;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.system.bean.LogType;
+import net.jeeshop.biz.system.enums.LogType;
 import net.jeeshop.biz.system.bean.SysUserBean;
 import net.jeeshop.biz.system.model.SysRoleExample;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.biz.system.model.SysUserExample;
-import net.jeeshop.biz.system.service.MenuService;
+import net.jeeshop.biz.system.service.ResourceService;
 import net.jeeshop.biz.system.service.RoleService;
 import net.jeeshop.biz.system.service.SystemLogService;
 import net.jeeshop.biz.system.service.UserService;
@@ -60,7 +60,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
     @Autowired
     private RoleService roleService;
     @Autowired
-    private MenuService menuService;
+    private ResourceService menuService;
     @Autowired
     private SystemLogService systemLogService;
 //    @Resource
@@ -118,7 +118,7 @@ public class UserController extends ManageBaseController<SysUser, SysUserExample
             logger.error("登陆失败，账户或密码错误,{}", username);
             model.addAttribute("errorMsg", errorMsg);
             return page_input;
-        } else if (!u.getStatus().equals(SysUser.status_y)) {
+        } else if (u.getIsValid() != null && u.getIsValid() == false) {
             errorMsg = "帐号已被禁用，请联系管理员!";
             logger.error("帐号已被禁用，请联系管理员,{}", u.getUsername());
             model.addAttribute("errorMsg", errorMsg);

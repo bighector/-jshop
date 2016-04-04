@@ -22,8 +22,8 @@
                     var item = json[i];
                     htmlCity += '<tr><td align="center">';
                     htmlCity += '<a href="javascript:'+func+'('+item.id+');">'+item.name+'</a>&nbsp;&nbsp;';
-                    htmlCity += '<a class="glyphicon glyphicon-edit" href="${basepath}/manage/area/toEdit?id='+item.id+'"></a>';
-                    htmlCity += '<a class="glyphicon glyphicon-remove-circle" href="javascript:del('+item.id+')"></a>';
+                    htmlCity += '&nbsp;&nbsp;<a class="glyphicon glyphicon-edit" href="${basepath}/manage/area/toEdit?id='+item.id+'"></a>';
+                    htmlCity += '&nbsp;&nbsp;<a class="glyphicon glyphicon-remove-circle" href="javascript:del('+item.id+')"></a>';
                     htmlCity += '</td></tr>';
                 }
             }
@@ -53,7 +53,8 @@
             <tr>
                 <td align="center">
                     <a href="javascript:changeCitys(${item.id});">${item.name}</a>
-                    <a class="glyphicon glyphicon-edit" href="${basepath}/manage/area/toEdit?id=${item.id}"></a>
+                    &nbsp;&nbsp;<a class="glyphicon glyphicon-edit" href="${basepath}/manage/area/toEdit?id=${item.id}"></a>
+                    &nbsp;&nbsp;
                     <a class="glyphicon glyphicon-remove-circle" href="javascript:del(${item.id});"></a>
                 </td>
             </tr>

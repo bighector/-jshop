@@ -3,14 +3,13 @@
 <mapper namespace="net.jeeshop.biz.system.client.SysRoleMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.system.model.SysRole" >
     <id column="id" property="id" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
     <result column="role_name" property="roleName" />
     <result column="role_desc" property="roleDesc" />
-    <result column="role_db_Privilege" property="roleDbPrivilege" />
-    <result column="status" property="status" />
-    <result column="create_time" property="createTime" />
-    <result column="update_time" property="updateTime" />
-    <result column="create_Account" property="createAccount" />
-    <result column="update_Account" property="updateAccount" />
+    <result column="is_valid" property="isValid" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,8 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, role_name, role_desc, role_db_Privilege, status, create_time, update_time, create_Account, 
-    update_Account
+    id, create_account, create_time, update_account, update_time, role_name, role_desc, 
+    is_valid
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SysRoleExample" >
     select
@@ -99,10 +98,10 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.SysRole" >
-    insert into sys_role (id, role_name, role_desc, role_db_Privilege, status, create_time, 
-      update_time, create_Account, update_Account)
-    values (#{id}, #{roleName}, #{roleDesc}, #{roleDbPrivilege}, #{status}, #{createTime}, 
-      #{updateTime}, #{createAccount}, #{updateAccount})
+    insert into sys_role (id, create_account, create_time, update_account, update_time, 
+      role_name, role_desc, is_valid)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{roleName}, #{roleDesc}, #{isValid})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysRole" >
     insert into sys_role
@@ -110,34 +109,43 @@
       <if test="id != null" >
         id,
       </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
       <if test="roleName != null" >
         role_name,
       </if>
       <if test="roleDesc != null" >
         role_desc,
       </if>
-      <if test="roleDbPrivilege != null" >
-        role_db_Privilege,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="createAccount != null" >
-        create_Account,
-      </if>
-      <if test="updateAccount != null" >
-        update_Account,
+      <if test="isValid != null" >
+        is_valid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
       </if>
       <if test="roleName != null" >
         #{roleName},
@@ -145,23 +153,8 @@
       <if test="roleDesc != null" >
         #{roleDesc},
       </if>
-      <if test="roleDbPrivilege != null" >
-        #{roleDbPrivilege},
-      </if>
-      <if test="status != null" >
-        #{status},
-      </if>
-      <if test="createTime != null" >
-        #{createTime},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime},
-      </if>
-      <if test="createAccount != null" >
-        #{createAccount},
-      </if>
-      <if test="updateAccount != null" >
-        #{updateAccount},
+      <if test="isValid != null" >
+        #{isValid},
       </if>
     </trim>
   </insert>
@@ -174,43 +167,39 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.system.model.SysRole" >
     update sys_role
     <set >
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
       <if test="roleName != null" >
         role_name = #{roleName},
       </if>
       <if test="roleDesc != null" >
         role_desc = #{roleDesc},
       </if>
-      <if test="roleDbPrivilege != null" >
-        role_db_Privilege = #{roleDbPrivilege},
-      </if>
-      <if test="status != null" >
-        status = #{status},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime},
-      </if>
-      <if test="createAccount != null" >
-        create_Account = #{createAccount},
-      </if>
-      <if test="updateAccount != null" >
-        update_Account = #{updateAccount},
+      <if test="isValid != null" >
+        is_valid = #{isValid},
       </if>
     </set>
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.system.model.SysRole" >
     update sys_role
-    set role_name = #{roleName},
-      role_desc = #{roleDesc},
-      role_db_Privilege = #{roleDbPrivilege},
-      status = #{status},
+    set create_account = #{createAccount},
       create_time = #{createTime},
+      update_account = #{updateAccount},
       update_time = #{updateTime},
-      create_Account = #{createAccount},
-      update_Account = #{updateAccount}
+      role_name = #{roleName},
+      role_desc = #{roleDesc},
+      is_valid = #{isValid}
     where id = #{id}
   </update>
 </mapper>

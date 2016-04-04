@@ -10,11 +10,8 @@ public class SysRole extends BaseModel implements Serializable {
     /** 角色描述 */
     private String roleDesc;
 
-    /** 角色权限 */
-    private String roleDbPrivilege;
-
-    /** 状态，y-有效,n-无效 */
-    private String status;
+    /** 是否有效,1-是0-否 */
+    private Boolean isValid;
 
     private static final long serialVersionUID = 1L;
 
@@ -34,19 +31,11 @@ public class SysRole extends BaseModel implements Serializable {
         this.roleDesc = roleDesc == null ? null : roleDesc.trim();
     }
 
-    public String getRoleDbPrivilege() {
-        return roleDbPrivilege;
+    public Boolean getIsValid() {
+        return isValid;
     }
 
-    public void setRoleDbPrivilege(String roleDbPrivilege) {
-        this.roleDbPrivilege = roleDbPrivilege == null ? null : roleDbPrivilege.trim();
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 }

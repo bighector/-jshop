@@ -24,7 +24,7 @@ public class Advert extends BaseModel implements Serializable {
     private Date endDate;
 
     /** 是否有效，1-是0-否 */
-    private String isValid;
+    private Boolean isValid;
 
     private static final long serialVersionUID = 1L;
 
@@ -76,11 +76,11 @@ public class Advert extends BaseModel implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getIsValid() {
+    public Boolean getIsValid() {
         return isValid;
     }
 
-    public void setIsValid(String isValid) {
-        this.isValid = isValid == null ? null : isValid.trim();
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 }

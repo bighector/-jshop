@@ -14,7 +14,7 @@ import java.util.List;
  *GeneratorDemo
  */
 public class GeneratorDemo {
-/*    @Test
+    @Test
     public void genSystem() throws Exception {
         generateFiles("gen/generateConfig-system.xml");
     }
@@ -32,34 +32,16 @@ public class GeneratorDemo {
         generateFiles("gen/generateConfig-member.xml");
     }
 	
-	@Test
-	public void genProductSpec() throws Exception
-	{
-		 generateFiles("gen/generateConfig-productspec.xml");
-	}
-
 
     @Test
     public void genFinance() throws Exception {
         generateFiles("gen/generateConfig-finance.xml");
     }
-
-	@Test
-	public void genCmsCode() throws Exception
-	{
-		 generateFiles("gen/generateConfig-cms.xml");
-	}
-	
 	@Test
 	public void genOrderCode() throws Exception {
 		generateFiles("gen/generateConfig-order.xml");
-	}*/
-	
-	@Test
-	public void genOrderCode() throws Exception {
-		generateFiles("gen/generateConfig-Category.xml");
 	}
-    
+	
     private void generateFiles(String configResource) throws Exception
     {
         List<String> warnings = new ArrayList<String>();

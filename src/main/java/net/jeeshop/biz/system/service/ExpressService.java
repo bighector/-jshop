@@ -35,7 +35,7 @@ public class ExpressService extends BaseService<Express, ExpressExample> {
     public Express selectByCode(String expressCode) {
     	ExpressExample example = new ExpressExample();
     	ExpressExample.Criteria criteria = example.createCriteria();
-        criteria.andCodeEqualTo(expressCode);
+        criteria.andExpressCodeEqualTo(expressCode);
         return selectUniqueByExample(example);
     }
     

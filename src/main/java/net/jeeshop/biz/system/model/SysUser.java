@@ -4,17 +4,17 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class SysUser extends BaseModel implements Serializable {
-    /** 用户名 */
+    /** 角色ID */
+    private Long roleId;
+
+    /** 登录名 */
     private String username;
 
-    /** 密码 */
+    /** 登录密码 */
     private String password;
 
-    /** 状态,n-有效，y-无效 */
-    private String status;
-
-    /** 角色ID */
-    private Long rid;
+    /** 是否有效,1-是0-否 */
+    private Boolean isValid;
 
     /** 昵称 */
     private String nickname;
@@ -23,6 +23,14 @@ public class SysUser extends BaseModel implements Serializable {
     private String email;
 
     private static final long serialVersionUID = 1L;
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
 
     public String getUsername() {
         return username;
@@ -40,20 +48,12 @@ public class SysUser extends BaseModel implements Serializable {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getStatus() {
-        return status;
+    public Boolean getIsValid() {
+        return isValid;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
-    }
-
-    public Long getRid() {
-        return rid;
-    }
-
-    public void setRid(Long rid) {
-        this.rid = rid;
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 
     public String getNickname() {

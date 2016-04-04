@@ -51,9 +51,13 @@ public class LoginUserHolder {
         }
     }
 
+    /**
+     * 获取当前登录的用户　
+     * @return
+     */
     public static Member getLoginMember() {
-        //FIXME
-        return null;
+        HttpSession session = RequestHolder.getSession();
+        return session == null ? null : (Member)session.getAttribute(FrontContainer.MEMBER_INFO);
     }
 
 //    public static MemberRank getLoginAccount(){

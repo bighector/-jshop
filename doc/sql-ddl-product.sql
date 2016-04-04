@@ -119,6 +119,7 @@ CREATE TABLE pro_product_comment
 	content varchar(4000) COMMENT '评论内容',
 	star int COMMENT '星级',
 	product_info_id bigint NOT NULL COMMENT '商品ID',
+	member_id bigint COMMENT '会员ID',
 	PRIMARY KEY (id)
 ) COMMENT = '会员评论';
 

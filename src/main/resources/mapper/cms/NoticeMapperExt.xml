@@ -3,12 +3,12 @@
 <mapper namespace="net.jeeshop.biz.cms.client.NoticeMapperExt" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.Notice" >
     <id column="id" property="id" />
-    <result column="status" property="status" />
+    <result column="is_valid" property="isValid" />
   </resultMap>
  
 
 	<select id="selectNoticeByIds" resultMap="BaseResultMap">
-		select id,status from cms_notice
+		select id,is_valid from cms_notice
 		where
 		<choose>
 			<when test="ids!=null and ids.length==1">
@@ -27,7 +27,7 @@
 	
 		<foreach collection="list" item="item" index="index" >
 				UPDATE cms_notice
-				SET  status = #{item.status},
+				SET  is_valid = #{item.isValid},
 				update_time=#{item.updateTime},
 				update_Account=#{item.updateAccount}
 				where id = #{item.id}

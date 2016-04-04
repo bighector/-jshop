@@ -3,31 +3,29 @@ package net.jeeshop.biz.system.model;
 import java.io.Serializable;
 import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.system.enums.LogType;
 
 public class SystemLog extends BaseModel implements Serializable {
     /** 标题 */
     private String title;
 
-    /** 内容 */
+    /** 日志内容 */
     private String content;
 
-    /** 类型 */
-    private Integer type;
+    /** 日志类型 */
+    private LogType logType;
 
     /** 日志用户 */
     private String account;
 
-    /** 登录IP */
+    /** sys_system_log.login_ip */
     private String loginIp;
-
-    /** 登录时间 */
-    private Date loginTime;
 
     /** 登录区域 */
     private String loginArea;
 
-    /** 是否异地登录 */
-    private String diffAreaLogin;
+    /** 日志记录时间 */
+    private Date logTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -47,12 +45,12 @@ public class SystemLog extends BaseModel implements Serializable {
         this.content = content == null ? null : content.trim();
     }
 
-    public Integer getType() {
-        return type;
+    public LogType getLogType() {
+        return logType;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setLogType(LogType logType) {
+        this.logType = logType;
     }
 
     public String getAccount() {
@@ -71,14 +69,6 @@ public class SystemLog extends BaseModel implements Serializable {
         this.loginIp = loginIp == null ? null : loginIp.trim();
     }
 
-    public Date getLoginTime() {
-        return loginTime;
-    }
-
-    public void setLoginTime(Date loginTime) {
-        this.loginTime = loginTime;
-    }
-
     public String getLoginArea() {
         return loginArea;
     }
@@ -87,11 +77,11 @@ public class SystemLog extends BaseModel implements Serializable {
         this.loginArea = loginArea == null ? null : loginArea.trim();
     }
 
-    public String getDiffAreaLogin() {
-        return diffAreaLogin;
+    public Date getLogTime() {
+        return logTime;
     }
 
-    public void setDiffAreaLogin(String diffAreaLogin) {
-        this.diffAreaLogin = diffAreaLogin == null ? null : diffAreaLogin.trim();
+    public void setLogTime(Date logTime) {
+        this.logTime = logTime;
     }
 }

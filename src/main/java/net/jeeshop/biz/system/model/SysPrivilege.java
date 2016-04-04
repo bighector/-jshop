@@ -4,27 +4,27 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class SysPrivilege extends BaseModel implements Serializable {
-    /** 角色id */
-    private Long rid;
+    /** 角色ID */
+    private Long roleId;
 
-    /** 菜单ID */
-    private Long mid;
+    /** 资源ID */
+    private Long resourceId;
 
     private static final long serialVersionUID = 1L;
 
-    public Long getRid() {
-        return rid;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setRid(Long rid) {
-        this.rid = rid;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
-    public Long getMid() {
-        return mid;
+    public Long getResourceId() {
+        return resourceId;
     }
 
-    public void setMid(Long mid) {
-        this.mid = mid;
+    public void setResourceId(Long resourceId) {
+        this.resourceId = resourceId;
     }
 }

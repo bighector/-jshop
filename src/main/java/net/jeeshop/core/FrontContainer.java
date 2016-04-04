@@ -6,20 +6,11 @@ package net.jeeshop.core;
  *
  */
 public class FrontContainer {
-	public static final String USER_INFO = "user_info";// 登陆的用户信息
+	public static final String MEMBER_INFO = "login_member_info";// 登陆的用户信息
 	public static final String myCart = "myCart";//用户购物车key
-	public static final int PAGE_SIZE = 20;// 默认分页条数
-	public static final int default_page_left_product_size = 10;// 页面左侧默认加载的商品数
-	
+
 	public static final String news = "news";//内容key
-	public static final String lable = "lable";//标签KEY
-	public static final String sessionID = "sessionID";//sessionIDKEY
-	public static final String imgList = "imgList";
-//	@Deprecated
-//	public static final String SystemSetting = "SystemSetting";//系统配置
-	public static final String order_success_info = "order_success_info";//创建成功的订单的信息
-	public static final String navigation_list = "navigation_list";//导航信息
-	
+
 	public static final String selectMenu = "selectMenu";//用户选择的菜单
 	
 	/**

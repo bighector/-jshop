@@ -87,8 +87,8 @@ public class UserService extends BaseService<SysUser, SysUserExample> {
     public void addUser(SysUser newUser) {
         SysUser loginUser = LoginUserHolder.getLoginUser();
         newUser.setCreateAccount(loginUser.getUsername());
-        if (StringUtils.isBlank(newUser.getStatus())) {
-            newUser.setStatus(SysUser.status_y);
+        if (newUser.getIsValid() == null) {
+            newUser.setIsValid(true);
         }
         newUser.setPassword(MD5.md5(newUser.getPassword()));
         sysUserMapper.insert(newUser);

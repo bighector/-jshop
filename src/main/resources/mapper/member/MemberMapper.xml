@@ -2,34 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="net.jeeshop.biz.member.client.MemberMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.member.model.Member" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="create_account" property="createAccount" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_account" property="updateAccount" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="gender" property="gender" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="birth_date" property="birthDate" jdbcType="TIMESTAMP" />
-    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <result column="id_type" property="idType" jdbcType="VARCHAR" />
-    <result column="id_num" property="idNum" jdbcType="VARCHAR" />
-    <result column="province" property="province" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="area" property="area" jdbcType="VARCHAR" />
-    <result column="is_email_active" property="isEmailActive" jdbcType="CHAR" />
-    <result column="is_freeze" property="isFreeze" jdbcType="CHAR" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
-    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
-    <result column="last_login_area" property="lastLoginArea" jdbcType="VARCHAR" />
-    <result column="regist_time" property="registTime" jdbcType="TIMESTAMP" />
-    <result column="freeze_start_time" property="freezeStartTime" jdbcType="TIMESTAMP" />
-    <result column="freeze_end_time" property="freezeEndTime" jdbcType="TIMESTAMP" />
-    <result column="member_rank_id" property="memberRankId" jdbcType="BIGINT" />
+    <id column="id" property="id" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
+    <result column="username" property="username" />
+    <result column="nick_name" property="nickName" />
+    <result column="password" property="password" />
+    <result column="address" property="address" />
+    <result column="real_name" property="realName" />
+    <result column="gender" property="gender" />
+    <result column="email" property="email" />
+    <result column="birth_date" property="birthDate" />
+    <result column="mobile" property="mobile" />
+    <result column="id_type" property="idType" />
+    <result column="id_num" property="idNum" />
+    <result column="province" property="province" />
+    <result column="city" property="city" />
+    <result column="area" property="area" />
+    <result column="is_email_active" property="isEmailActive" />
+    <result column="is_freeze" property="isFreeze" />
+    <result column="last_login_time" property="lastLoginTime" />
+    <result column="last_login_ip" property="lastLoginIp" />
+    <result column="last_login_area" property="lastLoginArea" />
+    <result column="regist_time" property="registTime" />
+    <result column="freeze_start_time" property="freezeStartTime" />
+    <result column="freeze_end_time" property="freezeEndTime" />
+    <result column="member_rank_id" property="memberRankId" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -113,33 +113,23 @@
     select 
     <include refid="Base_Column_List" />
     from member
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from member
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.member.model.Member" >
-    insert into member (id, create_account, create_time, 
-      update_account, update_time, username, 
-      nick_name, password, address, 
-      real_name, gender, email, 
-      birth_date, mobile, id_type, 
-      id_num, province, city, 
-      area, is_email_active, is_freeze, 
-      last_login_time, last_login_ip, last_login_area, 
-      regist_time, freeze_start_time, freeze_end_time, 
-      member_rank_id)
-    values (#{id,jdbcType=BIGINT}, #{createAccount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateAccount,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}, 
-      #{nickName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{realName,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{birthDate,jdbcType=TIMESTAMP}, #{mobile,jdbcType=VARCHAR}, #{idType,jdbcType=VARCHAR}, 
-      #{idNum,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
-      #{area,jdbcType=VARCHAR}, #{isEmailActive,jdbcType=CHAR}, #{isFreeze,jdbcType=CHAR}, 
-      #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginArea,jdbcType=VARCHAR}, 
-      #{registTime,jdbcType=TIMESTAMP}, #{freezeStartTime,jdbcType=TIMESTAMP}, #{freezeEndTime,jdbcType=TIMESTAMP}, 
-      #{memberRankId,jdbcType=BIGINT})
+    insert into member (id, create_account, create_time, update_account, update_time, 
+      username, nick_name, password, address, real_name, gender, email, 
+      birth_date, mobile, id_type, id_num, province, city, area, is_email_active, 
+      is_freeze, last_login_time, last_login_ip, last_login_area, regist_time, 
+      freeze_start_time, freeze_end_time, member_rank_id)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{username}, #{nickName}, #{password}, #{address}, #{realName}, #{gender}, #{email}, 
+      #{birthDate}, #{mobile}, #{idType}, #{idNum}, #{province}, #{city}, #{area}, #{isEmailActive}, 
+      #{isFreeze}, #{lastLoginTime}, #{lastLoginIp}, #{lastLoginArea}, #{registTime}, 
+      #{freezeStartTime}, #{freezeEndTime}, #{memberRankId})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.member.model.Member" >
     insert into member
@@ -231,88 +221,88 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+        #{id},
       </if>
       <if test="createAccount != null" >
-        #{createAccount,jdbcType=VARCHAR},
+        #{createAccount},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime},
       </if>
       <if test="updateAccount != null" >
-        #{updateAccount,jdbcType=VARCHAR},
+        #{updateAccount},
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        #{updateTime},
       </if>
       <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
+        #{username},
       </if>
       <if test="nickName != null" >
-        #{nickName,jdbcType=VARCHAR},
+        #{nickName},
       </if>
       <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
+        #{password},
       </if>
       <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+        #{address},
       </if>
       <if test="realName != null" >
-        #{realName,jdbcType=VARCHAR},
+        #{realName},
       </if>
       <if test="gender != null" >
-        #{gender,jdbcType=VARCHAR},
+        #{gender},
       </if>
       <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
+        #{email},
       </if>
       <if test="birthDate != null" >
-        #{birthDate,jdbcType=TIMESTAMP},
+        #{birthDate},
       </if>
       <if test="mobile != null" >
-        #{mobile,jdbcType=VARCHAR},
+        #{mobile},
       </if>
       <if test="idType != null" >
-        #{idType,jdbcType=VARCHAR},
+        #{idType},
       </if>
       <if test="idNum != null" >
-        #{idNum,jdbcType=VARCHAR},
+        #{idNum},
       </if>
       <if test="province != null" >
-        #{province,jdbcType=VARCHAR},
+        #{province},
       </if>
       <if test="city != null" >
-        #{city,jdbcType=VARCHAR},
+        #{city},
       </if>
       <if test="area != null" >
-        #{area,jdbcType=VARCHAR},
+        #{area},
       </if>
       <if test="isEmailActive != null" >
-        #{isEmailActive,jdbcType=CHAR},
+        #{isEmailActive},
       </if>
       <if test="isFreeze != null" >
-        #{isFreeze,jdbcType=CHAR},
+        #{isFreeze},
       </if>
       <if test="lastLoginTime != null" >
-        #{lastLoginTime,jdbcType=TIMESTAMP},
+        #{lastLoginTime},
       </if>
       <if test="lastLoginIp != null" >
-        #{lastLoginIp,jdbcType=VARCHAR},
+        #{lastLoginIp},
       </if>
       <if test="lastLoginArea != null" >
-        #{lastLoginArea,jdbcType=VARCHAR},
+        #{lastLoginArea},
       </if>
       <if test="registTime != null" >
-        #{registTime,jdbcType=TIMESTAMP},
+        #{registTime},
       </if>
       <if test="freezeStartTime != null" >
-        #{freezeStartTime,jdbcType=TIMESTAMP},
+        #{freezeStartTime},
       </if>
       <if test="freezeEndTime != null" >
-        #{freezeEndTime,jdbcType=TIMESTAMP},
+        #{freezeEndTime},
       </if>
       <if test="memberRankId != null" >
-        #{memberRankId,jdbcType=BIGINT},
+        #{memberRankId},
       </if>
     </trim>
   </insert>
@@ -326,118 +316,118 @@
     update member
     <set >
       <if test="createAccount != null" >
-        create_account = #{createAccount,jdbcType=VARCHAR},
+        create_account = #{createAccount},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime},
       </if>
       <if test="updateAccount != null" >
-        update_account = #{updateAccount,jdbcType=VARCHAR},
+        update_account = #{updateAccount},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime},
       </if>
       <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
+        username = #{username},
       </if>
       <if test="nickName != null" >
-        nick_name = #{nickName,jdbcType=VARCHAR},
+        nick_name = #{nickName},
       </if>
       <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
+        password = #{password},
       </if>
       <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
+        address = #{address},
       </if>
       <if test="realName != null" >
-        real_name = #{realName,jdbcType=VARCHAR},
+        real_name = #{realName},
       </if>
       <if test="gender != null" >
-        gender = #{gender,jdbcType=VARCHAR},
+        gender = #{gender},
       </if>
       <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
+        email = #{email},
       </if>
       <if test="birthDate != null" >
-        birth_date = #{birthDate,jdbcType=TIMESTAMP},
+        birth_date = #{birthDate},
       </if>
       <if test="mobile != null" >
-        mobile = #{mobile,jdbcType=VARCHAR},
+        mobile = #{mobile},
       </if>
       <if test="idType != null" >
-        id_type = #{idType,jdbcType=VARCHAR},
+        id_type = #{idType},
       </if>
       <if test="idNum != null" >
-        id_num = #{idNum,jdbcType=VARCHAR},
+        id_num = #{idNum},
       </if>
       <if test="province != null" >
-        province = #{province,jdbcType=VARCHAR},
+        province = #{province},
       </if>
       <if test="city != null" >
-        city = #{city,jdbcType=VARCHAR},
+        city = #{city},
       </if>
       <if test="area != null" >
-        area = #{area,jdbcType=VARCHAR},
+        area = #{area},
       </if>
       <if test="isEmailActive != null" >
-        is_email_active = #{isEmailActive,jdbcType=CHAR},
+        is_email_active = #{isEmailActive},
       </if>
       <if test="isFreeze != null" >
-        is_freeze = #{isFreeze,jdbcType=CHAR},
+        is_freeze = #{isFreeze},
       </if>
       <if test="lastLoginTime != null" >
-        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+        last_login_time = #{lastLoginTime},
       </if>
       <if test="lastLoginIp != null" >
-        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+        last_login_ip = #{lastLoginIp},
       </if>
       <if test="lastLoginArea != null" >
-        last_login_area = #{lastLoginArea,jdbcType=VARCHAR},
+        last_login_area = #{lastLoginArea},
       </if>
       <if test="registTime != null" >
-        regist_time = #{registTime,jdbcType=TIMESTAMP},
+        regist_time = #{registTime},
       </if>
       <if test="freezeStartTime != null" >
-        freeze_start_time = #{freezeStartTime,jdbcType=TIMESTAMP},
+        freeze_start_time = #{freezeStartTime},
       </if>
       <if test="freezeEndTime != null" >
-        freeze_end_time = #{freezeEndTime,jdbcType=TIMESTAMP},
+        freeze_end_time = #{freezeEndTime},
       </if>
       <if test="memberRankId != null" >
-        member_rank_id = #{memberRankId,jdbcType=BIGINT},
+        member_rank_id = #{memberRankId},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.member.model.Member" >
     update member
-    set create_account = #{createAccount,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_account = #{updateAccount,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      username = #{username,jdbcType=VARCHAR},
-      nick_name = #{nickName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      real_name = #{realName,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      birth_date = #{birthDate,jdbcType=TIMESTAMP},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      id_type = #{idType,jdbcType=VARCHAR},
-      id_num = #{idNum,jdbcType=VARCHAR},
-      province = #{province,jdbcType=VARCHAR},
-      city = #{city,jdbcType=VARCHAR},
-      area = #{area,jdbcType=VARCHAR},
-      is_email_active = #{isEmailActive,jdbcType=CHAR},
-      is_freeze = #{isFreeze,jdbcType=CHAR},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      last_login_area = #{lastLoginArea,jdbcType=VARCHAR},
-      regist_time = #{registTime,jdbcType=TIMESTAMP},
-      freeze_start_time = #{freezeStartTime,jdbcType=TIMESTAMP},
-      freeze_end_time = #{freezeEndTime,jdbcType=TIMESTAMP},
-      member_rank_id = #{memberRankId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
+    set create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime},
+      username = #{username},
+      nick_name = #{nickName},
+      password = #{password},
+      address = #{address},
+      real_name = #{realName},
+      gender = #{gender},
+      email = #{email},
+      birth_date = #{birthDate},
+      mobile = #{mobile},
+      id_type = #{idType},
+      id_num = #{idNum},
+      province = #{province},
+      city = #{city},
+      area = #{area},
+      is_email_active = #{isEmailActive},
+      is_freeze = #{isFreeze},
+      last_login_time = #{lastLoginTime},
+      last_login_ip = #{lastLoginIp},
+      last_login_area = #{lastLoginArea},
+      regist_time = #{registTime},
+      freeze_start_time = #{freezeStartTime},
+      freeze_end_time = #{freezeEndTime},
+      member_rank_id = #{memberRankId}
+    where id = #{id}
   </update>
 </mapper>

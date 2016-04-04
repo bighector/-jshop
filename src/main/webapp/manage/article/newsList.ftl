@@ -148,9 +148,9 @@
 					<td>
 						<a href="toEdit?id=${item.id!""}">编辑</a>|
 						<#if item.type="help">
-							<a target="_blank" href="${systemSetting().www}/help/${item.code!""}.html" >查看</a>
+							<a target="_blank" href="${systemSetting().website}/help/${item.code!""}.html" >查看</a>
 						<#else>
-							<a target="_blank" href="${systemSetting().www}/news/${item.id!""}.html" >查看</a>
+							<a target="_blank" href="${systemSetting().website}/news/${item.id!""}.html" >查看</a>
 						</#if>
 					</td>
 				</tr>

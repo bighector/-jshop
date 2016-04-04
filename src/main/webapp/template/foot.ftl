@@ -1,8 +1,3 @@
-<!-- UJian Button BEGIN <div class="ujian-hook"></div>-->
-<!-- <script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&fade=1&uid=1880230"></script> -->
-<!-- <a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a> -->
-<!-- UJian Button END -->
-
 <style>
 	
 	/* IndexBottom */
@@ -22,14 +17,14 @@
 	
 		<div class="container">
 			<div class="row IndexBottom">
-				<#if GlobalData["cms.helpList"]?? && GlobalData["cms.helpList"]?size gt 0>
-				<#list GlobalData["cms.helpList"] as item>
+				<#if GlobalData["cms.articleCategoryList"]?? && GlobalData["cms.articleCategoryList"]?size gt 0>
+				<#list GlobalData["cms.articleCategoryList"] as item>
 					<div class="col-xs-2" style="text-align: center;">
-						<div class="row" style="margin-bottom: 10px;"><strong>${item.name!""}</strong></div>
-						<#if item.helps?? && item.helps?size gt 0>
-						    <#list item.helps as item>
+						<div class="row" style="margin-bottom: 10px;"><strong>${item.categoryName!""}</strong></div>
+						<#if item.articles?? && item.articles?size gt 0>
+						    <#list item.articles as item>
                                 <div class="row" style="line-height: 20px;">
-                                    <a href="${basepath}/help/${item.code}.html" target="_blank">
+                                    <a href="${basepath}/cms/article/${item.code}.html" target="_blank">
                                     ${item.title!""}
                                     </a>
                                 </div>
@@ -39,7 +34,7 @@
 				</#list>
 				</#if>
 			</div>
-			<hr style="margin: 0px;">
+			<hr style="margin: 20px 0px 0px">
 			<!-- 友情链接 -->
 			<div class="row" >
 				<div class="col-xs-12" style="text-align: center;">
@@ -47,7 +42,7 @@
 						<#if GlobalData["cms.friendLinkList"]?? && GlobalData["cms.friendLinkList"]?size gt 0>
 						    <#list GlobalData["cms.friendLinkList"] as item>
                                 <div style="float: left;margin: 5px;">
-                                    <a href="http://${item.http!""}" target="_blank">${item.name!""}</a>
+                                    <a href="http://${item.linkUrl!""}" target="_blank">${item.linkName!""}</a>
                                 </div>
 						    </#list>
 						</#if>
@@ -57,11 +52,6 @@
 			<hr style="margin: 0px;">
 			<div class="row" style="margin-top: 5px;display: inline;">
 				<div class="col-xs-3">
-				</div>
-				<div class="col-xs-5">
-					<p style="text-align: center;">${systemSetting().icp}
-						<a target="_blank" href="http://www.aliyun.com/"><img src="http://gtms01.alicdn.com/tps/i1/T1W6.aFbFbXXcZj_6s-96-18.png" alt="运行在阿里云" /></a>
-					</p>
 				</div>
 				<div class="col-xs-1">
 					<!-- cnzz站点统计 -->

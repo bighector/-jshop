@@ -171,123 +171,73 @@ public class SysPrivilegeExample {
             return (Criteria) this;
         }
 
-        public Criteria andRidIsNull() {
-            addCriterion("rid is null");
+        public Criteria andCreateAccountIsNull() {
+            addCriterion("create_account is null");
             return (Criteria) this;
         }
 
-        public Criteria andRidIsNotNull() {
-            addCriterion("rid is not null");
+        public Criteria andCreateAccountIsNotNull() {
+            addCriterion("create_account is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRidEqualTo(Long value) {
-            addCriterion("rid =", value, "rid");
+        public Criteria andCreateAccountEqualTo(String value) {
+            addCriterion("create_account =", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidNotEqualTo(Long value) {
-            addCriterion("rid <>", value, "rid");
+        public Criteria andCreateAccountNotEqualTo(String value) {
+            addCriterion("create_account <>", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidGreaterThan(Long value) {
-            addCriterion("rid >", value, "rid");
+        public Criteria andCreateAccountGreaterThan(String value) {
+            addCriterion("create_account >", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidGreaterThanOrEqualTo(Long value) {
-            addCriterion("rid >=", value, "rid");
+        public Criteria andCreateAccountGreaterThanOrEqualTo(String value) {
+            addCriterion("create_account >=", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidLessThan(Long value) {
-            addCriterion("rid <", value, "rid");
+        public Criteria andCreateAccountLessThan(String value) {
+            addCriterion("create_account <", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidLessThanOrEqualTo(Long value) {
-            addCriterion("rid <=", value, "rid");
+        public Criteria andCreateAccountLessThanOrEqualTo(String value) {
+            addCriterion("create_account <=", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidIn(List<Long> values) {
-            addCriterion("rid in", values, "rid");
+        public Criteria andCreateAccountLike(String value) {
+            addCriterion("create_account like", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidNotIn(List<Long> values) {
-            addCriterion("rid not in", values, "rid");
+        public Criteria andCreateAccountNotLike(String value) {
+            addCriterion("create_account not like", value, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidBetween(Long value1, Long value2) {
-            addCriterion("rid between", value1, value2, "rid");
+        public Criteria andCreateAccountIn(List<String> values) {
+            addCriterion("create_account in", values, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andRidNotBetween(Long value1, Long value2) {
-            addCriterion("rid not between", value1, value2, "rid");
+        public Criteria andCreateAccountNotIn(List<String> values) {
+            addCriterion("create_account not in", values, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andMidIsNull() {
-            addCriterion("mid is null");
+        public Criteria andCreateAccountBetween(String value1, String value2) {
+            addCriterion("create_account between", value1, value2, "createAccount");
             return (Criteria) this;
         }
 
-        public Criteria andMidIsNotNull() {
-            addCriterion("mid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidEqualTo(Long value) {
-            addCriterion("mid =", value, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidNotEqualTo(Long value) {
-            addCriterion("mid <>", value, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidGreaterThan(Long value) {
-            addCriterion("mid >", value, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidGreaterThanOrEqualTo(Long value) {
-            addCriterion("mid >=", value, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidLessThan(Long value) {
-            addCriterion("mid <", value, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidLessThanOrEqualTo(Long value) {
-            addCriterion("mid <=", value, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidIn(List<Long> values) {
-            addCriterion("mid in", values, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidNotIn(List<Long> values) {
-            addCriterion("mid not in", values, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidBetween(Long value1, Long value2) {
-            addCriterion("mid between", value1, value2, "mid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMidNotBetween(Long value1, Long value2) {
-            addCriterion("mid not between", value1, value2, "mid");
+        public Criteria andCreateAccountNotBetween(String value1, String value2) {
+            addCriterion("create_account not between", value1, value2, "createAccount");
             return (Criteria) this;
         }
 
@@ -351,6 +301,76 @@ public class SysPrivilegeExample {
             return (Criteria) this;
         }
 
+        public Criteria andUpdateAccountIsNull() {
+            addCriterion("update_account is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountIsNotNull() {
+            addCriterion("update_account is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountEqualTo(String value) {
+            addCriterion("update_account =", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountNotEqualTo(String value) {
+            addCriterion("update_account <>", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountGreaterThan(String value) {
+            addCriterion("update_account >", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountGreaterThanOrEqualTo(String value) {
+            addCriterion("update_account >=", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountLessThan(String value) {
+            addCriterion("update_account <", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountLessThanOrEqualTo(String value) {
+            addCriterion("update_account <=", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountLike(String value) {
+            addCriterion("update_account like", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountNotLike(String value) {
+            addCriterion("update_account not like", value, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountIn(List<String> values) {
+            addCriterion("update_account in", values, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountNotIn(List<String> values) {
+            addCriterion("update_account not in", values, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountBetween(String value1, String value2) {
+            addCriterion("update_account between", value1, value2, "updateAccount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateAccountNotBetween(String value1, String value2) {
+            addCriterion("update_account not between", value1, value2, "updateAccount");
+            return (Criteria) this;
+        }
+
         public Criteria andUpdateTimeIsNull() {
             addCriterion("update_time is null");
             return (Criteria) this;
@@ -411,143 +431,123 @@ public class SysPrivilegeExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountIsNull() {
-            addCriterion("create_Account is null");
+        public Criteria andRoleIdIsNull() {
+            addCriterion("role_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountIsNotNull() {
-            addCriterion("create_Account is not null");
+        public Criteria andRoleIdIsNotNull() {
+            addCriterion("role_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountEqualTo(String value) {
-            addCriterion("create_Account =", value, "createAccount");
+        public Criteria andRoleIdEqualTo(Long value) {
+            addCriterion("role_id =", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountNotEqualTo(String value) {
-            addCriterion("create_Account <>", value, "createAccount");
+        public Criteria andRoleIdNotEqualTo(Long value) {
+            addCriterion("role_id <>", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountGreaterThan(String value) {
-            addCriterion("create_Account >", value, "createAccount");
+        public Criteria andRoleIdGreaterThan(Long value) {
+            addCriterion("role_id >", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountGreaterThanOrEqualTo(String value) {
-            addCriterion("create_Account >=", value, "createAccount");
+        public Criteria andRoleIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("role_id >=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountLessThan(String value) {
-            addCriterion("create_Account <", value, "createAccount");
+        public Criteria andRoleIdLessThan(Long value) {
+            addCriterion("role_id <", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountLessThanOrEqualTo(String value) {
-            addCriterion("create_Account <=", value, "createAccount");
+        public Criteria andRoleIdLessThanOrEqualTo(Long value) {
+            addCriterion("role_id <=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountLike(String value) {
-            addCriterion("create_Account like", value, "createAccount");
+        public Criteria andRoleIdIn(List<Long> values) {
+            addCriterion("role_id in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountNotLike(String value) {
-            addCriterion("create_Account not like", value, "createAccount");
+        public Criteria andRoleIdNotIn(List<Long> values) {
+            addCriterion("role_id not in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountIn(List<String> values) {
-            addCriterion("create_Account in", values, "createAccount");
+        public Criteria andRoleIdBetween(Long value1, Long value2) {
+            addCriterion("role_id between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountNotIn(List<String> values) {
-            addCriterion("create_Account not in", values, "createAccount");
+        public Criteria andRoleIdNotBetween(Long value1, Long value2) {
+            addCriterion("role_id not between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountBetween(String value1, String value2) {
-            addCriterion("create_Account between", value1, value2, "createAccount");
+        public Criteria andResourceIdIsNull() {
+            addCriterion("resource_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateAccountNotBetween(String value1, String value2) {
-            addCriterion("create_Account not between", value1, value2, "createAccount");
+        public Criteria andResourceIdIsNotNull() {
+            addCriterion("resource_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountIsNull() {
-            addCriterion("update_Account is null");
+        public Criteria andResourceIdEqualTo(Long value) {
+            addCriterion("resource_id =", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountIsNotNull() {
-            addCriterion("update_Account is not null");
+        public Criteria andResourceIdNotEqualTo(Long value) {
+            addCriterion("resource_id <>", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountEqualTo(String value) {
-            addCriterion("update_Account =", value, "updateAccount");
+        public Criteria andResourceIdGreaterThan(Long value) {
+            addCriterion("resource_id >", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountNotEqualTo(String value) {
-            addCriterion("update_Account <>", value, "updateAccount");
+        public Criteria andResourceIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("resource_id >=", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountGreaterThan(String value) {
-            addCriterion("update_Account >", value, "updateAccount");
+        public Criteria andResourceIdLessThan(Long value) {
+            addCriterion("resource_id <", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountGreaterThanOrEqualTo(String value) {
-            addCriterion("update_Account >=", value, "updateAccount");
+        public Criteria andResourceIdLessThanOrEqualTo(Long value) {
+            addCriterion("resource_id <=", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountLessThan(String value) {
-            addCriterion("update_Account <", value, "updateAccount");
+        public Criteria andResourceIdIn(List<Long> values) {
+            addCriterion("resource_id in", values, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountLessThanOrEqualTo(String value) {
-            addCriterion("update_Account <=", value, "updateAccount");
+        public Criteria andResourceIdNotIn(List<Long> values) {
+            addCriterion("resource_id not in", values, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountLike(String value) {
-            addCriterion("update_Account like", value, "updateAccount");
+        public Criteria andResourceIdBetween(Long value1, Long value2) {
+            addCriterion("resource_id between", value1, value2, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateAccountNotLike(String value) {
-            addCriterion("update_Account not like", value, "updateAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdateAccountIn(List<String> values) {
-            addCriterion("update_Account in", values, "updateAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdateAccountNotIn(List<String> values) {
-            addCriterion("update_Account not in", values, "updateAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdateAccountBetween(String value1, String value2) {
-            addCriterion("update_Account between", value1, value2, "updateAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdateAccountNotBetween(String value1, String value2) {
-            addCriterion("update_Account not between", value1, value2, "updateAccount");
+        public Criteria andResourceIdNotBetween(Long value1, Long value2) {
+            addCriterion("resource_id not between", value1, value2, "resourceId");
             return (Criteria) this;
         }
     }

@@ -3,55 +3,78 @@ package net.jeeshop.biz.member.model;
 import java.io.Serializable;
 import java.util.Date;
 import net.jeeshop.biz.base.model.BaseModel;
+import net.jeeshop.biz.member.enums.GenderType;
+import net.jeeshop.biz.member.enums.IdType;
 
 public class Member extends BaseModel implements Serializable {
+    /** 登录名 */
     private String username;
 
-    private String nickname;
+    /** 昵称 */
+    private String nickName;
 
+    /** 密码 */
     private String password;
 
-    private String province;
-
-    private String city;
-
+    /** 联系地址 */
     private String address;
 
-    private String postCode;
-
-    private String cardType;
-
-    private String cardNo;
-
-    private String mobile;
-
-    private String email;
-
-    private String isEmailActive;
-
-    private String freeze;
-
-    private Date lastLoginTime;
-
-    private String lastLoginIp;
-
-    private String lastLoginArea;
-
-    private String diffAreaLogin;
-
-    private Date registTime;
-
-    private Date freezeStartTime;
-
-    private Date freezeEndTime;
-
-    private String gender;
-
+    /** 真实姓名 */
     private String realName;
 
-    private Date birthday;
+    /** 性别1-男2-女0-未知 */
+    private GenderType gender;
 
-    private Long memberRank;
+    /** 电子邮箱 */
+    private String email;
+
+    /** 出生日期 */
+    private Date birthDate;
+
+    /** 联系电话 */
+    private String mobile;
+
+    /** 证件类型 */
+    private IdType idType;
+
+    /** 证件号码 */
+    private String idNum;
+
+    /** 省份代码 */
+    private String province;
+
+    /** 地市代码 */
+    private String city;
+
+    /** 区县代码 */
+    private String area;
+
+    /** 邮箱是否已经激活,1-是0-否 */
+    private Boolean isEmailActive;
+
+    /** 是否冻结，1-是0-否 */
+    private Boolean isFreeze;
+
+    /** 最后登录时间 */
+    private Date lastLoginTime;
+
+    /** 最后登录IP */
+    private String lastLoginIp;
+
+    /** 最后登录区域 */
+    private String lastLoginArea;
+
+    /** 注册时间 */
+    private Date registTime;
+
+    /** 冻结起始时间 */
+    private Date freezeStartTime;
+
+    /** 冻结结束时间 */
+    private Date freezeEndTime;
+
+    /** 会员等级ID */
+    private Long memberRankId;
 
     private static final long serialVersionUID = 1L;
 
@@ -63,12 +86,12 @@ public class Member extends BaseModel implements Serializable {
         this.username = username == null ? null : username.trim();
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
     }
 
     public String getPassword() {
@@ -77,6 +100,70 @@ public class Member extends BaseModel implements Serializable {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
+    }
+
+    public GenderType getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderType gender) {
+        this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public IdType getIdType() {
+        return idType;
+    }
+
+    public void setIdType(IdType idType) {
+        this.idType = idType;
+    }
+
+    public String getIdNum() {
+        return idNum;
+    }
+
+    public void setIdNum(String idNum) {
+        this.idNum = idNum == null ? null : idNum.trim();
     }
 
     public String getProvince() {
@@ -95,68 +182,28 @@ public class Member extends BaseModel implements Serializable {
         this.city = city == null ? null : city.trim();
     }
 
-    public String getAddress() {
-        return address;
+    public String getArea() {
+        return area;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+    public void setArea(String area) {
+        this.area = area == null ? null : area.trim();
     }
 
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode == null ? null : postCode.trim();
-    }
-
-    public String getCardType() {
-        return cardType;
-    }
-
-    public void setCardType(String cardType) {
-        this.cardType = cardType == null ? null : cardType.trim();
-    }
-
-    public String getCardNo() {
-        return cardNo;
-    }
-
-    public void setCardNo(String cardNo) {
-        this.cardNo = cardNo == null ? null : cardNo.trim();
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
-
-    public String getIsEmailActive() {
+    public Boolean getIsEmailActive() {
         return isEmailActive;
     }
 
-    public void setIsEmailActive(String isEmailActive) {
-        this.isEmailActive = isEmailActive == null ? null : isEmailActive.trim();
+    public void setIsEmailActive(Boolean isEmailActive) {
+        this.isEmailActive = isEmailActive;
     }
 
-    public String getFreeze() {
-        return freeze;
+    public Boolean getIsFreeze() {
+        return isFreeze;
     }
 
-    public void setFreeze(String freeze) {
-        this.freeze = freeze == null ? null : freeze.trim();
+    public void setIsFreeze(Boolean isFreeze) {
+        this.isFreeze = isFreeze;
     }
 
     public Date getLastLoginTime() {
@@ -183,14 +230,6 @@ public class Member extends BaseModel implements Serializable {
         this.lastLoginArea = lastLoginArea == null ? null : lastLoginArea.trim();
     }
 
-    public String getDiffAreaLogin() {
-        return diffAreaLogin;
-    }
-
-    public void setDiffAreaLogin(String diffAreaLogin) {
-        this.diffAreaLogin = diffAreaLogin == null ? null : diffAreaLogin.trim();
-    }
-
     public Date getRegistTime() {
         return registTime;
     }
@@ -215,35 +254,11 @@ public class Member extends BaseModel implements Serializable {
         this.freezeEndTime = freezeEndTime;
     }
 
-    public String getGender() {
-        return gender;
+    public Long getMemberRankId() {
+        return memberRankId;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender == null ? null : gender.trim();
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName == null ? null : realName.trim();
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public Long getMemberRank() {
-        return memberRank;
-    }
-
-    public void setMemberRank(Long memberRank) {
-        this.memberRank = memberRank;
+    public void setMemberRankId(Long memberRankId) {
+        this.memberRankId = memberRankId;
     }
 }

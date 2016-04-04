@@ -19,7 +19,7 @@
 <meta name="keywords"  content="${e.name!""}" />
 </#if>
 
-<link rel="shortcut icon" href="${systemSetting().shortcuticon}">
+<link rel="shortcut icon" href="${systemSetting().shortcutIcon}">
 <style type="text/css">
 .topCss {
 	height: 28px;
@@ -175,7 +175,7 @@ function defaultProductImg(){
 							<ol class="breadcrumb" style="margin-bottom: 0px;">
 							  <li>${e.mainCatalogName!""}</li>
 							  <#if e.childrenCatalogName??>
-								  <li class="active"><a href="${systemSetting().www}/catalog/${e.childrenCatalogCode!""}.html">${e.childrenCatalogName!""}</a></li>
+								  <li class="active"><a href="${systemSetting().website}/catalog/${e.childrenCatalogCode!""}.html">${e.childrenCatalogName!""}</a></li>
 							  </#if>
 							</ol>
 						</div>
@@ -664,7 +664,7 @@ function resetProductInfo(){
 
 //去购物车结算
 function toCart(){
-	window.location.href = "${systemSetting().www}/cart/cart.html";
+	window.location.href = "${systemSetting().website}/cart/cart.html";
 }
 var options={
 		animation:true,

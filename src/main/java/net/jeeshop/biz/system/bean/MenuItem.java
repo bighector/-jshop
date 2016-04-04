@@ -4,6 +4,7 @@
  */
 package net.jeeshop.biz.system.bean;
 
+import net.jeeshop.biz.system.enums.ResourceType;
 import net.jeeshop.core.SystemManager;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class MenuItem {
     private boolean open = false;// 是否展开
     private boolean checked;// true:勾选
     private List<MenuItem> children;// 子节点
-    private MenuType type = MenuType.module;// module：模块 ,page：页面 ,button：功能
+    private ResourceType type = ResourceType.module;// module：模块 ,page：页面 ,button：功能
     private String icon;// 节点图标
 
     /**
@@ -30,7 +31,7 @@ public class MenuItem {
      *
      * @param menuType
      */
-    public void setMenuType(MenuType menuType) {
+    public void setMenuType(ResourceType menuType) {
         if (menuType == null) {
             this.type = null;
             return;
@@ -38,12 +39,12 @@ public class MenuItem {
             this.type = menuType;
             //为z-tree自定义图标
             SystemSettingBean systemSetting = SystemManager.getInstance().getSystemSetting();
-            if (menuType == (MenuType.page)) {
-                this.setIcon(systemSetting.getManageLeftTreeLeafIcon());
+            if (menuType == (ResourceType.page)) {
+//                this.setIcon(systemSetting.getManageLeftTreeLeafIcon());
 //				this.setIcon("/myshop/resource/images/letter.gif");
 //				this.setIcon(manageHttp+"../resource/images/letter.gif");
-            } else if (menuType == (MenuType.button)) {
-                this.setIcon(systemSetting.getManageLeftTreeLeafIcon());
+            } else if (menuType == (ResourceType.button)) {
+//                this.setIcon(systemSetting.getManageLeftTreeLeafIcon());
 //				this.setIcon(manageHttp+"../resource/images/reply.gif");
 //				this.setIcon("/myshop/resource/images/reply.gif");
             }
@@ -56,14 +57,14 @@ public class MenuItem {
      * @return
      */
     public boolean isButton() {
-        if (this.type != null && this.type.equals(MenuType.button)) {
+        if (this.type != null && this.type.equals(ResourceType.button)) {
             return true;
         }
         return false;
     }
 
     public boolean isRootMenu() {
-        return new Long(0).equals(pid);
+        return new Long(0).equals(pid) || pid == null;
     }
 
     public void addClild(MenuItem item) {
@@ -155,11 +156,11 @@ public class MenuItem {
         this.checked = checked;
     }
 
-    public MenuType getType() {
+    public ResourceType getType() {
         return type;
     }
 
-    public void setType(MenuType type) {
+    public void setType(ResourceType type) {
         this.type = type;
     }
 

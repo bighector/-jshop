@@ -2,7 +2,7 @@ package net.jeeshop.biz.system.service;
 
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.system.bean.LogType;
+import net.jeeshop.biz.system.enums.LogType;
 import net.jeeshop.biz.system.client.SystemLogMapper;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.biz.system.model.SystemLog;
@@ -41,9 +41,10 @@ public class SystemLogService extends BaseService<SystemLog, SystemLogExample> {
         systemlog.setTitle(title);
         systemlog.setContent(content);
         systemlog.setAccount(currentUser.getUsername());
-        systemlog.setType(logType.getValue());
-        systemlog.setLoginTime(new Date());
-        systemlog.setDiffAreaLogin(Constants.status_n);
+        systemlog.setLogType(logType);
+        systemlog.setCreateTime(new Date());
+        systemlog.setUpdateTime(new Date());
+        systemlog.setLogTime(new Date());
         systemlog.setLoginIp(AddressUtils.getIp(RequestHolder.getRequest()));
 
         String address = null;
@@ -56,20 +57,6 @@ public class SystemLogService extends BaseService<SystemLog, SystemLogExample> {
             }
             systemlog.setLoginArea(address);
 
-            //异地登陆的判断方法为：先比较本次登陆和上次登陆的区域位置，如果不一致，说明是异地登陆；如果获取不到区域，则比较IP地址，如果IP地址和上次的不一致，则是异地登陆
-
-//            SystemLog lastestLog = SystemLog.selectFirstOne(currentUser.getUsername());
-//            if (lastestLog != null) {
-//                if (StringUtils.isNotBlank(address) && StringUtils.isNotBlank(lastestLog.getLoginArea())) {
-//                    if (!address.equals(lastestLog.getLoginArea())) {
-//                        systemlog.setDiffAreaLogin(Constants.status_y);
-//                    }
-//                } else if (StringUtils.isNotBlank(systemlog.getLoginIp()) && StringUtils.isNotBlank(lastestLog.getLoginIp())) {
-//                    if (!systemlog.getLoginIp().equals(lastestLog.getLoginIp())) {
-//                        systemlog.setDiffAreaLogin(Constants.status_y);
-//                    }
-//                }
-//            }
         }
 
         this.insert(systemlog);

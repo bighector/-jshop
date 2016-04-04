@@ -1,10 +1,10 @@
 <#import "/manage/tpl/pageBase.ftl" as page/>
 <@page.pageBase currentMenu="文章分类">
 	<form action="${basepath}/manage/articleCatalog" id="form" name="form">
-		<input id="catalogID" value="${e.pid!""}" style="display: none;"/>
+		<input id="catalogID" value="${e.parentId!""}" style="display: none;"/>
 		<input id="catalogID_currentID" value="${e.id!""}" style="display: none;"/>
 		<input type="hidden" value="${e.type!""}" name="type" id="type"/>
-		
+
 		<table class="table table-bordered" style="width: 95%;margin: auto;">
 			<tr style="background-color: #dff0d8">
 				<td colspan="2" style="background-color: #dff0d8;text-align: center;">
@@ -17,15 +17,15 @@
 				<td><input type="hidden" value="${e.id!""}" name="id" lable="id" /></td>
 			</tr>
 				<tr>
-				<td style="text-align: right;">大类</td>
+				<td style="text-align: right;">上级分类</td>
 				<td style="text-align: left;">
 					<select onchange="catalogChange(this)" name="pid" id="catalogSelect">
 						<option></option>
                         <#list catalogs as item>
-							<option pid="0" value="${item.id!""}"><font color='red'>${item.name!""}</font></option>
+							<option pid="0" value="${item.id!""}"><font color='red'>${item.categoryName!""}</font></option>
                             <#if item.children?? && item.children?size gt 0>
                                 <#list item.children as item>
-                                    <option value="${item.id!""}">&nbsp;&nbsp;&nbsp;&nbsp;${item.name!""}</option>
+                                    <option value="${item.id!""}">&nbsp;&nbsp;&nbsp;&nbsp;${item.categoryName!""}</option>
                                 </#list>
                             </#if>
                         </#list>
@@ -34,13 +34,12 @@
 			</tr>
 			<tr>
 				<td style="text-align: right;">名称</td>
-				<td style="text-align: left;"><input type="text"  value="${e.name!""}" name="name"  id="name" data-rule="名称;required;name;" size="20" maxlength="20"/></td>
+				<td style="text-align: left;"><input type="text"  value="${e.categoryName!""}" name="categoryName"  id="categoryName" data-rule="名称;required;name;" size="20" maxlength="20"/></td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">编码</td>
 				<td style="text-align: left;">
-<!-- 							<input type="button" onclick="getCode()" value="自动获取" class="btn btn-default"/> -->
-					<input type="text"  value="${e.code!""}" name="code"  data-rule="编码;required;code;length[1~45];remote[uniqueCode, id]" size="45" maxlength="45" id="code" /></td>
+					<input type="text"  value="${e.categoryCode!""}" name="categoryCode"  data-rule="编码;required;code;length[1~45];remote[uniqueCode, id]" size="45" maxlength="45" id="code" /></td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">顺序</td>

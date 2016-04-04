@@ -171,146 +171,6 @@ public class HotQueryExample {
             return (Criteria) this;
         }
 
-        public Criteria andKeyworkIsNull() {
-            addCriterion("keywork is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkIsNotNull() {
-            addCriterion("keywork is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkEqualTo(String value) {
-            addCriterion("keywork =", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkNotEqualTo(String value) {
-            addCriterion("keywork <>", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkGreaterThan(String value) {
-            addCriterion("keywork >", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkGreaterThanOrEqualTo(String value) {
-            addCriterion("keywork >=", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkLessThan(String value) {
-            addCriterion("keywork <", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkLessThanOrEqualTo(String value) {
-            addCriterion("keywork <=", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkLike(String value) {
-            addCriterion("keywork like", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkNotLike(String value) {
-            addCriterion("keywork not like", value, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkIn(List<String> values) {
-            addCriterion("keywork in", values, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkNotIn(List<String> values) {
-            addCriterion("keywork not in", values, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkBetween(String value1, String value2) {
-            addCriterion("keywork between", value1, value2, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeyworkNotBetween(String value1, String value2) {
-            addCriterion("keywork not between", value1, value2, "keywork");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlIsNull() {
-            addCriterion("url is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlIsNotNull() {
-            addCriterion("url is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlEqualTo(String value) {
-            addCriterion("url =", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotEqualTo(String value) {
-            addCriterion("url <>", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlGreaterThan(String value) {
-            addCriterion("url >", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("url >=", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlLessThan(String value) {
-            addCriterion("url <", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlLessThanOrEqualTo(String value) {
-            addCriterion("url <=", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlLike(String value) {
-            addCriterion("url like", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotLike(String value) {
-            addCriterion("url not like", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlIn(List<String> values) {
-            addCriterion("url in", values, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotIn(List<String> values) {
-            addCriterion("url not in", values, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlBetween(String value1, String value2) {
-            addCriterion("url between", value1, value2, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotBetween(String value1, String value2) {
-            addCriterion("url not between", value1, value2, "url");
-            return (Criteria) this;
-        }
-
         public Criteria andCreateAccountIsNull() {
             addCriterion("create_account is null");
             return (Criteria) this;
@@ -568,6 +428,146 @@ public class HotQueryExample {
 
         public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
             addCriterion("update_time not between", value1, value2, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkIsNull() {
+            addCriterion("keywork is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkIsNotNull() {
+            addCriterion("keywork is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkEqualTo(String value) {
+            addCriterion("keywork =", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkNotEqualTo(String value) {
+            addCriterion("keywork <>", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkGreaterThan(String value) {
+            addCriterion("keywork >", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkGreaterThanOrEqualTo(String value) {
+            addCriterion("keywork >=", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkLessThan(String value) {
+            addCriterion("keywork <", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkLessThanOrEqualTo(String value) {
+            addCriterion("keywork <=", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkLike(String value) {
+            addCriterion("keywork like", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkNotLike(String value) {
+            addCriterion("keywork not like", value, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkIn(List<String> values) {
+            addCriterion("keywork in", values, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkNotIn(List<String> values) {
+            addCriterion("keywork not in", values, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkBetween(String value1, String value2) {
+            addCriterion("keywork between", value1, value2, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyworkNotBetween(String value1, String value2) {
+            addCriterion("keywork not between", value1, value2, "keywork");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlIsNull() {
+            addCriterion("url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlIsNotNull() {
+            addCriterion("url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlEqualTo(String value) {
+            addCriterion("url =", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlNotEqualTo(String value) {
+            addCriterion("url <>", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlGreaterThan(String value) {
+            addCriterion("url >", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("url >=", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlLessThan(String value) {
+            addCriterion("url <", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlLessThanOrEqualTo(String value) {
+            addCriterion("url <=", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlLike(String value) {
+            addCriterion("url like", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlNotLike(String value) {
+            addCriterion("url not like", value, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlIn(List<String> values) {
+            addCriterion("url in", values, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlNotIn(List<String> values) {
+            addCriterion("url not in", values, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlBetween(String value1, String value2) {
+            addCriterion("url between", value1, value2, "url");
+            return (Criteria) this;
+        }
+
+        public Criteria andUrlNotBetween(String value1, String value2) {
+            addCriterion("url not between", value1, value2, "url");
             return (Criteria) this;
         }
     }

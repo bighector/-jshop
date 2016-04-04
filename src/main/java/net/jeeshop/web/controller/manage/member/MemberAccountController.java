@@ -64,7 +64,8 @@ public class MemberAccountController extends
 			retJson.addProperty("msg", "请输入用户名");
 		}else{
 			MemberExample example = new MemberExample();
-			example.setUserName(userName);
+			MemberExample.Criteria criteria =example.createCriteria();
+			criteria.andUsernameEqualTo(userName);
 			List<Member> memberList = accountService.selectByExample(example);
 			
 			if(memberList!=null && memberList.size()==1){

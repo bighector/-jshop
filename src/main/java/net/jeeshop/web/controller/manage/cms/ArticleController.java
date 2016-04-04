@@ -3,17 +3,17 @@ package net.jeeshop.web.controller.manage.cms;
 import net.jeeshop.biz.base.bean.PageBean;
 import net.jeeshop.biz.base.bean.PageQueryBean;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.cms.bean.ArticleCatagoryBean;
+import net.jeeshop.biz.cms.bean.ArticleBean;
+import net.jeeshop.biz.cms.bean.ArticleCategoryBean;
 import net.jeeshop.biz.cms.model.Article;
 import net.jeeshop.biz.cms.model.ArticleExample;
-import net.jeeshop.biz.cms.service.ArticleCatagoryService;
+import net.jeeshop.biz.cms.service.ArticleCategoryService;
 import net.jeeshop.biz.cms.service.ArticleService;
 import net.jeeshop.core.util.PinYinUtil;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,63 +27,38 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/manage/cms/article/")
-public class ArticleController extends ManageBaseController<Article, ArticleExample>{
+public class ArticleController extends ManageBaseController<Article, ArticleExample> {
 
     @Autowired
     private ArticleService articleService;
 
     @Autowired
-    private ArticleCatagoryService articleCatalogService;
+    private ArticleCategoryService articleCatalogService;
 
     private static final String page_toList = "/manage/cms/articleList";
     private static final String page_toAdd = "/manage/cms/articleEdit";
     private static final String page_toEdit = "/manage/cms/articleEdit";
 
-    public ArticleController(){
+    public ArticleController() {
         super.page_toList = page_toList;
         super.page_toAdd = page_toAdd;
         super.page_toEdit = page_toEdit;
     }
+
     @Override
     public BaseService<Article, ArticleExample> getService() {
         return articleService;
     }
 
-    @Override
-    @RequestMapping("selectList")
-    public String selectList(ModelMap modelMap) {
-        //modelMap.addAttribute("catalog",(List<ArticleCatalog>)articleCatalogService.selectByExample(new ArticleCatalogExample()));
-        return super.selectList(modelMap);
+    @ModelAttribute("categories")
+    public List<ArticleCategoryBean> getArticleCategories() {
+        return articleCatalogService.loadRoot();
     }
 
     @RequestMapping("loadData")
     @ResponseBody
-    public PageBean<Article> loadData(Article article, PageQueryBean pageQueryBean){
-        return articleService.selectPageList(article,pageQueryBean );
-    }
-
-    @Override
-    protected void beforeToAdd(Article e, ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
-        super.beforeToAdd(e, modelMap);
-    }
-
-    @Override
-    protected void beforeToEdit(Article e, ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
-        super.beforeToEdit(e, modelMap);
-    }
-
-    @Override
-    protected void beforeToList(ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
-        super.beforeToList(modelMap);
-    }
-
-    @Override
-    public String toEdit(@ModelAttribute("id") Long id, ModelMap modelMap) {
-        modelMap.addAttribute("catalogs",(List<ArticleCatagoryBean>)articleCatalogService.loadRoot());
-        return super.toEdit(id, modelMap);
+    public PageBean<ArticleBean> loadData(ArticleBean article, PageQueryBean pageQueryBean) {
+        return articleService.selectPageBeanList(article, pageQueryBean);
     }
 
     /**

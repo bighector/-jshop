@@ -73,7 +73,8 @@ public class NotifyTemplateController extends ManageBaseController<NotifyTemplat
 	public  void  selectTemplateByKey(@RequestParam("tplKey")String tplKey,NotifyTemplateExample example){
 		example.createCriteria().andTplTypeEqualTo(tplKey);
 		List<NotifyTemplate> list = notifyTemplateService.selectByExample(example);
-		writeToJson(list);
+		//FIXME
+//		writeToJson(list);
 	}
 
 	

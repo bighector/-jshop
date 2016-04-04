@@ -1,6 +1,5 @@
 package net.jeeshop.web.controller.manage;
 
-import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,14 +10,8 @@ import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.biz.base.service.BaseService;
 import net.jeeshop.biz.system.model.SysUser;
 import net.jeeshop.web.controller.BaseController;
-import net.jeeshop.web.controller.manage.cms.NoticeController;
 import net.jeeshop.web.util.LoginUserHolder;
-import net.jeeshop.web.util.RequestHolder;
-import net.sf.json.JSONArray;
 
-import org.apache.shiro.web.session.HttpServletSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -164,6 +157,8 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
     	SysUser user = LoginUserHolder.getLoginUser();
 		e.setCreateAccount(user.getUsername());//创建用户
 		e.setCreateTime(new Date());
+        e.setUpdateAccount(user.getUsername());//创建用户
+        e.setUpdateTime(new Date());
     	getService().insert(e);
         addMessage(flushAttrs, "插入操作成功！");
         return "redirect:selectList";
@@ -180,23 +175,4 @@ public abstract class ManageBaseController<Model extends BaseModel, Example> ext
         return selectList(model);
     }
     
-    /**
-     * JSON数据输出
-     * @param obj
-     * @param req 
-     * @return
-     */
-    public void writeToJson(Object obj)
-    {
-    	try{
-    		JSONArray ja = JSONArray.fromObject(obj);
-    		PrintWriter write = response.getWriter();
-    		write.print( ja.toString());
-    		write.flush();
-    		write.close();
-    	}catch(Exception e){
-    		logger.error("输出JSON格式数据异常", e);
-    	}
-    }
-
 }

@@ -3,6 +3,10 @@
 <mapper namespace="net.jeeshop.biz.cms.client.AdvertMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.Advert" >
     <id column="id" property="id" />
+    <result column="create_account" property="createAccount" />
+    <result column="create_time" property="createTime" />
+    <result column="update_account" property="updateAccount" />
+    <result column="update_time" property="updateTime" />
     <result column="title" property="title" />
     <result column="code" property="code" />
     <result column="remark" property="remark" />
@@ -10,10 +14,6 @@
     <result column="start_date" property="startDate" />
     <result column="end_date" property="endDate" />
     <result column="is_valid" property="isValid" />
-    <result column="create_account" property="createAccount" />
-    <result column="create_time" property="createTime" />
-    <result column="update_account" property="updateAccount" />
-    <result column="update_time" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, code, remark, html, start_date, end_date, is_valid, create_account, create_time, 
-    update_account, update_time
+    id, create_account, create_time, update_account, update_time, title, code, remark, 
+    html, start_date, end_date, is_valid
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.AdvertExample" >
     select
@@ -102,16 +102,28 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.cms.model.Advert" >
-    insert into cms_advert (id, title, code, remark, html, start_date, end_date, is_valid, 
-      create_account, create_time, update_account, update_time)
-    values (#{id}, #{title}, #{code}, #{remark}, #{html}, #{startDate}, #{endDate}, #{isValid}, 
-      #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime})
+    insert into cms_advert (id, create_account, create_time, update_account, update_time, 
+      title, code, remark, html, start_date, end_date, is_valid)
+    values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
+      #{title}, #{code}, #{remark}, #{html}, #{startDate}, #{endDate}, #{isValid})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.Advert" >
     insert into cms_advert
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="createAccount != null" >
+        create_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateAccount != null" >
+        update_account,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
       </if>
       <if test="title != null" >
         title,
@@ -134,22 +146,22 @@
       <if test="isValid != null" >
         is_valid,
       </if>
-      <if test="createAccount != null" >
-        create_account,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateAccount != null" >
-        update_account,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id},
+      </if>
+      <if test="createAccount != null" >
+        #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
       </if>
       <if test="title != null" >
         #{title},
@@ -172,18 +184,6 @@
       <if test="isValid != null" >
         #{isValid},
       </if>
-      <if test="createAccount != null" >
-        #{createAccount},
-      </if>
-      <if test="createTime != null" >
-        #{createTime},
-      </if>
-      <if test="updateAccount != null" >
-        #{updateAccount},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.AdvertExample" resultType="java.lang.Integer" >
@@ -195,6 +195,18 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.Advert" >
     update cms_advert
     <set >
+      <if test="createAccount != null" >
+        create_account = #{createAccount},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateAccount != null" >
+        update_account = #{updateAccount},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
       <if test="title != null" >
         title = #{title},
       </if>
@@ -216,34 +228,22 @@
       <if test="isValid != null" >
         is_valid = #{isValid},
       </if>
-      <if test="createAccount != null" >
-        create_account = #{createAccount},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime},
-      </if>
-      <if test="updateAccount != null" >
-        update_account = #{updateAccount},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime},
-      </if>
     </set>
     where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.Advert" >
     update cms_advert
-    set title = #{title},
+    set create_account = #{createAccount},
+      create_time = #{createTime},
+      update_account = #{updateAccount},
+      update_time = #{updateTime},
+      title = #{title},
       code = #{code},
       remark = #{remark},
       html = #{html},
       start_date = #{startDate},
       end_date = #{endDate},
-      is_valid = #{isValid},
-      create_account = #{createAccount},
-      create_time = #{createTime},
-      update_account = #{updateAccount},
-      update_time = #{updateTime}
+      is_valid = #{isValid}
     where id = #{id}
   </update>
 </mapper>
