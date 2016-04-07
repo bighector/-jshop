@@ -115,7 +115,7 @@ public class MemberService extends BaseService<Member, MemberExample>{
 		}
 
 		logMember.setLastLoginArea(address);
-		memberMapper.updateByPrimaryKeySelective(logMember);
-		systemLogService.newLog("用户登录", "用户["+member.getUsername()+"]", LogType.login);
+		this.update(logMember);
+		systemLogService.newFrontLog("用户登录", "用户["+member.getUsername()+"]", LogType.login);
 	}
 }

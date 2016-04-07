@@ -76,23 +76,23 @@ body{
 		          			<span style="margin-top: 0px;">
 							  <a data-toggle="dropdown" style="display: block;margin-top: 0px;">
                                   <span class="glyphicon glyphicon-user"></span>&nbsp;用户中心
-                                  (${currentMember().nickname})
+                                  (${currentMember().nickName})
                                   <span class="caret" style="display: inline-block;"></span>
                               </a>
 							  <ul class="dropdown-menu" id="myshopMenu" role="menu" style="display: none;margin-top: 0px;">
-                                  <li><a href="${basepath}/account/account"><span class="glyphicon glyphicon-user"></span>&nbsp;个人资料</a></li>
-                                  <li><a href="${basepath}/account/topwd"><span class="glyphicon glyphicon-screenshot"></span>&nbsp;修改密码</a></li>
+                                  <li><a href="${basepath}/member/home"><span class="glyphicon glyphicon-user"></span>&nbsp;个人资料</a></li>
+                                  <li><a href="${basepath}/member/changePwd"><span class="glyphicon glyphicon-screenshot"></span>&nbsp;修改密码</a></li>
                                   <li class="divider"></li>
-                                  <li><a href="${basepath}/account/orders"><span class="glyphicon glyphicon-th"></span>&nbsp;我的订单</a></li>
-                                  <li><a href="${basepath}/account/address"><span class="glyphicon glyphicon-send"></span>&nbsp;配送地址</a></li>
-                                  <li><a href="${basepath}/account/favorite"><span class="glyphicon glyphicon-tags"></span>&nbsp;收藏夹</a></li>
+                                  <li><a href="${basepath}/member/orders"><span class="glyphicon glyphicon-th"></span>&nbsp;我的订单</a></li>
+                                  <li><a href="${basepath}/member/address"><span class="glyphicon glyphicon-send"></span>&nbsp;配送地址</a></li>
+                                  <li><a href="${basepath}/member/favorite"><span class="glyphicon glyphicon-tags"></span>&nbsp;收藏夹</a></li>
                                   <li class="divider"></li>
-                                  <li><a href="${basepath}/account/exit"><span class="glyphicon glyphicon-pause"></span>&nbsp;退出系统</a></li>
+                                  <li><a href="${basepath}/member/logout"><span class="glyphicon glyphicon-pause"></span>&nbsp;退出系统</a></li>
                               </ul>
 							</span>
 		          		</span>
 		          		<span style="display: none;">
-							${currentMember().nickname!""}
+							${currentMember().nickName!""}
 		          		</span>
 					<#else >
                         <span class="col-xs-12" id="loginOrRegSpan" style="font-size: 14px;">

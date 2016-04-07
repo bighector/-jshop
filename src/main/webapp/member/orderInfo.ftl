@@ -1,5 +1,5 @@
-<#import "/account/accountHtml.ftl" as accountHtml/>
-<@accountHtml.html currentMenu="orders">
+<#import "/member/memberHtml.ftl" as memberHtml/>
+<@memberHtml.html currentMenu="orders">
 <style type="text/css">
 .centerImageCss{
 	width: 560px;
@@ -97,4 +97,4 @@ function defaultProductImg(){
     </div>
 </div>
 
-</@accountHtml.html>
+</@memberHtml.html>

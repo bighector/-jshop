@@ -2,7 +2,7 @@
 <#macro html currentMenu>
     <#import "/template/common_html_front.ftl" as html>
     <#import "/indexMenu.ftl" as menu>
-    <#import "/account/accountMenu.ftl" as accountMenu>
+    <#import "/member/memberMenu.ftl" as accountMenu>
 <@html.htmlBase>
     <@menu.menu selectMenu=""/>
 <div class="container">
