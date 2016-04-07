@@ -29,6 +29,6 @@ INSERT INTO cms_friend_link(id,create_account,create_time,update_account,update_
 INSERT INTO cms_friend_link(id,create_account,create_time,update_account,update_time,link_name,link_url,link_logo,ordinal) VALUES (4,'admin','2016-04-04 16:31:01','admin','2016-04-04 16:31:16','支付宝','www.alipay.com','',4);
 INSERT INTO cms_friend_link(id,create_account,create_time,update_account,update_time,link_name,link_url,link_logo,ordinal) VALUES (5,'admin','2016-04-04 16:31:11','admin','2016-04-04 16:32:09','财付通','www.tenpay.com','',5);
 
-INSERT INTO cms_notice(id,create_account,create_time, update_account,update_time,title,content,read_count,is_valid,oridnal) VALUES (1,'admin','2016-04-04 16:49:23','admin','2016-04-04 16:51:29','Ofmall诞生了','Ofmall诞生了',0,'1',0);
-INSERT INTO cms_notice(id,create_account,create_time, update_account,update_time,title,content,read_count,is_valid,oridnal) VALUES (2,'admin','2016-04-04 16:52:06','admin','2016-04-04 16:52:14','支付宝支付已加入Ofmall','支付宝支付已加入Ofmall支持列表',0,'1',0);
+INSERT INTO cms_notice(id,create_account,create_time, update_account,update_time,title,content,read_count,is_valid,ordinal) VALUES (1,'admin','2016-04-04 16:49:23','admin','2016-04-04 16:51:29','Ofmall诞生了','Ofmall诞生了',0,'1',0);
+INSERT INTO cms_notice(id,create_account,create_time, update_account,update_time,title,content,read_count,is_valid,ordinal) VALUES (2,'admin','2016-04-04 16:52:06','admin','2016-04-04 16:52:14','支付宝支付已加入Ofmall','支付宝支付已加入Ofmall支持列表',0,'1',0);
 
