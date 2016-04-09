@@ -19,20 +19,27 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+    
     @RequestMapping({"index","index.html"})
     public String index(ModelMap modelMap) {
         modelMap.addAttribute("articleCode", "index");
         return "cms/article";
     }
-
+    /**
+     * 查看文章页面
+     */
     @RequestMapping({"{articleCode}","{articleCode}.html"})
     public String articlePage(ModelMap modelMap, @PathVariable("articleCode")String articleCode) {
         Article article = articleService.selectByCode(articleCode);
         if(article == null) {
             return "redirect:index";
         }
+      //阅读数加1,目前使用即时更新
+        articleService.updateReadCount(article);
         modelMap.put("article", article);
         return "cms/article";
     }
+    
+    
 
 }

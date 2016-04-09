@@ -36,6 +36,8 @@ public class NoticeController {
         if(notice == null) {
             return "redirect:index";
         }
+        //阅读数加1,目前使用即时更新
+        noticeService.updateReadCount(notice);
         modelMap.put("notice", notice);
         return "cms/notice";
     }

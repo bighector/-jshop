@@ -65,4 +65,17 @@ public class NoticeService extends BaseService<Notice, NoticeExample> {
         }
     }
 
+	/**
+	 * 更新阅读次数
+	 * @param notice
+	 */
+	public void updateReadCount(Notice notice) {
+		Long count = notice.getReadCount();
+		if(count == null)
+			count = 0L;
+		count +=1;
+		notice.setReadCount(count);
+		noticeMapper.updateByPrimaryKey(notice);
+	}
+
 }

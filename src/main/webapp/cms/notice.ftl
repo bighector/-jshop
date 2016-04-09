@@ -1,7 +1,7 @@
 <#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
 <@html.htmlBase>
-		<@menu.menu selectMenu=""/>
+	<@menu.menu selectMenu=""/>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-9">
@@ -17,7 +17,10 @@
 				<div class="row">
 					<div class="col-xs-12">
 						  	<h3><strong style="color:#dd4814;">${notice.title!""}</strong></h3>
-						  	<div style="text-align: right;"><small>${notice.createAccount!"管理员"} 发布于:${notice.createTime?datetime}</small></div>
+						  	<div style="text-align: left;">
+						  		<small style="margin-left: 20px;">浏览量：${notice.readCount}</small>
+						  		<small style="float: right;margin-right: 20px;">${notice.createAccount!"管理员"} 发布于:${notice.createTime?datetime}</small>
+						  	</div>
 						<hr style="margin-top: 5px;">
 					</div>
 				</div>

@@ -60,4 +60,5 @@ public class Notice extends BaseModel implements Serializable {
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
     }
+
 }

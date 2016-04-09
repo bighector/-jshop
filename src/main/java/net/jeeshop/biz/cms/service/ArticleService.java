@@ -9,6 +9,8 @@ import net.jeeshop.biz.cms.client.ArticleMapper;
 import net.jeeshop.biz.cms.client.ArticleMapperExt;
 import net.jeeshop.biz.cms.model.Article;
 import net.jeeshop.biz.cms.model.ArticleExample;
+import net.jeeshop.biz.cms.model.Notice;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,4 +77,16 @@ public class ArticleService extends BaseService<Article, ArticleExample> {
         List<Article> catalogs = articleMapper.selectByExample(example);
         return catalogs.size() > 0 ? catalogs.get(0) : null;
     }
+	/**
+	 * 更新阅读次数
+	 * @param notice
+	 */
+	public void updateReadCount(Article article) {
+		Long count = article.getReadCount();
+		if(count == null)
+			count = 0L;
+		count +=1;
+		article.setReadCount(count);
+		articleMapper.updateByPrimaryKey(article);
+	}
 }
