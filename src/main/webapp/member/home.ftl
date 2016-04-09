@@ -20,7 +20,7 @@
                 </div>
 
                 <hr>
-				<form method="post" role="form" id="form" class="form-horizontal" action="${basepath}/account/updateInfo" theme="simple">
+				<form method="post" role="form" id="form" class="form-horizontal" action="${basepath}/member/updateInfo" theme="simple">
 				  <div class="form-group">
 				    <label for="account" class="col-lg-2 control-label">昵称：</label>
 				    <div class="col-lg-6">
@@ -68,7 +68,7 @@
 							<select name="province" id="province" class="form-control" onchange="changeProvince()">
 								<option value="">--选择省份--</option>
 								<#list provinces as item>
-								    <option value="${item.code}" ${(e.province??&&e.province==item.code)?string("selected", "")}>${item.name}</option>
+								    <option value="${item.areaCode}" ${(e.province??&&e.province==item.areaCode)?string("selected", "")}>${item.areaName}</option>
 								</#list>
 							</select>
 					    </div>
@@ -76,7 +76,7 @@
 							<select class="form-control" id="citySelect" name="city">
 								<option value="">--选择城市--</option>
 								<#list cities as item>
-									<option value="${item.code}" ${(e.city??&&e.city==item.code)?string("selected", "")}>${item.name}</option>
+									<option value="${item.areaCode}" ${(e.city??&&e.city==item.areaCode)?string("selected", "")}>${item.areaName}</option>
 								</#list>
 							</select>
 					    </div>
@@ -96,32 +96,31 @@
 <script type="text/javascript" src="${basepath}/resource/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 $(function() {
+	$("#province").change(function(){
+
+        var selectVal = $(this).val();
+        if(!selectVal){
+            return;
+        }
+        var _url = "${basepath}/area/loadAreasByParentCode?parentCode="+selectVal;
+        $("#citySelect").empty().append("<option value=''>--选择城市--</option>");
+        $.ajax({
+            type: 'POST',
+            url: _url,
+            data: {},
+            dataType: "json",
+            success: function(data){
+                //console.log("changeProvince success!data = "+data);
+                $.each(data,function(index,value){
+                    $("#citySelect").append("<option value='"+value.areaCode+"'>"+value.areaName+"</option>");
+                });
+            },
+            error:function(er){
+                console.log("changeProvince error!er = "+er);
+            }
+        });
+	});
 	//$("#birthday").addClass("form-control");
 });
-function changeProvince(){
-	var selectVal = $("#province").val();
-	if(!selectVal){
-		console.log("return;");
-		return;
-	}
-	var _url = "selectCitysByProvinceCode?provinceCode="+selectVal;
-	$("#citySelect").empty().append("<option value=''>--选择城市--</option>");
-	$.ajax({
-	  type: 'POST',
-	  url: _url,
-	  data: {},
-	  dataType: "json",
-	  success: function(data){
-		  //console.log("changeProvince success!data = "+data);
-		  $.each(data,function(index,value){
-			  //console.log("index="+index+",value="+value.code+","+value.name);
-			  $("#citySelect").append("<option value='"+value.code+"'>"+value.name+"</option>");
-		  });
-	  },
-	  error:function(er){
-		  console.log("changeProvince error!er = "+er);
-	  }
-	});
-}
 </script>
 </@html.htmlBase>

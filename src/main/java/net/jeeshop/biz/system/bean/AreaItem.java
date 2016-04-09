@@ -14,35 +14,22 @@ import java.util.List;
 public class AreaItem
 {
     private Long id;// 0：根节点，否则是子节点
-    private Long pid;// 父级节点
-    private String name;// 区域名称
+    private Long parentId;// 父级节点
+    private String areaCode;//区域编码
+    private String parentAreaCode;//父级区域编码
+    private String areaName;// 区域名称
 
     private List<AreaItem> children;// 子节点
 
     public AreaItem() {
         super();
     }
-    public AreaItem(String name, List<AreaItem> children) {
-        super();
-        this.name = name;
-        this.children = children;
-    }
-
-    @Override
-    public String toString() {
-        return "AreaItem{" +
-                "id=" + id +
-                ", pid=" + pid +
-                ", name='" + name + '\'' +
-                ", children=" + children +
-                '}';
-    }
 
     public boolean isRoot() {
-        return new Long(0).equals(pid);
+        return new Long(0).equals(parentId);
     }
 
-    public void addClild(AreaItem item) {
+    public void addChild(AreaItem item) {
         if (children == null) {
             children = new ArrayList<AreaItem>();
         }
@@ -57,14 +44,6 @@ public class AreaItem
         this.children = children;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Long getId() {
         return id;
     }
@@ -73,12 +52,35 @@ public class AreaItem
         this.id = id;
     }
 
-    public Long getPid() {
-        return pid;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setPid(Long pid) {
-        this.pid = pid;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
+    }
+
+    public String getParentAreaCode() {
+        return parentAreaCode;
+    }
+
+    public void setParentAreaCode(String parentAreaCode) {
+        this.parentAreaCode = parentAreaCode;
+    }
 }

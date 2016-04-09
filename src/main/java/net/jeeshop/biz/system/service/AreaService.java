@@ -6,6 +6,9 @@ import net.jeeshop.biz.system.bean.AreaItem;
 import net.jeeshop.biz.system.client.SysAreaMapper;
 import net.jeeshop.biz.system.model.SysArea;
 import net.jeeshop.biz.system.model.SysAreaExample;
+import net.jeeshop.core.exception.JShopException;
+import net.jeeshop.core.util.CollectionUtils;
+import net.jeeshop.core.util.transform.Transform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,13 +29,46 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
         return sysAreaMapper;
     }
 
+    private static class AreaItemTransform implements Transform<SysArea, AreaItem> {
+        @Override
+        public AreaItem convert(SysArea area) {
+            AreaItem item = new AreaItem();
+            item.setId(area.getId());
+            item.setParentId(area.getParentId());
+            item.setAreaName(area.getAreaName());
+            item.setAreaCode(area.getAreaCode());
+            item.setParentAreaCode(area.getParentAreaCode());
+            return item;
+        }
 
+        @Override
+        public boolean apply(SysArea sysArea) {
+            return true;
+        }
+    }
+
+    /**
+     * 查询区域
+     * @param areaCode
+     * @return
+     */
+    public AreaItem queryAreaByCode(String areaCode) {
+        SysAreaExample example = new SysAreaExample();
+        SysAreaExample.Criteria criteria = example.createCriteria();
+        criteria.andAreaCodeEqualTo(areaCode);
+        SysArea area = super.selectUniqueByExample(example);
+        if(area == null) {
+            return null;
+        }
+
+        return new AreaItemTransform().convert(area);
+    }
     /**
      * 查询所有区域集合
      * @return
      */
-    public Collection<AreaItem> loadAllAreas() {
-        return loadAreasByParent(null);
+    public List<AreaItem> loadAllAreas() {
+        return loadAreasByPid(0L, true);
     }
 
     /**
@@ -40,90 +76,45 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
      * @param pid 0-查询根节点
      * @return
      */
-    public Collection<AreaItem> loadAreasByPid(long pid) {
-        return loadAreasByParent(pid);
+    public List<AreaItem> loadAreasByPid(long pid) {
+        return loadAreasByPid(pid, true);
     }
 
 
     /**
      * 根据父节点查询区域列表
      * @param pid null-查询所有节点
+     * @param recursionLoadChildren 是否递归加载子区域
      * @return
      */
-    private Collection<AreaItem> loadAreasByParent(Long pid) {
+    public List<AreaItem> loadAreasByPid(long pid, final boolean recursionLoadChildren) {
         // 拼装查询条件
-        SysAreaExample query = null;
-        if (pid != null) {
-            query = new SysAreaExample();
-            query.createCriteria().andParentIdEqualTo(pid);
-        }
+        SysAreaExample query = new SysAreaExample();
+        query.createCriteria().andParentIdEqualTo(pid);
 
         List<SysArea> areas = sysAreaMapper.selectByExample(query);
-        Iterator<SysArea> iterator;
 
-        // 创建集合
-        LinkedHashMap<Long, AreaItem> root = new LinkedHashMap<Long, AreaItem>();
-        // 循环添加到集合
-        iterator = areas.iterator();
-        while (iterator.hasNext()) 
-        {
-            SysArea area = iterator.next();
-            AreaItem item = new AreaItem(area.getAreaName(), null);
-            item.setId(area.getId());
-            item.setPid(area.getParentId());
-            item.setName(area.getAreaName());
-
-            if (item.getPid().equals(0) || item.getPid().equals(pid)) {
-                root.put(item.getId(), item);
-                iterator.remove();
-            }
-        }
-        // 补充子节点(二级)
-        iterator = areas.iterator();
-        while (iterator.hasNext()) {
-            SysArea area = iterator.next();
-            AreaItem item = new AreaItem(area.getAreaName(), null);
-            item.setId(area.getId());
-            item.setPid(area.getParentId());
-            item.setName(area.getAreaName());
-
-            AreaItem parentItem = root.get(item.getPid());
-            if (parentItem != null) {
-                parentItem.addClild(item);
-                iterator.remove();
-            }
-        }
-        // 补充子节点(三级)
-        iterator = areas.iterator();
-        while (iterator.hasNext()) {
-            SysArea area = iterator.next();
-            AreaItem item = new AreaItem(area.getAreaName(), null);
-            item.setId(area.getId());
-            item.setPid(area.getParentId());
-            item.setName(area.getAreaName());
-
-            for (AreaItem parentItem : root.values()) {
-                if (parentItem.getChildren() != null) {
-                    for (AreaItem sub : parentItem.getChildren()) {
-                        if (sub.getId() == item.getPid()) {
-                            sub.addClild(item);
-                            iterator.remove();
-                            item = null;
-                            break;
-                        }
-                    }
-
-                    if (item != null) {
-                        break;
-                    }
+        List<AreaItem> areaItems = CollectionUtils.convert(areas, new Transform<SysArea, AreaItem>() {
+            @Override
+            public AreaItem convert(SysArea area) {
+                AreaItem item = new AreaItem();
+                item.setId(area.getId());
+                item.setParentId(area.getParentId());
+                item.setAreaName(area.getAreaName());
+                item.setAreaCode(area.getAreaCode());
+                item.setParentAreaCode(area.getParentAreaCode());
+                if(recursionLoadChildren) {
+                    item.setChildren(loadAreasByPid(area.getId(), recursionLoadChildren));
                 }
+                return item;
             }
 
-            if (item != null) {
-                logger.warn("区域项{}({})没有对应的父节点", item.getName(), item.getId());
+            @Override
+            public boolean apply(SysArea sysArea) {
+                return true;
             }
-        }
-        return root.values();
+        });
+        return areaItems;
     }
 
     @Override
@@ -138,14 +129,11 @@ public class AreaService extends BaseService<SysArea, SysAreaExample> {
 
     @Override
     public int deleteById(long id) {
-        int rows = 0;
-        Collection<AreaItem> areas = loadAreasByParent(id);
-        if (areas != null && !areas.isEmpty()) {
-            Iterator<AreaItem> itemIterator = areas.iterator();
-            while (itemIterator.hasNext()) {
-                rows += deleteById(itemIterator.next().getId());
-            }
+        List<AreaItem> areas = loadAreasByPid(id, false);
+        if (areas != null) {
+            throw new JShopException("当前区域有子区域，不能删除！");
         }
-        return rows + super.deleteById(id);
+        logger.info("delete area, areaId:{}", id);
+        return super.deleteById(id);
     }
 }
