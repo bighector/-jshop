@@ -4,13 +4,13 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class SysRole extends BaseModel implements Serializable {
-    /** 角色名称 */
+    /** è§’è‰²å��ç§° */
     private String roleName;
 
-    /** 角色描述 */
+    /** è§’è‰²æ��è¿° */
     private String roleDesc;
 
-    /** 是否有效,1-是0-否 */
+    /** æ˜¯å�¦æœ‰æ•ˆ,1-æ˜¯0-å�¦ */
     private Boolean isValid;
 
     private static final long serialVersionUID = 1L;

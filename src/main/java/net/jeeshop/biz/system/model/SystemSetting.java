@@ -4,67 +4,67 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class SystemSetting extends BaseModel implements Serializable {
-    /** 系统代号 */
+    /** ç³»ç»Ÿä»£å�· */
     private String systemCode;
 
-    /** 应用名称 */
+    /** åº”ç”¨å��ç§° */
     private String appName;
 
-    /** 门户页面 */
+    /** é—¨æˆ·é¡µé�¢ */
     private String website;
 
     /** LOGO */
     private String logo;
 
-    /** 标题 */
+    /** æ ‡é¢˜ */
     private String title;
 
-    /** 描述信息 */
+    /** æ��è¿°ä¿¡æ�¯ */
     private String description;
 
-    /** 关键字 */
+    /** å…³é”®å­— */
     private String keywords;
 
-    /** 图标 */
+    /** å›¾æ ‡ */
     private String shortcutIcon;
 
-    /** 联系地址 */
+    /** è�”ç³»åœ°å�€ */
     private String address;
 
-    /** 联系电话 */
+    /** è�”ç³»ç”µè¯� */
     private String telphone;
 
-    /** 邮箱 */
+    /** é‚®ç®± */
     private String email;
 
-    /** 备案号 */
+    /** å¤‡æ¡ˆå�· */
     private String icp;
 
-    /** 是否开放,1-是0-否 */
+    /** æ˜¯å�¦å¼€æ”¾,1-æ˜¯0-å�¦ */
     private Boolean isOpen;
 
-    /** 网站关闭提示语 */
+    /** ç½‘ç«™å…³é—­æ��ç¤ºè¯­ */
     private String closeMsg;
 
-    /** 图片根路径 */
+    /** å›¾ç‰‡æ ¹è·¯å¾„ */
     private String imageRootPath;
 
-    /** 默认产品图片 */
+    /** é»˜è®¤äº§å“�å›¾ç‰‡ */
     private String defaultProductImg;
 
-    /** 样式 */
+    /** æ ·å¼� */
     private String style;
 
-    /** 系统版本号 */
+    /** ç³»ç»Ÿç‰ˆæœ¬å�· */
     private String version;
 
-    /** 统计代码 */
+    /** ç»Ÿè®¡ä»£ç � */
     private String statisticsCode;
 
-    /** 是否开放响应式,1-是0-否 */
+    /** æ˜¯å�¦å¼€æ”¾å“�åº”å¼�,1-æ˜¯0-å�¦ */
     private String isResponsive;
 
-    /** 图片集 */
+    /** å›¾ç‰‡é›† */
     private String images;
 
     private static final long serialVersionUID = 1L;

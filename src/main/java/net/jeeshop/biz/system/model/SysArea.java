@@ -4,10 +4,10 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class SysArea extends BaseModel implements Serializable {
-    /** 父级ID */
+    /** çˆ¶çº§ID */
     private Long parentId;
 
-    /** 区域名称 */
+    /** åŒºåŸŸå��ç§° */
     private String areaName;
 
     private static final long serialVersionUID = 1L;

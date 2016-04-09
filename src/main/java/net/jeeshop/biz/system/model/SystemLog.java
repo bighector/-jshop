@@ -6,25 +6,25 @@ import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.biz.system.enums.LogType;
 
 public class SystemLog extends BaseModel implements Serializable {
-    /** 标题 */
+    /** æ ‡é¢˜ */
     private String title;
 
-    /** 日志内容 */
+    /** æ—¥å¿—å†…å®¹ */
     private String content;
 
-    /** 日志类型 */
+    /** æ—¥å¿—ç±»åž‹ */
     private LogType logType;
 
-    /** 日志用户 */
+    /** æ—¥å¿—ç”¨æˆ· */
     private String account;
 
     /** sys_system_log.login_ip */
     private String loginIp;
 
-    /** 登录区域 */
+    /** ç™»å½•åŒºåŸŸ */
     private String loginArea;
 
-    /** 日志记录时间 */
+    /** æ—¥å¿—è®°å½•æ—¶é—´ */
     private Date logTime;
 
     private static final long serialVersionUID = 1L;

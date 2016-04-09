@@ -11,14 +11,14 @@ import net.jeeshop.core.util.BeanUtilsExt;
 public class ArticleCategoryBean extends ArticleCategory {
 	private static final long serialVersionUID = 1600799011967259967L;
 
+	private List<ArticleCategoryBean> children;
+	
 	public ArticleCategoryBean() {
     }
 
     public ArticleCategoryBean(ArticleCategory catalog) {
         convertFrom(catalog);
     }
-
-    private List<ArticleCategoryBean> children;
 
     public List<ArticleCategoryBean> getChildren() {
         return children;

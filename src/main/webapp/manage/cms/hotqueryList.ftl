@@ -13,12 +13,19 @@
 				}},
 				{name:"keywork",title:"关键字",data:"keywork"},
 				{name:"url",title:"链接地址",data:"url"},
-				{name:"createTime",title:"创建时间",data:"createTime",render:function(data, type, row){
-					var d ="";
-					if(data != null)
-						d = new Date(data).format("yyyy-MM-dd HH:mm:ss")
-					return d;
-				}},
+				{name:"updateTime", title:"最后一次操作时间", data:"updateTime",render:function(data,type,row,meta){
+                	var d = "";
+                	if(data)
+                		d = new Date(data).format("yyyy-MM-dd HH:mm:ss")
+                   return d;
+                }},
+				{name:"isValid", title:"是否有效", data:"isValid",render:function(data,type,row,meta){
+                    if(data == true){
+                        return '<img src="${staticpath}/images/action_check.gif">';
+                    } else {
+                        return '<img src="${staticpath}/images/action_delete.gif">';
+                    }
+                }},
 				{name:"updateTime",title:"更新时间",data:"updateTime",render:function(data, type, row){
 					var d = "";
 					if(data != null)
@@ -28,10 +35,10 @@
 				{name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
 					var h = "";
                 	<#if checkPrivilege("/manage/user/edit")>
-                        h +=  '<a href="${basepath}/manage/cms/hotQuery/toEdit?id=' + data + '">编辑</a> ';
+                        h +=  '<a href="toEdit?id=' + data + '">编辑</a> ';
                     </#if>
                     <#if checkPrivilege("/manage/user/delete")>
-                       h += '&nbsp; <a href="${basepath}/manage/cms/hotQuery/deleteByID?id=' + data + '">删除</a>';
+                       h += '&nbsp; <a href="deleteByID?id=' + data + '">删除</a>';
 					</#if>
 					return h;
                 }}
@@ -48,7 +55,7 @@
 			<tr>
 				<td colspan="16">
 				<#if checkPrivilege("/manage/user/insert") >	
-					<a href="${basepath}/manage/cms/hotQuery/toAdd" class="btn btn-success">
+					<a href="toAdd" class="btn btn-success">
 						<i class="icon-plus-sign icon-white"></i> 添加
 					</a>
 				</#if>
@@ -60,7 +67,6 @@
 				</td>
 			</tr>
 		</table>
-		<table class="display stripe cell-border" id="dataTables-example" style="text-align:center;">
-		</table>
+		<table class="display stripe cell-border" id="dataTables-example" style="text-align:center;"></table>
 </form>
 </@page.pageBase>

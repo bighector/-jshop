@@ -19,6 +19,9 @@ public class ArticleCategory extends BaseModel implements Serializable {
     /** 顺序 */
     private Integer ordinal;
 
+    /** 是否有效,1-有效,0-无效 */
+    private Boolean isValid;
+
     private static final long serialVersionUID = 1L;
 
     public Long getParentId() {
@@ -59,5 +62,13 @@ public class ArticleCategory extends BaseModel implements Serializable {
 
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
+    }
+
+    public Boolean getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 }

@@ -39,12 +39,18 @@ public class ArticleService extends BaseService<Article, ArticleExample> {
     public PageBean<ArticleBean> selectPageBeanList(final ArticleBean article, PageQueryBean pageQueryBean){
         if (StringUtils.isNotBlank(article.getTitle())){
             article.setTitle("%"+article.getTitle().trim()+"%");
+        }else{
+        	article.setTitle(null);
         }
         if (StringUtils.isNotBlank(article.getCode())){
             article.setCode("%"+article.getCode().trim()+"%");
+        }else{
+        	article.setCode(null);
         }
         if (article.getCategoryId() != null && article.getCategoryId() != 0L){
             article.setCategoryId(article.getCategoryId());
+        }else{
+        	article.setCategoryId(null);
         }
         PageBean<ArticleBean> pagerModel = super.executePageQuery(new PageQueryExecutor<ArticleBean>() {
             @Override

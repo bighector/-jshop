@@ -11,6 +11,7 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,16 +37,6 @@ public class AdvertController extends ManageBaseController<Advert, AdvertExample
 		 super.page_toAdd = page_toAdd;
 	 }
 	 
-//	  @RequestMapping("loadData")
-//	    @ResponseBody
-//	    public PageBean<Advert> loadData(AdvertExample queryParams, PageQueryBean pageQueryBean) {
-//		  System.out.println("--------loadData-----");
-//	        PageBean pager =advertService.selectPageList(queryParams, pageQueryBean);
-//	        return pager;
-//	    }
-	 
-	  
-	  @SuppressWarnings("unchecked")
 		@RequestMapping("loadData")
 	    @ResponseBody
 	    public PageBean<Advert> loadData(Advert advert, PageQueryBean pageQueryBean) {
@@ -58,8 +49,8 @@ public class AdvertController extends ManageBaseController<Advert, AdvertExample
 	            criteria.andCodeLike(advert.getCode());
 	        }
 	        advertExample.setOrderByClause("id");
-//			@SuppressWarnings("rawtypes")
-			PageBean pager = advertService.selectPageList(advertExample, pageQueryBean);
+			PageBean<Advert> pager = advertService.selectPageList(advertExample, pageQueryBean);
 	        return pager;
 	    }
+		
 }

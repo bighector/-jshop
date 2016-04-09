@@ -16,10 +16,23 @@
                 	return '<img src="'+data+'" name="logo" />';
                 }},
 				{name:"ordinal", title:"顺序", data:"ordinal"},
+			 	{name:"updateTime", title:"最后一次操作时间", data:"updateTime",render:function(data,type,row,meta){
+                	var d = "";
+                	if(data)
+                		d = new Date(data).format("yyyy-MM-dd HH:mm:ss")
+                   return d;
+                }},
+				{name:"isValid", title:"是否有效", data:"isValid",render:function(data,type,row,meta){
+                    if(data == true){
+                        return '<img src="${staticpath}/images/action_check.gif">';
+                    } else {
+                        return '<img src="${staticpath}/images/action_delete.gif">';
+                    }
+                }},
                 {name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
 					var h = "";
                 	<#if checkPrivilege("/manage/cms/friendLink/edit")>
-                        h +=  '<a href="${basepath}/manage/cms/friendLink/toEdit?id=' + data + '">编辑</a> ';
+                        h +=  '<a href="toEdit?id=' + data + '">编辑</a> ';
                     </#if>
 					return h;
                 }}

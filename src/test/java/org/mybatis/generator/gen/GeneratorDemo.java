@@ -22,22 +22,22 @@ public class GeneratorDemo {
     public void genCms() throws Exception {
         generateFiles("gen/generateConfig-cms.xml");
     }
-    @Test
+    //@Test
     public void genProduct() throws Exception {
         generateFiles("gen/generateConfig-product.xml");
     }
 
-    @Test
+    //@Test
     public void genMember() throws Exception {
         generateFiles("gen/generateConfig-member.xml");
     }
 	
 
-    @Test
+    //@Test
     public void genFinance() throws Exception {
         generateFiles("gen/generateConfig-finance.xml");
     }
-	@Test
+	//@Test
 	public void genOrderCode() throws Exception {
 		generateFiles("gen/generateConfig-order.xml");
 	}

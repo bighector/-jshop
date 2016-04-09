@@ -5,22 +5,22 @@ import net.jeeshop.biz.base.model.BaseModel;
 import net.jeeshop.biz.system.enums.ResourceType;
 
 public class SysResource extends BaseModel implements Serializable {
-    /** 资源名称 */
+    /** èµ„æº�å��ç§° */
     private String resourceName;
 
-    /** 资源类型 */
+    /** èµ„æº�ç±»åž‹ */
     private ResourceType resourceType;
 
-    /** 资源值 */
+    /** èµ„æº�å€¼ */
     private String resourceValue;
 
-    /** 顺序 */
+    /** é¡ºåº� */
     private Integer ordinal;
 
-    /** 是否有效,1-是0-否 */
+    /** æ˜¯å�¦æœ‰æ•ˆ,1-æ˜¯0-å�¦ */
     private Boolean isValid;
 
-    /** 父级ID */
+    /** çˆ¶çº§ID */
     private Long parentId;
 
     private static final long serialVersionUID = 1L;

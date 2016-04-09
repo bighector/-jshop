@@ -4,22 +4,22 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class SysUser extends BaseModel implements Serializable {
-    /** 角色ID */
+    /** è§’è‰²ID */
     private Long roleId;
 
-    /** 登录名 */
+    /** ç™»å½•å�� */
     private String username;
 
-    /** 登录密码 */
+    /** ç™»å½•å¯†ç � */
     private String password;
 
-    /** 是否有效,1-是0-否 */
+    /** æ˜¯å�¦æœ‰æ•ˆ,1-æ˜¯0-å�¦ */
     private Boolean isValid;
 
-    /** 昵称 */
+    /** æ˜µç§° */
     private String nickname;
 
-    /** 电子邮箱 */
+    /** ç”µå­�é‚®ç®± */
     private String email;
 
     private static final long serialVersionUID = 1L;

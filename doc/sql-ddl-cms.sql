@@ -27,7 +27,7 @@ CREATE TABLE cms_advert
 	html varchar(4000) COMMENT 'HTML页面信息',
 	start_date datetime COMMENT '开始时间',
 	end_date datetime COMMENT '结束时间',
-	is_valid char(1) COMMENT '是否有效，1-是0-否',
+	is_valid char(1) default 1 COMMENT '是否有效，1-是0-否',
 	PRIMARY KEY (id)
 ) COMMENT = '广告管理';
 
@@ -43,7 +43,7 @@ CREATE TABLE cms_article
 	content varchar(4000) NOT NULL COMMENT '内容',
 	code varchar(128) COMMENT '代码',
 	read_count bigint COMMENT '阅读数' default 0,
-	is_valid char(1) COMMENT '是否可用,1-是0-否',
+	is_valid char(1) default 1 COMMENT '是否可用,1-是0-否',
 	ordinal int COMMENT '顺序' default 0,
 	category_id bigint NOT NULL COMMENT '分类ID',
 	PRIMARY KEY (id)
@@ -62,6 +62,7 @@ CREATE TABLE cms_article_category
 	category_type varchar(32) COMMENT '分类类型',
 	category_code varchar(128) NOT NULL COMMENT '分类代码',
 	ordinal int COMMENT '顺序' default 0,
+	is_valid char(1) default 1 COMMENT '是否可用,1-是0-否',
 	PRIMARY KEY (id),
 	UNIQUE (category_code)
 ) COMMENT = '文章分类';
@@ -78,6 +79,7 @@ CREATE TABLE cms_friend_link
 	link_url varchar(256) NOT NULL COMMENT '友情链接网站的链接地址',
 	link_logo varchar(128) COMMENT '友情链接的logo',
 	ordinal int COMMENT '顺序',
+	is_valid char(1) default 1 COMMENT '是否有效，1-是0-否',
 	PRIMARY KEY (id)
 ) COMMENT = '友情链接';
 
@@ -91,6 +93,7 @@ CREATE TABLE cms_hot_query
 	update_time datetime COMMENT '更新时间',
 	keywork varchar(128) NOT NULL COMMENT '查询关键字',
 	url varchar(255) NOT NULL COMMENT '链接地址',
+	is_valid char(1) default 1 COMMENT '是否有效，1-是0-否',
 	PRIMARY KEY (id)
 ) COMMENT = '热门查询';
 
@@ -105,8 +108,8 @@ CREATE TABLE cms_notice
 	title varchar(128) NOT NULL COMMENT '标题',
 	content varchar(4000) COMMENT '内容',
 	read_count bigint COMMENT '阅读数' default 0,
-	is_valid char(1) COMMENT '是否有效，1-是0-否' default 1,
 	ordinal int COMMENT '顺序' default 0,
+	is_valid char(1) default 1 COMMENT '是否有效，1-是0-否',
 	PRIMARY KEY (id)
 ) COMMENT = '系统通知';
 

@@ -4,16 +4,16 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class Express extends BaseModel implements Serializable {
-    /** 配送方式代码 */
+    /** é…�é€�æ–¹å¼�ä»£ç � */
     private String expressCode;
 
-    /** 配送方式名称 */
+    /** é…�é€�æ–¹å¼�å��ç§° */
     private String expressName;
 
-    /** 配送费用 */
+    /** é…�é€�è´¹ç”¨ */
     private Double fee;
 
-    /** 顺序 */
+    /** é¡ºåº� */
     private Integer ordinal;
 
     private static final long serialVersionUID = 1L;

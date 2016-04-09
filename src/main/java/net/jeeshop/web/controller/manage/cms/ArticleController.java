@@ -58,8 +58,11 @@ public class ArticleController extends ManageBaseController<Article, ArticleExam
     @RequestMapping("loadData")
     @ResponseBody
     public PageBean<ArticleBean> loadData(ArticleBean article, PageQueryBean pageQueryBean) {
-        return articleService.selectPageBeanList(article, pageQueryBean);
+    	PageBean<ArticleBean> page = articleService.selectPageBeanList(article, pageQueryBean);
+    	return page;
     }
+    
+    
 
     /**
      * 唯一性检查

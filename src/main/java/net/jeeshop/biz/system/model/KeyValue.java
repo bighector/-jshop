@@ -4,19 +4,19 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class KeyValue extends BaseModel implements Serializable {
-    /** 类别 */
+    /** ç±»åˆ« */
     private String catalog;
 
-    /** 键 */
+    /** é”® */
     private String kValue;
 
-    /** 值 */
+    /** å€¼ */
     private String vValue;
 
-    /** 顺序 */
+    /** é¡ºåº� */
     private Integer ordinal;
 
-    /** 是否有效,1-是0-否 */
+    /** æ˜¯å�¦æœ‰æ•ˆ,1-æ˜¯0-å�¦ */
     private Boolean isValid;
 
     private static final long serialVersionUID = 1L;

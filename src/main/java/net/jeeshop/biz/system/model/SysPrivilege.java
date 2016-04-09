@@ -4,10 +4,10 @@ import java.io.Serializable;
 import net.jeeshop.biz.base.model.BaseModel;
 
 public class SysPrivilege extends BaseModel implements Serializable {
-    /** 角色ID */
+    /** è§’è‰²ID */
     private Long roleId;
 
-    /** 资源ID */
+    /** èµ„æº�ID */
     private Long resourceId;
 
     private static final long serialVersionUID = 1L;

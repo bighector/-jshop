@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.cms.client.ArticleCategoryMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.ArticleCategory" >
+<mapper namespace="net.jeeshop.biz.cms.client.FriendLinkMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.FriendLink" >
     <id column="id" property="id" />
     <result column="create_account" property="createAccount" />
     <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
     <result column="update_time" property="updateTime" />
-    <result column="parent_Id" property="parentId" />
-    <result column="category_name" property="categoryName" />
-    <result column="category_type" property="categoryType" />
-    <result column="category_code" property="categoryCode" />
+    <result column="link_name" property="linkName" />
+    <result column="link_url" property="linkUrl" />
+    <result column="link_logo" property="linkLogo" />
     <result column="ordinal" property="ordinal" />
     <result column="is_valid" property="isValid" />
   </resultMap>
@@ -73,16 +72,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, create_account, create_time, update_account, update_time, parent_Id, category_name, 
-    category_type, category_code, ordinal, is_valid
+    id, create_account, create_time, update_account, update_time, link_name, link_url, 
+    link_logo, ordinal, is_valid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleCategoryExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.FriendLinkExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from cms_article_category
+    from cms_friend_link
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,23 +92,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from cms_article_category
+    from cms_friend_link
     where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from cms_article_category
+    delete from cms_friend_link
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    insert into cms_article_category (id, create_account, create_time, update_account, update_time, 
-      parent_Id, category_name, category_type, category_code, ordinal, is_valid
-      )
+  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    insert into cms_friend_link (id, create_account, create_time, update_account, update_time, 
+      link_name, link_url, link_logo, ordinal, is_valid)
     values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{parentId}, #{categoryName}, #{categoryType}, #{categoryCode}, #{ordinal}, #{isValid}
-      )
+      #{linkName}, #{linkUrl}, #{linkLogo}, #{ordinal}, #{isValid})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    insert into cms_article_category
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    insert into cms_friend_link
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -126,17 +123,14 @@
       <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="parentId != null" >
-        parent_Id,
+      <if test="linkName != null" >
+        link_name,
       </if>
-      <if test="categoryName != null" >
-        category_name,
+      <if test="linkUrl != null" >
+        link_url,
       </if>
-      <if test="categoryType != null" >
-        category_type,
-      </if>
-      <if test="categoryCode != null" >
-        category_code,
+      <if test="linkLogo != null" >
+        link_logo,
       </if>
       <if test="ordinal != null" >
         ordinal,
@@ -161,17 +155,14 @@
       <if test="updateTime != null" >
         #{updateTime},
       </if>
-      <if test="parentId != null" >
-        #{parentId},
+      <if test="linkName != null" >
+        #{linkName},
       </if>
-      <if test="categoryName != null" >
-        #{categoryName},
+      <if test="linkUrl != null" >
+        #{linkUrl},
       </if>
-      <if test="categoryType != null" >
-        #{categoryType},
-      </if>
-      <if test="categoryCode != null" >
-        #{categoryCode},
+      <if test="linkLogo != null" >
+        #{linkLogo},
       </if>
       <if test="ordinal != null" >
         #{ordinal},
@@ -181,14 +172,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.ArticleCategoryExample" resultType="java.lang.Integer" >
-    select count(*) from cms_article_category
+  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.FriendLinkExample" resultType="java.lang.Integer" >
+    select count(*) from cms_friend_link
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    update cms_article_category
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    update cms_friend_link
     <set >
       <if test="createAccount != null" >
         create_account = #{createAccount},
@@ -202,17 +193,14 @@
       <if test="updateTime != null" >
         update_time = #{updateTime},
       </if>
-      <if test="parentId != null" >
-        parent_Id = #{parentId},
+      <if test="linkName != null" >
+        link_name = #{linkName},
       </if>
-      <if test="categoryName != null" >
-        category_name = #{categoryName},
+      <if test="linkUrl != null" >
+        link_url = #{linkUrl},
       </if>
-      <if test="categoryType != null" >
-        category_type = #{categoryType},
-      </if>
-      <if test="categoryCode != null" >
-        category_code = #{categoryCode},
+      <if test="linkLogo != null" >
+        link_logo = #{linkLogo},
       </if>
       <if test="ordinal != null" >
         ordinal = #{ordinal},
@@ -223,16 +211,15 @@
     </set>
     where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    update cms_article_category
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.FriendLink" >
+    update cms_friend_link
     set create_account = #{createAccount},
       create_time = #{createTime},
       update_account = #{updateAccount},
       update_time = #{updateTime},
-      parent_Id = #{parentId},
-      category_name = #{categoryName},
-      category_type = #{categoryType},
-      category_code = #{categoryCode},
+      link_name = #{linkName},
+      link_url = #{linkUrl},
+      link_logo = #{linkLogo},
       ordinal = #{ordinal},
       is_valid = #{isValid}
     where id = #{id}

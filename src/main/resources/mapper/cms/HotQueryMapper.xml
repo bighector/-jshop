@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.jeeshop.biz.cms.client.ArticleCategoryMapper" >
-  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.ArticleCategory" >
+<mapper namespace="net.jeeshop.biz.cms.client.HotQueryMapper" >
+  <resultMap id="BaseResultMap" type="net.jeeshop.biz.cms.model.HotQuery" >
     <id column="id" property="id" />
     <result column="create_account" property="createAccount" />
     <result column="create_time" property="createTime" />
     <result column="update_account" property="updateAccount" />
     <result column="update_time" property="updateTime" />
-    <result column="parent_Id" property="parentId" />
-    <result column="category_name" property="categoryName" />
-    <result column="category_type" property="categoryType" />
-    <result column="category_code" property="categoryCode" />
-    <result column="ordinal" property="ordinal" />
+    <result column="keywork" property="keywork" />
+    <result column="url" property="url" />
     <result column="is_valid" property="isValid" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -73,16 +70,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, create_account, create_time, update_account, update_time, parent_Id, category_name, 
-    category_type, category_code, ordinal, is_valid
+    id, create_account, create_time, update_account, update_time, keywork, url, is_valid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.ArticleCategoryExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.cms.model.HotQueryExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from cms_article_category
+    from cms_hot_query
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,23 +89,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from cms_article_category
+    from cms_hot_query
     where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from cms_article_category
+    delete from cms_hot_query
     where id = #{id}
   </delete>
-  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    insert into cms_article_category (id, create_account, create_time, update_account, update_time, 
-      parent_Id, category_name, category_type, category_code, ordinal, is_valid
-      )
+  <insert id="insert" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
+    insert into cms_hot_query (id, create_account, create_time, update_account, update_time, 
+      keywork, url, is_valid)
     values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{parentId}, #{categoryName}, #{categoryType}, #{categoryCode}, #{ordinal}, #{isValid}
-      )
+      #{keywork}, #{url}, #{isValid})
   </insert>
-  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    insert into cms_article_category
+  <insert id="insertSelective" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
+    insert into cms_hot_query
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -126,20 +120,11 @@
       <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="parentId != null" >
-        parent_Id,
+      <if test="keywork != null" >
+        keywork,
       </if>
-      <if test="categoryName != null" >
-        category_name,
-      </if>
-      <if test="categoryType != null" >
-        category_type,
-      </if>
-      <if test="categoryCode != null" >
-        category_code,
-      </if>
-      <if test="ordinal != null" >
-        ordinal,
+      <if test="url != null" >
+        url,
       </if>
       <if test="isValid != null" >
         is_valid,
@@ -161,34 +146,25 @@
       <if test="updateTime != null" >
         #{updateTime},
       </if>
-      <if test="parentId != null" >
-        #{parentId},
+      <if test="keywork != null" >
+        #{keywork},
       </if>
-      <if test="categoryName != null" >
-        #{categoryName},
-      </if>
-      <if test="categoryType != null" >
-        #{categoryType},
-      </if>
-      <if test="categoryCode != null" >
-        #{categoryCode},
-      </if>
-      <if test="ordinal != null" >
-        #{ordinal},
+      <if test="url != null" >
+        #{url},
       </if>
       <if test="isValid != null" >
         #{isValid},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.ArticleCategoryExample" resultType="java.lang.Integer" >
-    select count(*) from cms_article_category
+  <select id="countByExample" parameterType="net.jeeshop.biz.cms.model.HotQueryExample" resultType="java.lang.Integer" >
+    select count(*) from cms_hot_query
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    update cms_article_category
+  <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
+    update cms_hot_query
     <set >
       <if test="createAccount != null" >
         create_account = #{createAccount},
@@ -202,20 +178,11 @@
       <if test="updateTime != null" >
         update_time = #{updateTime},
       </if>
-      <if test="parentId != null" >
-        parent_Id = #{parentId},
+      <if test="keywork != null" >
+        keywork = #{keywork},
       </if>
-      <if test="categoryName != null" >
-        category_name = #{categoryName},
-      </if>
-      <if test="categoryType != null" >
-        category_type = #{categoryType},
-      </if>
-      <if test="categoryCode != null" >
-        category_code = #{categoryCode},
-      </if>
-      <if test="ordinal != null" >
-        ordinal = #{ordinal},
+      <if test="url != null" >
+        url = #{url},
       </if>
       <if test="isValid != null" >
         is_valid = #{isValid},
@@ -223,17 +190,14 @@
     </set>
     where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.ArticleCategory" >
-    update cms_article_category
+  <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.cms.model.HotQuery" >
+    update cms_hot_query
     set create_account = #{createAccount},
       create_time = #{createTime},
       update_account = #{updateAccount},
       update_time = #{updateTime},
-      parent_Id = #{parentId},
-      category_name = #{categoryName},
-      category_type = #{categoryType},
-      category_code = #{categoryCode},
-      ordinal = #{ordinal},
+      keywork = #{keywork},
+      url = #{url},
       is_valid = #{isValid}
     where id = #{id}
   </update>

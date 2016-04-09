@@ -10,6 +10,9 @@ public class HotQuery extends BaseModel implements Serializable {
     /** 链接地址 */
     private String url;
 
+    /** 是否有效,1-有效,0-无效 */
+    private Boolean isValid;
+
     private static final long serialVersionUID = 1L;
 
     public String getKeywork() {
@@ -26,5 +29,13 @@ public class HotQuery extends BaseModel implements Serializable {
 
     public void setUrl(String url) {
         this.url = url == null ? null : url.trim();
+    }
+
+    public Boolean getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 }

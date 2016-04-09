@@ -19,6 +19,17 @@
 				</td>
 			</tr>
 			<tr>
+				<td style="text-align: right;">是否有效</td>
+                <td style="text-align: left;">
+                    <select id="status" name="isValid" data-rule="是否有效:required;" class="input-medium">
+					<#assign map={"1":"是","0":"否"}>
+					<#list map ? keys as key>
+						<option value="${key}" <#if e.isValid??&&e.isValid?string("1","0")==key>selected="selected"</#if>>${map[key]}</option>
+					</#list>
+					</select>
+                </td>
+            </tr>
+			<tr>
 				<td style="text-align: right;">链接地址</td>
 				<td style="text-align: left;">
 					<input type="text"  value="${e.linkUrl!""}" name="linkUrl" size="50"  data-rule="required;name;length[1~100];" id="linkUrl" />
@@ -35,6 +46,7 @@
 				<td style="text-align: left;"><input type="text"  value="${e.ordinal!"0"}" size="5" name="ordinal"  data-rule="顺序:integer;order1;length[1~5];"
 						id="order1" /></td>
 			</tr>
+			
 			<tr>
 				<td colspan="2" style="text-align: center;">
 					<#if e.id??>

@@ -3,10 +3,10 @@
 <script type="text/javascript">
 	$(function() {
 		$("#title").focus();
-        var _catalogId = $("#catalogId").val();
-        if( _catalogId != '' && _catalogId != > 0 ){
-            $("#catalogSelect").val(_catalogId);
-        }
+        /* var _categoryId = $("#categoryId").val();
+        if( _categoryId != ''){
+            $("#catalogSelect option[value='"+_categoryId+"']").attr("selected", true);
+        } */
 	});
 
 	function onSubmit() {
@@ -27,10 +27,10 @@
 		}
 	}
 </script>
-	<form action="${basepath}/manage/cms/article" theme="simple" id="form" name="form">
-		<input type="hidden" id="catalogID" value="${e.catalogId!""}" style="display: none;"/>
-		<input id="catalogID_currentID" value="${e.id!""}" style="display: none;"/>
-		<input type="hidden" value="${e.type!""}" name="type" id="type"/>
+	<form action="${basepath}/manage/cms/article" method="post" name="form">
+		<input type="hidden" name="categoryId" id="categoryId" value="${e.categoryId!""}"/>
+		<input type="hidden" name="id" id="id" value="${e.id!""}" />
+		<input type="hidden" name="type" id="type"value="${e.type!""}" />
 		<table class="table table-bordered" style="width: 95%;margin: auto;">
 			<tr style="background-color: #dff0d8">
 				<td colspan="2" style="background-color: #dff0d8;text-align: center;">
@@ -38,23 +38,16 @@
 						<span class="badge badge-success">文章管理</span>&nbsp;<strong>
 				</td>
 			</tr>
-			<tr style="display: none;">
-				<td>id</td>
-				<td><input type="hidden" value="${e.id!""}" name="id" label="id" /></td>
-			</tr>
-				<tr>
+			<tr>
 				<td style="text-align: right;">文章分类</td>
 				<td style="text-align: left;">
 					<select name="categoryId" id="catalogSelect">
-						<option></option>
-                        <#list categories as item>
-							<option value="${item.id!""}" ${(e.categoryId?? && item.id==e.categoryId)?string("selected","")}>${item.categoryName!""}</option>
-                            <#if item.children?? && item.children?size gt 0>
-                                <#list item.children as item>
-                                    <option value="${item.id!""}" ${(e.categoryId?? && item.id==e.categoryId)?string("selected","")}>&nbsp;&nbsp;&nbsp;&nbsp;${item.categoryName!""}</option>
+							
+                            <#if categories?? && categories?size gt 0>
+                                <#list categories as item>
+                                    <option value="${item.id!""}" <#if e.categoryId?? && e.categoryId==item.id>selected="selected"</#if> >${item.categoryName!""}</option>
                                 </#list>
                             </#if>
-                        </#list>
 					</select>
 				</td>
 			</tr>
@@ -86,10 +79,8 @@
             </tr>
             <tr>
 				<td style="text-align: right;">顺序</td>
-				<td style="text-align: left;"><input type="text"  value="${e.ordinal!"0"}" name="ordinal"  data-rule="顺序;required;integer;order1;" size="20" maxlength="20"
-						id="ordinal" /></td>
+				<td style="text-align: left;"><input type="text"  value="${e.ordinal!"0"}" name="ordinal"  data-rule="顺序;required;integer;order1;" size="20" maxlength="20"	id="ordinal" /></td>
 			</tr>
-
 			<tr>
 				<td colspan="2" style="text-align: center;">
                     <#if e.id??>
@@ -108,8 +99,6 @@
 	
 <script type="text/javascript">
 $(function(){
-	selectDefaultCatalog();
-	
 	$("#title").blur(function(){
 		getCode();
 	});
@@ -122,13 +111,7 @@ $(function(){
 		});
 	});
 });
-function selectDefaultCatalog(){
-	var _catalogID = $("#catalogID").val();
-	console.log("selectDefaultCatalog._catalogID="+_catalogID);
-	//if(_catalogID!='' && _catalogID>0){
-		$("#catalogSelect").val(_catalogID);
-	//}
-}
+
 
 //function catalogChange(obj){
 //	var _pid = $(obj).find("option:selected").attr("pid");

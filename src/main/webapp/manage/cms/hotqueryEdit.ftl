@@ -30,6 +30,17 @@
 				<td><input type="hidden" value="${e.id!""}" name="id" label="id" /></td>
 			</tr>
 			<tr>
+				<td style="text-align: right;">是否有效</td>
+                <td style="text-align: left;">
+                    <select id="status" name="isValid" data-rule="是否有效:required;" class="input-medium">
+					<#assign map={"1":"是","0":"否"}>
+					<#list map ? keys as key>
+						<option value="${key}" <#if e.isValid??&&e.isValid?string("1","0")==key>selected="selected"</#if>>${map[key]}</option>
+					</#list>
+					</select>
+                </td>
+            </tr>
+			<tr>
 				<td style="text-align: center;width:200px;line-height:34px;">热门查询关键字</td>
 				<td style="text-align: left;">
 					<input type="text"  value="${e.keywork!""}" name="keywork"  id="keywork" width=" 350px" data-rule="热门查询关键字:required;keywork;length[1~100];"/>
