@@ -1,6 +1,6 @@
 <#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
-<#import "/account/accountMenu.ftl" as accountMenu>
+<#import "/member/memberMenu.ftl" as memberMenu>
 <@html.htmlBase>
 <style type="text/css">
 /* 	#form .n-invalid {border: 1px solid #f00;} */
@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-3">
-				<@accountMenu.accountMenu currentMenu="topwd"/>
+				<@memberMenu.accountMenu currentMenu="topwd"/>
 			</div>
 			
 			<div class="col-xs-9">

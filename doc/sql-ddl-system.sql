@@ -26,7 +26,10 @@ CREATE TABLE sys_area
 	update_time datetime COMMENT '更新时间',
 	parent_id bigint NOT NULL COMMENT '父级ID',
 	area_name varchar(128) NOT NULL COMMENT '区域名称',
-	PRIMARY KEY (id)
+	area_code varchar(32) NOT NULL COMMENT '区域编码',
+	parent_area_code varchar(32) COMMENT '父级区域编码',
+	PRIMARY KEY (id),
+	UNIQUE (area_code)
 ) COMMENT = '区域表';
 
 

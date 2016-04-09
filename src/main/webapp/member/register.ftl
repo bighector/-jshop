@@ -36,19 +36,19 @@
                     <div class="panel-body">
 						<div class="col-md-10 col-md-offset-1">
 				<form role="form" id="form" method="post" class="form-horizontal" action="${basepath}/member/doRegister" theme="simple" >
-				  <div class="form-group">
-				    <label for="nickName" class="col-md-2 control-label">昵称</label>
-				    <div class="col-md-6">
-					    <input  name="nickName" type="text" class="form-control" id="nickName" placeholder="请输入昵称"
-					    data-rule="昵称:required;nickName;length[2~10];remote[uniqueNickname]" maxlength="100"/>
-				    </div>
-				  </div>
 				  
 				  <div class="form-group">
 				    <label for="username" class="col-md-2 control-label">账号</label>
 				    <div class="col-md-6">
 					    <input  name="username" type="text" class="form-control" id="username" placeholder="请输入账号"
 					    data-rule="账号:required;username;length[3~10];remote[uniqueUsername]" maxlength="100" />
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="nickName" class="col-md-2 control-label">昵称</label>
+				    <div class="col-md-6">
+					    <input  name="nickName" type="text" class="form-control" id="nickName" placeholder="请输入昵称"
+					    data-rule="昵称:required;nickname;length[2~10];remote[uniqueNickname]" maxlength="100"/>
 				    </div>
 				  </div>
 				  
@@ -112,7 +112,7 @@
 		</div>
 <script type="text/javascript">
 function reloadImg2() {
-	document.getElementById("codes2").src = "${basepath}/ValidateImage.do?" + "radom="
+	document.getElementById("codes2").src = "${basepath}/ValidateImage.do?" + "random="
 			+ Math.random();
 	$("#vcode2").focus();
 }

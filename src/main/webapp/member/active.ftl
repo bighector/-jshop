@@ -1,13 +1,13 @@
 <#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
-<#import "/account/accountMenu.ftl" as accountMenu>
+<#import "/member/memberMenu.ftl" as memberMenu>
 <@html.htmlBase>
 	<@menu.menu selectMenu=""/>
 
 <div class="container">
 		<div class="row">
 			<div class="col-xs-3">
-				<@accountMenu.accountMenu currentMenu="user"/>
+				<@memberMenu.accountMenu currentMenu="personInfo"/>
 			</div>
 			
 			<div class="col-xs-9">

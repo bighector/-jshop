@@ -9,6 +9,8 @@
     <result column="update_time" property="updateTime" />
     <result column="parent_id" property="parentId" />
     <result column="area_name" property="areaName" />
+    <result column="area_code" property="areaCode" />
+    <result column="parent_area_code" property="parentAreaCode" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, create_account, create_time, update_account, update_time, parent_id, area_name
+    id, create_account, create_time, update_account, update_time, parent_id, area_name, 
+    area_code, parent_area_code
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.system.model.SysAreaExample" >
     select
@@ -97,9 +100,9 @@
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.system.model.SysArea" >
     insert into sys_area (id, create_account, create_time, update_account, update_time, 
-      parent_id, area_name)
+      parent_id, area_name, area_code, parent_area_code)
     values (#{id}, #{createAccount}, #{createTime}, #{updateAccount}, #{updateTime}, 
-      #{parentId}, #{areaName})
+      #{parentId}, #{areaName}, #{areaCode}, #{parentAreaCode})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.system.model.SysArea" >
     insert into sys_area
@@ -125,6 +128,12 @@
       <if test="areaName != null" >
         area_name,
       </if>
+      <if test="areaCode != null" >
+        area_code,
+      </if>
+      <if test="parentAreaCode != null" >
+        parent_area_code,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -147,6 +156,12 @@
       </if>
       <if test="areaName != null" >
         #{areaName},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode},
+      </if>
+      <if test="parentAreaCode != null" >
+        #{parentAreaCode},
       </if>
     </trim>
   </insert>
@@ -177,6 +192,12 @@
       <if test="areaName != null" >
         area_name = #{areaName},
       </if>
+      <if test="areaCode != null" >
+        area_code = #{areaCode},
+      </if>
+      <if test="parentAreaCode != null" >
+        parent_area_code = #{parentAreaCode},
+      </if>
     </set>
     where id = #{id}
   </update>
@@ -187,7 +208,9 @@
       update_account = #{updateAccount},
       update_time = #{updateTime},
       parent_id = #{parentId},
-      area_name = #{areaName}
+      area_name = #{areaName},
+      area_code = #{areaCode},
+      parent_area_code = #{parentAreaCode}
     where id = #{id}
   </update>
 </mapper>

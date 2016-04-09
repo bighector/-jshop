@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +27,8 @@ public abstract class BaseService<E extends BaseModel, Example>
     @Transactional
     public long insert(E entity)
     {
+        entity.setCreateTime(new Date());
+        entity.setUpdateTime(new Date());
         return getMapper().insertSelective(entity);
     }
 
@@ -48,6 +51,7 @@ public abstract class BaseService<E extends BaseModel, Example>
 
     @Transactional
     public int update(E entity) {
+        entity.setUpdateTime(new Date());
         return getMapper().updateByPrimaryKeySelective(entity);
     }
 

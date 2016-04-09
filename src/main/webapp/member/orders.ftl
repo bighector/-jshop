@@ -1,6 +1,6 @@
 <#import "/template/common_html_front.ftl" as html>
 <#import "/indexMenu.ftl" as menu>
-<#import "/account/accountMenu.ftl" as accountMenu>
+<#import "/member/memberMenu.ftl" as memberMenu>
 <@html.htmlBase>
 <style type="text/css">
 .centerImageCss{
@@ -15,7 +15,7 @@ font-weight: 700;font-size: 16px;color: #f50;
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-3">
-				<@accountMenu.accountMenu currentMenu="orders"/>
+				<@memberMenu.accountMenu currentMenu="orders"/>
 			</div>
 			
 			<div class="col-xs-9">
