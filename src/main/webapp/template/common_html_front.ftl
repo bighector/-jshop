@@ -39,27 +39,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>${title!"Ofmall"}</title>
     <link rel="shortcut icon" type="image/x-icon" href="${systemSetting().shortcutIcon}">
-    <link rel="stylesheet" href="${basepath}/resource/css/sticky-footer.css"  type="text/css">
-    <link rel="stylesheet" href="${basepath}/resource/css/base.css"  type="text/css">
-    <link rel="stylesheet" href="${basepath}/resource/bootstrap3.3.4/css/${style}/bootstrap.min.css"  type="text/css">
-    <link rel="stylesheet" href="${basepath}/resource/bootstrap3.3.4/css/docs.css"  type="text/css">
-    <link rel="stylesheet" href="${basepath}/resource/validator-0.7.0/jquery.validator.css" />
+    <link rel="stylesheet" href="${staticpath}/css/sticky-footer.css"  type="text/css">
+    <link rel="stylesheet" href="${staticpath}/css/base.css"  type="text/css">
+    <link rel="stylesheet" href="${staticpath}/bootstrap3.3.4/css/${style}/bootstrap.min.css"  type="text/css">
+    <link rel="stylesheet" href="${staticpath}/bootstrap3.3.4/css/docs.css"  type="text/css">
+    <link rel="stylesheet" href="${staticpath}/validator-0.7.0/jquery.validator.css" />
     <#if non_responsive2 == "y">
-        <link rel="stylesheet" href="${basepath}/resource/bootstrap3.3.4/css/non-responsive.css"  type="text/css">
+        <link rel="stylesheet" href="${staticpath}/bootstrap3.3.4/css/non-responsive.css"  type="text/css">
     </#if>
 
-    <script type="text/javascript" src="${basepath}/resource/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="${staticpath}/js/jquery-1.9.1.min.js"></script>
 
-    <script type="text/javascript" src="${basepath}/resource/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${basepath}/resource/js/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="${staticpath}/bootstrap3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${staticpath}/js/jquery.blockUI.js"></script>
 
-    <script type="text/javascript" src="${basepath}/resource/validator-0.7.0/jquery.validator.js"></script>
-    <script type="text/javascript" src="${basepath}/resource/validator-0.7.0/local/zh_CN.js"></script>
+    <script type="text/javascript" src="${staticpath}/validator-0.7.0/jquery.validator.js"></script>
+    <script type="text/javascript" src="${staticpath}/validator-0.7.0/local/zh_CN.js"></script>
 
-    <script type="text/javascript" src="${basepath}/resource/js/jquery.lazyload.min.js"></script>
-    <script type="text/javascript" src="${basepath}/resource/js/superMenu/js/new.js"></script>
-    <link href="${basepath}/resource/js/slideTab2/css/lanrenzhijia.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="${basepath}/resource/js/slideTab2/js/lanrenzhijia.js"></script>
+    <script type="text/javascript" src="${staticpath}/js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="${staticpath}/js/superMenu/js/new.js"></script>
+    <link href="${staticpath}/js/slideTab2/css/lanrenzhijia.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${staticpath}/js/slideTab2/js/lanrenzhijia.js"></script>
 
 </head>
     <#if nobody>

@@ -4,6 +4,7 @@ import net.jeeshop.biz.member.model.Member;
 import net.jeeshop.biz.member.service.MemberService;
 import net.jeeshop.core.FrontContainer;
 import net.jeeshop.web.bean.ResultBean;
+import net.jeeshop.web.controller.front.FrontBaseController;
 import net.jeeshop.web.util.LoginUserHolder;
 import net.jeeshop.web.util.RequestHolder;
 import org.apache.commons.lang.StringUtils;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/member")
-public class LoginController {
+public class LoginController extends FrontBaseController {
     @Autowired
     private MemberService memberService;
 

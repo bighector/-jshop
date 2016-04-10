@@ -118,4 +118,26 @@ public class MemberService extends BaseService<Member, MemberExample>{
 		this.update(logMember);
 		systemLogService.newFrontLog("用户登录", "用户["+member.getUsername()+"]", LogType.login);
 	}
+
+	@Transactional
+	public ResultBean updatePassword(Member member, String oldPassword, String newPassword) {
+		Member persistMember = this.selectById(member.getId());
+		if(persistMember == null) {
+			return new ResultBean("01", "用户不存在");
+		}
+		String encOldPassword = MD5.md5(oldPassword);
+		if(!persistMember.getPassword().equals(encOldPassword)) {
+			return  new ResultBean("01", "原密码不正确");
+		}
+		String encNewPassword = MD5.md5(newPassword);
+		Member record = new Member();
+		//更新用户最后登录时间
+		record.setId(member.getId());
+		record.setPassword(encNewPassword);
+
+		this.update(record);
+		systemLogService.newFrontLog("修改密码", "用户["+member.getUsername()+"]修改密码", LogType.changePassword);
+
+		return new ResultBean();
+	}
 }
