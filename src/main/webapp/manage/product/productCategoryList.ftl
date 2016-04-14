@@ -1,5 +1,5 @@
 <#import "/manage/tpl/pageBase.ftl" as page/>
-<@page.pageBase currentMenu="文章分类">
+<@page.pageBase currentMenu="商品目录">
 <script type="text/javascript">
 	$(function() {
 		$("#treegrid").treegrid({"treeColumn":1});

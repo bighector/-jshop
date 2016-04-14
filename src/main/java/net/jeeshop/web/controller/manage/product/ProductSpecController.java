@@ -23,7 +23,7 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
  * @since: V1.0
  */
 @Controller
-@RequestMapping("/manage/spec")
+@RequestMapping("/manage/product/spec")
 public class ProductSpecController extends ManageBaseController<ProductSpec, ProductSpecExample> 
 {
 	private static String page_toList = "manage/product/spec/specList";

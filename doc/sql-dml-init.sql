@@ -44,7 +44,7 @@ INSERT INTO `sys_resource`(id,parent_id,resource_value,resource_name,ordinal,res
 (63,2,'/manage/menu/deletes','删除',3,'button'),
 (64,11,'/manage/product/attr/selectList','商品属性',5,'page'),
 (65,11,'/manage/product/category/selectList','商品目录',2,'page'),
-(66,11,'/manage/product/attribute/selectList','商品参数',6,'page'),
+(66,11,'/manage/product/spec/selectList','商品规格',6,'page'),
 (71,6,'/manage/cms/notice/selectList','公告管理',2,'page'),
 (73,14,'/manage/product/selectList','查询',1,'button'),
 (74,14,'/manage/product/toAdd','添加',2,'button'),
@@ -205,7 +205,7 @@ INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VAL
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13732, 13774, '礼县', '621226', '621200');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13733, 13903, '通道侗族自治县', '431230', '431200');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13734, 13852, '江阴市', '320282', '320200');
-INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13735, 13852, '宜兴市', '320282', '320200');
+INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13735, 13852, '宜兴市', '320283', '320200');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13736, 13903, '沅陵县', '431222', '431200');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13737, 13903, '辰溪县', '431223', '431200');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (13738, 13903, '溆浦县', '431224', '431200');

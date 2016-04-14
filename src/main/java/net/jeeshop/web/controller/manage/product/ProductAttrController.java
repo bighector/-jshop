@@ -24,7 +24,7 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
  * @since V1.0
  */
 @Controller
-@RequestMapping("/product/attr")
+@RequestMapping("manage/product/attr")
 public class ProductAttrController extends ManageBaseController<ProductAttr, ProductAttrExample>{
 	
 	@Autowired

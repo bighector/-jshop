@@ -24,7 +24,7 @@ import net.jeeshop.web.controller.manage.ManageBaseController;
  * @since V1.0
  */
 @Controller
-@RequestMapping("/manage/brand")
+@RequestMapping("/manage/product/brand")
 public class BrandController extends  ManageBaseController<Brand, BrandExample>{
 	
 	@Autowired
