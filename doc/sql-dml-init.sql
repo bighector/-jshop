@@ -784,7 +784,7 @@ INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VAL
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14311, 14237, '顺河回族区', '410203', '410200');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14312, 14237, '龙亭区', '410202', '410200');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14313, 14237, '禹王台区', '410205', '410200');
-INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14314, 14230, '海阳市', '370686', '370600');
+INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14314, 14230, '海阳市', '370687', '370600');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14315, 14230, '栖霞市', '370686', '370600');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14316, 14230, '招远市', '370685', '370600');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14317, 14230, '蓬莱市', '370684', '370600');
@@ -1274,7 +1274,7 @@ INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VAL
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14801, 14936, '新乐市', '130184', '130100');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14802, 14936, '晋州市', '130183', '130100');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14803, 14936, '藁城市', '130182', '130100');
-INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14804, 14936, '辛集市', '130121', '130100');
+INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14804, 14936, '辛集市', '130141', '130100');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14805, 14807, '和平区', '210102', '210100');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14806, 14807, '沈河区', '210103', '210100');
 INSERT INTO sys_area (id, parent_id, area_name, area_code, parent_area_code) VALUES (14807, 15205, '沈阳市', '210100', '210000');
