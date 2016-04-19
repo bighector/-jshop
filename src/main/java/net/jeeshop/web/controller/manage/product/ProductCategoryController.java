@@ -1,24 +1,23 @@
 package net.jeeshop.web.controller.manage.product;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import net.jeeshop.biz.base.service.BaseService;
-import net.jeeshop.biz.cms.bean.ArticleCategoryBean;
 import net.jeeshop.biz.product.bean.ProductCategoryBean;
 import net.jeeshop.biz.product.model.ProductCategory;
 import net.jeeshop.biz.product.model.ProductCategoryExample;
 import net.jeeshop.biz.product.service.ProductCategoryService;
 import net.jeeshop.web.controller.manage.ManageBaseController;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: pj_zhong
@@ -48,7 +47,11 @@ public class ProductCategoryController extends ManageBaseController<ProductCateg
 	{
 		return service;
 	}
-	
+
+	@ModelAttribute("catalogs")
+	public List<ProductCategoryBean> getCatalogs() {
+		return service.loadRoot();
+	}
 	/**
 	 * 公共的分页方法
 	 *
@@ -78,17 +81,41 @@ public class ProductCategoryController extends ManageBaseController<ProductCateg
 			}
 		}
 	}
-	
+
 	@RequestMapping("loadByPid")
     @ResponseBody
 	public String loadByPid(@RequestParam(required = false, defaultValue = "0")String pid)
 	{
 		Long parent=Long.parseLong(pid);
 		
-	   return writer(service.loadCateByParent(parent));
+	   return writer(service.loadCategoryByParent(parent));
 	}
-	
-	
+
+
+	/**
+	 * 唯一性检查
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "uniqueCode")
+	@ResponseBody
+	public String uniqueCode(ProductCategory e){
+		if (StringUtils.isNotBlank(e.getCategoryCode())) {
+			ProductCategory catalog = service.selectByCategoryCode(e.getCategoryCode());
+			if (catalog == null) {
+				return "{\"ok\":\"编码可以使用!\"}";
+			} else {
+				if (e.getId() != null && e.getId().compareTo(catalog.getId()) == 0) {
+					//更新自己的编码
+					return "{\"ok\":\"编码可以使用!\"}";
+				} else {
+					return "{\"error\":\"编码已经存在!\"}";
+				}
+			}
+		} else {
+			return "{\"error\":\"编码不能为空!\"}";
+		}
+	}
     @RequestMapping("loadAll")
     @ResponseBody
     public String loadAllCategory()

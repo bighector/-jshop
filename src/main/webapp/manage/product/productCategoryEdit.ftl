@@ -1,15 +1,13 @@
 <#import "/manage/tpl/pageBase.ftl" as page/>
-<@page.pageBase currentMenu="商品分类">
-	<form action="${basepath}/manage/articleCatalog" id="form" name="form">
+<@page.pageBase currentMenu="商品目录">
+	<form action="${basepath}/manage/product/category" id="form" name="form">
 		<input id="catalogID" value="${e.parentId!""}" style="display: none;"/>
 		<input id="catalogID_currentID" value="${e.id!""}" style="display: none;"/>
-		<input type="hidden" value="${e.type!""}" name="type" id="type"/>
 
 		<table class="table table-bordered" style="width: 95%;margin: auto;">
 			<tr style="background-color: #dff0d8">
 				<td colspan="2" style="background-color: #dff0d8;text-align: center;">
-					<strong>编辑分类</strong>
-						<span class="badge badge-success">文章分类</span>&nbsp;
+					<strong>编辑商品分类</strong>
 				</td>
 			</tr>
 			<tr style="display: none;">
@@ -19,10 +17,10 @@
 				<tr>
 				<td style="text-align: right;">上级分类</td>
 				<td style="text-align: left;">
-					<select onchange="catalogChange(this)" name="pid" id="catalogSelect">
+					<select onchange="catalogChange(this)" name="parentId" id="catalogSelect">
 						<option></option>
                         <#list catalogs as item>
-							<option pid="0" value="${item.id!""}"><font color='red'>${item.categoryName!""}</font></option>
+							<option pid="0" value="${item.id!""}">${item.categoryName!""}</option>
                             <#if item.children?? && item.children?size gt 0>
                                 <#list item.children as item>
                                     <option value="${item.id!""}">&nbsp;&nbsp;&nbsp;&nbsp;${item.categoryName!""}</option>
@@ -39,11 +37,22 @@
 			<tr>
 				<td style="text-align: right;">编码</td>
 				<td style="text-align: left;">
-					<input type="text"  value="${e.categoryCode!""}" name="categoryCode"  data-rule="编码;required;code;length[1~45];remote[uniqueCode, id]" size="45" maxlength="45" id="code" /></td>
+					<input type="text"  id="categoryCode" value="${e.categoryCode!""}" name="categoryCode"  data-rule="编码;required;code;length[1~45];remote[uniqueCode, id]" size="45" maxlength="45" /></td>
 			</tr>
-			<tr>
-				<td style="text-align: right;">顺序</td>
-				<td style="text-align: left;"><input type="text"  value="${e.ordinal!""}" name="ordinal"  data-rule="顺序;required;integer;ordinal;" size="20" maxlength="20"	id="ordinal" /></td>
+            <tr>
+                <td style="text-align: right;">SEO关键字</td>
+                <td style="text-align: left;">
+                    <textarea type="text"  class="form-control" name="keywords">${e.keywords!""}</textarea>
+				</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">SEO页面标题</td>
+                <td style="text-align: left;"><textarea type="text" class="form-control"  name="pageTitle">${e.pageTitle!""}</textarea>
+					</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">分类描述</td>
+                <td style="text-align: left;"><textarea type="text"  class="form-control" name="description">${e.description!""}</textarea>
 			</tr>
 			
 			<tr>
@@ -66,16 +75,13 @@
 $(function(){
 	$("#title").focus();
 	selectDefaultCatalog();
-	$("#name").blur(function(){
+	$("#categoryName").blur(function(){
 		getCode();
 	});
 });
 function selectDefaultCatalog(){
 	var _catalogID = $("#catalogID").val();
-	console.log("selectDefaultCatalog._catalogID="+_catalogID);
-	//if(_catalogID!='' && _catalogID>0){
 		$("#catalogSelect").val(_catalogID);
-	//}
 }
 
 function catalogChange(obj){
@@ -89,9 +95,8 @@ function catalogChange(obj){
 }
 
 function getCode(){
-	var _name = $("#name").val();
-	//var _url = "catalog!autoCode.action?e.name="+_name;
-	var _url = "autoCode";
+	var _name = $("#categoryName").val();
+	var _url = "${basepath}/common/generatePinyinCode";
 	$.ajax({
 	  type: 'POST',
 	  url: _url,
@@ -100,8 +105,7 @@ function getCode(){
 	  //async:false,
 	  success: function(data){
 		  if(!data){return null;}
-		  console.log("data="+data);
-		  $("#code").val(data);
+		  $("#categoryCode").val(data);
 	  },
 	  error:function(){
 		  console.log("加载数据失败，请联系管理员。");

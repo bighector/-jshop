@@ -1,24 +1,20 @@
 package net.jeeshop.biz.product.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-
 import com.google.common.collect.Lists;
-import net.jeeshop.biz.cms.bean.ArticleCategoryBean;
-import net.jeeshop.biz.cms.model.ArticleCategory;
-import net.jeeshop.biz.cms.model.ArticleCategoryExample;
-import net.jeeshop.biz.product.bean.ProductCategoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import net.jeeshop.biz.base.client.BaseMapper;
 import net.jeeshop.biz.base.service.BaseService;
+import net.jeeshop.biz.product.bean.ProductCategoryBean;
 import net.jeeshop.biz.product.client.ProductCategoryMapper;
 import net.jeeshop.biz.product.model.ProductCategory;
 import net.jeeshop.biz.product.model.ProductCategoryExample;
 import net.jeeshop.biz.product.model.ProductCategoryExample.Criteria;
+import net.jeeshop.core.exception.JShopException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author: pj_zhong
@@ -35,95 +31,67 @@ public class ProductCategoryService extends BaseService<ProductCategory, Product
         return productCategoryMapper;
     }
 
-	
-	/*public List<Category> selectByName(String name)
-	{
-		CategoryExample Example = new CategoryExample();
-		Example.createCriteria().andCateNameEqualTo(name);
-		
-		 List<Category> cates = getMapper().selectByExample(Example);
-		 List<Category> result = new ArrayList<Category>();
-		 
-		 for(Category c : cates)
-		 {
-			result.add(selectCategory(c));
-		 }
-		 
-		 return result;
-		
-	}*/
 
-
-    /**
-     * 查询 特定商品分类的所有父分类或子分类。
-     *
-     * @param id
-     * @return 返回 该分类的最高级父类(并且包含它)或者自身
-     */
     @Override
-    public ProductCategory selectById(long id) {
-        ProductCategory result = super.selectById(id);
-
-        return selectCategory(result);
+    public long insert(ProductCategory entity) {
+        if (entity.getParentId() == null) {
+            entity.setParentId(0L);
+            entity.setLevel(1);
+        }
+        if (entity.getParentId().compareTo(0l) != 0) {
+            ProductCategory parent = selectById(entity.getParentId());
+            if(parent == null) {
+                throw new JShopException("父级分类不存在!");
+            }
+            entity.setLevel(parent.getLevel() + 1);
+        }
+        return super.insert(entity);
     }
 
     /**
-     * 查询 特定商品分类的所有父分类或子分类。
+     * 根据categoryCode检索
      *
-     * @param c
-     * @return 返回 该分类的最高级父类(并且包含它)或者自身
+     * @param categoryCode
+     * @return
      */
-    private ProductCategory selectCategory(ProductCategory c) {
-        ProductCategory parent = null;
-        switch (c.getLevel()) {
-            case 1:
-                parent = c;
-                break;
-
-            default:
-                parent = super.selectById(c.getPid());
-                if (parent != null) {
-//					                     parent.addChild(c);
-                    parent = selectCategory(parent);
-                } else {
-                    parent = c;
-                }
-        }
-
-        return parent;
+    public ProductCategory selectByCategoryCode(String categoryCode) {
+        ProductCategoryExample example = new ProductCategoryExample();
+        ProductCategoryExample.Criteria criteria = example.createCriteria();
+        criteria.andCategoryCodeEqualTo(categoryCode);
+        criteria.andIsValidEqualTo(true);
+        return super.selectUniqueByExample(example);
     }
 
 
     @Override
     public int deleteById(long id) {
         int row = 0;
-        Collection<ProductCategory> children = loadCateByParent(id);
-
-        if (children != null && !children.isEmpty()) {
-            for (ProductCategory c : children)
-                row += deleteById(c.getId());
+        List<ProductCategory> children = loadCategoryByParent(id);
+        for (ProductCategory c : children) {
+            row += deleteById(c.getId());
         }
-
-        return row + productCategoryMapper.inValidated(id);
+        ProductCategory productCategory = this.selectById(id);
+        if (productCategory != null) {
+            ProductCategory record = new ProductCategory();
+            record.setId(productCategory.getId());
+            record.setIsValid(false);
+            row += productCategoryMapper.updateByPrimaryKeySelective(record);
+        }
+        return row;
     }
 
 
     /**
      * 根据父类ID查询分类 ,0查询顶级分类
      *
-     * @param Pid
+     * @param pid
      * @return
      */
-    public Collection<ProductCategory> loadCateByParent(Long Pid) {
-        if (Pid == null)
-            Pid = 0L;
-
+    public List<ProductCategory> loadCategoryByParent(long pid) {
         ProductCategoryExample query = new ProductCategoryExample();
         Criteria condition = query.createCriteria();
-        condition.andIsValidEqualTo("1");
-        condition.andPidEqualTo(Pid);
-
-
+        condition.andIsValidEqualTo(true);
+        condition.andParentIdEqualTo(pid);
         return getMapper().selectByExample(query);
     }
 
@@ -133,26 +101,25 @@ public class ProductCategoryService extends BaseService<ProductCategory, Product
      *
      * @return
      */
-    public Collection<ProductCategory> loadAll() {
+    public List<ProductCategory> loadAll() {
         ProductCategoryExample query = new ProductCategoryExample();
-        query.createCriteria().andIsValidEqualTo("1");
+        query.createCriteria().andIsValidEqualTo(true);
         List<ProductCategory> categories = getMapper().selectByExample(query);
 
-        //把结果放到Iterchange中转站，方便接下来的分类
-        HashMap<Long, ProductCategory> Iterchange = new HashMap<Long, ProductCategory>();
+        HashMap<Long, ProductCategory> categoryMap = new HashMap<Long, ProductCategory>();
         for (ProductCategory c : categories) {
-            Iterchange.put(c.getId(), c);
+            categoryMap.put(c.getId(), c);
         }
 
         List<ProductCategory> root = new ArrayList<ProductCategory>();
         ProductCategory parent;
 
         //分类
-        for (ProductCategory c : Iterchange.values()) {
-            if (c.getPid() == 0) {
+        for (ProductCategory c : categoryMap.values()) {
+            if (c.getParentId() == 0) {
                 root.add(c);
             } else {
-                parent = Iterchange.get(c.getPid());
+                parent = categoryMap.get(c.getParentId());
 //			                      if(parent!=null) { parent.addChild(c); }
             }
         }
@@ -166,9 +133,10 @@ public class ProductCategoryService extends BaseService<ProductCategory, Product
      * @return
      */
     public List<ProductCategoryBean> loadRoot() {
-        ProductCategoryExample example = getExampleWithOrder();
+        ProductCategoryExample example = new ProductCategoryExample();
         ProductCategoryExample.Criteria criteria = example.createCriteria();
-        criteria.andPidEqualTo(0L);
+        criteria.andIsValidEqualTo(true);
+        criteria.andParentIdEqualTo(0L);
 
         List<ProductCategory> rootCatalogs = productCategoryMapper.selectByExample(example);
         List<ProductCategoryBean> result = convertList(rootCatalogs);
@@ -176,11 +144,6 @@ public class ProductCategoryService extends BaseService<ProductCategory, Product
             loadChildrenRecursive(category);
         }
         return result;
-    }
-
-    private ProductCategoryExample getExampleWithOrder() {
-        ProductCategoryExample example = new ProductCategoryExample();
-        return example;
     }
 
     private List<ProductCategoryBean> convertList(List<ProductCategory> categories) {
@@ -197,9 +160,10 @@ public class ProductCategoryService extends BaseService<ProductCategory, Product
      * @param item
      */
     private void loadChildrenRecursive(ProductCategoryBean item) {
-        ProductCategoryExample example = getExampleWithOrder();
+        ProductCategoryExample example = new ProductCategoryExample();
         ProductCategoryExample.Criteria criteria = example.createCriteria();
-        criteria.andPidEqualTo(item.getId());
+        criteria.andIsValidEqualTo(true);
+        criteria.andParentIdEqualTo(item.getId());
         item.setChildren(convertList(productCategoryMapper.selectByExample(example)));
         if (item.getChildren() != null && item.getChildren().size() > 0) {
             for (ProductCategoryBean bean : item.getChildren()) {

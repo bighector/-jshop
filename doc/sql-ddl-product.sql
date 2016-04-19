@@ -16,6 +16,8 @@ DROP TABLE IF EXISTS pro_spec_group;
 DROP TABLE IF EXISTS pro_product_category;
 
 
+
+
 /* Create Tables */
 
 CREATE TABLE pro_brand
@@ -93,19 +95,20 @@ CREATE TABLE pro_product_attr_link
 CREATE TABLE pro_product_category
 (
 	id bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-	cate_code varchar(64) COMMENT '分类编码',
-	cate_name varchar(128) COMMENT '分类名称',
-	pid bigint COMMENT '父级ID',
+	category_code varchar(128) NOT NULL COMMENT '分类编码',
+	category_name varchar(128) COMMENT '分类名称',
+	parent_id bigint COMMENT '父级ID',
 	level int COMMENT '层级',
 	description varchar(4000) COMMENT '描述信息',
-	keyworks varchar(512) COMMENT 'SEO关键字',
+	keywords varchar(512) COMMENT 'SEO关键字',
 	page_title varchar(128) COMMENT '页面展示标题',
-	is_valid char(1) DEFAULT '1' COMMENT '是否有效,1-是0-否',
+	is_valid char(1) DEFAULT '1' NOT NULL COMMENT '是否有效,1-是0-否',
 	create_time datetime COMMENT '创建时间',
 	create_account varchar(64) COMMENT '创建人',
 	update_time datetime COMMENT '更新时间',
 	update_account varchar(64) COMMENT '更新人',
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (category_code)
 ) COMMENT = '商品分类';
 
 
@@ -119,7 +122,7 @@ CREATE TABLE pro_product_comment
 	content varchar(4000) COMMENT '评论内容',
 	star int COMMENT '星级',
 	product_info_id bigint NOT NULL COMMENT '商品ID',
-	member_id bigint COMMENT '会员ID',
+	member_id bigint COMMENT '用户ID',
 	PRIMARY KEY (id)
 ) COMMENT = '会员评论';
 

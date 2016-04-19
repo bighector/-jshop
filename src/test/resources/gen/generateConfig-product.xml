@@ -63,6 +63,7 @@
         <!-- 商品分类 -->
         <table tableName="pro_product_category" domainObjectName="ProductCategory">
             <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="is_valid" javaType="java.lang.Boolean"/>
         </table>
 
         <!-- 商品信息 -->

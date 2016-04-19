@@ -13,7 +13,7 @@ public class ProductComment extends BaseModel implements Serializable {
     /** 商品ID */
     private Long productInfoId;
 
-    /** 会员ID */
+    /** 用户ID */
     private Long memberId;
 
     private static final long serialVersionUID = 1L;

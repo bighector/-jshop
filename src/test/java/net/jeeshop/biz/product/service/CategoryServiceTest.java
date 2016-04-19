@@ -59,7 +59,7 @@ public class CategoryServiceTest extends BaseService<ProductCategory,ProductCate
 				System.out.println(c);
 			}*/
 		
-		 categoryMapper.inValidated(6L);
+//		 categoryMapper.inValidated(6L);
 		
 	}
 	
@@ -82,9 +82,9 @@ public class CategoryServiceTest extends BaseService<ProductCategory,ProductCate
 		//分类  
 		for(ProductCategory c: Iterchange.values())
 		{
-			if(c.getPid()==0)  {  root.add(c);  }
+			if(c.getParentId()==0)  {  root.add(c);  }
 			else               {  
-				                  parent = Iterchange.get(c.getPid());
+				                  parent = Iterchange.get(c.getParentId());
 			                      if(parent!=null) {
 //									  parent.addChild(c);
 }
@@ -106,7 +106,7 @@ public class CategoryServiceTest extends BaseService<ProductCategory,ProductCate
 	public List<ProductCategory> selectByName(String name)
 	{
 		ProductCategoryExample Example = new ProductCategoryExample();
-		Example.createCriteria().andCateNameEqualTo(name);
+		Example.createCriteria().andCategoryNameEqualTo(name);
 		
 		System.out.println(Example.getOredCriteria());
 		
@@ -130,7 +130,7 @@ public class CategoryServiceTest extends BaseService<ProductCategory,ProductCate
 		{
 			case 1: parent = c; break; 
 			
-			default:parent = super.selectById(c.getPid());
+			default:parent = super.selectById(c.getParentId());
 					if(parent!= null)  {   
 //						                 parent.addChild(c);
 						                 parent = selectCategory(parent);
@@ -148,8 +148,8 @@ public class CategoryServiceTest extends BaseService<ProductCategory,ProductCate
 		
 		ProductCategoryExample query = new ProductCategoryExample();
 		Criteria  condition= query.createCriteria();
-		condition.andIsValidEqualTo("1");
-		condition.andPidEqualTo(Pid);
+		condition.andIsValidEqualTo(true);
+		condition.andParentIdEqualTo(Pid);
 		
 		
 		return getMapper().selectByExample(query);

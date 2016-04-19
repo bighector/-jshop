@@ -5,13 +5,13 @@ import net.jeeshop.biz.base.model.BaseModel;
 
 public class ProductCategory extends BaseModel implements Serializable {
     /** 分类编码 */
-    private String cateCode;
+    private String categoryCode;
 
     /** 分类名称 */
-    private String cateName;
+    private String categoryName;
 
     /** 父级ID */
-    private Long pid;
+    private Long parentId;
 
     /** 层级 */
     private Integer level;
@@ -20,38 +20,38 @@ public class ProductCategory extends BaseModel implements Serializable {
     private String description;
 
     /** SEO关键字 */
-    private String keyworks;
+    private String keywords;
 
     /** 页面展示标题 */
     private String pageTitle;
 
     /** 是否有效,1-是0-否 */
-    private String isValid;
+    private Boolean isValid;
 
     private static final long serialVersionUID = 1L;
 
-    public String getCateCode() {
-        return cateCode;
+    public String getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setCateCode(String cateCode) {
-        this.cateCode = cateCode == null ? null : cateCode.trim();
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode == null ? null : categoryCode.trim();
     }
 
-    public String getCateName() {
-        return cateName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCateName(String cateName) {
-        this.cateName = cateName == null ? null : cateName.trim();
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName == null ? null : categoryName.trim();
     }
 
-    public Long getPid() {
-        return pid;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setPid(Long pid) {
-        this.pid = pid;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public Integer getLevel() {
@@ -70,12 +70,12 @@ public class ProductCategory extends BaseModel implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
-    public String getKeyworks() {
-        return keyworks;
+    public String getKeywords() {
+        return keywords;
     }
 
-    public void setKeyworks(String keyworks) {
-        this.keyworks = keyworks == null ? null : keyworks.trim();
+    public void setKeywords(String keywords) {
+        this.keywords = keywords == null ? null : keywords.trim();
     }
 
     public String getPageTitle() {
@@ -86,11 +86,11 @@ public class ProductCategory extends BaseModel implements Serializable {
         this.pageTitle = pageTitle == null ? null : pageTitle.trim();
     }
 
-    public String getIsValid() {
+    public Boolean getIsValid() {
         return isValid;
     }
 
-    public void setIsValid(String isValid) {
-        this.isValid = isValid == null ? null : isValid.trim();
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 }

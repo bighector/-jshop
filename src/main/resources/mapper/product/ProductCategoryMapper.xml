@@ -3,12 +3,12 @@
 <mapper namespace="net.jeeshop.biz.product.client.ProductCategoryMapper" >
   <resultMap id="BaseResultMap" type="net.jeeshop.biz.product.model.ProductCategory" >
     <id column="id" property="id" />
-    <result column="cate_code" property="cateCode" />
-    <result column="cate_name" property="cateName" />
-    <result column="pid" property="pid" />
+    <result column="category_code" property="categoryCode" />
+    <result column="category_name" property="categoryName" />
+    <result column="parent_id" property="parentId" />
     <result column="level" property="level" />
     <result column="description" property="description" />
-    <result column="keyworks" property="keyworks" />
+    <result column="keywords" property="keywords" />
     <result column="page_title" property="pageTitle" />
     <result column="is_valid" property="isValid" />
     <result column="create_time" property="createTime" />
@@ -75,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cate_code, cate_name, pid, level, description, keyworks, page_title, is_valid, 
-    create_time, create_account, update_time, update_account
+    id, category_code, category_name, parent_id, level, description, keywords, page_title, 
+    is_valid, create_time, create_account, update_time, update_account
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="net.jeeshop.biz.product.model.ProductCategoryExample" >
     select
@@ -103,24 +103,24 @@
     where id = #{id}
   </delete>
   <insert id="insert" parameterType="net.jeeshop.biz.product.model.ProductCategory" useGeneratedKeys="true" keyProperty="id" >
-    insert into pro_product_category (cate_code, cate_name, pid, level, description, keyworks, 
-      page_title, is_valid, create_time, create_account, update_time, update_account
-      )
-    values (#{cateCode}, #{cateName}, #{pid}, #{level}, #{description}, #{keyworks}, 
-      #{pageTitle}, #{isValid}, #{createTime}, #{createAccount}, #{updateTime}, #{updateAccount}
-      )
+    insert into pro_product_category (category_code, category_name, parent_id, level, description, 
+      keywords, page_title, is_valid, create_time, create_account, update_time, 
+      update_account)
+    values (#{categoryCode}, #{categoryName}, #{parentId}, #{level}, #{description}, 
+      #{keywords}, #{pageTitle}, #{isValid}, #{createTime}, #{createAccount}, #{updateTime}, 
+      #{updateAccount})
   </insert>
   <insert id="insertSelective" parameterType="net.jeeshop.biz.product.model.ProductCategory" useGeneratedKeys="true" keyProperty="id" >
     insert into pro_product_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="cateCode != null" >
-        cate_code,
+      <if test="categoryCode != null" >
+        category_code,
       </if>
-      <if test="cateName != null" >
-        cate_name,
+      <if test="categoryName != null" >
+        category_name,
       </if>
-      <if test="pid != null" >
-        pid,
+      <if test="parentId != null" >
+        parent_id,
       </if>
       <if test="level != null" >
         level,
@@ -128,8 +128,8 @@
       <if test="description != null" >
         description,
       </if>
-      <if test="keyworks != null" >
-        keyworks,
+      <if test="keywords != null" >
+        keywords,
       </if>
       <if test="pageTitle != null" >
         page_title,
@@ -151,14 +151,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="cateCode != null" >
-        #{cateCode},
+      <if test="categoryCode != null" >
+        #{categoryCode},
       </if>
-      <if test="cateName != null" >
-        #{cateName},
+      <if test="categoryName != null" >
+        #{categoryName},
       </if>
-      <if test="pid != null" >
-        #{pid},
+      <if test="parentId != null" >
+        #{parentId},
       </if>
       <if test="level != null" >
         #{level},
@@ -166,8 +166,8 @@
       <if test="description != null" >
         #{description},
       </if>
-      <if test="keyworks != null" >
-        #{keyworks},
+      <if test="keywords != null" >
+        #{keywords},
       </if>
       <if test="pageTitle != null" >
         #{pageTitle},
@@ -198,14 +198,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.jeeshop.biz.product.model.ProductCategory" >
     update pro_product_category
     <set >
-      <if test="cateCode != null" >
-        cate_code = #{cateCode},
+      <if test="categoryCode != null" >
+        category_code = #{categoryCode},
       </if>
-      <if test="cateName != null" >
-        cate_name = #{cateName},
+      <if test="categoryName != null" >
+        category_name = #{categoryName},
       </if>
-      <if test="pid != null" >
-        pid = #{pid},
+      <if test="parentId != null" >
+        parent_id = #{parentId},
       </if>
       <if test="level != null" >
         level = #{level},
@@ -213,8 +213,8 @@
       <if test="description != null" >
         description = #{description},
       </if>
-      <if test="keyworks != null" >
-        keyworks = #{keyworks},
+      <if test="keywords != null" >
+        keywords = #{keywords},
       </if>
       <if test="pageTitle != null" >
         page_title = #{pageTitle},
@@ -239,24 +239,18 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="net.jeeshop.biz.product.model.ProductCategory" >
     update pro_product_category
-    set cate_code = #{cateCode},
-      cate_name = #{cateName},
-      pid = #{pid},
+    set category_code = #{categoryCode},
+      category_name = #{categoryName},
+      parent_id = #{parentId},
       level = #{level},
       description = #{description},
-      keyworks = #{keyworks},
+      keywords = #{keywords},
       page_title = #{pageTitle},
       is_valid = #{isValid},
       create_time = #{createTime},
       create_account = #{createAccount},
       update_time = #{updateTime},
       update_account = #{updateAccount}
-    where id = #{id}
-  </update>
-
-  <update id="inValidated" parameterType="java.lang.Long" >
-    update pro_product_category
-    set is_valid = '0'
     where id = #{id}
   </update>
 </mapper>
