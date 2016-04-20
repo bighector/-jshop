@@ -26,8 +26,8 @@
                 }},
                 {name:"oper", title:"操作", data:"id",render: function (data, type, row, meta) {
 
-					<#if checkPrivilege("/manage/brand/edit")>
-                        return '<a href="${basepath}/manage/brand/toEdit?id=' + data + '">编辑</a>';
+					<#if checkPrivilege("/manage/product/brand/edit")>
+                        return '<a href="${basepath}/manage/product/brand/toEdit?id=' + data + '">编辑</a>';
 					<#else>
                         return "";
 					</#if>
@@ -53,7 +53,7 @@
     }
 </script>
 
-	<form action="${basepath}/manage/brand" method="post">
+	<form action="${basepath}/manage/product/brand" method="post">
 		<table class="table table-bordered">
 			<tr>
 				<td style="text-align: right;">品牌名称</td>
@@ -72,16 +72,12 @@
 					<button method="selectList" class="btn btn-primary" table-id="brandListDataTable" onclick="return selectList(this)">
 						<i class="icon-search icon-white"></i> 查询
 					</button>
-					<a href="${basepath}/manage/brand/toAdd" class="btn btn-success">
+					<a href="${basepath}/manage/product/brand/toAdd" class="btn btn-success">
 						<i class="icon-plus-sign icon-white"></i> 添加
 					</a>
 					<button method="deletes" class="btn btn-danger" onclick="return submitIDs(this,'确定删除选择的记录?');">
 						<i class="icon-remove-sign icon-white"></i> 删除
 					</button>
-							
-					<div style="float: right;vertical-align: middle;bottom: 0px;top: 10px;">
-						<#--<#include "/manage/system/pager.ftl">-->
-					</div>
 				</td>
 			</tr>
 		</table>

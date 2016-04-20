@@ -8,18 +8,7 @@
 		 $("#code").focus();
 	});
 </script>
-</head>
-
-<body>
-<#if e.id??>
-    <#assign formAction="update">
-<#assign insertAction=false />
-<#else >
-<#assign formAction="insert">
-    <#assign insertAction=true />
-</#if>
-
-<form action="${basepath}/manage/brand" id="form" method="post">
+<form action="${basepath}/manage/product/brand" id="form" method="post">
 		<table class="table table-bordered">
 			<tr>
 				<td colspan="2" style="background-color: #dff0d8;text-align: center;">
@@ -33,43 +22,26 @@
 			<tr>
 				<th class="td_right">品牌名称</th>
 				<td style="text-align: left;">
-					<#if insertAction>
-						<input type="text" name="brandName" value="${e.brandName!""}" id="brandName"  data-rule="品牌名称:required;brandName;"/>
-					<#else>
 						<input type="text" name="brandName" id="brandName" value="${e.brandName!""}" data-rule="品牌名称:required;brandName;"/>
-					</#if>
 				</td>
 			</tr>
 			<tr>
 				<th class="td_right">品牌LOGO</th>
 				<td style="text-align: left;">
-                    <#if insertAction>
-                    <span class="add-on"></span>
-                        <input type="text" name="logo" id="logo"/>
-                    <#else>
                         <input type="text" name="logo" id="logo" value="${e.logo!""}"/>
-                    </#if>
 				</td>
 			</tr>
             <tr>
                 <th class="td_right">官方网站</th>
                 <td style="text-align: left;">
-                	<#if insertAction>
-                		<input type="text" name="officeSite" id="officeSite"/>
-                	<#else>	
-                		<input type="text" name="officeSite" id="officeSite" value="${e.officeSite!""}"/>
-                	</#if>
+                		<input type="text" name="officeSite" id="officeSite" value="${e.officeSite!""}" data-rule="官方网站:required;"/>
                 </td>
             </tr>
             <tr>
             <tr>
                 <th class="td_right">顺序</th>
                 <td style="text-align: left;">
-                	<#if insertAction>
-                		<input type="text" name="ordinal" id="ordinal"/>
-                	<#else>
-                		<input type="text" name="ordinal" id="ordinal" value="${e.ordinal!""}"/>
-                	</#if>
+                		<input type="text" name="ordinal" id="ordinal" value="${e.ordinal!"0"}" data-rule="顺序:integer"/>
                 </td>
             </tr>
             <tr>
@@ -82,14 +54,14 @@
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;">
-					<#if insertAction>
-						<button method="insert" class="btn btn-success">
-							<i class="icon-ok icon-white"></i> 新增
-						</button>
+					<#if e.id??>
+                        <button method="update" class="btn btn-success">
+                            <i class="icon-ok icon-white"></i> 保存
+                        </button>
                         <#else >
-						<button method="update" class="btn btn-success">
-							<i class="icon-ok icon-white"></i> 保存
-						</button>
+                            <button method="insert" class="btn btn-success">
+                                <i class="icon-ok icon-white"></i> 新增
+                            </button>
                     </#if>
 				</td>
 			</tr>
