@@ -18,10 +18,6 @@ import javax.imageio.stream.ImageInputStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
-import com.sun.image.codec.jpeg.JPEGCodec;
 /**
  * 等比缩放图片、裁剪图片的 图片处理工具类
  * @author huangf
@@ -226,8 +222,7 @@ public class ImageUtils {
 //	        tag.getGraphics().drawImage(src.getScaledInstance(widthdist, heightdist,  Image.SCALE_AREA_AVERAGING), 0, 0,  null);      
 	              
 	        FileOutputStream out = new FileOutputStream(imgdist);      
-	        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);      
-	        encoder.encode(tag);      
+	        ImageIO.write(tag, "jpg", out);   
 	        out.close();      
 	     
 	    } catch (IOException ex) {      
@@ -275,8 +270,9 @@ public class ImageUtils {
 	   bfImage.getGraphics().drawImage(image.getScaledInstance(newWidth, newHeight,Image.SCALE_SMOOTH),0,0,null);
 	   
 	   FileOutputStream os = new FileOutputStream(dist);
-	   JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(os);
-	   encoder.encode(bfImage);
+	   ImageIO.write(bfImage, "jpg", os);
+	   //JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(os);
+	   //encoder.encode(bfImage);
 	   os.close(); 
 	   System.out.println("创建缩略图成功");
 	  }
