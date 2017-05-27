@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 注册DUBBO服务 -->
+    <dubbo:application name="jshop-goods-service" />
+    <dubbo:registry protocol="zookeeper" address="${dubbo.zookeeper.center}" />
+    <dubbo:provider protocol="dubbo" port="-1"
+                    filter="-exception" accesslog="true"
+                    threadpool="fixed" threads="600" />
+
+
+    <dubbo:service interface="net.jeeshop.services.front.product.ProductService"
+                   ref="productServiceImpl" group="${jshop.goods.group:jshop-goods} "
+                   version="0.0.1" timeout="${jshop.dubbo.timeout:5000}"/>
+
+</beans>
