@@ -135,7 +135,7 @@ public class MenuAction extends BaseController<Menu> {
 		}
 		//修改父菜单
 		Menu m = new Menu();
-		m.setId(id);
+		m.setPageid(id);
 		m.setName(name);
 		m.setUrl(url);
 		m.setOrderNum(Integer.valueOf(orderNum));
@@ -270,7 +270,7 @@ public class MenuAction extends BaseController<Menu> {
 		for (Iterator<Menu> it = menus.iterator(); it.hasNext();) {
 			Menu entry = it.next();
 			MenuItem item = new MenuItem(entry.getName(), null);
-			item.setId(entry.getId());
+			item.setId(entry.getPageid());
 			item.setPid(entry.getPid());
 			item.setMenuType(entry);
 //			if(item.getType().equals(MenuType.page)){
@@ -319,7 +319,7 @@ public class MenuAction extends BaseController<Menu> {
 			Menu entry = data.get(i);
 			
 			MenuItem addItem = new MenuItem(entry.getName(), null);
-			addItem.setId(entry.getId());
+			addItem.setId(entry.getPageid());
 			addItem.setPid(entry.getPid());
 			addItem.setMenuType(entry);
 			String url0 = null;
@@ -351,7 +351,7 @@ public class MenuAction extends BaseController<Menu> {
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
 	public String save(@ModelAttribute("e") Menu menu) throws Exception {
-		if (menu.getId() == null || menu.getId().equals("")) {
+		if (menu.getPageid() == null || menu.getPageid().equals("")) {
 			if (menu.getUrl() == null) {
 				menu.setUrl("");
 			}

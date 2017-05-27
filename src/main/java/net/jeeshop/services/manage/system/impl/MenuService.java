@@ -115,7 +115,7 @@ public class MenuService implements Services<Menu> {
 				if (this.getCount(menu) == 0) {
 					// 指定节点下没有子菜单，删除指定的菜单(叶子)
 					menu.clear();
-					menu.setId(idArr[i]);
+					menu.setPageid(idArr[i]);
 					this.delete(menu);
 				}
 			}
@@ -130,7 +130,7 @@ public class MenuService implements Services<Menu> {
 				if (this.getCount(menu) == 0) {
 					// 指定节点下没有子菜单，删除指定的菜单(叶子)
 					menu.clear();
-					menu.setId(idArr[i]);
+					menu.setPageid(idArr[i]);
 					this.delete(menu);
 				} else {
 					menu.clear();
@@ -164,7 +164,7 @@ public class MenuService implements Services<Menu> {
 		int n = list.size();
 		for (int i = 0; i < list.size(); i++) {
 			for (int j = 0; j < idArr.length; j++) {
-				if (list.get(i).getId().equals(idArr[j])) {
+				if (list.get(i).getPageid().equals(idArr[j])) {
 					n--;
 					break;
 				}
@@ -211,7 +211,7 @@ public class MenuService implements Services<Menu> {
 //			Menu entry = it.next();
 			Menu menu = menus.get(i);
 			MenuItem item = new MenuItem(menu.getName(), null);
-			item.setId(menu.getId());
+			item.setId(menu.getPageid());
 			item.setPid(menu.getPid());
 			item.setMenuType(menu);
 			if (url != null) {
@@ -260,7 +260,7 @@ public class MenuService implements Services<Menu> {
 		for (int i = 0; i < data.size(); i++) {
 			Menu entry = data.get(i);
 			MenuItem addItem = new MenuItem(entry.getName(), null);
-			addItem.setId(entry.getId());
+			addItem.setId(entry.getPageid());
 			addItem.setPid(entry.getPid());
 			addItem.setMenuType(entry);
 			if (url != null) {

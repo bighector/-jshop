@@ -150,7 +150,7 @@ public class BaseDao extends SqlSessionDaoSupport {
 		SqlSession session = openSession();
 		int row = session.insert(arg0, arg1);
 		if(row==1){
-			return Integer.valueOf(((PagerModel)arg1).getId());
+			return Integer.valueOf(((PagerModel)arg1).getPageid());
 		}
 		throw new IbatisException();
 	}
@@ -185,7 +185,7 @@ public class BaseDao extends SqlSessionDaoSupport {
 		if(row==1){
 			if(arg1 instanceof PagerModel){
 //				return Integer.valueOf(((PagerModel)arg1).getId());
-				String obj = ((PagerModel)arg1).getId();
+				String obj = ((PagerModel)arg1).getPageid();
 				if(obj==null){
 					return 0;
 				}

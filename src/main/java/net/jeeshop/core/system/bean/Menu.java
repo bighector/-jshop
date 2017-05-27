@@ -47,7 +47,7 @@ public class Menu extends PagerModel {
 	}
 
 	public void clear() {
-		this.setId(null);
+		this.setPageid(null);
 		pid = null;
 		url = null;
 		name = null;
@@ -66,7 +66,7 @@ public class Menu extends PagerModel {
 
 	@Override
 	public String toString() {
-		return "[id:" + getId() + ",pid:" + pid + "]";
+		return "[id:" + getPageid() + ",pid:" + pid + "]";
 	}
 
 }

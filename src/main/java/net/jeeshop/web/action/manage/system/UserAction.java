@@ -223,7 +223,7 @@ public class UserAction extends BaseController<User> {
 		//循环添加菜单到菜单集合
 		for (Menu menu : menus) {
 			MenuItem item = new MenuItem(menu.getName(), null);
-			item.setId(menu.getId());
+			item.setId(menu.getPageid());
 			item.setPid(menu.getPid());
 			item.setMenuType(menu);
 //			if(item.getType().equals(MenuType.page)){
@@ -236,7 +236,7 @@ public class UserAction extends BaseController<User> {
 		}
 		for (Menu menu : menus) {
 			MenuItem item = new MenuItem(menu.getName(), null);
-			item.setId(menu.getId());
+			item.setId(menu.getPageid());
 			item.setPid(menu.getPid());
 			item.setMenuType(menu);
 //			if(item.getType().equals(MenuType.page)){

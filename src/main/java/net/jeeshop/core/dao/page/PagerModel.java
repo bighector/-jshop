@@ -13,14 +13,14 @@ import net.jeeshop.core.ManageContainer;
  * @author huangf
  * 
  */
-public class PagerModel implements ClearBean {
+public class PagerModel implements ClearBean,java.io.Serializable {
 	private int total; // 总数
 	private List list = new ArrayList(); // 分页集合列表
 	private int pageSize = ManageContainer.PAGE_SIZE;// 每页显示记录数
 	private int offset; // 偏移量
 	private int pagerSize;// 总页数
 	protected String pagerUrl;//分页标签需要访问的ACTION地址
-	private String id;
+	private String pageid;
 	private int recordsTotal;
 	private int recordsFiltered;
 	private int draw;
@@ -73,19 +73,19 @@ public class PagerModel implements ClearBean {
 		this.list = list;
 	}
 
-	public String getId() {
-		return id;
+	public String getPageid() {
+		return pageid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setPageid(String pageid) {
+		this.pageid = pageid;
 	}
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.jeeshop.common.page.ClearBean#clear()
-	 */
+         * (non-Javadoc)
+         *
+         * @see net.jeeshop.common.page.ClearBean#clear()
+         */
 	public void clear() {
 		total = 0; // 总数
 		list = null; // 分页集合列表
@@ -93,7 +93,7 @@ public class PagerModel implements ClearBean {
 		pagerSize = 0;// 总页数
 //		pagerUrl = null;//分页标签需要访问的ACTION地址
 		recordsTotal = 0;
-		id = null;
+		pageid = null;
 	}
 
 	public int getRecordsTotal() {
