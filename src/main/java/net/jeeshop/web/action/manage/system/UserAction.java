@@ -136,8 +136,8 @@ public class UserAction extends BaseController<User> {
 		e.setOffset(offset);
 		e.setPageSize(pageSize);
 		PagerModel pager = userService.selectPageList(e);
-		pager.setRecordsTotal(pager.getTotal());
-		pager.setRecordsFiltered(pager.getTotal());
+		pager.setRecordsTotal(pager.getPageTotal());
+		pager.setRecordsFiltered(pager.getPageTotal());
 		return pager;
 	}
     @RequestMapping(value = "login", method = RequestMethod.GET)

@@ -71,7 +71,7 @@ public abstract class BaseController<E extends PagerModel> {
             pager = new PagerModel();
         }
         // 计算总页数
-        pager.setPagerSize((pager.getTotal() + pager.getPageSize() - 1)  / pager.getPageSize());
+        pager.setPagerSize((pager.getPageTotal() + pager.getPageSize() - 1)  / pager.getPageSize());
 
         selectListAfter(pager);
         request.setAttribute("pager", pager);
@@ -237,8 +237,8 @@ public abstract class BaseController<E extends PagerModel> {
         e.setOffset(offset);
         e.setPageSize(pageSize);
         PagerModel pager = getService().selectPageList(e);
-        pager.setRecordsTotal(pager.getTotal());
-        pager.setRecordsFiltered(pager.getTotal());
+        pager.setRecordsTotal(pager.getPageTotal());
+        pager.setRecordsFiltered(pager.getPageTotal());
         return pager;
     }
     protected void addMessage(ModelMap modelMap, String message) {

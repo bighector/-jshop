@@ -79,9 +79,9 @@ public class BaseDao extends SqlSessionDaoSupport {
 		pm.setList(list);
 		Object oneC = session.selectOne(selectCount, param);
 		if(oneC!=null){
-			pm.setTotal(Integer.parseInt(oneC.toString()));
+			pm.setPageTotal(Integer.parseInt(oneC.toString()));
 		}else{
-			pm.setTotal(0);
+			pm.setPageTotal(0);
 		}
 		
 		return pm;

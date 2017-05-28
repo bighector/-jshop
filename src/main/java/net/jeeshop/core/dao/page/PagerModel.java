@@ -14,8 +14,8 @@ import net.jeeshop.core.ManageContainer;
  * 
  */
 public class PagerModel implements ClearBean,java.io.Serializable {
-	private int total; // 总数
-	private List list = new ArrayList(); // 分页集合列表
+	private int pageTotal; // 总数
+	private List pageList = new ArrayList(); // 分页集合列表
 	private int pageSize = ManageContainer.PAGE_SIZE;// 每页显示记录数
 	private int offset; // 偏移量
 	private int pagerSize;// 总页数
@@ -23,7 +23,7 @@ public class PagerModel implements ClearBean,java.io.Serializable {
 	private String pageid;
 	private int recordsTotal;
 	private int recordsFiltered;
-	private int draw;
+	private int pageDraw;
 
 	public String getPagerUrl() {
 		return pagerUrl;
@@ -57,20 +57,20 @@ public class PagerModel implements ClearBean,java.io.Serializable {
 		this.pageSize = pageSize;
 	}
 
-	public int getTotal() {
-		return total;
+	public int getPageTotal() {
+		return pageTotal;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
+	public void setPageTotal(int pageTotal) {
+		this.pageTotal = pageTotal;
 	}
 
-	public List getList() {
-		return list == null ? new LinkedList() : list;
+	public List getPageList() {
+		return pageList == null ? new LinkedList() : pageList;
 	}
 
 	public void setList(List list) {
-		this.list = list;
+		this.pageList = list;
 	}
 
 	public String getPageid() {
@@ -87,8 +87,8 @@ public class PagerModel implements ClearBean,java.io.Serializable {
          * @see net.jeeshop.common.page.ClearBean#clear()
          */
 	public void clear() {
-		total = 0; // 总数
-		list = null; // 分页集合列表
+		pageTotal = 0; // 总数
+		pageList = null; // 分页集合列表
 		offset = 0; // 偏移量
 		pagerSize = 0;// 总页数
 //		pagerUrl = null;//分页标签需要访问的ACTION地址
@@ -112,12 +112,12 @@ public class PagerModel implements ClearBean,java.io.Serializable {
 		this.recordsFiltered = recordsFiltered;
 	}
 
-	public int getDraw() {
-		return draw;
+	public int getPageDraw() {
+		return pageDraw;
 	}
 
-	public void setDraw(int draw) {
-		this.draw = draw;
+	public void setPageDraw(int pageDraw) {
+		this.pageDraw = pageDraw;
 	}
 
 	public String trim(String str){
@@ -170,6 +170,6 @@ public class PagerModel implements ClearBean,java.io.Serializable {
 	
 	@Override
 	public String toString() {
-		return "total:"+total+",list:"+list+",offset:"+offset;
+		return "pageTotal:"+ pageTotal +",pageList:"+ pageList +",offset:"+ offset;
 	}
 }

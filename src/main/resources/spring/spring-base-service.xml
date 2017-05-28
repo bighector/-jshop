@@ -12,18 +12,14 @@
            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+    
+    <!-- 后台管理底层服务  -->
+    <context:component-scan base-package="net.jeeshop.services.manage" />
+    <bean id="manageCache" class="net.jeeshop.core.oscache.ManageCache"/>
 
-    <context:property-placeholder location="classpath:conf.properties"/>
-    <import resource="classpath:spring/applicationContext-dao.xml"/>
-    <import resource="classpath:spring/applicationContext-base.xml"/>
-    <import resource="classpath:spring/applicationContext-cache.xml"/>
-    <!--引入dubbo 服务-->
-    <import resource="classpath:spring/dubbo/dubbo-consumer.xml"/>
 
-    <import resource="classpath:spring/spring-app-service.xml"/>
-    <!-- spring-services -->
-    <!--<import resource="classpath*:spring/manage/spring-services.xml"/>-->
-    <!--<import resource="classpath*:spring/front/spring-services.xml"/>-->
-    <!--<import resource="classpath*:spring/manage/spring-services-task.xml"/>-->
+    <!-- 商城应用底层服务 -->
+    <context:component-scan base-package="net.jeeshop.services.front" />
+    <bean id="frontCache" class="net.jeeshop.core.oscache.FrontCache"/>
 
 </beans>

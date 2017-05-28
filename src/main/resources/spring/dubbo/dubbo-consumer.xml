@@ -8,16 +8,47 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 
-
     <!-- 注册DUBBO服务 -->
-    <dubbo:application name="jshop-web" />
+    <dubbo:application name="jshop-web"/>
     <dubbo:registry protocol="zookeeper" address="${dubbo.zookeeper.center}"/>
     <dubbo:provider protocol="dubbo" port="-1"
                     filter="-exception" accesslog="true"
                     threadpool="fixed" threads="600"/>
+    <!-- 商品信息服务-->
     <dubbo:reference id="productService" interface="net.jeeshop.services.front.product.ProductService"
                      group="${jshop.goods.group:jshop-goods}"
                      version="0.0.1" timeout="${jshop.dubbo.timeout:5000}" check="false"
                      retries="0"/>
+    <!--商品属性服务-->
+    <dubbo:reference id="attributeService"  interface="net.jeeshop.services.front.attribute.AttributeService"
+                     group="${jshop.goods.group:jshop-goods}"
+                     version="0.0.1" timeout="${jshop.dubbo.timeout:5000}" check="false"/>
+
+    <!--商品属性链接服务-->
+    <dubbo:reference id="attribute_linkService" interface="net.jeeshop.services.front.attribute_link.Attribute_linkService"
+                     group="${jshop.goods.group:jshop-goods}"
+                     version="0.0.1" timeout="${jshop.dubbo.timeout:5000}" check="false"/>
+
+    <!--商品规格服务-->
+    <dubbo:reference id="specServiceManage" interface="net.jeeshop.services.manage.spec.SpecService" check="false"
+                     group="${jshop.goods.group:jshop-goods}"
+                     version="0.0.1" timeout="${jshop.dubbo.timeout:5000}"/>
+
+
+    <!--商品分类服务-->
+    <dubbo:reference id="catalogServiceFront" interface="net.jeeshop.services.front.catalog.CatalogService" check="false"
+                     group="${jshop.goods.group:jshop-goods}"
+                     version="0.0.1" timeout="${jshop.dubbo.timeout:5000}"/>
+
+
+    <!-- 商品礼品服务 -->
+    <dubbo:reference id="giftServiceManager" interface="net.jeeshop.services.manage.gift.GiftService" check="false"
+                     group="${jshop.goods.group:jshop-goods}"
+                     version="0.0.1" timeout="${jshop.dubbo.timeout:5000}"/>
+
+    <!-- 商品收藏服务 -->
+    <dubbo:reference id="favoriteServiceFront" interface="net.jeeshop.services.front.favorite.FavoriteService" check="false"
+                     group="${jshop.goods.group:jshop-goods}"
+                     version="0.0.1" timeout="${jshop.dubbo.timeout:5000}"/>
 
 </beans>
