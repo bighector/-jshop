@@ -77,7 +77,7 @@
 						<th nowrap="nowrap">顺序</th>
 						<th nowrap="nowrap">操作</th>
 					</tr>
-					<#list pager.list as item>
+					<#list pager.pageList as item>
 						<tr>
 							<td><input type="checkbox" name="ids"
 								value="${item.id!""}" /></td>

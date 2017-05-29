@@ -68,7 +68,7 @@
 						<th >内容</th>
 						<th >操作</th>
 					</tr>
-					<s:iterator value="pager.list">
+					<s:iterator value="pager.pageList">
 						<tr>
 							<td><input type="checkbox" name="ids"
 								value="<s:property value="id"/>" /></td>

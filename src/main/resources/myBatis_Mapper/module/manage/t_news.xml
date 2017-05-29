@@ -65,7 +65,7 @@
 	</select>
 	
 	<insert id="manage.news.insert" parameterType="net.jeeshop.services.manage.news.bean.News" useGeneratedKeys="true" 
-		keyProperty="id">
+		keyProperty="pageid">
 		insert into t_news (id,type,title
 		<if test="title2!=null">,title2</if>
 		<if test="code!=null and code!=''">,code</if>

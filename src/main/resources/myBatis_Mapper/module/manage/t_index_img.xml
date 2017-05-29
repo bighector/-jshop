@@ -30,7 +30,7 @@
 	</select>
 	
 	<insert id="manage.indexImg.insert" parameterType="net.jeeshop.services.manage.indexImg.bean.IndexImg" useGeneratedKeys="true" 
-		keyProperty="id">
+		keyProperty="pageid">
 		insert into t_index_img (id,title,picture,order1,desc1,link)
 		 values (id,#{title},#{picture},#{order1},#{desc1},#{link})
 	</insert>

@@ -8,7 +8,7 @@ import net.jeeshop.core.dao.page.ClearBean;
  * @author jqsl2012@163.com
  * 
  */
-public class OrderSimpleReport implements ClearBean {
+public class OrderSimpleReport implements ClearBean ,java.io.Serializable {
 	private int orderWaitPayCount;
 	private int orderCancelCount;
 	private int orderCompleteCount;

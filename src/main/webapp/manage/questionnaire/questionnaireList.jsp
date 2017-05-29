@@ -64,7 +64,7 @@
 				<th>显示日期</th>
 				<th style="width: 60px;">操作</th>
 			</tr>
-			<s:iterator value="pager.list">
+			<s:iterator value="pager.pageList">
 				<tr>
 					<td><input type="checkbox" name="ids"
 						value="<s:property value="id"/>" /></td>

@@ -16,7 +16,7 @@
 			and mid=#{mid}
 		</if>
 	</select>
-	<insert id="privilege.insert" parameterType="net.jeeshop.core.system.bean.Privilege" useGeneratedKeys="true" keyProperty="id">
+	<insert id="privilege.insert" parameterType="net.jeeshop.core.system.bean.Privilege" useGeneratedKeys="true" keyProperty="pageid">
 		insert into t_privilege (id,rid,mid) values (id,#{rid},#{mid})
 	</insert>
 	<update id="privilege.update" parameterType="net.jeeshop.core.system.bean.Privilege">

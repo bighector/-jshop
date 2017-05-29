@@ -1,6 +1,6 @@
 <#assign pg = JspTaglibs["/WEB-INF/jsp/pager-taglib.tld"]/>
 <!-- 分页标签 -->
-<#if pager.list?? && pager.pagerSize gt 1>
+<#if pager.pageList?? && pager.pagerSize gt 1>
 	<ul class="pagination pagination-sm" style="margin: 0px;">
 
 		<@pg.pager url="${pager.pagerUrl}" items=pager.total

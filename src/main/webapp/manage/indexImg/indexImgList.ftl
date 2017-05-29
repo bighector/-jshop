@@ -37,7 +37,7 @@
 <!-- 					<th>描述</th> -->
 					<th style="width: 50px;">操作</th>
 				</tr>
-                <#list pager.list as item>
+                <#list pager.pageList as item>
 					<tr>
 						<td><input type="checkbox" name="ids" value="${item.id!""}"/></td>
 						<td style="display: none;">&nbsp;${item.id!""}</td>

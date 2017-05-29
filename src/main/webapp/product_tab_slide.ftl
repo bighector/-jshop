@@ -60,7 +60,7 @@
 						<!-- 系统评论 -->
 						<div class="row">
 							<div class="col-xs-12">
-								<#list pager.list as item>
+								<#list pager.pageList as item>
 									<ul class="media-list">
 									  <li class="media">
 									    <span class="pull-left" href="#">
@@ -90,7 +90,7 @@
 							</div>
 							<div class="row" style="text-align: right;">
 								<div class="col-xs-12">
-									<#if pager.list??>
+									<#if pager.pageList??>
 										<#include "/pager.ftl"/>
 									<#else>
 										该商品暂无评论！

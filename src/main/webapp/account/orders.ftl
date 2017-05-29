@@ -20,7 +20,7 @@ font-weight: 700;font-size: 16px;color: #f50;
 			
 			<div class="col-xs-9">
 				<div class="row">
-					<#if pager.list?? && pager.pagerSize gt 0>
+					<#if pager.pageList?? && pager.pagerSize gt 0>
 						<div class="panel panel-default">
 							<div class="panel-heading"><span class="glyphicon glyphicon-th"></span>我的订单列表</div>
 							<div class="panel-body">
@@ -52,7 +52,7 @@ font-weight: 700;font-size: 16px;color: #f50;
 									<th style="text-align: center;" nowrap="nowrap">订单状态</th>
 									<th style="text-align: center;width: 100px;">操作</th>
 								</tr>
-								<#list pager.list as item>
+								<#list pager.pageList as item>
 									<tr class="warning" id="del${item.id!""}">
 										<td colspan="11">
 											<div class="row">
@@ -158,7 +158,7 @@ font-weight: 700;font-size: 16px;color: #f50;
 											</#if>
 										</tr>
 									</#list>
-								</#list><#--pager.list-->
+								</#list><#--pager.pageList-->
 							</table>
 						</div>
 						

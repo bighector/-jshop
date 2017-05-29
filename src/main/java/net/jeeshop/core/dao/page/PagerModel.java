@@ -69,7 +69,7 @@ public class PagerModel implements ClearBean,java.io.Serializable {
 		return pageList == null ? new LinkedList() : pageList;
 	}
 
-	public void setList(List list) {
+	public void setPageList(List list) {
 		this.pageList = list;
 	}
 

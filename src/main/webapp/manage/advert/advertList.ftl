@@ -69,7 +69,7 @@
 						<td width="50px">操作</td>
 					</tr>
 
-                    <#list pager.list as item>
+                    <#list pager.pageList as item>
 						<tr>
 							<td><input type="checkbox" name="ids"
 								value="${item.id!""}" /></td>

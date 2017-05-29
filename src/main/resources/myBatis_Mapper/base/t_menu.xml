@@ -47,7 +47,7 @@
 			and m.pid=#{pid}
 		</if>
 	</select>
-	<insert id="menu.insert" parameterType="net.jeeshop.core.system.bean.Menu" useGeneratedKeys="true" keyProperty="id">
+	<insert id="menu.insert" parameterType="net.jeeshop.core.system.bean.Menu" useGeneratedKeys="true" keyProperty="pageid">
 		insert into t_menu (id,pid,url,name,orderNum,type) values (id,#{pid},#{url},#{name},#{orderNum},#{type})
 	</insert>
 	<update id="menu.update" parameterType="net.jeeshop.core.system.bean.Menu">

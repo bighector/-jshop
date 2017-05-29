@@ -56,7 +56,7 @@ function deleteSelect(){
 					<th>状态</th>
 					<th width="50px">操作</th>
 				</tr>
-                <#list pager.list as item>
+                <#list pager.pageList as item>
 					<tr>
 						<td><#if item.id!=1><input type="checkbox" name="ids" value="${item.id}/>"/></#if></td>
 						<td  style="display: none;">&nbsp;${item.rid!""}</td>

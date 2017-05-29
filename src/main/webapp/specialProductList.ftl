@@ -51,9 +51,9 @@ function defaultProductImg(){
 					<hr>
 				</div>
 
-				<#if pager.list??>
+				<#if pager.pageList??>
 				<div class="row">
-					<#list pager.list as item>
+					<#list pager.pageList as item>
 						<div class="col-xs-3" style="padding: 5px;text-align: center;">
 							<div class="thumbnail" style="width: 100%; display: block;">
 								<div style="height: 150px;border: 0px solid;">

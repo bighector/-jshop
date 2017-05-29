@@ -91,7 +91,7 @@
 	</select>
 	
 	<insert id="user.insert" parameterType="net.jeeshop.core.system.bean.User" useGeneratedKeys="true" 
-		keyProperty="id">
+		keyProperty="pageid">
 		insert into t_user (id,username,password,createtime,createAccount,status,rid,nickname,email)
 		 values (id,#{username},#{password},now(),#{createAccount},#{status},#{rid},#{nickname},#{email})
 	</insert>

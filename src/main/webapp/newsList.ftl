@@ -45,7 +45,7 @@ img{border: 0px;}
 							<tr>
 								<td colspan="2"><h5><b>公告新闻列表</b></h5></td>
 							</tr>
-							<#list pager.list as item>
+							<#list pager.pageList as item>
 								<tr>
 									<td>
 										<a href="${basepath}/news/${item.id!""}.html" title="${item.title!""}">
@@ -61,7 +61,7 @@ img{border: 0px;}
 												
 						<div class="row" style="margin-top: 10px;">
 							<div class="col-xs-12" style="border: 0px solid;text-align: right;">
-								<#if pager.list??>
+								<#if pager.pageList??>
 									<#include "/pager.ftl"/>
 								</#if>
 							</div>

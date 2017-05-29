@@ -1,7 +1,9 @@
 package net.jeeshop.core.dao;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
-import java.util.logging.Logger;
 
 import net.jeeshop.core.dao.page.PagerModel;
 import net.jeeshop.core.exception.PrivilegeException;
@@ -76,7 +78,7 @@ public class BaseDao extends SqlSessionDaoSupport {
 		SqlSession session = openSession();
 		List list = session.selectList(selectList, param);
 		PagerModel pm = new PagerModel();
-		pm.setList(list);
+		pm.setPageList(list);
 		Object oneC = session.selectOne(selectCount, param);
 		if(oneC!=null){
 			pm.setPageTotal(Integer.parseInt(oneC.toString()));
@@ -150,6 +152,21 @@ public class BaseDao extends SqlSessionDaoSupport {
 		SqlSession session = openSession();
 		int row = session.insert(arg0, arg1);
 		if(row==1){
+			try {
+				//如果存在ID字段,且为空的话就手动为其赋予Pageid字段值
+				Method idGetMethod = arg1.getClass().getMethod("getId");
+				Method idSetMethod = arg1.getClass().getMethod("setId", String.class);
+				Object idValue = idGetMethod.invoke(arg1);
+				if(idValue==null) {
+					idSetMethod.invoke(arg1, ((PagerModel) arg1).getPageid());
+				}
+			}  catch (IllegalAccessException e) {
+				throw  new RuntimeException(e);
+			} catch (NoSuchMethodException e) {
+				// 勿略
+			} catch (InvocationTargetException e) {
+				throw  new RuntimeException(e);
+			}
 			return Integer.valueOf(((PagerModel)arg1).getPageid());
 		}
 		throw new IbatisException();

@@ -45,7 +45,7 @@
 							<th width="150px" style="text-align: center;">时间</th>
 							<th width="50px" style="text-align: center;">删除</th>
 						</tr>
-						<s:iterator value="pager.list" status="i" var="item">
+						<s:iterator value="pager.pageList" status="i" var="item">
 							<tr>
 								<td style="display: none;"><s:property value="id"/></td>
 								<td style="text-align: left;">
@@ -73,7 +73,7 @@
 				</div>
 				
 				<div class="row" style="margin-top: 0px;text-align: right;">
-					<s:if test="!(pager.list==null or pager.list.size==0)">
+					<s:if test="!(pager.pageList==null or pager.pageList.size==0)">
 						<%@ include file="../../pager.jsp"%>
 					</s:if>
 				</div>

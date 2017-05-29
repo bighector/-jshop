@@ -26,7 +26,7 @@
 			</tr>
 
             <#assign map = {'aliyun':'阿里云存储','qiniu':'七牛云存储'}>
-			<#list pager.list as item>
+			<#list pager.pageList as item>
 				<tr>
 					<td><input type="checkbox" name="ids"
 						value="${item.id!""}" /></td>

@@ -39,7 +39,7 @@
 						<th width="50px" style="text-align: center;">阅读</th>
 						<th width="50px" style="text-align: center;">最后发表</th>
 					</tr>
-					<s:iterator value="pager.list" status="i" var="item">
+					<s:iterator value="pager.pageList" status="i" var="item">
 						<tr>
 							<td style="display: none;"><s:property value="id"/></td>
 							<td style="text-align: left;">

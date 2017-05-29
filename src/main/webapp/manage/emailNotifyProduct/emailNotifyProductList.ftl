@@ -52,7 +52,7 @@
 				<th nowrap="nowrap">通知时间</th>
 				<th nowrap="nowrap">是否已发送通知</th>
 			</tr>
-			<#list pager.list as item>
+			<#list pager.pageList as item>
 				<tr>
 					<td><input type="checkbox" name="ids"
 						value="${item.id!""}" /></td>

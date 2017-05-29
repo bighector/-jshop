@@ -39,7 +39,7 @@
 				<th nowrap="nowrap">发送状态</th>
 				<th style="width: 115px;">操作</th>
 			</tr>
-			<s:iterator value="pager.list">
+			<s:iterator value="pager.pageList">
 				<tr>
 					<td><input type="checkbox" name="ids"
 						value="<s:property value="id"/>" /></td>

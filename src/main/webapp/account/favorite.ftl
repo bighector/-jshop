@@ -20,13 +20,13 @@
 
                 <hr>
 				<div class="row">
-				<#if pager.list??>
+				<#if pager.pageList??>
 					<table class="table table-bordered">
 						<tr>
 							<td>商品</td>
 							<td width="100px">收藏日期</td>
 						</tr>
-						<#list pager.list as item>
+						<#list pager.pageList as item>
 							<#if item.product??>
 								<tr>
 									<td>

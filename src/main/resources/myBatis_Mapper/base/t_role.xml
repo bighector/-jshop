@@ -25,7 +25,7 @@
 			and role_desc=#{role_desc}
 		</if>
 	</select>
-	<insert id="role.insert" parameterType="net.jeeshop.core.system.bean.Role" useGeneratedKeys="true" keyProperty="id">
+	<insert id="role.insert" parameterType="net.jeeshop.core.system.bean.Role" useGeneratedKeys="true" keyProperty="pageid">
 		insert into t_role (id,role_name,role_desc,role_dbPrivilege,status) values (id,#{role_name},#{role_desc},#{role_dbPrivilege},#{status})
 	</insert>
 	<update id="role.update" parameterType="net.jeeshop.core.system.bean.Role">
